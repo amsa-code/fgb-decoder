@@ -558,16 +558,15 @@ public abstract class BeaconProtocol {
 		return result;
 	}
 
-	public String removeLeadingZeros(String str) {
+	private static String removeLeadingZeros(String str) {
 		while (str.length() > 0 && str.substring(0, 1).equals("0")) {
 			str = str.substring(1, str.length());
 		}
-
 		return str;
 	}
 
 	// do a bitwise XOR of G and R to form new R
-	public String xor(String bitStrA, String bitStrB) {
+	private static String xor(String bitStrA, String bitStrB) {
 		String result = "";
 		for (int i = 0; i < bitStrA.length(); i++) {
 			boolean bA = bitStrA.charAt(i) == '1';

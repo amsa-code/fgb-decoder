@@ -87,26 +87,26 @@ public final class Hexdecode {
 	}
 
 	// This is the method that is used to decode the entire Hex Str.
-	public static String decode(String hexStr, String formater) {
+	public static String decode(String hexStr, String formatter) {
 		List<HexAttribute> r = getHexAttributes(hexStr);
 		
 		DecodeFilter f;
 
-		formater = formater.toUpperCase();
+		formatter = formatter.toUpperCase();
 
-		if (formater.equals("HTML")) {
+		if (formatter.equals("HTML")) {
 
 			f = DecodeAsHTML.INSTANCE;
 
 		} else {
 
-			if (formater.equals("XML")) {
+			if (formatter.equals("XML")) {
 
 				f = DecodeAsXML.INSTANCE;
 
 			} else {
 
-				if (formater.equals("XML2")) {
+				if (formatter.equals("XML2")) {
 
 					f = DecodeAsXML2.INSTANCE;
 

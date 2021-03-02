@@ -7,9 +7,6 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.amsa.fgb.HexAttribute;
-import com.amsa.fgb.Hexdecode;
-
 /**
  * Tests the decoding methods of {@link Hexdecode}
  * 
