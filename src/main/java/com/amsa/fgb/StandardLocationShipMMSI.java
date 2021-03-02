@@ -5,13 +5,13 @@ import java.util.List;
 
 class StandardLocationShipMMSI extends StandardLocation {
 
-    public StandardLocationShipMMSI() {
+    StandardLocationShipMMSI() {
         stdProtocolCode = "0010";
         protocolName = "Maritime MMSI";
     }
 
     @Override
-    public List<HexAttribute> decodeSearch(String hexStr) {
+    List<HexAttribute> decodeSearch(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -23,7 +23,7 @@ class StandardLocationShipMMSI extends StandardLocation {
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<>();
 
@@ -73,7 +73,7 @@ class StandardLocationShipMMSI extends StandardLocation {
         return result;
     }
 
-    public HexAttribute getMMSI(String binCode, int s, int f) {
+    HexAttribute getMMSI(String binCode, int s, int f) {
         int countryCode = this.getCountryCode(binCode, 27, 36);
         HexAttribute h = this.mmsi(binCode, s, f);
         String mmsi = h.getValue();
@@ -83,7 +83,7 @@ class StandardLocationShipMMSI extends StandardLocation {
         return new HexAttribute("Ships MMSI", v, e);
     }
 
-    public HexAttribute mmsi(String binCode, int s, int f) {
+    HexAttribute mmsi(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
         String value = v + "";
@@ -96,7 +96,7 @@ class StandardLocationShipMMSI extends StandardLocation {
     }
 
     @Override
-    public HexAttribute specificBeaconNumber(String binCode, int s, int f) {
+    HexAttribute specificBeaconNumber(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 

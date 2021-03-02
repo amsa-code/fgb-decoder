@@ -5,13 +5,13 @@ import java.util.List;
 
 class StandardLocationELT extends StandardLocation {
 
-    public StandardLocationELT() {
+    StandardLocationELT() {
         stdProtocolCode = "0100";
         protocolName = "ELT - Serial";
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 

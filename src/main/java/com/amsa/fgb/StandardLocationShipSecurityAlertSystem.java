@@ -5,13 +5,13 @@ import java.util.List;
 
 class StandardLocationShipSecurityAlertSystem extends StandardLocation {
 
-    public StandardLocationShipSecurityAlertSystem() {
+    StandardLocationShipSecurityAlertSystem() {
         stdProtocolCode = "1100";
         protocolName = "Ship Security MMSI";
     }
 
     @Override
-    public List<HexAttribute> decodeSearch(String hexStr) {
+    List<HexAttribute> decodeSearch(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -23,7 +23,7 @@ class StandardLocationShipSecurityAlertSystem extends StandardLocation {
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -73,7 +73,7 @@ class StandardLocationShipSecurityAlertSystem extends StandardLocation {
         return result;
     }
 
-    public HexAttribute getMMSI(String binCode, int s, int f) {
+    HexAttribute getMMSI(String binCode, int s, int f) {
         int countryCode = this.getCountryCode(binCode, 27, 36);
         HexAttribute h = this.mmsi(binCode, s, f);
         String mmsi = h.getValue();
@@ -83,7 +83,7 @@ class StandardLocationShipSecurityAlertSystem extends StandardLocation {
         return new HexAttribute("Ship MMSI", v, e);
     }
 
-    public HexAttribute mmsi(String binCode, int s, int f) {
+    HexAttribute mmsi(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
         String value = v + "";
@@ -95,7 +95,7 @@ class StandardLocationShipSecurityAlertSystem extends StandardLocation {
         return new HexAttribute("Ship Security MMSI", s, f, value, e);
     }
 
-    public HexAttribute securityFixedBits(String binCode, int s, int f) {
+    HexAttribute securityFixedBits(String binCode, int s, int f) {
         String v = binCode.substring(s, f + 1);
         String e = "";
 

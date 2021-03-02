@@ -3,14 +3,14 @@ package com.amsa.fgb;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserNational extends User {
-    public UserNational() {
+class UserNational extends User {
+    UserNational() {
         protocolName = "National User";
         userProtocolCode = "100";
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
 
         List<HexAttribute> result = new ArrayList<HexAttribute>();

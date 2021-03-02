@@ -3,11 +3,11 @@ package com.amsa.fgb;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class User extends BeaconProtocol {
+abstract class User extends BeaconProtocol {
 
-    public String userProtocolCode;
+    String userProtocolCode;
 
-    public User() {
+    User() {
         this.beaconTypeCode.add("01");
         this.beaconTypeCode.add("11");
 
@@ -19,12 +19,12 @@ public abstract class User extends BeaconProtocol {
     }
 
     @Override
-    public String getName() {
+    String getName() {
         return protocolName;
     }
 
     @Override
-    public boolean canDecode(String binCode) {
+    boolean canDecode(String binCode) {
         String beaconCode = binCode.substring(25, 27);
         // System.out.println("Trying User " + name);
 
@@ -39,7 +39,7 @@ public abstract class User extends BeaconProtocol {
 
     // This method should be overwritten by sub-classes
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         List<HexAttribute> result = new ArrayList<HexAttribute>();
         String errorMsg = "ERROR: decode() called from User";
         result.add(new HexAttribute("", 0, "", errorMsg));
@@ -50,7 +50,7 @@ public abstract class User extends BeaconProtocol {
     // protocolName is defined in BeaconProtocol and is set by individual
     // protocol programs.
     @Override
-    public HexAttribute protocolType(String binCode, int s, int f) {
+    HexAttribute protocolType(String binCode, int s, int f) {
         String name = this.getName();
         String e = "";
 
@@ -58,7 +58,7 @@ public abstract class User extends BeaconProtocol {
     }
 
     // Get the messageType. Is it LONG or SHORT?
-    public HexAttribute messageType(String binCode, int s, int f) { // b25-26
+    HexAttribute messageType(String binCode, int s, int f) { // b25-26
         String v = "User";
         String e = "";
 
@@ -73,7 +73,7 @@ public abstract class User extends BeaconProtocol {
     }
 
     // This method is called by UserAviation.java
-    public HexAttribute specificELTIdentifier(String binCode, int s, int f) {
+    HexAttribute specificELTIdentifier(String binCode, int s, int f) {
         String v = binCode.substring(s, f + 1);
         String e = "";
 
@@ -98,7 +98,7 @@ public abstract class User extends BeaconProtocol {
 
     // This method is called by UserAviation.java, UserMaritime.java and
     // UserRarioCallSign.java
-    public HexAttribute spare(String binCode, int s, int f) {
+    HexAttribute spare(String binCode, int s, int f) {
         String v = binCode.substring(s, f + 1);
         String e = "";
 
@@ -108,7 +108,7 @@ public abstract class User extends BeaconProtocol {
         return new HexAttribute("Spare", s, f, v, e);
     }
 
-    public HexAttribute auxRadioLocating(String binCode, int s, int f) {
+    HexAttribute auxRadioLocating(String binCode, int s, int f) {
         String code = binCode.substring(s, f + 1);
         String e = "";
         String v = "";
@@ -130,7 +130,7 @@ public abstract class User extends BeaconProtocol {
         return new HexAttribute("Aux. radio-locating", s, f, v, e);
     }
 
-    public HexAttribute emergencyCode(String binCode, int s) {
+    HexAttribute emergencyCode(String binCode, int s) {
         String v = "";
         String e = "";
 
@@ -147,11 +147,11 @@ public abstract class User extends BeaconProtocol {
         return new HexAttribute("Emergency Code", s, v, e);
     }
 
-    public boolean emergencyCodePresent(String binCode) {
+    boolean emergencyCodePresent(String binCode) {
         return binCode.charAt(107) == '1';
     }
 
-    public HexAttribute activationType(String binCode, int s) {
+    HexAttribute activationType(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '1') {
@@ -163,7 +163,7 @@ public abstract class User extends BeaconProtocol {
         return new HexAttribute("Activation Type", s, v, e);
     }
 
-    public HexAttribute fireFlag(String binCode, int s) {
+    HexAttribute fireFlag(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '1') {
@@ -177,7 +177,7 @@ public abstract class User extends BeaconProtocol {
         return new HexAttribute("                              ", s, v, e);
     }
 
-    public HexAttribute medicalHelpFlag(String binCode, int s) {
+    HexAttribute medicalHelpFlag(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '1') {
@@ -189,7 +189,7 @@ public abstract class User extends BeaconProtocol {
         return new HexAttribute("                              ", s, v, e);
     }
 
-    public HexAttribute disabledFlag(String binCode, int s) {
+    HexAttribute disabledFlag(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '1') {
@@ -201,7 +201,7 @@ public abstract class User extends BeaconProtocol {
         return new HexAttribute("                              ", s, v, e);
     }
 
-    public HexAttribute emergencySpare(String binCode, int s) {
+    HexAttribute emergencySpare(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '0') {
@@ -213,7 +213,7 @@ public abstract class User extends BeaconProtocol {
         return new HexAttribute("                              ", s, v, e);
     }
 
-    public HexAttribute maritimeEmergencyCode(String binCode, int s, int f) {
+    HexAttribute maritimeEmergencyCode(String binCode, int s, int f) {
         String v = "";
         String e = "";
         String code = binCode.substring(s, f + 1);
@@ -262,7 +262,7 @@ public abstract class User extends BeaconProtocol {
      * ******************************************************
      */
 
-    public HexAttribute latitude(String binCode, int s, int f) {
+    HexAttribute latitude(String binCode, int s, int f) {
         // Latitude b108-119 1270 60S (NON-SPEC)
         String latitude = "";
         String e = "";
@@ -299,7 +299,7 @@ public abstract class User extends BeaconProtocol {
         return new HexAttribute("Latitude", s, f, latitude, e);
     }
 
-    public HexAttribute longitude(String binCode, int s, int f) { // b120-132
+    HexAttribute longitude(String binCode, int s, int f) { // b120-132
         // Longitude b120-132 255 32W (NON-SPEC)
         String longitude = "";
         String e = "";
@@ -338,7 +338,7 @@ public abstract class User extends BeaconProtocol {
     }
 
     // For bit 107-112. See C/S T.001 Figure A4
-    public List<HexAttribute> nonNationalUse(List<HexAttribute> result, String binCode) {
+    List<HexAttribute> nonNationalUse(List<HexAttribute> result, String binCode) {
         // Decode bit 107
         result.add(emergencyCode(binCode, 107));
 
@@ -355,7 +355,7 @@ public abstract class User extends BeaconProtocol {
     }
 
     // This method should be overiddded by the subclasses
-    public List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
+    List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
         return result;
     }
 }

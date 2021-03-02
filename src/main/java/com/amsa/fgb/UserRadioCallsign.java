@@ -3,15 +3,15 @@ package com.amsa.fgb;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRadioCallsign extends User {
+class UserRadioCallsign extends User {
 
-    public UserRadioCallsign() {
+    UserRadioCallsign() {
         protocolName = "Radio Call Sign";
         userProtocolCode = "110";
     }
 
     @Override
-    public List<HexAttribute> decodeSearch(String hexStr) {
+    List<HexAttribute> decodeSearch(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -22,7 +22,7 @@ public class UserRadioCallsign extends User {
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
 
         String binCode = Conversions.hexToBinary(hexStr);
 
@@ -66,7 +66,7 @@ public class UserRadioCallsign extends User {
         return result;
     }
 
-    public HexAttribute radioCallsign(String binCode, int s, int f) {
+    HexAttribute radioCallsign(String binCode, int s, int f) {
         // 11 May 2005
         // Passed back the String[]
         String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(),
@@ -150,7 +150,7 @@ public class UserRadioCallsign extends User {
 
     // This overidding method will be called by User.java
     @Override
-    public List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
+    List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
         result = Common.maritimeEmergencyCodes(result, binCode);
 
         return result;

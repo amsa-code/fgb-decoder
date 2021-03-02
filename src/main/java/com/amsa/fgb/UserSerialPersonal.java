@@ -5,13 +5,13 @@ import java.util.List;
 
 class UserSerialPersonal extends UserSerial {
 
-    public UserSerialPersonal() {
+    UserSerialPersonal() {
         serialBeaconType = "Personal";
         serialCode = "110";
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
 
         String binCode = Conversions.hexToBinary(hexStr);
 
@@ -72,7 +72,7 @@ class UserSerialPersonal extends UserSerial {
 
     // This overidding method will be called by User.java
     @Override
-    public List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
+    List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
         result = Common.nonMaritimeEmergencyCodes(result, binCode);
 
         return result;

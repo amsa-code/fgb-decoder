@@ -5,13 +5,13 @@ import java.util.List;
 
 class StandardLocationAircraftOperator extends StandardLocation {
 
-    public StandardLocationAircraftOperator() {
+    StandardLocationAircraftOperator() {
         stdProtocolCode = "0101";
         protocolName = "Aircraft Operator";
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 

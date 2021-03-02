@@ -5,13 +5,13 @@ import java.util.List;
 
 class UserSerialAircraftOperator extends UserSerial {
 
-    public UserSerialAircraftOperator() {
+    UserSerialAircraftOperator() {
         serialBeaconType = "Aircraft Operator";
         serialCode = "001";
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
 
         String binCode = Conversions.hexToBinary(hexStr);
 
@@ -71,7 +71,7 @@ class UserSerialAircraftOperator extends UserSerial {
     }
 
     @Override
-    public HexAttribute aircraftOperator(String binCode, int s, int f) {
+    HexAttribute aircraftOperator(String binCode, int s, int f) {
         // 11 May 2005
         String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName() + " " + serialBeaconType,
                 binCode.substring(s, f + 1), 6);
@@ -83,7 +83,7 @@ class UserSerialAircraftOperator extends UserSerial {
 
     // This overidding method will be called by User.java
     @Override
-    public List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
+    List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
         result = Common.nonMaritimeEmergencyCodes(result, binCode);
 
         return result;

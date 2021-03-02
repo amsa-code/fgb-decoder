@@ -3,15 +3,15 @@ package com.amsa.fgb;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserMaritime extends User {
+class UserMaritime extends User {
 
-    public UserMaritime() {
+    UserMaritime() {
         protocolName = "Maritime";
         userProtocolCode = "010";
     }
 
     @Override
-    public List<HexAttribute> decodeSearch(String hexStr) {
+    List<HexAttribute> decodeSearch(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -24,7 +24,7 @@ public class UserMaritime extends User {
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
 
         String binCode = Conversions.hexToBinary(hexStr);
 
@@ -69,7 +69,7 @@ public class UserMaritime extends User {
         return result;
     }
 
-    public HexAttribute getMMSI(String binCode, int s, int f) {
+    HexAttribute getMMSI(String binCode, int s, int f) {
         String d = "";
         String v = "";
         String e = "";
@@ -96,7 +96,7 @@ public class UserMaritime extends User {
         return new HexAttribute(d, s, f, v, e);
     }
 
-    public HexAttribute mmsi(String binCode, int s, int f) {
+    HexAttribute mmsi(String binCode, int s, int f) {
         String d = "";
         String v = "";
         String e = "";
@@ -128,7 +128,7 @@ public class UserMaritime extends User {
 
     // This overidding method will be called by User.java
     @Override
-    public List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
+    List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
         result = Common.maritimeEmergencyCodes(result, binCode);
 
         return result;

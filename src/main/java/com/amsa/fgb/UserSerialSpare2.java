@@ -6,14 +6,14 @@ import java.util.List;
 // 07/04/2005
 // This class is the same as UserSerialSpare except for the serialCode (101 for UserSerialSpare)
 class UserSerialSpare2 extends UserSerial {
-    public UserSerialSpare2() {
+    UserSerialSpare2() {
         serialBeaconType = "Spare";
         // b40-42
         serialCode = "111";
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -60,7 +60,7 @@ class UserSerialSpare2 extends UserSerial {
     }
 
     @Override
-    public boolean canDecode(String binCode) {
+    boolean canDecode(String binCode) {
         if (super.canDecode(binCode)) {
             String serCode = binCode.substring(40, 43);
 

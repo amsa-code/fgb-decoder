@@ -3,15 +3,15 @@ package com.amsa.fgb;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserSpare extends User {
+class UserSpare extends User {
 
-    public UserSpare() {
+    UserSpare() {
         protocolName = "Spare";
         userProtocolCode = "101";
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
 
         String binCode = Conversions.hexToBinary(hexStr);
 

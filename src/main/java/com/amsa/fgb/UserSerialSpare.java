@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 class UserSerialSpare extends UserSerial {
-    public UserSerialSpare() {
+    UserSerialSpare() {
         serialBeaconType = "Spare";
         // b40-42, the other one for spare is "111" (See UserSpare2.java)
         serialCode = "101";
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -58,7 +58,7 @@ class UserSerialSpare extends UserSerial {
     }
 
     @Override
-    public boolean canDecode(String binCode) {
+    boolean canDecode(String binCode) {
         if (super.canDecode(binCode)) {
             String serCode = binCode.substring(40, 43);
 

@@ -5,15 +5,15 @@ import java.util.List;
 
 // 13 May 2005
 // Changed based on C/ST.006 and CDP
-public class UserOrbitography extends User {
+class UserOrbitography extends User {
 
-    public UserOrbitography() {
+    UserOrbitography() {
         protocolName = "Orbitography";
         userProtocolCode = "000";
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
 
         List<HexAttribute> result = new ArrayList<HexAttribute>();
@@ -50,8 +50,7 @@ public class UserOrbitography extends User {
     }
 
     // This is where changes go
-    public List<HexAttribute> orbitographyData(List<HexAttribute> result, String binCode, int s,
-            int f) {
+    List<HexAttribute> orbitographyData(List<HexAttribute> result, String binCode, int s, int f) {
         String v1 = binCode.substring(s, f + 1);
         String e1 = "";
 
