@@ -2,9 +2,9 @@ package com.amsa.fgb;
 
 import java.util.List;
 
-public class DecodeAsXML2 implements DecodeFilter {
+class DecodeAsXML2 implements DecodeFilter {
 
-    public static final DecodeAsXML2 INSTANCE = new DecodeAsXML2();
+    static final DecodeAsXML2 INSTANCE = new DecodeAsXML2();
 
     private DecodeAsXML2() {
         // force use of singleton

@@ -2,16 +2,16 @@ package com.amsa.fgb;
 
 import java.util.List;
 
-public class DecodeAsXML implements DecodeFilter {
+class DecodeAsXML implements DecodeFilter {
 
-    public static final DecodeAsXML INSTANCE = new DecodeAsXML();
+    static final DecodeAsXML INSTANCE = new DecodeAsXML();
 
     private DecodeAsXML() {
         // force use of singletons
     }
 
     /*
-     * public String getData(List v) { String data = "<?xml version=\"1.0\"?>\n";
+     * String getData(List v) { String data = "<?xml version=\"1.0\"?>\n";
      * 
      * List reservedChars = new ArrayList(0); data = data + "<Hexdecode>\n"; for
      * (int i=0; i<v.size(); i++) { HexAttribute h = (HexAttribute) v.elementAt(i);

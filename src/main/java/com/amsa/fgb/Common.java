@@ -10,7 +10,7 @@ import java.util.List;
 
 class Common {
     // For bit 109-112 (Maritime Emergency Codes). See C/S T.001 Table A4
-    public static List<HexAttribute> maritimeEmergencyCodes(List<HexAttribute> result,
+    static List<HexAttribute> maritimeEmergencyCodes(List<HexAttribute> result,
             String binCode) {
         // Convert bit 109-112 to decimal
         int bitToNum = Conversions.binaryToDecimal(binCode.substring(109, 113));
@@ -67,7 +67,7 @@ class Common {
         return result;
     }
 
-    public static HexAttribute fireFlag(String binCode, int s) {
+     static HexAttribute fireFlag(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '1') {
@@ -82,7 +82,7 @@ class Common {
         return new HexAttribute("Fire Flag", s, v, e);
     }
 
-    public static HexAttribute medicalHelpFlag(String binCode, int s) {
+     static HexAttribute medicalHelpFlag(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '1') {
@@ -95,7 +95,7 @@ class Common {
         return new HexAttribute("Medical Help Flag", s, v, e);
     }
 
-    public static HexAttribute disabledFlag(String binCode, int s) {
+     static HexAttribute disabledFlag(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '1') {
@@ -107,7 +107,7 @@ class Common {
         return new HexAttribute("Disabled", s, v, e);
     }
 
-    public static HexAttribute emergencySpare(String binCode, int s) {
+     static HexAttribute emergencySpare(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '0') {
@@ -120,7 +120,7 @@ class Common {
     }
 
     // For bit 109-112 (Non-Maritime Emergency Codes). See C/S T.001 Table A5
-    public static List<HexAttribute> nonMaritimeEmergencyCodes(List<HexAttribute> result,
+     static List<HexAttribute> nonMaritimeEmergencyCodes(List<HexAttribute> result,
             String binCode) {
         String name = "Nature of Distress";
         result.add(new HexAttribute(name, 109, 112, binCode.substring(109, 113), ""));
@@ -139,43 +139,43 @@ class Common {
     // UserTest.java (111 - Test); UserSpecialUse.java (101 - Spare);
     // UserSerialPersonal.java (011, and 110 for bits 40-42); and
     // UserSerialSpare.java (011, and 101 for bits 40-42)
-    public static List<HexAttribute> nonEmergencyCodes(List<HexAttribute> result, String binCode) {
+     static List<HexAttribute> nonEmergencyCodes(List<HexAttribute> result, String binCode) {
         if (binCode.length() > 112)
             result.add(new HexAttribute("Non-protected data field", 107, 112, "N/A", ""));
 
         return result;
     }
 
-    public static final class Position {
+     static final class Position {
         private final int latSeconds;
         private final int lonSeconds;
         private final String latText;
         private final String lonText;
 
-        public Position(int latSeconds, int lonSeconds, String latText, String lonText) {
+         Position(int latSeconds, int lonSeconds, String latText, String lonText) {
             this.latSeconds = latSeconds;
             this.lonSeconds = lonSeconds;
             this.latText = latText;
             this.lonText = lonText;
         }
 
-        public int latSeconds() {
+         int latSeconds() {
             return latSeconds;
         }
 
-        public int lonSeconds() {
+         int lonSeconds() {
             return lonSeconds;
         }
 
-        public String latText() {
+         String latText() {
             return latText;
         }
 
-        public String lonText() {
+         String lonText() {
             return lonText;
         }
 
-        public String latLongDecimal() {
+         String latLongDecimal() {
             DecimalFormat latDf = new DecimalFormat("00.000");
             DecimalFormat lonDf = new DecimalFormat("000.000");
             return latDf.format(latSeconds / 3600.00) + " " + lonDf.format(lonSeconds / 3600.0);
@@ -193,7 +193,7 @@ class Common {
      *                       seconds
      * @return position
      */
-    public static Position position(String binCode, int start, int length, int secondsPerUnit) {
+     static Position position(String binCode, int start, int length, int secondsPerUnit) {
         final int lonLength;
         // if odd number of bits then lon gets one more than lat
         if (length % 2 == 1) {

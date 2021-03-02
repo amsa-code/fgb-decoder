@@ -2,9 +2,9 @@ package com.amsa.fgb;
 
 import java.util.List;
 
-public class DecodeAsHTML implements DecodeFilter {
+class DecodeAsHTML implements DecodeFilter {
 
-    public static final DecodeAsHTML INSTANCE = new DecodeAsHTML();
+     static final DecodeAsHTML INSTANCE = new DecodeAsHTML();
 
     private DecodeAsHTML() {
         // force use of singleton

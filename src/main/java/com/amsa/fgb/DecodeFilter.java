@@ -2,8 +2,8 @@ package com.amsa.fgb;
 
 import java.util.List;
 
-public interface DecodeFilter {
+interface DecodeFilter {
 
-    public String getData(List<HexAttribute> v);
+    String getData(List<HexAttribute> v);
 
 }

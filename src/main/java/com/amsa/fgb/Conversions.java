@@ -78,14 +78,14 @@ abstract class Conversions {
         airRegMap.put("01010000000111", "CROATIA");
         airRegMap.put("01010000001011", "LATVIA");
         airRegMap.put("01010000001111", "LITHUANIA");
-        airRegMap.put("01010000010011", "REPUBLIC OF MOLDOVA");
+        airRegMap.put("01010000010011", "RE OF MOLDOVA");
         airRegMap.put("01010000010111", "SLOVAKIA");
         airRegMap.put("01010000011011", "SOLVENIA");
         airRegMap.put("01010000011111", "URUGUAY");
         airRegMap.put("01010000011111", "UZBEKISTAN");
         airRegMap.put("01010001000000", "BELARUS");
         airRegMap.put("01010001000100", "ESTONIA");
-        airRegMap.put("01010001001000", "REPUBLIC OF MACEDONIA");
+        airRegMap.put("01010001001000", "RE OF MACEDONIA");
         airRegMap.put("01010001001100", "BOSNIA AND HERZEGOVINA");
         airRegMap.put("01010001010000", "GEORGIA");
         airRegMap.put("01010001010100", "TAJIKISTAN");
@@ -127,16 +127,16 @@ abstract class Conversions {
         airRegMap.put("000001100010", "NIGER");
         airRegMap.put("000001100100", "NIGERIA");
         airRegMap.put("000001101000", "UGANDA");
-        airRegMap.put("000001101100", "CENTRAL AFRICAN REPUBLIC");
+        airRegMap.put("000001101100", "CENTRAL AFRICAN RE");
         airRegMap.put("000001101110", "RWANDA");
         airRegMap.put("000001110000", "SENEGAL");
         airRegMap.put("000001111000", "SOMALIA");
         airRegMap.put("000001111100", "SUDAN");
-        airRegMap.put("000010000000", "UNITED REPUBLIC OF TANZANIA");
+        airRegMap.put("000010000000", "UNITED RE OF TANZANIA");
         airRegMap.put("000010000100", "CHAD");
         airRegMap.put("000010001000", "TOGO");
         airRegMap.put("000010001010", "ZAMBIA");
-        airRegMap.put("000010001100", "DEMOCRATIC PEOPLE'S REPUBLIC OF CONGO");
+        airRegMap.put("000010001100", "DEMOCRATIC PEOPLE'S RE OF CONGO");
         airRegMap.put("000010010000", "ANGOLA");
         airRegMap.put("000010011010", "GAMBIA");
         airRegMap.put("000010011100", "BURKINA FASO");
@@ -152,7 +152,7 @@ abstract class Conversions {
         airRegMap.put("000010111110", "JAMAICA");
         airRegMap.put("000011000000", "NICARAGUA");
         airRegMap.put("000011000010", "PANAMA");
-        airRegMap.put("000011000100", "DOMINICAN REPUBLIC");
+        airRegMap.put("000011000100", "DOMINICAN RE");
         airRegMap.put("000011000110", "TRINIDAD AND TOBAGO");
         airRegMap.put("000011001000", "SURINAM");
         airRegMap.put("010011001010", "IRELAND");
@@ -161,7 +161,7 @@ abstract class Conversions {
         airRegMap.put("011100000010", "BANGLADESH");
         airRegMap.put("011100000100", "MYANMAR");
         airRegMap.put("011100000110", "KUWAIT");
-        airRegMap.put("011100001000", "LAO PEOPLE'S DEMOCRATIC REPUBLIC");
+        airRegMap.put("011100001000", "LAO PEOPLE'S DEMOCRATIC RE");
         airRegMap.put("011100001010", "NEPAL");
         airRegMap.put("011100001110", "CAMBODIA");
         airRegMap.put("100010010000", "YEMEN");
@@ -194,15 +194,15 @@ abstract class Conversions {
         airRegMap.put("010010000", "NETHERLANDS, KINGDOM OF THE");
         airRegMap.put("010010001", "POLAND");
         airRegMap.put("010010010", "PORTUGAL");
-        airRegMap.put("010010011", "CZECH REPUBLIC");
+        airRegMap.put("010010011", "CZECH RE");
         airRegMap.put("010010100", "ROMANIA");
         airRegMap.put("010010101", "SWEDEN");
         airRegMap.put("010010110", "SWITZERLAND");
         airRegMap.put("010010111", "TURKEY");
         airRegMap.put("010100001", "UKRAINE");
         airRegMap.put("011100010", "SAUDI ARABIA");
-        airRegMap.put("011100011", "REPUBLIC OF KOREA");
-        airRegMap.put("011100100", "DEMOCRATIC PEOPLE'S REPUBLIC OF KOREA");
+        airRegMap.put("011100011", "RE OF KOREA");
+        airRegMap.put("011100100", "DEMOCRATIC PEOPLE'S RE OF KOREA");
         airRegMap.put("011100101", "IRAQ");
         airRegMap.put("011100110", "IRAN");
         airRegMap.put("011100111", "ISRAEL");
@@ -213,7 +213,7 @@ abstract class Conversions {
         airRegMap.put("011101100", "PAKISTAN");
         airRegMap.put("011101101", "SINGAPORE");
         airRegMap.put("011101110", "SRI LANKA");
-        airRegMap.put("011101111", "SYRIAN ARAB REPUBLIC");
+        airRegMap.put("011101111", "SYRIAN ARAB RE");
         airRegMap.put("100010000", "THAILAND");
         airRegMap.put("100010001", "VIETNAM");
         airRegMap.put("100010100", "INDONESIA");
@@ -337,7 +337,7 @@ abstract class Conversions {
      * begin * ------------------------------------------------------------ *
      */
 
-    static public int binaryToDecimal(String binCode) {
+    static int binaryToDecimal(String binCode) {
         int result = 0;
         int len = binCode.length();
         int value = 0;
@@ -355,7 +355,7 @@ abstract class Conversions {
         return result;
     }
 
-    static public String decimalToBinary(int dec) {
+    static String decimalToBinary(int dec) {
         String result = "";
         String temp = "";
 
@@ -373,7 +373,7 @@ abstract class Conversions {
         return result;
     }
 
-    static public String binaryToOctal(String binCode) {
+    static String binaryToOctal(String binCode) {
         String octStr = "";
         int len = binCode.length();
         for (int i = 0; i < len; i = i + 3) {
@@ -386,7 +386,7 @@ abstract class Conversions {
         return octStr;
     }
 
-    static public String binaryToHex(String binCode) {
+    static String binaryToHex(String binCode) {
         String hexStr = "";
 
         // Check for NULL values
@@ -411,7 +411,7 @@ abstract class Conversions {
         return hexStr;
     }
 
-    static public String getAircraftCountryOfReg(String binCode) {
+    static  String getAircraftCountryOfReg(String binCode) {
         // The binCode in this case is the 24-bit Aircraft Address.
         // In the above hashMap there are values of length 14,12,9,6,4
         // We will take it in turn.
@@ -449,7 +449,7 @@ abstract class Conversions {
     }
 
     // NOTE: this will only work for Aust. reg'd aircraft.
-    static public String binaryToAircraftCallsign(String binCode) {
+    static  String binaryToAircraftCallsign(String binCode) {
         int origDec = Conversions.binaryToDecimal(binCode);
 
         // 15 July 2005
@@ -488,7 +488,7 @@ abstract class Conversions {
         return result;
     }
 
-    static public String getAircraftCallsign(int value) {
+    static  String getAircraftCallsign(int value) {
         try {
 
             String S1 = (String) aircraftMap.get(value + "");
@@ -503,7 +503,7 @@ abstract class Conversions {
         }
     }
 
-    static public String hexToBinary(String hexStr) {
+    static  String hexToBinary(String hexStr) {
         int len = hexStr.length();
         hexStr = hexStr.toUpperCase();
         try {
@@ -534,7 +534,7 @@ abstract class Conversions {
     }
 
     // 11 May 2005, return String[] instead of String
-    static public String[] mBaudotBits2mBaudotStr(String protocolName, String mbaudotBits,
+    static  String[] mBaudotBits2mBaudotStr(String protocolName, String mbaudotBits,
             int bits) {
         String vE[] = new String[3];
 
@@ -672,7 +672,7 @@ abstract class Conversions {
         return vE;
     }
 
-    static public boolean isNumeric(String str) {
+    static  boolean isNumeric(String str) {
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
             if (c >= '0' && c <= '9') {
@@ -685,7 +685,7 @@ abstract class Conversions {
         return true;
     }
 
-    static public String zeroPadFromLeft(String str, int amt) {
+    static  String zeroPadFromLeft(String str, int amt) {
         int lenStr = str.length();
         for (int i = 0; i < (amt - lenStr); i++) {
             str = "0" + str;

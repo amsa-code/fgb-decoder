@@ -2,9 +2,9 @@ package com.amsa.fgb;
 
 import java.util.List;
 
-public class DecodeAsText implements DecodeFilter {
+class DecodeAsText implements DecodeFilter {
 
-    public static final DecodeAsText INSTANCE = new DecodeAsText();
+    static final DecodeAsText INSTANCE = new DecodeAsText();
 
     private DecodeAsText() {
         // force use as singleton
