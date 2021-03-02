@@ -187,95 +187,92 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
-                <configuration>
-                    <!-- required to get jacoco to work locally -->
-                    <argLine>@{argLine}</argLine>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.version}</version>
-                <executions>
-                    <execution>
-                        <id>prepare-agent</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <!-- configure jacoco to fail the build if not 100% 
-                            coverage -->
-                        <id>check</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <rule>
-                                    <element>CLASS</element>
-                                    <limits>
-                                        <limit>
-                                            <counter>LINE</counter>
-                                            <value>COVEREDRATIO</value>
-                                            <minimum>${line.coverage}</minimum>
-                                        </limit>
-                                        <limit>
-                                            <counter>BRANCH</counter>
-                                            <value>COVEREDRATIO</value>
-                                            <minimum>${branch.coverage}</minimum>
-                                        </limit>
-                                    </limits>
-                                    <!-- <excludes> -->
-                                    <!-- <exclude>com.xyz.ClassToExclude</exclude> -->
-                                    <!-- </excludes> -->
-                                </rule>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>${spotbugs.version}</version>
-                <configuration>
-                    <effort>Max</effort>
-                    <threshold>Low</threshold>
-                    <xmlOutput>true</xmlOutput>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>${pmd.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                            <goal>cpd-check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--             <plugin> -->
+<!--                 <groupId>org.apache.maven.plugins</groupId> -->
+<!--                 <artifactId>maven-surefire-plugin</artifactId> -->
+<!--                 <version>3.0.0-M5</version> -->
+<!--                 <configuration> -->
+<!--                     <argLine>@{argLine}</argLine> -->
+<!--                 </configuration> -->
+<!--             </plugin> -->
+<!--             <plugin> -->
+<!--                 <groupId>org.jacoco</groupId> -->
+<!--                 <artifactId>jacoco-maven-plugin</artifactId> -->
+<!--                 <version>${jacoco.version}</version> -->
+<!--                 <executions> -->
+<!--                     <execution> -->
+<!--                         <id>prepare-agent</id> -->
+<!--                         <goals> -->
+<!--                             <goal>prepare-agent</goal> -->
+<!--                         </goals> -->
+<!--                     </execution> -->
+<!--                     <execution> -->
+<!--                         <id>report</id> -->
+<!--                         <phase>test</phase> -->
+<!--                         <goals> -->
+<!--                             <goal>report</goal> -->
+<!--                         </goals> -->
+<!--                     </execution> -->
+<!--                     <execution> -->
+<!--                         <id>check</id> -->
+<!--                         <goals> -->
+<!--                             <goal>check</goal> -->
+<!--                         </goals> -->
+<!--                         <configuration> -->
+<!--                             <rules> -->
+<!--                                 <rule> -->
+<!--                                     <element>CLASS</element> -->
+<!--                                     <limits> -->
+<!--                                         <limit> -->
+<!--                                             <counter>LINE</counter> -->
+<!--                                             <value>COVEREDRATIO</value> -->
+<!--                                             <minimum>${line.coverage}</minimum> -->
+<!--                                         </limit> -->
+<!--                                         <limit> -->
+<!--                                             <counter>BRANCH</counter> -->
+<!--                                             <value>COVEREDRATIO</value> -->
+<!--                                             <minimum>${branch.coverage}</minimum> -->
+<!--                                         </limit> -->
+<!--                                     </limits> -->
+<!--                                     <excludes> -->
+<!--                                     <exclude>com.xyz.ClassToExclude</exclude> -->
+<!--                                     </excludes> -->
+<!--                                 </rule> -->
+<!--                             </rules> -->
+<!--                         </configuration> -->
+<!--                     </execution> -->
+<!--                 </executions> -->
+<!--             </plugin> -->
+<!--             <plugin> -->
+<!--                 <groupId>com.github.spotbugs</groupId> -->
+<!--                 <artifactId>spotbugs-maven-plugin</artifactId> -->
+<!--                 <version>${spotbugs.version}</version> -->
+<!--                 <configuration> -->
+<!--                     <effort>Max</effort> -->
+<!--                     <threshold>Low</threshold> -->
+<!--                     <xmlOutput>true</xmlOutput> -->
+<!--                 </configuration> -->
+<!--                 <executions> -->
+<!--                     <execution> -->
+<!--                         <goals> -->
+<!--                             <goal>check</goal> -->
+<!--                         </goals> -->
+<!--                     </execution> -->
+<!--                 </executions> -->
+<!--             </plugin> -->
+<!--             <plugin> -->
+<!--                 <groupId>org.apache.maven.plugins</groupId> -->
+<!--                 <artifactId>maven-pmd-plugin</artifactId> -->
+<!--                 <version>${pmd.version}</version> -->
+<!--                 <executions> -->
+<!--                     <execution> -->
+<!--                         <goals> -->
+<!--                             <goal>check</goal> -->
+<!--                             <goal>cpd-check</goal> -->
+<!--                         </goals> -->
+<!--                     </execution> -->
+<!--                 </executions> -->
+<!--             </plugin> -->
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -285,36 +282,36 @@
                     <obrRepository>NONE</obrRepository>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${checkstyle.version}</version>
-                <configuration>
-                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                    <configLocation>${checkstyle.xml}</configLocation>
-                    <encoding>UTF-8</encoding>
-                    <consoleOutput>true</consoleOutput>
-                    <failsOnError>true</failsOnError>
-                    <linkXRef>false</linkXRef>
-                    <suppressionsLocation>${checkstyle.suppressions.xml}</suppressionsLocation>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.puppycrawl.tools</groupId>
-                        <artifactId>checkstyle</artifactId>
-                        <version>${checkstyle.core.version}</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <id>validate</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--             <plugin> -->
+<!--                 <groupId>org.apache.maven.plugins</groupId> -->
+<!--                 <artifactId>maven-checkstyle-plugin</artifactId> -->
+<!--                 <version>${checkstyle.version}</version> -->
+<!--                 <configuration> -->
+<!--                     <includeTestSourceDirectory>true</includeTestSourceDirectory> -->
+<!--                     <configLocation>${checkstyle.xml}</configLocation> -->
+<!--                     <encoding>UTF-8</encoding> -->
+<!--                     <consoleOutput>true</consoleOutput> -->
+<!--                     <failsOnError>true</failsOnError> -->
+<!--                     <linkXRef>false</linkXRef> -->
+<!--                     <suppressionsLocation>${checkstyle.suppressions.xml}</suppressionsLocation> -->
+<!--                 </configuration> -->
+<!--                 <dependencies> -->
+<!--                     <dependency> -->
+<!--                         <groupId>com.puppycrawl.tools</groupId> -->
+<!--                         <artifactId>checkstyle</artifactId> -->
+<!--                         <version>${checkstyle.core.version}</version> -->
+<!--                     </dependency> -->
+<!--                 </dependencies> -->
+<!--                 <executions> -->
+<!--                     <execution> -->
+<!--                         <id>validate</id> -->
+<!--                         <phase>validate</phase> -->
+<!--                         <goals> -->
+<!--                             <goal>check</goal> -->
+<!--                         </goals> -->
+<!--                     </execution> -->
+<!--                 </executions> -->
+<!--             </plugin> -->
         </plugins>
     </build>
     <reporting>
