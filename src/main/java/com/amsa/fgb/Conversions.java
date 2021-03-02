@@ -9,13 +9,13 @@ import java.util.Map.Entry;
 
 abstract class Conversions {
 
-    static private Map<String,String> hexMap;
+    static private Map<String, String> hexMap;
     static private Map<String, String> binMap;
-    static private Map<String,String> octMap;
-    static private Map<String,String> mbaudotToAsciiMap;
-    static private Map<String,String> asciiToMbaudotMap;
-    static private Map<String,String> aircraftMap;
-    static private Map<String,String> airRegMap;
+    static private Map<String, String> octMap;
+    static private Map<String, String> mbaudotToAsciiMap;
+    static private Map<String, String> asciiToMbaudotMap;
+    static private Map<String, String> aircraftMap;
+    static private Map<String, String> airRegMap;
 
     static {
         hexMap = new HashMap<>();
@@ -38,9 +38,9 @@ abstract class Conversions {
 
         /* Make binMap from hexMap */
         binMap = new HashMap<>();
-        Iterator<Entry<String,String>> iter1 = hexMap.entrySet().iterator();
+        Iterator<Entry<String, String>> iter1 = hexMap.entrySet().iterator();
         while (iter1.hasNext()) {
-            Map.Entry<String,String> e = iter1.next();
+            Map.Entry<String, String> e = iter1.next();
             binMap.put(e.getValue(), e.getKey());
         }
 
@@ -314,9 +314,9 @@ abstract class Conversions {
 
         /* Make asciiToMbaudotMap from hexMap */
         asciiToMbaudotMap = new HashMap<>();
-        Iterator<Entry<String,String>> iter2 = mbaudotToAsciiMap.entrySet().iterator();
+        Iterator<Entry<String, String>> iter2 = mbaudotToAsciiMap.entrySet().iterator();
         while (iter2.hasNext()) {
-            Map.Entry<String,String> e = iter2.next();
+            Map.Entry<String, String> e = iter2.next();
             asciiToMbaudotMap.put(e.getValue(), e.getKey());
         }
 

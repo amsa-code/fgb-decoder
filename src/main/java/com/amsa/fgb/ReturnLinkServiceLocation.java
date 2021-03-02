@@ -131,7 +131,8 @@ public class ReturnLinkServiceLocation extends BeaconProtocol {
     private List<HexAttribute> finePositionAttributes(String binCode) {
         Position p = finePosition(binCode);
         if (p == null) {
-            return Collections.singletonList(new HexAttribute("Fine Position", 115, 132, "DEFAULT", ""));
+            return Collections
+                    .singletonList(new HexAttribute("Fine Position", 115, 132, "DEFAULT", ""));
         } else {
             actualLatLong = true;
             latSeconds = p.latSeconds();
@@ -256,7 +257,8 @@ public class ReturnLinkServiceLocation extends BeaconProtocol {
             this.actualLatLong = true;
         }
 
-        return new HexAttribute("Coarse Position", COARSE_POSITION_START, COARSE_POSITION_FINISH, v, e);
+        return new HexAttribute("Coarse Position", COARSE_POSITION_START, COARSE_POSITION_FINISH, v,
+                e);
     }
 
     private static Position finePosition(String binCode) {
