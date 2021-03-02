@@ -21,7 +21,7 @@ public class HexdecodeTest {
             + "<TR><TD>Message Type</TD><TD>b25-26</TD><TD>User Location (Long)</TD></TR>"
             + "<TR><TD>Hex Data</TD><TD>b25-144</TD><TD>D6E6202820000C29FF51041775302D</TD></TR>"
             + "<TR><TD>Hex Id</TD><TD>b26-85</TD><TD>ADCC40504000185</TD></TR>"
-            + "<TR><TD>Country Code</TD><TD>b27-36</TD><TD>366 (Invalid Oracle URL specified)</TD></TR>"
+            + "<TR><TD>Country Code</TD><TD>b27-36</TD><TD>366</TD></TR>"
             + "<TR><TD>User Protocol Type</TD><TD>b37-39</TD><TD>Serial</TD></TR>"
             + "<TR><TD>Beacon Type</TD><TD>b40-42</TD><TD>Aviation</TD></TR>"
             + "<TR><TD>C/S cert. no. present</TD><TD>b43</TD><TD>YES</TD></TR>"
@@ -47,7 +47,7 @@ public class HexdecodeTest {
             + "<Name>Hex Data</Name><Position>b25-144</Position><Value>D6E6202820000C29FF51041775302D</Value></Line>"
             + "<Line>" + "<Name>Hex Id</Name><Position>b26-85</Position><Value>ADCC40504000185</Value></Line>"
             + "<Line>"
-            + "<Name>Country Code</Name><Position>b27-36</Position><Value>366 (Invalid Oracle URL specified)</Value></Line>"
+            + "<Name>Country Code</Name><Position>b27-36</Position><Value>366</Value></Line>"
             + "<Line>" + "<Name>User Protocol Type</Name><Position>b37-39</Position><Value>Serial</Value></Line>"
             + "<Line>" + "<Name>Beacon Type</Name><Position>b40-42</Position><Value>Aviation</Value></Line>" + "<Line>"
             + "<Name>C/S cert. no. present</Name><Position>b43</Position><Value>YES</Value></Line>" + "<Line>"
@@ -69,7 +69,7 @@ public class HexdecodeTest {
             + "<MessageType><Position>b25-26</Position><Value>User Location (Long)</Value></MessageType>"
             + "<HexData><Position>b25-144</Position><Value>D6E6202820000C29FF51041775302D</Value></HexData>"
             + "<HexId><Position>b26-85</Position><Value>ADCC40504000185</Value></HexId>"
-            + "<CountryCode><Position>b27-36</Position><Value>366 (Invalid Oracle URL specified)</Value></CountryCode>"
+            + "<CountryCode><Position>b27-36</Position><Value>366</Value></CountryCode>"
             + "<UserProtocolType><Position>b37-39</Position><Value>Serial</Value></UserProtocolType>"
             + "<BeaconType><Position>b40-42</Position><Value>Aviation</Value></BeaconType>"
             + "<CScertnopresent><Position>b43</Position><Value>YES</Value></CScertnopresent>"
@@ -88,45 +88,59 @@ public class HexdecodeTest {
             + "<Longitude><Position>b120-132</Position><Value>117 12 00W</Value></Longitude>"
             + "<ErrorCorrectingCode><Position>b133-144</Position><Value>000000101101</Value></ErrorCorrectingCode>"
             + "</Hexdecode>";
-    private static final String DECODE_30_CHRS_TEXT_STRING = "Message Type                  b25-26       User Location (Long)"
-            + "Hex Data                      b25-144      D6E6202820000C29FF51041775302D"
-            + "Hex Id                        b26-85       ADCC40504000185"
-            + "Country Code                  b27-36       366 (Invalid Oracle URL specified)"
-            + "User Protocol Type            b37-39       Serial"
-            + "Beacon Type                   b40-42       Aviation" + "C/S cert. no. present         b43          YES"
-            + "Serial Number                 b44-63       5136"
-            + "National Use                  b64-73       0000000000" + "C/S Type approval number      b74-83       97"
-            + "Aux. radio-locating           b84-85       121.5 MHz" + "US Manufacturer ID            b44-51       1"
-            + "US Sequence No.               b52-63       1040" + "US Model ID.                  b64-67       0"
-            + "US Run No.                    b68-75       0" + "US National Use               b76-83       01100001"
-            + "Error Correcting Code         b86-106      001111111110101000100"
-            + "Encoded Position Source       b107         EXTERNAL"
-            + "Latitude                      b108-119     32 44 00N"
-            + "Longitude                     b120-132     117 12 00W"
+    private static final String DECODE_30_CHRS_TEXT_STRING = //
+            "Message Type                  b25-26       User Location (Long)" //
+            + "Hex Data                      b25-144      D6E6202820000C29FF51041775302D" //
+            + "Hex Id                        b26-85       ADCC40504000185" //
+            + "Country Code                  b27-36       366" //
+            + "User Protocol Type            b37-39       Serial" //
+            + "Beacon Type                   b40-42       Aviation" 
+            + "C/S cert. no. present         b43          YES" //
+            + "Serial Number                 b44-63       5136" //
+            + "National Use                  b64-73       0000000000" 
+            + "C/S Type approval number      b74-83       97" //
+            + "Aux. radio-locating           b84-85       121.5 MHz" //
+            + "US Manufacturer ID            b44-51       1" //
+            + "US Sequence No.               b52-63       1040" //
+            + "US Model ID.                  b64-67       0" //
+            + "US Run No.                    b68-75       0" //
+            + "US National Use               b76-83       01100001" //
+            + "Error Correcting Code         b86-106      001111111110101000100" //
+            + "Encoded Position Source       b107         EXTERNAL" //
+            + "Latitude                      b108-119     32 44 00N" //
+            + "Longitude                     b120-132     117 12 00W" //
             + "Error Correcting Code         b133-144     000000101101";
-    private static final String DECODE_15_CHRS_AVIATION_TEXT_STRING = "Message Type                  b25-26       User (Format - Unknown)"
-            + "Hex Data                      b25-144      Unknown"
-            + "Hex Id                        b26-85       BEE64BE562F9BD9"
-            + "Country Code                  b27-36       503 (Invalid Oracle URL specified)"
-            + "User Protocol Type            b37-39       Aviation"
-            + "Aircraft Reg. Marking         b40-81        VH-VNQ" + "Specific ELT number           b82-83       2"
+    private static final String DECODE_15_CHRS_AVIATION_TEXT_STRING =  //
+            "Message Type                  b25-26       User (Format - Unknown)" //
+            + "Hex Data                      b25-144      Unknown" //
+            + "Hex Id                        b26-85       BEE64BE562F9BD9" //
+            + "Country Code                  b27-36       503" //
+            + "User Protocol Type            b37-39       Aviation" //
+            + "Aircraft Reg. Marking         b40-81        VH-VNQ" //
+            + "Specific ELT number           b82-83       2" //
             + "Aux. radio-locating           b84-85       121.5 MHz";
-    private static final String DECODE_15_CHRS_TEXT_STRING = "Message Type                  b25-26       User (Format - Unknown)"
-            + "Hex Data                      b25-144      Unknown"
-            + "Hex Id                        b26-85       ADCC40504000185"
-            + "Country Code                  b27-36       366 (Invalid Oracle URL specified)"
-            + "User Protocol Type            b37-39       Serial"
-            + "Beacon Type                   b40-42       Aviation" + "C/S cert. no. present         b43          YES"
-            + "Serial Number                 b44-63       5136"
-            + "National Use                  b64-73       0000000000" + "C/S Type approval number      b74-83       97"
-            + "Aux. radio-locating           b84-85       121.5 MHz" + "US Manufacturer ID            b44-51       1"
-            + "US Sequence No.               b52-63       1040" + "US Model ID.                  b64-67       0"
-            + "US Run No.                    b68-75       0" + "US National Use               b76-83       01100001";
+    private static final String DECODE_15_CHRS_TEXT_STRING = //
+            "Message Type                  b25-26       User (Format - Unknown)" //
+            + "Hex Data                      b25-144      Unknown" //
+            + "Hex Id                        b26-85       ADCC40504000185" //
+            + "Country Code                  b27-36       366" //
+            + "User Protocol Type            b37-39       Serial" //
+            + "Beacon Type                   b40-42       Aviation" //
+            + "C/S cert. no. present         b43          YES" //
+            + "Serial Number                 b44-63       5136" //
+            + "National Use                  b64-73       0000000000" //
+            + "C/S Type approval number      b74-83       97"
+            + "Aux. radio-locating           b84-85       121.5 MHz" //
+            + "US Manufacturer ID            b44-51       1" //
+            + "US Sequence No.               b52-63       1040" //
+            + "US Model ID.                  b64-67       0" //
+            + "US Run No.                    b68-75       0" //
+            + "US National Use               b76-83       01100001";
     private static final String DECODE_15_CHRS_XML2_STRING = "<Line>"
             + "<Name>Message Type</Name><Position>b25-26</Position><Value>User (Format - Unknown)</Value></Line>"
             + "<Line>" + "<Name>Hex Data</Name><Position>b25-144</Position><Value>Unknown</Value></Line>" + "<Line>"
             + "<Name>Hex Id</Name><Position>b26-85</Position><Value>ADCC40504000185</Value></Line>" + "<Line>"
-            + "<Name>Country Code</Name><Position>b27-36</Position><Value>366 (Invalid Oracle URL specified)</Value></Line>"
+            + "<Name>Country Code</Name><Position>b27-36</Position><Value>366</Value></Line>"
             + "<Line>" + "<Name>User Protocol Type</Name><Position>b37-39</Position><Value>Serial</Value></Line>"
             + "<Line>" + "<Name>Beacon Type</Name><Position>b40-42</Position><Value>Aviation</Value></Line>" + "<Line>"
             + "<Name>C/S cert. no. present</Name><Position>b43</Position><Value>YES</Value></Line>" + "<Line>"
@@ -143,7 +157,7 @@ public class HexdecodeTest {
             + "<MessageType><Position>b25-26</Position><Value>User (Format - Unknown)</Value></MessageType>"
             + "<HexData><Position>b25-144</Position><Value>Unknown</Value></HexData>"
             + "<HexId><Position>b26-85</Position><Value>ADCC40504000185</Value></HexId>"
-            + "<CountryCode><Position>b27-36</Position><Value>366 (Invalid Oracle URL specified)</Value></CountryCode>"
+            + "<CountryCode><Position>b27-36</Position><Value>366</Value></CountryCode>"
             + "<UserProtocolType><Position>b37-39</Position><Value>Serial</Value></UserProtocolType>"
             + "<BeaconType><Position>b40-42</Position><Value>Aviation</Value></BeaconType>"
             + "<CScertnopresent><Position>b43</Position><Value>YES</Value></CScertnopresent>"
@@ -165,7 +179,7 @@ public class HexdecodeTest {
             + "<TR><TD>Message Type</TD><TD>b25-26</TD><TD>User (Format - Unknown)</TD></TR>"
             + "<TR><TD>Hex Data</TD><TD>b25-144</TD><TD>Unknown</TD></TR>"
             + "<TR><TD>Hex Id</TD><TD>b26-85</TD><TD>ADCC40504000185</TD></TR>"
-            + "<TR><TD>Country Code</TD><TD>b27-36</TD><TD>366 (Invalid Oracle URL specified)</TD></TR>"
+            + "<TR><TD>Country Code</TD><TD>b27-36</TD><TD>366</TD></TR>"
             + "<TR><TD>User Protocol Type</TD><TD>b37-39</TD><TD>Serial</TD></TR>"
             + "<TR><TD>Beacon Type</TD><TD>b40-42</TD><TD>Aviation</TD></TR>"
             + "<TR><TD>C/S cert. no. present</TD><TD>b43</TD><TD>YES</TD></TR>"
@@ -278,7 +292,7 @@ public class HexdecodeTest {
         String hex = "3EFA8C60A6BFDFF";
         Map<String, HexAttribute> map = Hexdecode.decodeToMap(hex);
         assertEquals("3EFA8C60A6BFDFF", map.get("Hex Id").value);
-        assertEquals("503 (Invalid Oracle URL specified)", map.get("Country Code").value);
+        assertEquals("503", map.get("Country Code").value);
         assertEquals("Return Link Service", map.get("Protocol Type").value);
         assertEquals("EPIRB", map.get("Beacon Type").value);
         assertEquals("1099", map.get("RLS TAC Number").value);
@@ -291,7 +305,7 @@ public class HexdecodeTest {
         String hex = "3EFA8035B3D0540";
         Map<String, HexAttribute> map = Hexdecode.decodeToMap(hex);
         assertEquals("3EFA8035B3BFDFF", map.get("Hex Id").value);
-        assertEquals("503 (Invalid Oracle URL specified)", map.get("Country Code").value);
+        assertEquals("503", map.get("Country Code").value);
         assertEquals("Return Link Service", map.get("Protocol Type").value);
         assertEquals("EPIRB", map.get("Beacon Type").value);
         assertEquals("1001", map.get("RLS TAC Number").value);
@@ -305,7 +319,7 @@ public class HexdecodeTest {
         Map<String, HexAttribute> map = Hexdecode.decodeToMap(hex);
         System.out.println(Hexdecode.decode(hex, "TEXT"));
         assertEquals("3EFA8C60A6BFDFF", map.get("Hex Id").value);
-        assertEquals("503 (Invalid Oracle URL specified)", map.get("Country Code").value);
+        assertEquals("503", map.get("Country Code").value);
         assertEquals("Return Link Service", map.get("Protocol Type").value);
         assertEquals("333", map.get("RLS ID").value);
         assertEquals("1099", map.get("RLS TAC Number").value);
@@ -326,7 +340,7 @@ public class HexdecodeTest {
         Map<String, HexAttribute> map = Hexdecode.decodeToMap(hex);
         assertEquals("Return Link Service Location", map.get("Message Type").value);
         assertEquals("3EFB0C80D3BFDFF", map.get("Hex Id").value);
-        assertEquals("503 (Invalid Oracle URL specified)", map.get("Country Code").value);
+        assertEquals("503", map.get("Country Code").value);
         assertEquals("Return Link Service", map.get("Protocol Type").value);
         assertEquals("PLB", map.get("Beacon Type").value);
         assertEquals("423", map.get("RLS ID").value);
@@ -340,7 +354,7 @@ public class HexdecodeTest {
         String hex = "9F7D401037AAEACE32F4E863C1E8C0";
         Map<String, HexAttribute> map = Hexdecode.decodeToMap(hex);
         assertEquals("3EFA80206F3FDFF", map.get("Hex Id").value);
-        assertEquals("503 (Invalid Oracle URL specified)", map.get("Country Code").value);
+        assertEquals("503", map.get("Country Code").value);
         assertEquals("Return Link Service", map.get("Protocol Type").value);
         assertEquals("222", map.get("RLS ID").value);
         assertEquals("1001", map.get("RLS TAC Number").value);

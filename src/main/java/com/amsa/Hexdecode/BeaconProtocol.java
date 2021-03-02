@@ -189,18 +189,6 @@ public abstract class BeaconProtocol {
 		UScodes.add("369");
 
 		this.isUS = UScodes.contains(v);
-
-		// this.countryCode = v; // This is used later to prepend to mmsi
-
-		// Look up country code cc.
-		String name = HexDecodeDatabase.countryCode(v);
-
-		if (name.length() > 0) {
-			v = v + " (" + name + ")";
-		} else {
-			v = v + " (Unknown)";
-		}
-
 		return new HexAttribute("Country Code", s, f, v, e);
 	}
 

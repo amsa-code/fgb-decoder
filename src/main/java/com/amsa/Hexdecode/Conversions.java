@@ -17,7 +17,7 @@ abstract class Conversions {
 
     static {
 	hexMap = new HashMap();
-       	hexMap.put("0000", new String("0"));
+       	hexMap.put("0000", "0"));
        	hexMap.put("0001", new String("1"));
        	hexMap.put("0010", new String("2"));
        	hexMap.put("0011", new String("3"));
