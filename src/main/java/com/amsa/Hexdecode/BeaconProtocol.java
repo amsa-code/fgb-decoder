@@ -303,7 +303,7 @@ public abstract class BeaconProtocol {
 			v = "FIXED VALUE";
 		} else {
 			v = code + " (Non-Spec)";
-			String position = "b" + s + "-" + f;
+//			String position = "b" + s + "-" + f;
 			// e = "INVALID Spare. " + position + ": " + code;
 		}
 
@@ -540,20 +540,15 @@ public abstract class BeaconProtocol {
 			bitCode = bitCode.substring(1, bitCode.length());
 		}
 
-		int ptr = b;
-
 		for (int i = b - 1; i < bitCode.length(); i++) {
 			char c = bitCode.charAt(i);
 
 			if (result.length() < b) {
-				ptr++;
 				result += c;
 			}
 			if (result.length() == b) {
 				result = this.xor(result, generatorPolynomial);
-			} else {
-				// System.out.println(result.length() + " " + ptr);
-			}
+			} 
 		}
 
 		while (result.length() < b - 1) {
@@ -574,9 +569,6 @@ public abstract class BeaconProtocol {
 	// do a bitwise XOR of G and R to form new R
 	public String xor(String bitStrA, String bitStrB) {
 		String result = "";
-		char bitA;
-		char bitB;
-
 		for (int i = 0; i < bitStrA.length(); i++) {
 			boolean bA = bitStrA.charAt(i) == '1';
 			boolean bB = bitStrB.charAt(i) == '1';

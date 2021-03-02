@@ -39,7 +39,6 @@ public class DecodeAsHTML implements DecodeFilter {
 			d += val.charAt(j);
 		    }
 		}
-		int len = desc.length();
 		line = "<TR><TD>" + desc + "</TD>";
 		line = line + "<TD>" + pos + "</TD>";
 		line = line + "<TD>" + d + "</TD></TR>\n";

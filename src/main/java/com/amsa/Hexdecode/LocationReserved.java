@@ -71,7 +71,6 @@ class LocationReserved extends BeaconProtocol
     public boolean canDecode (String binCode)
     {
 	String protocol = binCode.substring(25, 27);
-	String name = this.getName();
 	
 	//System.out.println("Trying " + name);
 

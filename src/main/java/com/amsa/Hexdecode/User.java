@@ -25,7 +25,6 @@ public abstract class User extends BeaconProtocol {
 	@Override
     public boolean canDecode(String binCode) {
 		String beaconCode = binCode.substring(25, 27);
-		String name = this.getName();
 		// System.out.println("Trying User " + name);
 
 		if (beaconTypeCode.contains(beaconCode)) {
@@ -270,7 +269,6 @@ public abstract class User extends BeaconProtocol {
 		if (bits.equals(def)) {
 			latitude = "DEFAULT";
 		} else {
-			String str = bits.substring(1, 8);
 			int deg = Conversions.binaryToDecimal(bits.substring(1, 8));
 			String degStr = deg + "";
 			for (int i = 0; i < (2 - degStr.length()); i++) {
@@ -308,8 +306,6 @@ public abstract class User extends BeaconProtocol {
 		if (bits.equals(def)) {
 			longitude = "DEFAULT";
 		} else {
-			String str = bits.substring(1, 9);
-			// System.out.println("long deg = " + str);
 			int deg = Conversions.binaryToDecimal(bits.substring(1, 9));
 			String degStr = deg + "";
 			int degStrLen = degStr.length();

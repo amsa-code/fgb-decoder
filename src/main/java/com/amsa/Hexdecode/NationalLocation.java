@@ -31,7 +31,6 @@ public abstract class NationalLocation extends BeaconProtocol {
     @Override
     public boolean canDecode (String binCode) {
         String protocol = binCode.substring(25, 27);
-	String name = this.getName();
 
         //System.out.println("Trying National Location " + name);
 
@@ -218,7 +217,6 @@ public abstract class NationalLocation extends BeaconProtocol {
     }
 
     public HexAttribute offsetPosition (String binCode, int s, int f) {
-	String v = "";
 	String e = "";
 	String def = "10011111001111";
 

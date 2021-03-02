@@ -11,8 +11,6 @@ import com.amsa.Hexdecode.Common.Position;
 
 public class ReturnLinkServiceLocation extends BeaconProtocol {
 
-    private static final int FINE_POSITION_FINISH = 132;
-    private static final int FINE_POSITION_START = 115;
     private static final int COARSE_POSITION_FINISH = 85;
     private static final int COARSE_POSITION_START = 67;
     public static final String rlsProtocolCode = "1101";
@@ -40,7 +38,6 @@ public class ReturnLinkServiceLocation extends BeaconProtocol {
     @Override
     public boolean canDecode(String binCode) {
         String protocol = binCode.substring(25, 27);
-        String name = this.getName();
 
         // System.out.println("Trying RLS Location " + name);
 
@@ -324,61 +321,6 @@ public class ReturnLinkServiceLocation extends BeaconProtocol {
         } else {
             return -1;
         }
-    }
-
-    private HexAttribute offsetPosition(String binCode, int s, int f) {
-        String e = "";
-        String def = "10011111001111";
-
-        String bits = binCode.substring(s, f + 1);
-        String pos = "";
-        if (bits.equals(def)) {
-            pos = "DEFAULT";
-        } else {
-            // Lat Offset
-            int min1 = Conversions.binaryToDecimal(bits.substring(1, 3));
-            int sec1 = Conversions.binaryToDecimal(bits.substring(3, 7)) * 4;
-            int offset1 = (min1 * 60) + sec1;
-            if (bits.charAt(0) == '1') {
-                pos = "+";
-            } else {
-                pos = "-";
-                offset1 = offset1 * -1;
-            }
-
-            // Apply offset to absolute value of coarse position
-            double tempLat = Math.abs(this.latSeconds);
-            tempLat += offset1;
-            if (this.latSeconds < 0)
-                tempLat *= -1;
-            this.latSeconds = tempLat;
-
-            pos = pos + min1;
-            pos = pos + " " + sec1;
-
-            // Lon Offset
-            int min2 = Conversions.binaryToDecimal(bits.substring(8, 10));
-            int sec2 = Conversions.binaryToDecimal(bits.substring(10, 14)) * 4;
-            int offset2 = (min2 * 60) + sec2;
-            if (bits.charAt(7) == '1') {
-                pos = pos + " +";
-            } else {
-                pos = pos + " -";
-                offset2 = offset2 * -1;
-            }
-
-            // Apply offset to absolute value of coarse position
-            double tempLon = Math.abs(this.lonSeconds);
-            tempLon += offset2;
-            if (this.lonSeconds < 0)
-                tempLon *= -1;
-            this.lonSeconds = tempLon;
-
-            pos = pos + min2;
-            pos = pos + " " + sec2;
-        }
-
-        return new HexAttribute("Offset Position", s, f, pos, e);
     }
 
 }

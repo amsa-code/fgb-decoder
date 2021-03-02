@@ -23,9 +23,9 @@ class StandardLocationShipMMSI extends StandardLocation {
     }
 
     @Override
-    public Vector decode (String hexStr) {
+    public Vector<HexAttribute> decode (String hexStr) {
 	String binCode = Conversions.hexToBinary(hexStr);
-	Vector result = new Vector();
+	Vector<HexAttribute> result = new Vector<>();
 
 	result.add(this.messageType(binCode, 25, 26));
        	result.add(this.hexData(hexStr, 25, (binCode.length()-1)));

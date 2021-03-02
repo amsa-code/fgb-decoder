@@ -66,7 +66,6 @@ class LocationSpare extends BeaconProtocol {
 	@Override
     public boolean canDecode(String binCode) {
 		String protocol = binCode.substring(25, 27);
-		String name = this.getName();
 
 		// System.out.println("Trying " + name);
 
