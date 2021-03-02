@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 
 /**
  * Contains methods to decode hex strings
@@ -17,7 +16,7 @@ public final class Hexdecode {
 	// This is the decode that is used by the Incident Navigator SAR Search
 	public static String decodeSearch(String hexStr, String formatter) {
 
-		Vector<HexAttribute> r = new Vector<HexAttribute>(0);
+		List<HexAttribute> r = new ArrayList<HexAttribute>(0);
 
 		hexStr = hexStr.trim();
 
