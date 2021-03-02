@@ -1,0 +1,95 @@
+set heading off
+set feedback off
+spool hexdecode.dat
+
+-- User (Short) Maritime
+select HEXDECODE('BEE9031534D34D1','XML') from dual;
+select HEXDECODE('65946B219A69A68F63811000000000','XML') from dual;
+select HEXDECODE('50F52490DDCC2689B79F4000000000','XML') from dual;
+select HEXDECODE('5A34CB219A69AE8846B70000000000','XML') from dual;
+select HEXDECODE('59F52499EDF786898C2A0000000000','XML') from dual;
+select HEXDECODE('511452052081A68D6C230000000000','XML') from dual;
+
+-- User Short Test
+select HEXDECODE('5A3F0E1A59364E8642F68000000000','XML') from dual;
+
+-- User (Short) Aviation
+select HEXDECODE('56E30E1A4324920310DBC0FFFFFFFF','XML') from dual;
+
+-- User (Short) AirCraft Operator
+select HEXDECODE('4E3670D380A9028800000000000000','XML') from dual;
+
+-- User (Short) Serial AirCraft Address
+select HEXDECODE('4E86C024645FFFFFFFFFFF00000000','XML') from dual;
+
+-- User (Short) Serial Maritime Float Free
+select HEXDECODE('4E86A407E200052A42ECF080000000','XML') from dual;
+select HEXDECODE('56E68102A880800BA903C000000000','XML') from dual;
+select HEXDECODE('56E6826C1EA020086B404000000000','XML') from dual;
+select HEXDECODE('56E6826EE8A0C008A5854000000000','XML') from dual;
+
+-- User (Short) Serial Maritime NON Float Fre
+select HEXDECODE('56E7010D68A040086A998000000000','XML') from dual;
+
+-- User Location (Long) Serial Maritime Float Free
+select HEXDECODE('E0768553AE1D05BFD991FCFFFFFFFF','XML') from dual;
+
+-- User Location (Long) National User
+select HEXDECODE('D6E9C0321FDFE96287BC7FFFFF8AAC','XML') from dual;
+select HEXDECODE('D6E9C0321FDFE6625D2C7FFFFF5DF2','XML') from dual;
+
+-- User Location (Long) Radio Callsign
+select HEXDECODE('FB5D54C34D347C19A6844CFFFFFFFF','XML') from dual;
+
+-- Standard Location (Short) Aircraft Address
+select HEXDECODE('1F73BC614E7FDFFED5D77500000000','XML') from dual;
+
+-- Standard Location (Short) Serial Epirb
+select HEXDECODE('1F761CC073A3CE72E682B700000000','XML') from dual;
+
+-- Standard Location (Short) Serial PLB
+select HEXDECODE('9F771CC3E7A3CE7225DEB7BD566D7E','XML') from dual;
+
+-- Standard Location (Long) Aircraft Address
+select HEXDECODE('8DB345B146202DDF3C71F59BAB7072','XML') from dual;
+select HEXDECODE('96E3ADFC437FDFFBB7EF7583E0FAA8','XML') from dual;
+select HEXDECODE('96E3AAAAAA7FDFF8211F3583E0FAA8','XML') from dual;
+select HEXDECODE('9F73BC614E7FDFFD2D747583E0FAA8','XML') from dual;
+select HEXDECODE('96E3AAAAAA7FDFF8211F35FFFFFFFF','XML') from dual;
+select HEXDECODE('A0234BF8A7335D0AFABB00AD6C4FF9','XML') from dual;
+select HEXDECODE('A0234BF8A7335D0AFABB0000000000','XML') from dual;
+
+-- Standard Location (Long) Test
+select HEXDECODE('96EE1980EB322EF48A39F700000000','XML') from dual;
+
+-- Standard Location (Short) ELT - Serial
+select HEXDECODE('10D41A02AA7FDFF800000000000000','XML') from dual;
+
+-- Standard Location (Long) ELT - Serial
+select HEXDECODE('9AF41A02D87FDFFE3B64F5FFFFFFFF','XML') from dual;
+select HEXDECODE('AC641A014C7FDFFD1E9D75FFFFFFFF','XML') from dual;
+select HEXDECODE('AC641A014C7FDFFD1E9D7500000000','XML') from dual;
+select HEXDECODE('8DA41A02C17FDFF83B4235FFFFFFFF','XML') from dual;
+select HEXDECODE('8F741A02CA7FDFFB28D635FFFFFFFF','XML') from dual;
+
+-- Standard Location (Long) Ship MMSI
+select HEXDECODE('8C9201A43A9C8ADF391A4800000000','XML') from dual;
+
+-- National Location (Short) Personal PLB
+select HEXDECODE('1F7B00F9E8EC737DABB13700000000','XML') from dual;
+select HEXDECODE('1F7B00F9E8EC737DABB137FFFFFFFF','XML') from dual;
+
+-- National Location (Long) Personal PLB
+select HEXDECODE('8E3B19DEDFC0FF07815F77FFFFFFFF','XML') from dual;
+select HEXDECODE('9F7B00F9E8EC737E5312378A1802B0','XML') from dual;
+select HEXDECODE('8E3B15F1DFC0FF07FD1F769F3C0672','XML') from dual;
+select HEXDECODE('9D5BA2E5336E0D67F70EFFFFFFFFFF','XML') from dual;
+
+-- National Location (Long) Maritime EPIRB
+select HEXDECODE('8E8A00001FC0FF01DA42DB7FFFFFFF','XML') from dual;
+
+
+spool off
+ 
+set heading on
+set feedback on
