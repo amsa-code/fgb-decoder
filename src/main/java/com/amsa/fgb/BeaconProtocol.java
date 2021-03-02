@@ -3,22 +3,22 @@ package com.amsa.fgb;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BeaconProtocol {
+abstract class BeaconProtocol {
 
-	public boolean isUS = false;
+	protected boolean isUS = false;
 
-	public List<String> beaconTypeCode;
-	public String protocolName;
-	// public String messageTypeDesc;
-	// public String countryCode;
+	protected List<String> beaconTypeCode;
+	protected String protocolName;
+	//  String messageTypeDesc;
+	//  String countryCode;
 
-	public boolean actualLatLong;
-	public double latSeconds;
-	public double lonSeconds;
+	protected boolean actualLatLong;
+	protected double latSeconds;
+	protected double lonSeconds;
 
-	public String defaultFixedBits;
+	protected String defaultFixedBits;
 
-	public BeaconProtocol() {
+	BeaconProtocol() {
 		beaconTypeCode = new ArrayList<String>(2);
 		this.actualLatLong = false;
 		this.latSeconds = 0;
@@ -29,11 +29,11 @@ public abstract class BeaconProtocol {
 	// This method should be overwritten by sub-classes.
 	// Otherwise this method is respond and will NOT be
 	// able to decode because it always returns false.
-	public boolean canDecode(String binCode) {
+	 boolean canDecode(String binCode) {
 		return false;
 	}
 
-	public List<HexAttribute> decodeSearch(String hexStr) {
+	 List<HexAttribute> decodeSearch(String hexStr) {
 		String binCode = Conversions.hexToBinary(hexStr);
 		List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -46,16 +46,16 @@ public abstract class BeaconProtocol {
 	// all sub-classes should call super.decode(binStr)
 	// as this method will decode those bits that are
 	// common to ALL protocols.
-	public List<HexAttribute> decode(String hexStr) {
+	 List<HexAttribute> decode(String hexStr) {
 		return new ArrayList<HexAttribute>(0);
 		// "ERROR - decode() called from BeaconProtocol";
 	}
 
-	public String getName() {
+	 String getName() {
 		return "";
 	}
 
-	public boolean isLongMessage(String binCode) {
+	 boolean isLongMessage(String binCode) {
 		String code = binCode.substring(25, 27);
 		List<String> longCodes = new ArrayList<String>(2);
 		longCodes.add("10");
@@ -65,7 +65,7 @@ public abstract class BeaconProtocol {
 	}
 
 	// 16 May 2005
-	public boolean isShortMessage(String binCode) {
+	 boolean isShortMessage(String binCode) {
 		String code = binCode.substring(25, 27);
 		List<String> longCodes = new ArrayList<String>(2);
 		longCodes.add("00");
@@ -75,7 +75,7 @@ public abstract class BeaconProtocol {
 	}
 
 	// 16 May 2005
-	public String getMsgTypeDesc(String v, String binCode) {
+	 String getMsgTypeDesc(String v, String binCode) {
 		if (this.isLongMessage(binCode))
 			v = v + " (Long)";
 		else if (this.isShortMessage(binCode))
@@ -86,35 +86,35 @@ public abstract class BeaconProtocol {
 		return v;
 	}
 
-	public boolean defaultFFFFFFFF(String hexStr) {
+	 boolean defaultFFFFFFFF(String hexStr) {
 		int len = hexStr.length();
 		String code = hexStr.substring(len - 8, len);
 
 		return code.equals("FFFFFFFF");
 	}
 
-	public HexAttribute longMessage(String binCode, int s, int f) {
+	 HexAttribute longMessage(String binCode, int s, int f) {
 		String v = "DEFAULT";
 		String e = "";
 
 		return new HexAttribute("Long Message", s, f, v, e);
 	}
 
-	public boolean default00000000(String hexStr) {
+	 boolean default00000000(String hexStr) {
 		int len = hexStr.length();
 		String code = hexStr.substring(len - 8, len);
 
 		return code.equals("00000000");
 	}
 
-	public HexAttribute protocolType(String binCode, int s, int f) {
+	 HexAttribute protocolType(String binCode, int s, int f) {
 		String name = this.getName();
 		String e = "";
 
 		return new HexAttribute("Protocol Type", s, f, name, e);
 	}
 	
-	public HexAttribute rlsTacNumber(String binCode, int s, int f) {
+	 HexAttribute rlsTacNumber(String binCode, int s, int f) {
 	        char prefix = rlsTacNumberPrefix(binCode, s);
 	        String v = binCode.substring(s+2, f + 1);
 	        String last3Digits = Conversions.zeroPadFromLeft(Integer.toString(Conversions.binaryToDecimal(v)), 3);
@@ -143,14 +143,14 @@ public abstract class BeaconProtocol {
         }
     }
 	
-	public HexAttribute rlsId(String binCode, int s, int f) {
+	 HexAttribute rlsId(String binCode, int s, int f) {
         String v = binCode.substring(s, f + 1);
         String e = "";
         int result = Conversions.binaryToDecimal(v);
         return new HexAttribute("RLS ID", s, f, result, e);
     }
 
-	public HexAttribute hexData(String hexStr, int s, int f) {
+	 HexAttribute hexData(String hexStr, int s, int f) {
 		String e = "";
 
 		// return new HexAttribute("Hex Data", s, f, hexStr, e);
@@ -162,7 +162,7 @@ public abstract class BeaconProtocol {
 			return new HexAttribute("Hex Data", s, f, hexStr, e);
 	}
 
-	public HexAttribute hexId(String binCode, int s, int f) { // b26-85
+	 HexAttribute hexId(String binCode, int s, int f) { // b26-85
 		String binHexId = binCode.substring(s, f + 1);
 		String v = Conversions.binaryToHex(binHexId);
 		String e = "";
@@ -170,13 +170,13 @@ public abstract class BeaconProtocol {
 		return new HexAttribute("Hex Id", s, f, v, e);
 	}
 
-	public int getCountryCode(String binCode, int s, int f) {
+	 int getCountryCode(String binCode, int s, int f) {
 		String binCC = binCode.substring(s, f + 1);
 
 		return Conversions.binaryToDecimal(binCC);
 	}
 
-	public HexAttribute countryCode(String binCode, int s, int f) {
+	 HexAttribute countryCode(String binCode, int s, int f) {
 		int cc = this.getCountryCode(binCode, s, f);
 		String e = "";
 		String v = cc + "";
@@ -194,14 +194,14 @@ public abstract class BeaconProtocol {
 	}
 
 	// Beacon Serial Number</TD><TD>b51-64</TD><TD>999</TD></TR>
-	public HexAttribute beaconSerialNumber(String binCode, int s, int f) {
+	 HexAttribute beaconSerialNumber(String binCode, int s, int f) {
 		int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
 		String e = "";
 
 		return new HexAttribute("Beacon Serial Number", s, f, v, e);
 	}
 
-	public HexAttribute aircraft24BitAddress(String binCode, int s, int f) {
+	 HexAttribute aircraft24BitAddress(String binCode, int s, int f) {
 		String code = binCode.substring(s, f + 1);
 		String e = "";
 		String hex = Conversions.binaryToHex(code);
@@ -226,14 +226,14 @@ public abstract class BeaconProtocol {
 		return new HexAttribute("Aircraft 24 bit address", s, f, v, e);
 	}
 
-	public HexAttribute aircraft24BitAddressBinary(String binCode, int s, int f) {
+	 HexAttribute aircraft24BitAddressBinary(String binCode, int s, int f) {
 		String e = "";
 		String v = binCode.substring(s, f + 1);
 
 		return new HexAttribute("Aircraft 24 bit address Binary", s, f, v, e);
 	}
 
-	public HexAttribute aircraftCallSign(String binCode, int s, int f) {
+	 HexAttribute aircraftCallSign(String binCode, int s, int f) {
 		String e = "";
 		String v = "";
 		String country = binCode.substring(s, s + 6);
@@ -259,7 +259,7 @@ public abstract class BeaconProtocol {
 		return new HexAttribute("Aircraft CallSign", s, f, v, e);
 	}
 
-	public HexAttribute specificBeaconNumber(String binCode, int s, int f) {
+	 HexAttribute specificBeaconNumber(String binCode, int s, int f) {
 		// 11 May 2005
 		String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(),
 				binCode.substring(s, f + 1), 6);
@@ -276,7 +276,7 @@ public abstract class BeaconProtocol {
 	}
 
 	// sdc This needs to be converted using a 5 place BAUDOT conv.
-	public HexAttribute aircraftOperator(String binCode, int s, int f) {
+	 HexAttribute aircraftOperator(String binCode, int s, int f) {
 		// 11 May 2005
 		String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(),
 				binCode.substring(s, f + 1), 5);
@@ -290,13 +290,13 @@ public abstract class BeaconProtocol {
 		return new HexAttribute("Aircraft Operator", s, f, v, e);
 	}
 
-	public HexAttribute aircraftSerialNumber(String binCode, int s, int f) {
+	 HexAttribute aircraftSerialNumber(String binCode, int s, int f) {
 		int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
 		String e = "";
 		return new HexAttribute("Aircraft Serial Number", s, f, v, e);
 	}
 
-	public HexAttribute fixedBits(String binCode, int s, int f) {
+	 HexAttribute fixedBits(String binCode, int s, int f) {
 		String v = "";
 		String e = "";
 		String code = binCode.substring(s, f + 1);
@@ -311,11 +311,11 @@ public abstract class BeaconProtocol {
 		return new HexAttribute("Spare", s, f, v, e);
 	}
 	
-	public boolean positionalDataPresent(String binCode) {
+	 boolean positionalDataPresent(String binCode) {
 		return binCode.charAt(110) == '1';
 	}
 
-	public HexAttribute additionalDataFlag(String binCode, int s) { // b110
+	 HexAttribute additionalDataFlag(String binCode, int s) { // b110
 		String v = "";
 		String e = "";
 		if (this.positionalDataPresent(binCode)) {
@@ -335,7 +335,7 @@ public abstract class BeaconProtocol {
 		return new HexAttribute("Additional Data Flag", s, v, e);
 	}
 
-	public HexAttribute encodedPositionSource(String binCode, int s) {
+	 HexAttribute encodedPositionSource(String binCode, int s) {
 		String v = "";
 		String e = "";
 
@@ -349,7 +349,7 @@ public abstract class BeaconProtocol {
 	}
 
 	// 121.5 MHz Homing b112 NO
-	public HexAttribute homing(String binCode, int s) { // b112
+	 HexAttribute homing(String binCode, int s) { // b112
 		String v = "";
 		String e = "";
 
@@ -362,7 +362,7 @@ public abstract class BeaconProtocol {
 		return new HexAttribute("121.5 MHz Homing", s, v, e);
 	}
 
-	public HexAttribute nationalUse(String binCode, int s, int f) {
+	 HexAttribute nationalUse(String binCode, int s, int f) {
 		String v = binCode.substring(s, f + 1);
 		String e = "";
 
@@ -370,7 +370,7 @@ public abstract class BeaconProtocol {
 	}
 
 	// This method is called by ReturnLinkServiceLocation.java
-	public HexAttribute rlsData(String binCode, int s, int f) {
+	 HexAttribute rlsData(String binCode, int s, int f) {
 		String v = binCode.substring(s, f + 1);
 		String e = "";
 
@@ -392,7 +392,7 @@ public abstract class BeaconProtocol {
 	}
 
 	// Latitude 36 00 20S
-	public HexAttribute actualLatitude() {
+	 HexAttribute actualLatitude() {
 		String e = "";
 		String direction = "N";
 		if (this.latSeconds < 0) {
@@ -412,7 +412,7 @@ public abstract class BeaconProtocol {
 	}
 
 	// Longitude 115 07 36E
-	public HexAttribute actualLongitude() {
+	 HexAttribute actualLongitude() {
 		String e = "";
 		String direction = "E";
 		if (this.lonSeconds < 0) {
@@ -432,7 +432,7 @@ public abstract class BeaconProtocol {
 		return new HexAttribute("Longitude", v, e);
 	}
 
-	public HexAttribute bch1(String binCodeOrig, int s, int f) {
+	 HexAttribute bch1(String binCodeOrig, int s, int f) {
 		// System.out.println("Orig " + binCodeOrig);
 		String binCode = binCodeOrig.substring(25, s);
 		String binCode2 = binCodeOrig.substring(s, f + 1);
@@ -470,7 +470,7 @@ public abstract class BeaconProtocol {
 	// 1/Nov/2005
 	// Overloaded method, called by StandardLocation's subclasses and
 	// NationalLocation's subclasses
-	public List<HexAttribute> bch1(List<HexAttribute> result, String binCode, HexAttribute hexId) {
+	 List<HexAttribute> bch1(List<HexAttribute> result, String binCode, HexAttribute hexId) {
 		HexAttribute bch1 = bch1(binCode, 86, 106);
 
 		String error = bch1.getError();
@@ -501,7 +501,7 @@ public abstract class BeaconProtocol {
 		return result;
 	}
 
-	public HexAttribute bch2(String binCodeOrig, int s, int f) {
+	 HexAttribute bch2(String binCodeOrig, int s, int f) {
 		String binCode = binCodeOrig.substring(107, s);
 		String binCode2 = binCodeOrig.substring(s, f + 1);
 		String e = "";
@@ -528,11 +528,11 @@ public abstract class BeaconProtocol {
 		return new HexAttribute("Error Correcting Code", s, f, binCode2, e);
 	}
 
-	public String calcBCHCODE(String bitCode, String generatorPolynomial) {
+	 static String calcBCHCODE(String bitCode, String generatorPolynomial) {
 
 		int b = generatorPolynomial.length();
 		String result = bitCode.substring(0, b);
-		result = this.removeLeadingZeros(result);
+		result = removeLeadingZeros(result);
 
 		// Short protocols will have any leading 0 removed from the
 		// above call to removeLeadingZeros. So we should even up
@@ -548,7 +548,7 @@ public abstract class BeaconProtocol {
 				result += c;
 			}
 			if (result.length() == b) {
-				result = this.xor(result, generatorPolynomial);
+				result = xor(result, generatorPolynomial);
 			} 
 		}
 
