@@ -4,7 +4,7 @@ import java.util.List;
 
 class DecodeAsHTML implements DecodeFilter {
 
-     static final DecodeAsHTML INSTANCE = new DecodeAsHTML();
+    static final DecodeAsHTML INSTANCE = new DecodeAsHTML();
 
     private DecodeAsHTML() {
         // force use of singleton

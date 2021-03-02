@@ -2,7 +2,7 @@ package com.amsa.fgb;
 
 class NationalLocationMaritime extends NationalLocation {
 
-    public NationalLocationMaritime() {
+    NationalLocationMaritime() {
         natProtocolCode = "1010";
         protocolName = "Maritime (EPIRB)";
     }

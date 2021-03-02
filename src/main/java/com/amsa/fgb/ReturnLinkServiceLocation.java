@@ -8,13 +8,13 @@ import com.amsa.fgb.Common.Position;
 
 // NOTE: This is a new location protocol (based on NationalLocation with minor modifications).
 
-public class ReturnLinkServiceLocation extends BeaconProtocol {
+class ReturnLinkServiceLocation extends BeaconProtocol {
 
     private static final int COARSE_POSITION_FINISH = 85;
     private static final int COARSE_POSITION_START = 67;
-    public static final String rlsProtocolCode = "1101";
+    static final String rlsProtocolCode = "1101";
 
-    public ReturnLinkServiceLocation() {
+    ReturnLinkServiceLocation() {
         beaconTypeCode.add("00");
         beaconTypeCode.add("10");
 
@@ -29,13 +29,13 @@ public class ReturnLinkServiceLocation extends BeaconProtocol {
     }
 
     @Override
-    public String getName() {
+    String getName() {
 
         return protocolName;
     }
 
     @Override
-    public boolean canDecode(String binCode) {
+    boolean canDecode(String binCode) {
         String protocol = binCode.substring(25, 27);
 
         // System.out.println("Trying RLS Location " + name);
@@ -49,7 +49,7 @@ public class ReturnLinkServiceLocation extends BeaconProtocol {
     }
 
     @Override
-    public List<HexAttribute> decodeSearch(String hexStr) {
+    List<HexAttribute> decodeSearch(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -73,7 +73,7 @@ public class ReturnLinkServiceLocation extends BeaconProtocol {
     // Change from "hexId()" to hexIdWithDefaultLocation()"
     // All beacon types conform to the following decode.
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 

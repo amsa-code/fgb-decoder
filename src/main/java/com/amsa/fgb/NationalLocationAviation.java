@@ -1,8 +1,8 @@
 package com.amsa.fgb;
 
-public class NationalLocationAviation extends NationalLocation {
+class NationalLocationAviation extends NationalLocation {
 
-    public NationalLocationAviation() {
+    NationalLocationAviation() {
         natProtocolCode = "1000";
         protocolName = "Aviation";
     }

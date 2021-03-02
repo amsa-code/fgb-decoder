@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 class LocationReserved extends BeaconProtocol {
-     private String stdProtocolCode;
+    private String stdProtocolCode;
 
-     LocationReserved() {
+    LocationReserved() {
         beaconTypeCode.add("00");
         beaconTypeCode.add("10");
 
@@ -20,12 +20,12 @@ class LocationReserved extends BeaconProtocol {
     }
 
     @Override
-     String getName() {
+    String getName() {
         return protocolName;
     }
 
     @Override
-     List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
 
         List<HexAttribute> result = new ArrayList<HexAttribute>();
@@ -66,7 +66,7 @@ class LocationReserved extends BeaconProtocol {
     // Override the method of "canCode" (b37-39).
     // b40 doesn't matter in this Reserved (orbitography) protocol
     @Override
-     boolean canDecode(String binCode) {
+    boolean canDecode(String binCode) {
         String protocol = binCode.substring(25, 27);
 
         // System.out.println("Trying " + name);
@@ -81,7 +81,7 @@ class LocationReserved extends BeaconProtocol {
     }
 
     // Overriden messageType
-     HexAttribute messageType(String binCode, int s, int f) {
+    HexAttribute messageType(String binCode, int s, int f) {
         String v = "Location"; // this is where to oerride
         String e = "";
 

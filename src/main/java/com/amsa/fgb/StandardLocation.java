@@ -3,11 +3,11 @@ package com.amsa.fgb;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class StandardLocation extends BeaconProtocol {
+abstract class StandardLocation extends BeaconProtocol {
 
-    public String stdProtocolCode; // Set in constructors of sub-classes
+    String stdProtocolCode; // Set in constructors of sub-classes
 
-    public StandardLocation() {
+    StandardLocation() {
         beaconTypeCode.add("00");
         beaconTypeCode.add("10");
 
@@ -20,12 +20,12 @@ public abstract class StandardLocation extends BeaconProtocol {
     }
 
     @Override
-    public String getName() {
+    String getName() {
         return protocolName;
     }
 
     @Override
-    public boolean canDecode(String binCode) {
+    boolean canDecode(String binCode) {
         String protocol = binCode.substring(25, 27);
         // System.out.println("Trying Standard Location " + name);
         if (beaconTypeCode.contains(protocol)) {
@@ -38,7 +38,7 @@ public abstract class StandardLocation extends BeaconProtocol {
 
     // This method should be overwritten by sub-classes
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         List<HexAttribute> result = new ArrayList<HexAttribute>();
         String errorMsg = "ERROR: decode() called from StandardLocation";
         result.add(new HexAttribute("", 0, "", errorMsg));
@@ -47,7 +47,7 @@ public abstract class StandardLocation extends BeaconProtocol {
     }
 
     // Get the messageType. Is it LONG or SHORT?
-    public HexAttribute messageType(String binCode, int s, int f) { // b25-26
+    HexAttribute messageType(String binCode, int s, int f) { // b25-26
         String v = "Standard Location";
         String e = "";
 
@@ -60,7 +60,7 @@ public abstract class StandardLocation extends BeaconProtocol {
     // 1/Nov/2005
     // Renamed from "hexId()"
     // Called by all subclasses
-    public HexAttribute hexIdWithDefaultLocation(String binCode, int s, int f) { // b26-65
+    HexAttribute hexIdWithDefaultLocation(String binCode, int s, int f) { // b26-65
         String binHexId = binCode.substring(s, f);
 
         String defaultValue1 = "0111111111";
@@ -74,7 +74,7 @@ public abstract class StandardLocation extends BeaconProtocol {
         return new HexAttribute("Hex Id", s, s + binHexId.length() - 1, v, e);
     }
 
-    public HexAttribute coarsePosition(String binCode, int s, int f) {
+    HexAttribute coarsePosition(String binCode, int s, int f) {
         String code = binCode.substring(s, f + 1);
         String v = "";
         String e = "";
@@ -91,7 +91,7 @@ public abstract class StandardLocation extends BeaconProtocol {
         return new HexAttribute("Coarse Position", s, f, v, e);
     }
 
-    public String lat(String binCode) {
+    String lat(String binCode) {
         String result = "";
 
         int code = Conversions.binaryToDecimal(binCode.substring(66, 75));
@@ -117,7 +117,7 @@ public abstract class StandardLocation extends BeaconProtocol {
         return result;
     }
 
-    public String lon(String binCode) {
+    String lon(String binCode) {
         String result = "";
 
         int code = Conversions.binaryToDecimal(binCode.substring(76, 86));
@@ -143,7 +143,7 @@ public abstract class StandardLocation extends BeaconProtocol {
         return result;
     }
 
-    public HexAttribute offsetPosition(String binCode, int s, int f) {
+    HexAttribute offsetPosition(String binCode, int s, int f) {
         String e = "";
         String def = "10000011111000001111";
 
@@ -201,7 +201,7 @@ public abstract class StandardLocation extends BeaconProtocol {
     }
 
     // C/S Type Approval</TD><TD>b41-50</TD><TD>115</TD></TR>
-    public HexAttribute cospatSarsatTypeApp(String binCode, int s, int f) {
+    HexAttribute cospatSarsatTypeApp(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 

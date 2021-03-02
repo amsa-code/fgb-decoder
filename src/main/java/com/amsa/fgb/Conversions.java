@@ -411,7 +411,7 @@ abstract class Conversions {
         return hexStr;
     }
 
-    static  String getAircraftCountryOfReg(String binCode) {
+    static String getAircraftCountryOfReg(String binCode) {
         // The binCode in this case is the 24-bit Aircraft Address.
         // In the above hashMap there are values of length 14,12,9,6,4
         // We will take it in turn.
@@ -449,7 +449,7 @@ abstract class Conversions {
     }
 
     // NOTE: this will only work for Aust. reg'd aircraft.
-    static  String binaryToAircraftCallsign(String binCode) {
+    static String binaryToAircraftCallsign(String binCode) {
         int origDec = Conversions.binaryToDecimal(binCode);
 
         // 15 July 2005
@@ -488,7 +488,7 @@ abstract class Conversions {
         return result;
     }
 
-    static  String getAircraftCallsign(int value) {
+    static String getAircraftCallsign(int value) {
         try {
 
             String S1 = (String) aircraftMap.get(value + "");
@@ -503,7 +503,7 @@ abstract class Conversions {
         }
     }
 
-    static  String hexToBinary(String hexStr) {
+    static String hexToBinary(String hexStr) {
         int len = hexStr.length();
         hexStr = hexStr.toUpperCase();
         try {
@@ -534,8 +534,7 @@ abstract class Conversions {
     }
 
     // 11 May 2005, return String[] instead of String
-    static  String[] mBaudotBits2mBaudotStr(String protocolName, String mbaudotBits,
-            int bits) {
+    static String[] mBaudotBits2mBaudotStr(String protocolName, String mbaudotBits, int bits) {
         String vE[] = new String[3];
 
         // HashTable e = new HashTable();
@@ -672,7 +671,7 @@ abstract class Conversions {
         return vE;
     }
 
-    static  boolean isNumeric(String str) {
+    static boolean isNumeric(String str) {
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
             if (c >= '0' && c <= '9') {
@@ -685,7 +684,7 @@ abstract class Conversions {
         return true;
     }
 
-    static  String zeroPadFromLeft(String str, int amt) {
+    static String zeroPadFromLeft(String str, int amt) {
         int lenStr = str.length();
         for (int i = 0; i < (amt - lenStr); i++) {
             str = "0" + str;

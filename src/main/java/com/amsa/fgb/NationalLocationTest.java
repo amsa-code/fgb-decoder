@@ -2,7 +2,7 @@ package com.amsa.fgb;
 
 class NationalLocationTest extends NationalLocation {
 
-    public NationalLocationTest() {
+    NationalLocationTest() {
         natProtocolCode = "1111";
         protocolName = "Test";
     }

@@ -7,11 +7,11 @@ import java.util.List;
 // only exist to identify the protocol.  The hex String is decoded from
 // here.
 
-public abstract class NationalLocation extends BeaconProtocol {
+abstract class NationalLocation extends BeaconProtocol {
 
-    public String natProtocolCode; // Set in constructors of sub-classes
+    String natProtocolCode; // Set in constructors of sub-classes
 
-    public NationalLocation() {
+    NationalLocation() {
         beaconTypeCode.add("00");
         beaconTypeCode.add("10");
 
@@ -24,13 +24,13 @@ public abstract class NationalLocation extends BeaconProtocol {
     }
 
     @Override
-    public String getName() {
+    String getName() {
 
         return protocolName;
     }
 
     @Override
-    public boolean canDecode(String binCode) {
+    boolean canDecode(String binCode) {
         String protocol = binCode.substring(25, 27);
 
         // System.out.println("Trying National Location " + name);
@@ -44,7 +44,7 @@ public abstract class NationalLocation extends BeaconProtocol {
     }
 
     @Override
-    public List<HexAttribute> decodeSearch(String hexStr) {
+    List<HexAttribute> decodeSearch(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -67,7 +67,7 @@ public abstract class NationalLocation extends BeaconProtocol {
     // Change from "hexId()" to hexIdWithDefaultLocation()"
     // All beacon types conform to the following decode.
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -125,7 +125,7 @@ public abstract class NationalLocation extends BeaconProtocol {
     }
 
     // Get the messageType. Is it LONG or SHORT?
-    public HexAttribute messageType(String binCode, int s, int f) { // b25-26
+    HexAttribute messageType(String binCode, int s, int f) { // b25-26
         String v = "National Location";
         String e = "";
 
@@ -138,7 +138,7 @@ public abstract class NationalLocation extends BeaconProtocol {
     // 2/Nov/2005
     // Renamed from "hexId()"
     // Called by all subclasses
-    public HexAttribute hexIdWithDefaultLocation(String binCode, int s, int f) { // b26-59
+    HexAttribute hexIdWithDefaultLocation(String binCode, int s, int f) { // b26-59
         String binHexId = binCode.substring(s, f);
 
         // System.out.println(binHexId);
@@ -153,7 +153,7 @@ public abstract class NationalLocation extends BeaconProtocol {
     }
 
     // Coarse Position</TD><TD>b59-85</TD><TD>35 44S 115 30E
-    public HexAttribute coarsePosition(String binCode, int s, int f) { // b59-85
+    HexAttribute coarsePosition(String binCode, int s, int f) { // b59-85
         String code = binCode.substring(s, f + 1);
         String v = "";
         String e = "";
@@ -171,7 +171,7 @@ public abstract class NationalLocation extends BeaconProtocol {
     }
 
     // Check the * 2 (it used to be *4)
-    public String lat(String binCode) {
+    String lat(String binCode) {
         String result = "";
         int deg = Conversions.binaryToDecimal(binCode.substring(60, 67));
         String degStr = Conversions.zeroPadFromLeft(deg + "", 2);
@@ -193,7 +193,7 @@ public abstract class NationalLocation extends BeaconProtocol {
         return result;
     }
 
-    public String lon(String binCode) {
+    String lon(String binCode) {
         String result = "";
         int deg = Conversions.binaryToDecimal(binCode.substring(73, 81));
         String degStr = Conversions.zeroPadFromLeft(deg + "", 3);
@@ -215,7 +215,7 @@ public abstract class NationalLocation extends BeaconProtocol {
         return result;
     }
 
-    public HexAttribute offsetPosition(String binCode, int s, int f) {
+    HexAttribute offsetPosition(String binCode, int s, int f) {
         String e = "";
         String def = "10011111001111";
 
