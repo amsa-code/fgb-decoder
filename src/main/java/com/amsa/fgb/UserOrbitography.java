@@ -1,6 +1,7 @@
 package com.amsa.fgb;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 // 13 May 2005
 // Changed based on C/ST.006 and CDP
@@ -12,11 +13,11 @@ public class UserOrbitography extends User {
     }
 
     @Override
-    public Vector<HexAttribute> decode (String hexStr) 
+    public List<HexAttribute> decode (String hexStr) 
     {
 	String binCode = Conversions.hexToBinary(hexStr);
 
-	Vector<HexAttribute> result = new Vector<HexAttribute>();
+	List<HexAttribute> result = new ArrayList<HexAttribute>();
 
 	result.add(this.messageType(binCode, 25, 26));
        	result.add(this.hexData(hexStr, 25, (binCode.length()-1)));
@@ -53,7 +54,7 @@ public class UserOrbitography extends User {
     }
 
     // This is where changes go
-    public Vector<HexAttribute> orbitographyData(Vector<HexAttribute> result, String binCode, int s, int f) {
+    public List<HexAttribute> orbitographyData(List<HexAttribute> result, String binCode, int s, int f) {
 	String v1 = binCode.substring(s, f+1);
 	String e1 = "";
 

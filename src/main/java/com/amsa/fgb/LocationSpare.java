@@ -1,6 +1,7 @@
 package com.amsa.fgb;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 class LocationSpare extends BeaconProtocol {
 	public String stdProtocolCode;
@@ -24,9 +25,9 @@ class LocationSpare extends BeaconProtocol {
 	}
 
 	@Override
-    public Vector<HexAttribute> decode(String hexStr) {
+    public List<HexAttribute> decode(String hexStr) {
 		String binCode = Conversions.hexToBinary(hexStr);
-		Vector<HexAttribute> result = new Vector<HexAttribute>();
+		List<HexAttribute> result = new ArrayList<HexAttribute>();
 
 		result.add(this.messageType(binCode, 25, 26));
 		result.add(this.hexData(hexStr, 25, (binCode.length() - 1)));

@@ -1,6 +1,7 @@
 package com.amsa.fgb;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 // 07/04/2005
 // This class is the same as UserSerialSpare except for the serialCode (101 for UserSerialSpare)
@@ -14,10 +15,10 @@ class UserSerialSpare2 extends UserSerial
     }
 
     @Override
-    public Vector<HexAttribute> decode (String hexStr)
+    public List<HexAttribute> decode (String hexStr)
     {
 	   String binCode = Conversions.hexToBinary(hexStr);
-	   Vector<HexAttribute> result = new Vector<HexAttribute>();
+	   List<HexAttribute> result = new ArrayList<HexAttribute>();
 
 	   result.add(this.messageType(binCode, 25, 26));
 	   result.add(this.hexData(hexStr, 25, (binCode.length()-1)));

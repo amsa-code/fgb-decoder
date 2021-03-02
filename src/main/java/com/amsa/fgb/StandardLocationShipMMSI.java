@@ -1,6 +1,7 @@
 package com.amsa.fgb;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 class StandardLocationShipMMSI extends StandardLocation {
 
@@ -11,9 +12,9 @@ class StandardLocationShipMMSI extends StandardLocation {
     }
 
     @Override
-    public Vector<HexAttribute> decodeSearch (String hexStr) {
+    public List<HexAttribute> decodeSearch (String hexStr) {
 	String binCode = Conversions.hexToBinary(hexStr);
-	Vector<HexAttribute> result = new Vector<HexAttribute>();
+	List<HexAttribute> result = new ArrayList<HexAttribute>();
 
        	//result.add(this.hexId(binCode, 26, 65));
         result.add(this.hexId(binCode, 26, 85));
@@ -23,9 +24,9 @@ class StandardLocationShipMMSI extends StandardLocation {
     }
 
     @Override
-    public Vector<HexAttribute> decode (String hexStr) {
+    public List<HexAttribute> decode (String hexStr) {
 	String binCode = Conversions.hexToBinary(hexStr);
-	Vector<HexAttribute> result = new Vector<>();
+	List<HexAttribute> result = new ArrayList<>();
 
 	result.add(this.messageType(binCode, 25, 26));
        	result.add(this.hexData(hexStr, 25, (binCode.length()-1)));

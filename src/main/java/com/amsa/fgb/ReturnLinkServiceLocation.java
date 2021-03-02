@@ -3,7 +3,6 @@ package com.amsa.fgb;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
 
 import com.amsa.fgb.Common.Position;
 
@@ -50,9 +49,9 @@ public class ReturnLinkServiceLocation extends BeaconProtocol {
     }
 
     @Override
-    public Vector<HexAttribute> decodeSearch(String hexStr) {
+    public List<HexAttribute> decodeSearch(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
-        Vector<HexAttribute> result = new Vector<HexAttribute>();
+        List<HexAttribute> result = new ArrayList<HexAttribute>();
 
         // 16/03/2005, why 26-65??? decode() is 26-59
         // And do we need to decode more besides these 2 for decodeSearch()
@@ -74,9 +73,9 @@ public class ReturnLinkServiceLocation extends BeaconProtocol {
     // Change from "hexId()" to hexIdWithDefaultLocation()"
     // All beacon types conform to the following decode.
     @Override
-    public Vector<HexAttribute> decode(String hexStr) {
+    public List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
-        Vector<HexAttribute> result = new Vector<HexAttribute>();
+        List<HexAttribute> result = new ArrayList<HexAttribute>();
 
         result.add(this.messageType(binCode, 25, 26));
         result.add(this.hexData(hexStr, 25, (binCode.length() - 1)));

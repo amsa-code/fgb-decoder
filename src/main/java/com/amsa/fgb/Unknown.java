@@ -1,6 +1,7 @@
 package com.amsa.fgb;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Unknown extends BeaconProtocol {
 
@@ -21,8 +22,8 @@ public class Unknown extends BeaconProtocol {
     }
 
     @Override
-    public Vector<HexAttribute> decode (String hexStr) {
-	Vector<HexAttribute> result = new Vector<HexAttribute>();
+    public List<HexAttribute> decode (String hexStr) {
+	List<HexAttribute> result = new ArrayList<HexAttribute>();
 	String errorMsg = "Unable to decode this hex string";
 	result.add(new HexAttribute("", 0, "", errorMsg));
 

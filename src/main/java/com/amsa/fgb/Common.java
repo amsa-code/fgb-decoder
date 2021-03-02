@@ -6,12 +6,12 @@
 package com.amsa.fgb;
 
 import java.text.DecimalFormat;
-import java.util.Vector;
+import java.util.List;
 
 public class Common
 {
     //  For bit 109-112 (Maritime Emergency Codes). See C/S T.001 Table A4
-    public static Vector<HexAttribute> maritimeEmergencyCodes (Vector<HexAttribute> result, String binCode)
+    public static List<HexAttribute> maritimeEmergencyCodes (List<HexAttribute> result, String binCode)
     {
 	// Convert bit 109-112 to decimal
 	int bitToNum = Conversions.binaryToDecimal(binCode.substring(109, 113));
@@ -110,7 +110,7 @@ public class Common
     }
 
     //  For bit 109-112 (Non-Maritime Emergency Codes). See C/S T.001 Table A5
-    public static Vector<HexAttribute> nonMaritimeEmergencyCodes (Vector<HexAttribute> result, String binCode)
+    public static List<HexAttribute> nonMaritimeEmergencyCodes (List<HexAttribute> result, String binCode)
     {
 	String name = "Nature of Distress";
 	result.add(new HexAttribute(name, 109, 112, binCode.substring(109, 113), ""));
@@ -126,7 +126,7 @@ public class Common
     // Decode bit 107-112 for those User protocols that don't need to decode for Maritime Emergency Codes, Non-Maritime Emergency Codes or National use
     // These User protocols include: UserOrbitography.java (000 - Orbitography); UserTest.java (111 - Test); UserSpecialUse.java (101 - Spare); 
     // UserSerialPersonal.java (011, and 110 for bits 40-42); and UserSerialSpare.java (011, and 101 for bits 40-42)
-    public static Vector<HexAttribute> nonEmergencyCodes (Vector<HexAttribute> result, String binCode)
+    public static List<HexAttribute> nonEmergencyCodes (List<HexAttribute> result, String binCode)
     {
 	if (binCode.length() > 112)
 	    result.add(new HexAttribute("Non-protected data field", 107, 112, "N/A", ""));

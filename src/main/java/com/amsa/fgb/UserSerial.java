@@ -1,6 +1,7 @@
 package com.amsa.fgb;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserSerial extends User {
 
@@ -30,9 +31,9 @@ public class UserSerial extends User {
     }
 
     @Override
-    public Vector<HexAttribute> decodeSearch (String hexStr) {
+    public List<HexAttribute> decodeSearch (String hexStr) {
 	String binCode = Conversions.hexToBinary(hexStr);
-	Vector<HexAttribute> result = new Vector<HexAttribute>();
+	List<HexAttribute> result = new ArrayList<HexAttribute>();
 
        	result.add(this.hexId(binCode, 26, 85));
 	result.add(this.serialNumber(binCode, 44, 63));

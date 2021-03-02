@@ -11,10 +11,10 @@ public class DecodeAsXML implements DecodeFilter {
     }
 
 	/*
-	 * public String getData(Vector v) { String data =
+	 * public String getData(List v) { String data =
 	 * "<?xml version=\"1.0\"?>\n";
 	 * 
-	 * Vector reservedChars = new Vector(0); data = data + "<Hexdecode>\n"; for
+	 * List reservedChars = new ArrayList(0); data = data + "<Hexdecode>\n"; for
 	 * (int i=0; i<v.size(); i++) { HexAttribute h = (HexAttribute)
 	 * v.elementAt(i); String line = ""; String desc = h.getDesc(); String pos =
 	 * h.getPos(); String val = h.getValue(); String err = h.getError(); int len

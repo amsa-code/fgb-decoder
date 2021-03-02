@@ -1,6 +1,7 @@
 package com.amsa.fgb;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class User extends BeaconProtocol {
 
@@ -38,8 +39,8 @@ public abstract class User extends BeaconProtocol {
 
 	// This method should be overwritten by sub-classes
 	@Override
-    public Vector<HexAttribute> decode(String hexStr) {
-		Vector<HexAttribute> result = new Vector<HexAttribute>();
+    public List<HexAttribute> decode(String hexStr) {
+		List<HexAttribute> result = new ArrayList<HexAttribute>();
 		String errorMsg = "ERROR: decode() called from User";
 		result.add(new HexAttribute("", 0, "", errorMsg));
 
@@ -336,7 +337,7 @@ public abstract class User extends BeaconProtocol {
 	}
 
 	// For bit 107-112. See C/S T.001 Figure A4
-	public Vector<HexAttribute> nonNationalUse(Vector<HexAttribute> result, String binCode) {
+	public List<HexAttribute> nonNationalUse(List<HexAttribute> result, String binCode) {
 		// Decode bit 107
 		result.add(emergencyCode(binCode, 107));
 
@@ -353,7 +354,7 @@ public abstract class User extends BeaconProtocol {
 	}
 
 	// This method should be overiddded by the subclasses
-	public Vector<HexAttribute> allEmergencyCodes(Vector<HexAttribute> result, String binCode) {
+	public List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
 		return result;
 	}
 }

@@ -1,12 +1,13 @@
 package com.amsa.fgb;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BeaconProtocol {
 
 	public boolean isUS = false;
 
-	public Vector<String> beaconTypeCode;
+	public List<String> beaconTypeCode;
 	public String protocolName;
 	// public String messageTypeDesc;
 	// public String countryCode;
@@ -18,7 +19,7 @@ public abstract class BeaconProtocol {
 	public String defaultFixedBits;
 
 	public BeaconProtocol() {
-		beaconTypeCode = new Vector<String>(2);
+		beaconTypeCode = new ArrayList<String>(2);
 		this.actualLatLong = false;
 		this.latSeconds = 0;
 		this.lonSeconds = 0;
@@ -32,9 +33,9 @@ public abstract class BeaconProtocol {
 		return false;
 	}
 
-	public Vector<HexAttribute> decodeSearch(String hexStr) {
+	public List<HexAttribute> decodeSearch(String hexStr) {
 		String binCode = Conversions.hexToBinary(hexStr);
-		Vector<HexAttribute> result = new Vector<HexAttribute>();
+		List<HexAttribute> result = new ArrayList<HexAttribute>();
 
 		result.add(this.hexId(binCode, 26, 85));
 
@@ -45,8 +46,8 @@ public abstract class BeaconProtocol {
 	// all sub-classes should call super.decode(binStr)
 	// as this method will decode those bits that are
 	// common to ALL protocols.
-	public Vector<HexAttribute> decode(String hexStr) {
-		return new Vector<HexAttribute>(0);
+	public List<HexAttribute> decode(String hexStr) {
+		return new ArrayList<HexAttribute>(0);
 		// "ERROR - decode() called from BeaconProtocol";
 	}
 
@@ -56,7 +57,7 @@ public abstract class BeaconProtocol {
 
 	public boolean isLongMessage(String binCode) {
 		String code = binCode.substring(25, 27);
-		Vector<String> longCodes = new Vector<String>(2);
+		List<String> longCodes = new ArrayList<String>(2);
 		longCodes.add("10");
 		longCodes.add("11");
 
@@ -66,7 +67,7 @@ public abstract class BeaconProtocol {
 	// 16 May 2005
 	public boolean isShortMessage(String binCode) {
 		String code = binCode.substring(25, 27);
-		Vector<String> longCodes = new Vector<String>(2);
+		List<String> longCodes = new ArrayList<String>(2);
 		longCodes.add("00");
 		longCodes.add("01");
 
@@ -181,7 +182,7 @@ public abstract class BeaconProtocol {
 		String v = cc + "";
 
 		// Is this a US beacon
-		Vector<String> UScodes = new Vector<String>(0);
+		List<String> UScodes = new ArrayList<String>(0);
 		UScodes.add("338");
 		UScodes.add("366");
 		UScodes.add("367");
@@ -469,7 +470,7 @@ public abstract class BeaconProtocol {
 	// 1/Nov/2005
 	// Overloaded method, called by StandardLocation's subclasses and
 	// NationalLocation's subclasses
-	public Vector<HexAttribute> bch1(Vector<HexAttribute> result, String binCode, HexAttribute hexId) {
+	public List<HexAttribute> bch1(List<HexAttribute> result, String binCode, HexAttribute hexId) {
 		HexAttribute bch1 = bch1(binCode, 86, 106);
 
 		String error = bch1.getError();

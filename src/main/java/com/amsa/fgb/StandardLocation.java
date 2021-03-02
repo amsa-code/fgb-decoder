@@ -1,6 +1,7 @@
 package com.amsa.fgb;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class StandardLocation extends BeaconProtocol {
 
@@ -36,8 +37,8 @@ public abstract class StandardLocation extends BeaconProtocol {
 
     // This method should be overwritten by sub-classes
     @Override
-    public Vector<HexAttribute> decode (String hexStr) {
-	Vector<HexAttribute> result = new Vector<HexAttribute>();
+    public List<HexAttribute> decode (String hexStr) {
+	List<HexAttribute> result = new ArrayList<HexAttribute>();
 	String errorMsg = "ERROR: decode() called from StandardLocation";
 	result.add(new HexAttribute("", 0, "", errorMsg));
 
