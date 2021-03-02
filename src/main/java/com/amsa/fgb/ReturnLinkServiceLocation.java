@@ -12,7 +12,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
 
     private static final int COARSE_POSITION_FINISH = 85;
     private static final int COARSE_POSITION_START = 67;
-    static final String rlsProtocolCode = "1101";
+    private static final String rlsProtocolCode = "1101";
 
     ReturnLinkServiceLocation() {
         beaconTypeCode.add("00");

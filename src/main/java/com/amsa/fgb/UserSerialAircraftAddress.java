@@ -88,7 +88,7 @@ class UserSerialAircraftAddress extends UserSerial {
         return result;
     }
 
-    HexAttribute eltNumber(String binCode, int s, int f) {
+    private HexAttribute eltNumber(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 

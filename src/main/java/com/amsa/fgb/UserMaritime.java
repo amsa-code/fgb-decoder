@@ -69,7 +69,7 @@ class UserMaritime extends User {
         return result;
     }
 
-    HexAttribute getMMSI(String binCode, int s, int f) {
+    private HexAttribute getMMSI(String binCode, int s, int f) {
         String d = "";
         String v = "";
         String e = "";
@@ -96,7 +96,7 @@ class UserMaritime extends User {
         return new HexAttribute(d, s, f, v, e);
     }
 
-    HexAttribute mmsi(String binCode, int s, int f) {
+    private HexAttribute mmsi(String binCode, int s, int f) {
         String d = "";
         String v = "";
         String e = "";

@@ -73,7 +73,7 @@ class StandardLocationShipMMSI extends StandardLocation {
         return result;
     }
 
-    HexAttribute getMMSI(String binCode, int s, int f) {
+    private HexAttribute getMMSI(String binCode, int s, int f) {
         int countryCode = this.getCountryCode(binCode, 27, 36);
         HexAttribute h = this.mmsi(binCode, s, f);
         String mmsi = h.getValue();
@@ -83,7 +83,7 @@ class StandardLocationShipMMSI extends StandardLocation {
         return new HexAttribute("Ships MMSI", v, e);
     }
 
-    HexAttribute mmsi(String binCode, int s, int f) {
+    private HexAttribute mmsi(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
         String value = v + "";

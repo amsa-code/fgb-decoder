@@ -64,7 +64,7 @@ class UserAviation extends User {
         return result;
     }
 
-    HexAttribute aircraftRegistrationMarking(String binCode, int s, int f) {
+    private HexAttribute aircraftRegistrationMarking(String binCode, int s, int f) {
         // 11 May 2005
         String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(),
                 binCode.substring(s, f + 1), 6);

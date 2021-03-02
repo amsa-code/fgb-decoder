@@ -91,7 +91,7 @@ abstract class StandardLocation extends BeaconProtocol {
         return new HexAttribute("Coarse Position", s, f, v, e);
     }
 
-    String lat(String binCode) {
+    private String lat(String binCode) {
         String result = "";
 
         int code = Conversions.binaryToDecimal(binCode.substring(66, 75));
@@ -117,7 +117,7 @@ abstract class StandardLocation extends BeaconProtocol {
         return result;
     }
 
-    String lon(String binCode) {
+    private String lon(String binCode) {
         String result = "";
 
         int code = Conversions.binaryToDecimal(binCode.substring(76, 86));

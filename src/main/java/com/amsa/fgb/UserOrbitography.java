@@ -50,7 +50,7 @@ class UserOrbitography extends User {
     }
 
     // This is where changes go
-    List<HexAttribute> orbitographyData(List<HexAttribute> result, String binCode, int s, int f) {
+    private List<HexAttribute> orbitographyData(List<HexAttribute> result, String binCode, int s, int f) {
         String v1 = binCode.substring(s, f + 1);
         String e1 = "";
 

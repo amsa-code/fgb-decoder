@@ -130,7 +130,7 @@ abstract class User extends BeaconProtocol {
         return new HexAttribute("Aux. radio-locating", s, f, v, e);
     }
 
-    HexAttribute emergencyCode(String binCode, int s) {
+    private HexAttribute emergencyCode(String binCode, int s) {
         String v = "";
         String e = "";
 
@@ -147,11 +147,11 @@ abstract class User extends BeaconProtocol {
         return new HexAttribute("Emergency Code", s, v, e);
     }
 
-    boolean emergencyCodePresent(String binCode) {
+    private boolean emergencyCodePresent(String binCode) {
         return binCode.charAt(107) == '1';
     }
 
-    HexAttribute activationType(String binCode, int s) {
+    private HexAttribute activationType(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '1') {
@@ -163,98 +163,7 @@ abstract class User extends BeaconProtocol {
         return new HexAttribute("Activation Type", s, v, e);
     }
 
-    HexAttribute fireFlag(String binCode, int s) {
-        String v = "";
-        String e = "";
-        if (binCode.charAt(s) == '1') {
-            v = "FIRE";
-        } else {
-            v = "NOT FIRE";
-        }
-
-        // This is grouped under "Nature of Distress" with the identation of 30
-        // white spaces
-        return new HexAttribute("                              ", s, v, e);
-    }
-
-    HexAttribute medicalHelpFlag(String binCode, int s) {
-        String v = "";
-        String e = "";
-        if (binCode.charAt(s) == '1') {
-            v = "MEDICAL HELP REQUIRED";
-        } else {
-            v = "NO MEDICAL HELP";
-        }
-
-        return new HexAttribute("                              ", s, v, e);
-    }
-
-    HexAttribute disabledFlag(String binCode, int s) {
-        String v = "";
-        String e = "";
-        if (binCode.charAt(s) == '1') {
-            v = "DISABLED";
-        } else {
-            v = "NOT DISABLED";
-        }
-
-        return new HexAttribute("                              ", s, v, e);
-    }
-
-    HexAttribute emergencySpare(String binCode, int s) {
-        String v = "";
-        String e = "";
-        if (binCode.charAt(s) == '0') {
-            v = "SPARE";
-        } else {
-            v = binCode.charAt(s) + " (Non-Spec)";
-        }
-
-        return new HexAttribute("                              ", s, v, e);
-    }
-
-    HexAttribute maritimeEmergencyCode(String binCode, int s, int f) {
-        String v = "";
-        String e = "";
-        String code = binCode.substring(s, f + 1);
-        if (code.equals("0000")) {
-            v = "UNSPECIFIED DISTRESS";
-        } else {
-            if (code.equals("0001")) {
-                v = "FIRE/EXPLOSION";
-            } else {
-                if (code.equals("0010")) {
-                    v = "FLOODING";
-                } else {
-                    if (code.equals("0011")) {
-                        v = "COLLISION";
-                    } else {
-                        if (code.equals("0100")) {
-                            v = "GROUNDING";
-                        } else {
-                            if (code.equals("0101")) {
-                                v = "LISTING, DANGER OF CAPSIZE";
-                            } else {
-                                if (code.equals("0110")) {
-                                    v = "SINKING";
-                                } else {
-                                    if (code.equals("0111")) {
-                                        v = "DISABLED AND ADRIFT";
-                                    } else {
-                                        if (code.equals("1000")) {
-                                            v = "ABANDONING SHIP";
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return new HexAttribute("Maritime Emergency", s, f, v, e);
-    }
+    
 
     /*
      * ******************************************************* The following methods

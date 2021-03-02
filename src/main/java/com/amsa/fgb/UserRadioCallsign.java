@@ -66,7 +66,7 @@ class UserRadioCallsign extends User {
         return result;
     }
 
-    HexAttribute radioCallsign(String binCode, int s, int f) {
+    private HexAttribute radioCallsign(String binCode, int s, int f) {
         // 11 May 2005
         // Passed back the String[]
         String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(),
