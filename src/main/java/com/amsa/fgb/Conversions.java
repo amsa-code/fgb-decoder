@@ -488,7 +488,7 @@ abstract class Conversions {
         return result;
     }
 
-    static String getAircraftCallsign(int value) {
+    private static String getAircraftCallsign(int value) {
         try {
 
             String S1 = (String) aircraftMap.get(value + "");

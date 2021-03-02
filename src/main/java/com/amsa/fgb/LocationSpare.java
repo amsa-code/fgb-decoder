@@ -76,7 +76,7 @@ class LocationSpare extends BeaconProtocol {
         return false;
     }
 
-    HexAttribute messageType(String binCode, int s, int f) {
+    private HexAttribute messageType(String binCode, int s, int f) {
         String v = "Location"; // this is where to oerride
         String e = "";
 

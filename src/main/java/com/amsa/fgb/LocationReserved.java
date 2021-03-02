@@ -81,7 +81,7 @@ class LocationReserved extends BeaconProtocol {
     }
 
     // Overriden messageType
-    HexAttribute messageType(String binCode, int s, int f) {
+    private HexAttribute messageType(String binCode, int s, int f) {
         String v = "Location"; // this is where to oerride
         String e = "";
 

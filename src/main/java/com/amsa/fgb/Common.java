@@ -66,7 +66,7 @@ class Common {
         return result;
     }
 
-    static HexAttribute fireFlag(String binCode, int s) {
+    private static HexAttribute fireFlag(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '1') {
@@ -81,7 +81,7 @@ class Common {
         return new HexAttribute("Fire Flag", s, v, e);
     }
 
-    static HexAttribute medicalHelpFlag(String binCode, int s) {
+    private static HexAttribute medicalHelpFlag(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '1') {
@@ -94,7 +94,7 @@ class Common {
         return new HexAttribute("Medical Help Flag", s, v, e);
     }
 
-    static HexAttribute disabledFlag(String binCode, int s) {
+    private static HexAttribute disabledFlag(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '1') {
@@ -106,7 +106,7 @@ class Common {
         return new HexAttribute("Disabled", s, v, e);
     }
 
-    static HexAttribute emergencySpare(String binCode, int s) {
+    private static HexAttribute emergencySpare(String binCode, int s) {
         String v = "";
         String e = "";
         if (binCode.charAt(s) == '0') {
@@ -127,19 +127,6 @@ class Common {
         result.add(medicalHelpFlag(binCode, 110));
         result.add(disabledFlag(binCode, 111));
         result.add(emergencySpare(binCode, 112));
-
-        return result;
-    }
-
-    // Decode bit 107-112 for those User protocols that don't need to decode for
-    // Maritime Emergency Codes, Non-Maritime Emergency Codes or National use
-    // These User protocols include: UserOrbitography.java (000 - Orbitography);
-    // UserTest.java (111 - Test); UserSpecialUse.java (101 - Spare);
-    // UserSerialPersonal.java (011, and 110 for bits 40-42); and
-    // UserSerialSpare.java (011, and 101 for bits 40-42)
-    static List<HexAttribute> nonEmergencyCodes(List<HexAttribute> result, String binCode) {
-        if (binCode.length() > 112)
-            result.add(new HexAttribute("Non-protected data field", 107, 112, "N/A", ""));
 
         return result;
     }

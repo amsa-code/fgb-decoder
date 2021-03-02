@@ -1,12 +1,12 @@
 package com.amsa.fgb;
 
-public class HexAttribute {
+public final class HexAttribute {
 
-    public String desc;
-    public int start;
-    public int finish;
-    public String value;
-    public String error;
+    final String desc;
+    final int start;
+    int finish;
+    final String value;
+    final String error;
 
     public HexAttribute(String d, int s, int f, String v, String e) {
         this.desc = d;
@@ -35,6 +35,7 @@ public class HexAttribute {
         this.desc = d;
         this.value = v;
         this.error = e;
+        this.start = 0;
     }
 
     public HexAttribute(String d, int s, int v, String e) {
@@ -67,7 +68,4 @@ public class HexAttribute {
         return this.error;
     }
 
-    public void setError(String e) {
-        this.error = e;
-    }
 }

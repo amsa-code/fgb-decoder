@@ -368,28 +368,6 @@ abstract class BeaconProtocol {
         return new HexAttribute("National Use", s, f, v, e);
     }
 
-    // This method is called by ReturnLinkServiceLocation.java
-    HexAttribute rlsData(String binCode, int s, int f) {
-        String v = binCode.substring(s, f + 1);
-        String e = "";
-
-        if (v.length() == 6) {
-            if (v.equals("100000")) {
-                v = "RLM-Request Type-1 only";
-            } else if (v.equals("010000")) {
-                v = "RLM-Request Type-2 only";
-            } else if (v.equals("110000")) {
-                v = "RLM-Request Type-1 + Type-2 (default)";
-            } else {
-                v += " (Non-Spec)";
-            }
-        } else {
-            v += " (Non-Spec)";
-        }
-
-        return new HexAttribute("RLS Data", s, f, v, e);
-    }
-
     // Latitude 36 00 20S
     HexAttribute actualLatitude() {
         String e = "";
@@ -491,7 +469,7 @@ abstract class BeaconProtocol {
 
                 error = errPart1 + "\n Hex Id with default location: " + hexId.getValue() + "\n"
                         + errPart2;
-                bch1.setError(error);
+                bch1 = new HexAttribute(bch1.desc, bch1.start, bch1.finish, error);
             }
         }
 
@@ -526,7 +504,7 @@ abstract class BeaconProtocol {
         return new HexAttribute("Error Correcting Code", s, f, binCode2, e);
     }
 
-    static String calcBCHCODE(String bitCode, String generatorPolynomial) {
+    private static String calcBCHCODE(String bitCode, String generatorPolynomial) {
 
         int b = generatorPolynomial.length();
         String result = bitCode.substring(0, b);
