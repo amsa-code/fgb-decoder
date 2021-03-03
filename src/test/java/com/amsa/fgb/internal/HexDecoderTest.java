@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -15,6 +17,8 @@ import org.junit.Test;
 
 import com.amsa.fgb.Decoder;
 import com.amsa.fgb.Formatter;
+
+import joptsimple.OptionSet;
 
 public class HexDecoderTest {
     @Test
@@ -103,41 +107,44 @@ public class HexDecoderTest {
     public void testComplianceKit() throws IOException {
         createComplianceKitTests();
         File[] files = new File("src/test/resources/compliance-kit").listFiles();
+        // ensure deterministic
+        Arrays.sort(files, (a, b) -> a.getName().compareTo(b.getName()));
         for (File file : files) {
             if (file.getName().endsWith(".json")) {
                 String hex = file.getName().substring(0, file.getName().lastIndexOf("."));
-                if (hex.equals("8E3B15F1DFC0FF07FD1F769F3C0672")) {
-                    System.out.println(hex);
-                    String json = Decoder.decodeFull(hex, Formatter.JSON);
-                    // TODO use Jackson for JSON equals
-                    String expected = new String(Files.readAllBytes(file.toPath()),
-                            StandardCharsets.UTF_8);
-                    assertEquals(expected, json);
-                }
+                String json = Decoder.decodeFull(hex, Formatter.JSON);
+                // TODO use Jackson for JSON equals
+                String expected = new String(Files.readAllBytes(file.toPath()),
+                        StandardCharsets.UTF_8);
+                assertEquals(expected, json);
             }
         }
     }
 
-    // Enable this to regenerate the compliance kit
-    @Test
-    @Ignore
-    public void createComplianceKitTests() throws IOException {
+    private static void createComplianceKitTests() throws IOException {
         Stream<String> a = Files.lines(new File("src/test/resources/hexes.txt").toPath());
         Stream<String> b = Files.lines(new File("src/test/resources/ids.txt").toPath());
         File kit = new File("src/test/resources/compliance-kit");
-        delete(kit);
+        if (kit.exists()) {
+            delete(kit);
+        }
         File tempKit = new File("target/compliance-kit");
-        delete(tempKit);
+        if (tempKit.exists()) {
+            delete(tempKit);
+        }
         Stream.concat(a, b) //
+                // ensure deterministic
+                .sorted() //
                 .forEach(x -> {
                     try {
                         final String json = Decoder.decodeFull(x, Formatter.JSON);
                         File f = new File(tempKit, x + ".json");
                         f.getParentFile().mkdirs();
                         f.delete();
-                        Files.write(f.toPath(), json.getBytes(StandardCharsets.UTF_8));
+                        Files.write(f.toPath(), json.getBytes(StandardCharsets.UTF_8),
+                                StandardOpenOption.WRITE, StandardOpenOption.CREATE);
                     } catch (RuntimeException e) {
-                        System.err.println(x + "\n" + e.getMessage());
+                        System.out.println(x + "\n" + e.getMessage());
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
@@ -151,6 +158,8 @@ public class HexDecoderTest {
                 delete(f);
             }
         }
-        file.delete();
+        if (!file.delete()) {
+            throw new RuntimeException("delete failed of " + file);
+        }
     }
 }
