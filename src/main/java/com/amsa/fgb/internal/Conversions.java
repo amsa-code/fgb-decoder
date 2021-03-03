@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public final class Conversions {
+ final class Conversions {
 
     static private Map<String, String> hexMap;
     static private Map<String, String> binMap;
@@ -503,7 +503,7 @@ public final class Conversions {
         }
     }
 
-    public static String hexToBinary(String hexStr) {
+     static String hexToBinary(String hexStr) {
         int len = hexStr.length();
         hexStr = hexStr.toUpperCase();
         try {

@@ -30,7 +30,7 @@ class DecodeAsXML implements DecodeFilter {
      */
 
     @Override
-    public String getData(List<HexAttribute> v) {
+    public   String getData(List<HexAttribute> v) {
         String data = "<?xml version=\"1.0\"?>\n";
 
         data = data + "<Hexdecode>\n";

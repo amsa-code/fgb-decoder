@@ -49,7 +49,7 @@ public final class HexDecoder {
         return Collections.emptyList();
     }
 
-    public static Map<String, HexAttribute> decodeToMap(String hexStr) {
+    static Map<String, HexAttribute> decodeToMap(String hexStr) {
         Map<String, HexAttribute> map = new HashMap<String, HexAttribute>();
         for (HexAttribute h : getHexAttributesDecode(hexStr)) {
             map.put(h.desc, h);
@@ -79,7 +79,7 @@ public final class HexDecoder {
         return f.getData(r);
     }
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         String s = "";
         String f = "";
         try {

@@ -11,7 +11,7 @@ class UserSerialPersonal extends UserSerial {
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+     List<HexAttribute> decode(String hexStr) {
 
         String binCode = Conversions.hexToBinary(hexStr);
 

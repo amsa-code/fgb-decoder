@@ -25,7 +25,7 @@ abstract class StandardLocation extends BeaconProtocol {
     }
 
     @Override
-    public boolean canDecode(String binCode) {
+     boolean canDecode(String binCode) {
         String protocol = binCode.substring(25, 27);
         // System.out.println("Trying Standard Location " + name);
         if (beaconTypeCode.contains(protocol)) {
@@ -38,7 +38,7 @@ abstract class StandardLocation extends BeaconProtocol {
 
     // This method should be overwritten by sub-classes
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+     List<HexAttribute> decode(String hexStr) {
         List<HexAttribute> result = new ArrayList<HexAttribute>();
         String errorMsg = "ERROR: decode() called from StandardLocation";
         result.add(new HexAttribute("", 0, "", errorMsg));

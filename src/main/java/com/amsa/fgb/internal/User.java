@@ -24,7 +24,7 @@ abstract class User extends BeaconProtocol {
     }
 
     @Override
-    public boolean canDecode(String binCode) {
+     boolean canDecode(String binCode) {
         String beaconCode = binCode.substring(25, 27);
         // System.out.println("Trying User " + name);
 
@@ -39,7 +39,7 @@ abstract class User extends BeaconProtocol {
 
     // This method should be overwritten by sub-classes
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+     List<HexAttribute> decode(String hexStr) {
         List<HexAttribute> result = new ArrayList<HexAttribute>();
         String errorMsg = "ERROR: decode() called from User";
         result.add(new HexAttribute("", 0, "", errorMsg));

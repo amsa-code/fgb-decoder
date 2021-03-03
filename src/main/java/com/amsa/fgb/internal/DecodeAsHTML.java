@@ -11,7 +11,7 @@ class DecodeAsHTML implements DecodeFilter {
     }
 
     @Override
-    public String getData(List<HexAttribute> v) {
+     public String getData(List<HexAttribute> v) {
         String data = "<html>\n";
         data = data + "<head>\n";
         data = data + "<title>HEXDECODE of 406 Beacon</title>\n";

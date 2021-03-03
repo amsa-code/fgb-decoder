@@ -25,7 +25,7 @@ class LocationReserved extends BeaconProtocol {
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+     List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
 
         List<HexAttribute> result = new ArrayList<HexAttribute>();
@@ -66,7 +66,7 @@ class LocationReserved extends BeaconProtocol {
     // Override the method of "canCode" (b37-39).
     // b40 doesn't matter in this Reserved (orbitography) protocol
     @Override
-    public boolean canDecode(String binCode) {
+     boolean canDecode(String binCode) {
         String protocol = binCode.substring(25, 27);
 
         // System.out.println("Trying " + name);

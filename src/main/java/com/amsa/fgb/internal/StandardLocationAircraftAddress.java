@@ -11,7 +11,7 @@ class StandardLocationAircraftAddress extends StandardLocation {
     }
 
     @Override
-    public List<HexAttribute> decodeSearch(String hexStr) {
+     List<HexAttribute> decodeSearch(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -30,7 +30,7 @@ class StandardLocationAircraftAddress extends StandardLocation {
     }
 
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+     List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 

@@ -30,7 +30,7 @@ abstract class NationalLocation extends BeaconProtocol {
     }
 
     @Override
-    public boolean canDecode(String binCode) {
+     boolean canDecode(String binCode) {
         String protocol = binCode.substring(25, 27);
 
         // System.out.println("Trying National Location " + name);
@@ -44,7 +44,7 @@ abstract class NationalLocation extends BeaconProtocol {
     }
 
     @Override
-    public List<HexAttribute> decodeSearch(String hexStr) {
+     List<HexAttribute> decodeSearch(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -67,7 +67,7 @@ abstract class NationalLocation extends BeaconProtocol {
     // Change from "hexId()" to hexIdWithDefaultLocation()"
     // All beacon types conform to the following decode.
     @Override
-    public List<HexAttribute> decode(String hexStr) {
+     List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 

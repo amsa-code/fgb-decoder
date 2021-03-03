@@ -20,7 +20,7 @@ class UserSerial extends User {
     }
 
     @Override
-    public boolean canDecode(String binCode) {
+     boolean canDecode(String binCode) {
         if (super.canDecode(binCode)) {
             String serCode = binCode.substring(40, 43);
 
@@ -31,7 +31,7 @@ class UserSerial extends User {
     }
 
     @Override
-    public List<HexAttribute> decodeSearch(String hexStr) {
+     List<HexAttribute> decodeSearch(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
