@@ -18,15 +18,15 @@ public final class HexDecoder {
 
     // This is the decode that is used by the Incident Navigator SAR Search
     public static String decodePartial(String hexStr, Formatter formatter) {
-        List<HexAttribute> r = getHexAttributesDecodeSearch(hexStr);
+        List<HexAttribute> r = getHexAttributesDecodePartial(hexStr);
         return format(formatter, r);
     }
 
-    private static List<HexAttribute> getHexAttributesDecodeSearch(String hexStr) {
+    private static List<HexAttribute> getHexAttributesDecodePartial(String hexStr) {
         return getHexAttributes(hexStr, (proto, hex) -> proto.decodeSearch(hex));
     }
 
-    private static List<HexAttribute> getHexAttributesDecode(String hexStr) {
+    private static List<HexAttribute> getHexAttributesDecodeFull(String hexStr) {
         return getHexAttributes(hexStr, (proto, hex) -> proto.decode(hex));
     }
 
@@ -51,7 +51,7 @@ public final class HexDecoder {
 
     static Map<String, HexAttribute> decodeToMap(String hexStr) {
         Map<String, HexAttribute> map = new HashMap<String, HexAttribute>();
-        for (HexAttribute h : getHexAttributesDecode(hexStr)) {
+        for (HexAttribute h : getHexAttributesDecodeFull(hexStr)) {
             map.put(h.desc, h);
         }
         return map;
@@ -59,7 +59,7 @@ public final class HexDecoder {
 
     // This is the method that is used to decode the entire Hex Str.
     public static String decodeFull(String hexStr, Formatter formatter) {
-        List<HexAttribute> r = getHexAttributesDecode(hexStr);
+        List<HexAttribute> r = getHexAttributesDecodeFull(hexStr);
         return format(formatter, r);
     }
 
