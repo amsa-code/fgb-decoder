@@ -331,8 +331,7 @@ public class DecoderTest {
 
     @Test
     public void testDecodeToJsonWith30Chr() {
-        assertEquals(load("/detection.json"),
-                Decoder.decode(HEXSTRING_30_CHRS, Formatter.JSON));
+        assertEquals(load("/detection.json"), Decoder.decode(HEXSTRING_30_CHRS, Formatter.JSON));
     }
 
     private static final String load(String resource) {

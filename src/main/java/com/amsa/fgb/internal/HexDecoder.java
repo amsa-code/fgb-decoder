@@ -80,30 +80,5 @@ public final class HexDecoder {
         }
         return f.getData(r);
     }
-
-    static void main(String[] args) {
-        String s = "";
-        String f = "";
-        try {
-            // s = args[0];
-
-            // The last one should always be the formatter!
-            for (int i = 0; i < args.length - 1; i++)
-                s += args[i];
-        } catch (Exception e) {
-            System.out.println("Hexdecode: Insufficient arguments");
-            System.out.println("Usage: java Hexdecode <HexStr> [<HTML|TEXT|XML>]");
-            return;
-        }
-        try {
-            // f = args[1];
-            // The last one should always be the formatter!
-            f = args[args.length - 1];
-        } catch (Exception e) {
-            f = "TEXT";
-        }
-        String output = HexDecoder.decode(s, Formatter.valueOf(f.toUpperCase()));
-
-        System.out.println(output);
-    }
+    
 }
