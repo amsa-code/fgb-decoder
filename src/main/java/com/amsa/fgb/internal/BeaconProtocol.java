@@ -374,12 +374,15 @@ import java.util.List;
     HexAttribute actualLatitude() {
         String e = "";
         String direction = "N";
+        final double secs;
         if (this.latSeconds < 0) {
             direction = "S";
-            this.latSeconds = this.latSeconds * -1;
+            secs = this.latSeconds * -1;
+        } else {
+            secs = this.latSeconds;
         }
-        int deg = (int) (this.latSeconds / (60 * 60));
-        int remain = (int) (this.latSeconds - (deg * 60 * 60));
+        int deg = (int) (secs / (60 * 60));
+        int remain = (int) (secs - (deg * 60 * 60));
         String degStr = Conversions.zeroPadFromLeft(deg + "", 2);
         int min = remain / 60;
         String minStr = Conversions.zeroPadFromLeft(min + "", 2);
@@ -394,12 +397,15 @@ import java.util.List;
     HexAttribute actualLongitude() {
         String e = "";
         String direction = "E";
+        final double secs;
         if (this.lonSeconds < 0) {
             direction = "W";
-            this.lonSeconds = this.lonSeconds * -1;
+            secs = this.lonSeconds * - 1;
+        } else {
+            secs = this.lonSeconds;
         }
-        int deg = (int) (this.lonSeconds / (60 * 60));
-        int remain = (int) (this.lonSeconds - (deg * 60 * 60));
+        int deg = (int) (secs / (60 * 60));
+        int remain = (int) (secs - (deg * 60 * 60));
         String degStr = Conversions.zeroPadFromLeft(deg + "", 3);
         int min = remain / 60;
         String minStr = Conversions.zeroPadFromLeft(min + "", 2);
