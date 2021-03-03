@@ -26,7 +26,7 @@ public final class DecodeAsJson implements DecodeFilter {
                         + " with desc='" + h.desc + "', value='" + h.value + "':" + h.error);
             }
             if (!h.getDesc().isEmpty()) {
-                if (!b.isEmpty()) {
+                if (b.length() > 0) {
                     b.append(",\n");
                 }
                 b.append(quoted(h.getDesc()));
