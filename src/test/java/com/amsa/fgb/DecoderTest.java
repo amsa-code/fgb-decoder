@@ -254,16 +254,16 @@ public class DecoderTest {
     @Test
     public void testDecodeSearchWith15Chr() {
         assertEquals(DECODESEARCH_HTML_STRING,
-                Decoder.decodeSearch(HEXSTRING_15_CHRS, Formatter.HTML).replace("\n", ""));
+                Decoder.decodePartial(HEXSTRING_15_CHRS, Formatter.HTML).replace("\n", ""));
 
         assertEquals(DECODESEARCH_XML_STRING,
-                Decoder.decodeSearch(HEXSTRING_15_CHRS, Formatter.XML).replace("\n", ""));
+                Decoder.decodePartial(HEXSTRING_15_CHRS, Formatter.XML).replace("\n", ""));
 
         assertEquals(DECODESEARCH_XML2_STRING,
-                Decoder.decodeSearch(HEXSTRING_15_CHRS, Formatter.XML2).replace("\n", ""));
+                Decoder.decodePartial(HEXSTRING_15_CHRS, Formatter.XML2).replace("\n", ""));
 
         assertEquals(DECODESEARCH_TEXT_STRING,
-                Decoder.decodeSearch(HEXSTRING_15_CHRS, Formatter.TEXT).replace("\n", ""));
+                Decoder.decodePartial(HEXSTRING_15_CHRS, Formatter.TEXT).replace("\n", ""));
     }
 
     /**
@@ -272,16 +272,16 @@ public class DecoderTest {
     @Test
     public void testDecodeSearchWith30Chr() {
         assertEquals(DECODESEARCH_HTML_STRING,
-                Decoder.decodeSearch(HEXSTRING_30_CHRS, Formatter.HTML).replace("\n", ""));
+                Decoder.decodePartial(HEXSTRING_30_CHRS, Formatter.HTML).replace("\n", ""));
 
         assertEquals(DECODESEARCH_XML_STRING,
-                Decoder.decodeSearch(HEXSTRING_30_CHRS, Formatter.XML).replace("\n", ""));
+                Decoder.decodePartial(HEXSTRING_30_CHRS, Formatter.XML).replace("\n", ""));
 
         assertEquals(DECODESEARCH_XML2_STRING,
-                Decoder.decodeSearch(HEXSTRING_30_CHRS, Formatter.XML2).replace("\n", ""));
+                Decoder.decodePartial(HEXSTRING_30_CHRS, Formatter.XML2).replace("\n", ""));
 
         assertEquals(DECODESEARCH_TEXT_STRING,
-                Decoder.decodeSearch(HEXSTRING_30_CHRS, Formatter.TEXT).replace("\n", ""));
+                Decoder.decodePartial(HEXSTRING_30_CHRS, Formatter.TEXT).replace("\n", ""));
 
     }
 
@@ -291,23 +291,23 @@ public class DecoderTest {
     @Test
     public void testDecodeWith15Chr() {
         assertEquals(DECODE_15_CHRS_HTML_STRING,
-                Decoder.decode(HEXSTRING_15_CHRS, Formatter.HTML).replace("\n", ""));
+                Decoder.decodeFull(HEXSTRING_15_CHRS, Formatter.HTML).replace("\n", ""));
 
         assertEquals(DECODE_15_CHRS_XML_STRING,
-                Decoder.decode(HEXSTRING_15_CHRS, Formatter.XML).replace("\n", ""));
+                Decoder.decodeFull(HEXSTRING_15_CHRS, Formatter.XML).replace("\n", ""));
 
         assertEquals(DECODE_15_CHRS_XML2_STRING,
-                Decoder.decode(HEXSTRING_15_CHRS, Formatter.XML2).replace("\n", ""));
+                Decoder.decodeFull(HEXSTRING_15_CHRS, Formatter.XML2).replace("\n", ""));
 
         assertEquals(DECODE_15_CHRS_TEXT_STRING,
-                Decoder.decode(HEXSTRING_15_CHRS, Formatter.TEXT).replace("\n", ""));
+                Decoder.decodeFull(HEXSTRING_15_CHRS, Formatter.TEXT).replace("\n", ""));
 
     }
 
     @Test
     public void testDecodeWith15ChrAviation() {
         assertEquals(DECODE_15_CHRS_AVIATION_TEXT_STRING,
-                Decoder.decode(HEXSTRING_15_CHRS_AVIATION, Formatter.TEXT).replace("\n", ""));
+                Decoder.decodeFull(HEXSTRING_15_CHRS_AVIATION, Formatter.TEXT).replace("\n", ""));
     }
 
     /**
@@ -317,21 +317,21 @@ public class DecoderTest {
     public void testDecodeWith30Chr() {
 
         assertEquals(DECODE_30_CHRS_XML_STRING,
-                Decoder.decode(HEXSTRING_30_CHRS, Formatter.XML).replace("\n", ""));
+                Decoder.decodeFull(HEXSTRING_30_CHRS, Formatter.XML).replace("\n", ""));
 
         assertEquals(DECODE_30_CHRS_XML2_STRING,
-                Decoder.decode(HEXSTRING_30_CHRS, Formatter.XML2).replace("\n", ""));
+                Decoder.decodeFull(HEXSTRING_30_CHRS, Formatter.XML2).replace("\n", ""));
 
         assertEquals(DECODE_30_CHRS_TEXT_STRING,
-                Decoder.decode(HEXSTRING_30_CHRS, Formatter.TEXT).replace("\n", ""));
+                Decoder.decodeFull(HEXSTRING_30_CHRS, Formatter.TEXT).replace("\n", ""));
 
         assertEquals(DECODE_30_CHRS_HTML_STRING,
-                Decoder.decode(HEXSTRING_30_CHRS, Formatter.HTML).replace("\n", ""));
+                Decoder.decodeFull(HEXSTRING_30_CHRS, Formatter.HTML).replace("\n", ""));
     }
 
     @Test
     public void testDecodeToJsonWith30Chr() {
-        assertEquals(load("/detection.json"), Decoder.decode(HEXSTRING_30_CHRS, Formatter.JSON));
+        assertEquals(load("/detection.json"), Decoder.decodeFull(HEXSTRING_30_CHRS, Formatter.JSON));
     }
 
     private static final String load(String resource) {
@@ -356,14 +356,14 @@ public class DecoderTest {
      * Tests for length of hex string which must be 15 or 30 characters.
      */
     public void testHexStringLength() {
-        assertTrue(Decoder.decodeSearch("abc", Formatter.HTML).contains(HEXSTRING_LENGTH_MSG));
-        assertTrue(Decoder.decodeSearch("abc", Formatter.XML).contains(HEXSTRING_LENGTH_MSG));
-        assertTrue(Decoder.decodeSearch("abc", Formatter.XML2).contains(HEXSTRING_LENGTH_MSG));
-        assertTrue(Decoder.decodeSearch("abc", Formatter.TEXT).contains(HEXSTRING_LENGTH_MSG));
-        assertTrue(Decoder.decode("abc", Formatter.HTML).contains(HEXSTRING_LENGTH_MSG));
-        assertTrue(Decoder.decode("abc", Formatter.XML).contains(HEXSTRING_LENGTH_MSG));
-        assertTrue(Decoder.decode("abc", Formatter.XML2).contains(HEXSTRING_LENGTH_MSG));
-        assertTrue(Decoder.decode("abc", Formatter.TEXT).contains(HEXSTRING_LENGTH_MSG));
+        assertTrue(Decoder.decodePartial("abc", Formatter.HTML).contains(HEXSTRING_LENGTH_MSG));
+        assertTrue(Decoder.decodePartial("abc", Formatter.XML).contains(HEXSTRING_LENGTH_MSG));
+        assertTrue(Decoder.decodePartial("abc", Formatter.XML2).contains(HEXSTRING_LENGTH_MSG));
+        assertTrue(Decoder.decodePartial("abc", Formatter.TEXT).contains(HEXSTRING_LENGTH_MSG));
+        assertTrue(Decoder.decodeFull("abc", Formatter.HTML).contains(HEXSTRING_LENGTH_MSG));
+        assertTrue(Decoder.decodeFull("abc", Formatter.XML).contains(HEXSTRING_LENGTH_MSG));
+        assertTrue(Decoder.decodeFull("abc", Formatter.XML2).contains(HEXSTRING_LENGTH_MSG));
+        assertTrue(Decoder.decodeFull("abc", Formatter.TEXT).contains(HEXSTRING_LENGTH_MSG));
     }
 
 }

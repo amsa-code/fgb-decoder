@@ -2,9 +2,18 @@ package com.amsa.fgb.internal;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import org.junit.Test;
+
+import com.amsa.fgb.Decoder;
+import com.amsa.fgb.Formatter;
 
 public class HexDecoderTest {
     @Test
@@ -87,5 +96,57 @@ public class HexDecoderTest {
         assertEquals("-43.508 172.492", map.get("Lat Lon").value);
         assertEquals("43 30 28S", map.get("Latitude").value);
         assertEquals("172 29 32E", map.get("Longitude").value);
+    }
+
+    @Test
+    public void testComplianceKit() throws IOException {
+        File[] files = new File("src/test/resources/compliance-kit").listFiles();
+        for (File file : files) {
+            if (file.getName().endsWith(".json")) {
+                String hex = file.getName().substring(0, file.getName().lastIndexOf("."));
+                System.out.println(hex);
+                String json = Decoder.decodeFull(hex, Formatter.JSON);
+                // TODO use Jackson for JSON equals
+                String expected = new String(Files.readAllBytes(file.toPath()),
+                        StandardCharsets.UTF_8);
+                assertEquals(expected, json);
+            }
+        }
+    }
+
+    // Enable this to regenerate the compliance kit
+    @Test
+//    @Ignore
+    public void createComplianceKitTests() throws IOException {
+        Stream<String> a = Files.lines(new File("src/test/resources/hexes.txt").toPath());
+        Stream<String> b = Files.lines(new File("src/test/resources/ids.txt").toPath());
+        File kit = new File("src/test/resources/compliance-kit");
+        delete(kit);
+        File tempKit = new File("target/compliance-kit");
+        delete(tempKit);
+        Stream.concat(a, b) //
+                .forEach(x -> {
+                    try {
+                        final String json = Decoder.decodeFull(x, Formatter.JSON);
+                        File f = new File(tempKit, x + ".json");
+                        f.getParentFile().mkdirs();
+                        f.delete();
+                        Files.write(f.toPath(), json.getBytes(StandardCharsets.UTF_8));
+                    } catch (RuntimeException e) {
+                        System.err.println(x + "\n" + e.getMessage());
+                    } catch (IOException e) {
+                        throw new UncheckedIOException(e);
+                    }
+                });
+        tempKit.renameTo(kit);
+    }
+
+    private static void delete(File file) {
+        if (file.isDirectory()) {
+            for (File f : file.listFiles()) {
+                delete(f);
+            }
+        }
+        file.delete();
     }
 }

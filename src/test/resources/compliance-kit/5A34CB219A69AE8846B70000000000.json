@@ -1,0 +1,13 @@
+{"Message Type":"User (Short)",
+"Hex Data":"5A34CB219A69AE8846B70000000000",
+"Hex Id":"B469964334D35D1",
+"Country Code":"419",
+"User Protocol Type":"Maritime",
+"Ships MMSI":"229000 (LAST 6 DIGITS OF MMSI)",
+"Specific Beacon Number":"1",
+"Spare":"00",
+"Aux. radio-locating":"121.5 MHz",
+"Error Correcting Code":"000010001101011011100",
+"Emergency Code":"Default (0)",
+"Activation Type":"Manual Activation Only",
+"Nature of Distress":"Default(0000)"}

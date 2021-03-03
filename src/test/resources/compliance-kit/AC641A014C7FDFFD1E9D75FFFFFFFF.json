@@ -1,0 +1,13 @@
+{"Message Type":"Standard Location (Long)",
+"Hex Data":"AC641A014C7FDFFD1E9D75FFFFFFFF",
+"Hex Id":"58C8340298FFBFF",
+"Country Code":"710",
+"Protocol Type":"ELT - Serial",
+"C/S Type Approval":"104",
+"Beacon Serial Number":"332",
+"Coarse Position":"DEFAULT",
+"Error Correcting Code":"101000111101001110101",
+"Spare":"FIXED VALUE",
+"Encoded Position Source":"EXTERNAL",
+"121.5 MHz Homing":"YES",
+"Long Message":"DEFAULT"}

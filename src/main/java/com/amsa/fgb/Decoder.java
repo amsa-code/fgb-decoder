@@ -8,14 +8,12 @@ public final class Decoder {
         // prevent instantiation
     }
 
-    // This is the decode that is used by the Incident Navigator SAR Search
-    public static String decodeSearch(String hexStr, Formatter formatter) {
-        return HexDecoder.decodeSearch(hexStr, formatter);
+    public static String decodePartial(String hexStr, Formatter formatter) {
+        return HexDecoder.decodePartial(hexStr, formatter);
     }
 
-    // This is the method that is used to decode the entire Hex Str.
-    public static String decode(String hexStr, Formatter formatter) {
-        return HexDecoder.decode(hexStr, formatter);
+    public static String decodeFull(String hexStr, Formatter formatter) {
+        return HexDecoder.decodeFull(hexStr, formatter);
     }
 
     static void main(String[] args) {
@@ -26,7 +24,7 @@ public final class Decoder {
         }
         String hex = args[0];
         String format = args[1];
-        String output = decode(hex, Formatter.valueOf(format.toUpperCase()));
+        String output = decodeFull(hex, Formatter.valueOf(format.toUpperCase()));
         System.out.println(output);
     }
 }
