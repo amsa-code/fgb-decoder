@@ -3,6 +3,12 @@ package com.amsa.fgb;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+
 import org.junit.Test;
 
 /**
@@ -321,6 +327,30 @@ public class DecoderTest {
 
         assertEquals(DECODE_30_CHRS_HTML_STRING,
                 Decoder.decode(HEXSTRING_30_CHRS, Formatter.HTML).replace("\n", ""));
+    }
+
+    @Test
+    public void testDecodeToJsonWith30Chr() {
+        assertEquals(load("/detection.json"),
+                Decoder.decode(HEXSTRING_30_CHRS, Formatter.JSON));
+    }
+
+    private static final String load(String resource) {
+        try (InputStream in = DecoderTest.class.getResourceAsStream(resource)) {
+            return new String(read(in), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
+
+    private static final byte[] read(InputStream in) throws IOException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        byte[] buffer = new byte[8192];
+        int n;
+        while ((n = in.read(buffer)) != -1) {
+            out.write(buffer, 0, n);
+        }
+        return out.toByteArray();
     }
 
     /**

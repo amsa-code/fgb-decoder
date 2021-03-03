@@ -72,6 +72,8 @@ public final class HexDecoder {
             f = DecodeAsXML.INSTANCE;
         } else if (formatter == Formatter.XML2) {
             f = DecodeAsXML2.INSTANCE;
+        } else if (formatter == Formatter.JSON) {
+            f = DecodeAsJson.INSTANCE;
         } else {
             // plain text
             f = DecodeAsText.INSTANCE;
