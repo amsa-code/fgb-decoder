@@ -118,6 +118,7 @@ public class HexDecoderTest {
         }
     }
 
+    @SuppressWarnings("unused")
     private static void createComplianceKitTests() throws IOException {
         Stream<String> a = Files.lines(new File("src/test/resources/hexes.txt").toPath());
         Stream<String> b = Files.lines(new File("src/test/resources/ids.txt").toPath());
