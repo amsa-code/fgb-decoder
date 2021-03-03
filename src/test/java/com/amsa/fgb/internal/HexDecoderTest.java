@@ -6,9 +6,6 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.amsa.fgb.Decoder;
-import com.amsa.fgb.Formatter;
-
 public class HexDecoderTest {
     @Test
     public void testDecodeWithRLSHasDefaultPositionOnly() {
@@ -40,7 +37,6 @@ public class HexDecoderTest {
     public void testDecodeFullHexString() {
         String hex = "9F7D4630535FEFF91E066861F0F731";
         Map<String, HexAttribute> map = HexDecoder.decodeToMap(hex);
-        System.out.println(Decoder.decode(hex, Formatter.TEXT));
         assertEquals("3EFA8C60A6BFDFF", map.get("Hex Id").value);
         assertEquals("503", map.get("Country Code").value);
         assertEquals("Return Link Service", map.get("Protocol Type").value);
