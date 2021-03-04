@@ -96,10 +96,10 @@ import java.util.List;
     }
 
     HexAttribute longMessage(String binCode, int s, int f) {
-        String v = "DEFAULT";
+        String v = "YES";
         String e = "";
 
-        return new HexAttribute("Long Message", s, f, v, e);
+        return new HexAttribute("Is Long Message Default", s, f, v, e);
     }
 
     boolean default00000000(String hexStr) {
