@@ -1,67 +1,65 @@
-Is Long Message Default	boolean
-Protocol Type	string
-RLS TAC Number	string
-RLS ID	integer
+121.5 MHz Homing	boolean
+Activation Type	string
+Additional Data Flag	string
+Additional ELT numbers	integer
+Aircraft 24 bit address Binary	string
+Aircraft 24 bit address	string?
+Aircraft CallSign	string
+Aircraft Operator	string
+Aircraft Reg. Marking	string
+Aircraft Serial Number	integer
+Aux. radio-locating	string
+BCH-2	string
+Beacon Serial Number	integer
+Beacon Type	string
+Coarse Position	string?
+Country Code	integer
+C/S cert. no. present	boolean
+C/S Type Approval number	integer
+Disabled	boolean
+Emergency Code Flag	string
+Emergency Code	string
+Encoded Position Source string
+Error Correcting Code	string
+Fine Position	string?
+Fire Flag	boolean
+Fixed bits	string
 Hex Data	string
 Hex Id	string
-Country Code	integer
-Beacon Serial Number	integer
-Aircraft 24 bit address	string?
-Aircraft 24 bit address Binary	string
-Aircraft CallSign	string
-Specific Beacon Number	string
-Aircraft Operator	string
-Aircraft Serial Number	integer
-Spare	string
-Additional Data Flag	string
-Encoded Position Source string
-121.5 MHz Homing	boolean
-National Use	string
+ID+POSN	string
+Is Long Message Default	boolean
 Latitude	number
 Longitude	number
-Error Correcting Code	string
-Nature of Distress	string
-Fire Flag	boolean
 Medical Help Flag	boolean
-Disabled	boolean
-Spare	string
-ID+POSN	string
-PDF-2	string
-BCH-2	string
-Supplementary Data	string
 Message Type	string
-Coarse Position	string?
+National Use	string
+Nature of Distress	string
 Offset Position	string?
-RLM Capability Type	string
-Fine Position	string?
-RLS Provider ID	string
-Beacon Type	string
-RLM Capability Type-1 (Auto)	boolean
-RLM Capability Type-2 (Manual)	boolean
-RLM Received Type-1 (Auto)	boolean
-RLM Received Type-2 (Manual)	boolean
-C/S Type Approval	integer
-Ship MMSI	integer
-Ship Security MMSI	integer
-Fixed bits	string
-User Protocol Type	string
-Specific ELT number	string
-Aux. radio-locating	string
-Emergency Code	string
-Activation Type	string
-Aircraft Reg. Marking	string
-Ships MMSI Last 6 digits	string
-Radio Callsign	string
-Emergency Code Flag	string
+Orbitography 4 bits	string
 Orbitography Data	string
 Orbitography ID	string
-Orbitography 4 bits	string
+PDF-2	string
+Protocol Type	string
+Radio Callsign	string
+RLM Capability Type-1 (Auto)	boolean
+RLM Capability Type-2 (Manual)	boolean
+RLM Capability Type	string
+RLM Received Type-1 (Auto)	boolean
+RLM Received Type-2 (Manual)	boolean
+RLS ID	integer
+RLS Provider ID	string
+RLS TAC Number	string
 Serial Number	integer
-C/S cert. no. present	boolean
-C/S Type approval number	integer
+Ship MMSI	integer
+Ship Security MMSI	integer
+Ships MMSI Last 6 digits	string
+Spare	string
+Specific Beacon Number	string
+Specific ELT number	string
+Supplementary Data	string
+User Protocol Type	string
 US Manufacturer ID	integer
-US Sequence No.	integer
 US Model ID.	integer
-US Run No.	integer
 US National Use	string
-Additional ELT numbers	integer
+US Run No.	integer
+US Sequence No.	integer

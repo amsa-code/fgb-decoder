@@ -205,7 +205,7 @@ abstract class StandardLocation extends BeaconProtocol {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 
-        return new HexAttribute("C/S Type Approval", s, f, v, e);
+        return new HexAttribute("C/S Type approval", s, f, v, e);
     }
 
 }
