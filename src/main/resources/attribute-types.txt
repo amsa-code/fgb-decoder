@@ -15,11 +15,12 @@ Beacon Type	string
 Coarse Position	string?
 Country Code	integer
 C/S cert. no. present	boolean
-C/S Type Approval number	integer
+C/S Type approval	integer
+C/S Type approval number	integer
 Disabled	boolean
 Emergency Code Flag	string
 Emergency Code	string
-Encoded Position Source string
+Encoded Position Source	string
 Error Correcting Code	string
 Fine Position	string?
 Fire Flag	boolean
@@ -52,7 +53,7 @@ RLS TAC Number	string
 Serial Number	integer
 Ship MMSI	integer
 Ship Security MMSI	integer
-Ships MMSI Last 6 digits	string
+Ship MMSI Last 6 Digits	string
 Spare	string
 Specific Beacon Number	string
 Specific ELT number	string

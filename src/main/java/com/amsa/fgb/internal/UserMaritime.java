@@ -109,7 +109,7 @@ class UserMaritime extends User {
         e = vE[1];
 
         if (Conversions.isNumeric(code)) {
-            d = "Ship MMSI Last 6 digits";
+            d = "Ship MMSI Last 6 Digits";
             v = code;
             // v = this.countryCode + code;
         } else {
