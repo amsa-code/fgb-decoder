@@ -80,7 +80,7 @@ class StandardLocationShipMMSI extends StandardLocation {
         String v = countryCode + mmsi;
         String e = h.getError();
 
-        return new HexAttribute("Ships MMSI", v, e);
+        return new HexAttribute("Ship MMSI", v, e);
     }
 
     private HexAttribute mmsi(String binCode, int s, int f) {
@@ -92,7 +92,7 @@ class StandardLocationShipMMSI extends StandardLocation {
             value = "0" + value;
         }
 
-        return new HexAttribute("Ships MMSI", s, f, value, e);
+        return new HexAttribute("Ship MMSI", s, f, value, e);
     }
 
     @Override

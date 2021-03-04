@@ -82,7 +82,7 @@ class UserMaritime extends User {
         e = vE[1];
 
         if (Conversions.isNumeric(code)) {
-            d = "Ships MMSI";
+            d = "Ship MMSI";
             int countryCode = this.getCountryCode(binCode, 27, 36);
             v = countryCode + code;
         } else {
@@ -109,8 +109,8 @@ class UserMaritime extends User {
         e = vE[1];
 
         if (Conversions.isNumeric(code)) {
-            d = "Ships MMSI";
-            v = code + " (LAST 6 DIGITS OF MMSI)";
+            d = "Ship MMSI Last 6 digits";
+            v = code;
             // v = this.countryCode + code;
         } else {
             d = "Radio Callsign";
