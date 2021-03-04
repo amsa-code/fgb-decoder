@@ -1,4 +1,4 @@
-Long Message	string
+Is Long Message Default	boolean
 Protocol Type	string
 RLS TAC Number	string
 RLS ID	integer
@@ -6,7 +6,7 @@ Hex Data	string
 Hex Id	string
 Country Code	integer
 Beacon Serial Number	integer
-Aircraft 24 bit address	string
+Aircraft 24 bit address	string?
 Aircraft 24 bit address Binary	string
 Aircraft CallSign	string
 Specific Beacon Number	string
