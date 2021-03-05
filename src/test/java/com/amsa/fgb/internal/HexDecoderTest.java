@@ -99,6 +99,12 @@ public class HexDecoderTest {
         assertEquals("43 30 28S", map.get("Latitude").value);
         assertEquals("172 29 32E", map.get("Longitude").value);
     }
+    
+    @Test
+    public void testDecode() {
+        String hex = "9F771CC3E7A3CE7225DEB7BD566D7E";
+        Decoder.decodeFull(hex, Formatter.JSON);
+    }
 
     @Test
     public void testComplianceKit() throws IOException {
@@ -142,7 +148,7 @@ public class HexDecoderTest {
                         Files.write(f.toPath(), json.getBytes(StandardCharsets.UTF_8),
                                 StandardOpenOption.WRITE, StandardOpenOption.CREATE);
                     } catch (RuntimeException e) {
-                        System.out.println("Errored: " + x);
+                        System.out.println("Errored: " + x +"\n" + e.getMessage());
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }

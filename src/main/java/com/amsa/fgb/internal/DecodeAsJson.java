@@ -7,7 +7,10 @@ import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 import java.util.stream.Collectors;
+
+import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
 
 public final class DecodeAsJson implements DecodeFilter {
 
@@ -59,12 +62,19 @@ public final class DecodeAsJson implements DecodeFilter {
                                 "" + getLongitudeFromCoarsePosition(h.getValue()));
                     }
                 } else if (h.getDesc().equals("Fine Position")) {
-                    //TODO unit test
+                    // TODO unit test
                     if (!h.getValue().equals("DEFAULT")) {
                         addKeyValue(b, "Fine Position Latitude",
                                 "" + toLatitude(h.getValue().substring(0, 9)));
                         addKeyValue(b, "Fine Position Longitude",
                                 "" + getLongitudeFromCoarsePosition(h.getValue().substring(10)));
+                    }
+                } else if (h.getDesc().equals("Offset Position")) {
+                    // TODO unit test
+                    if (!h.getValue().equals("DEFAULT")) {
+                        Offset offset = new Offset(h.getValue());
+                        addKeyValue(b, "Offset Position Latitude Diff", "" + offset.latDiff);
+                        addKeyValue(b, "Offset Position Longitude Diff", "" + offset.lonDiff);
                     }
                 } else {
                     addKeyValue(b, h.getDesc(), h.getValue());
@@ -74,6 +84,33 @@ public final class DecodeAsJson implements DecodeFilter {
         b.insert(0, "{");
         b.append("}");
         return b.toString();
+    }
+
+    @VisibleForTesting
+    static final class Offset {
+        final double latDiff;
+        final double lonDiff;
+
+        // TODO unit test
+        Offset(String value) {
+            // +15 20 -22 24
+            // +0 20 -0 24
+            StringTokenizer t = new StringTokenizer(value);
+            {
+                String a = t.nextToken();
+                int signLat = a.charAt(0) == '+' ? 1 : -1;
+                int latDegs = Integer.parseInt(a.substring(1));
+                int latMins = Integer.parseInt(t.nextToken());
+                this.latDiff = signLat * (latDegs + latMins / 60.0);
+            }
+            {
+                String a = t.nextToken();
+                int signLon = a.charAt(0) == '+' ? 1 : -1;
+                int lonDegs = Integer.parseInt(a.substring(1));
+                int lonMins = Integer.parseInt(t.nextToken());
+                this.lonDiff = signLon * (lonDegs + lonMins / 60.0);
+            }
+        }
     }
 
     private void addKeyValue(StringBuilder b, String key, String value) {

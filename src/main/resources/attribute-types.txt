@@ -37,7 +37,8 @@ Medical Help Flag	boolean
 Message Type	string
 National Use	string
 Nature of Distress	string
-Offset Position	string?
+Offset Position Latitude Diff	number
+Offset Position Longitude Diff	number
 Orbitography 4 bits	string
 Orbitography Data	string
 Orbitography ID	string
