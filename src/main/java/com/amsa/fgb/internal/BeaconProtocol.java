@@ -556,6 +556,8 @@ abstract class BeaconProtocol {
         return removeLeadingZeros(result);
     }
 
+    // don't make this a singleton because the protocol objects are not safe for
+    // reuse!
     public static List<BeaconProtocol> createBeaconProtocols() {
         List<BeaconProtocol> list = new ArrayList<BeaconProtocol>(35);
 
