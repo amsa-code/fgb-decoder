@@ -1,15 +1,13 @@
 {"Message Type":"Standard Location (Long)",
 "Hex Data":"96E3ADFC437FDFFBB7EF7583E0FAA8",
 "Hex Id":"2DC75BF886FFBFF",
-"Country Code":"366",
+"Country Code":366,
 "Protocol Type":"Aircraft Address",
 "Aircraft 24 bit address":"HEX: ADFC43 OCTAL: 53376103",
 "Coarse Position":"DEFAULT",
 "Error Correcting Code":"011101101111110111101",
 "Spare":"FIXED VALUE",
 "Encoded Position Source":"EXTERNAL",
-"121.5 MHz Homing":"YES",
+"121.5 MHz Homing":true,
 "Offset Position":"DEFAULT",
-"Error Correcting Code":"101010101000",
-"Latitude":"32 06 56N",
-"Longitude":"110 56 28W"}
+"Error Correcting Code":"101010101000"}

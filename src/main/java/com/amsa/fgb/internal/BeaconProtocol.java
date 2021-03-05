@@ -3,10 +3,8 @@ package com.amsa.fgb.internal;
 import java.util.ArrayList;
 import java.util.List;
 
- abstract class BeaconProtocol {
-    
-     static List<BeaconProtocol> ALL = createBeaconProtocols();
-    
+abstract class BeaconProtocol {
+
     protected boolean isUS = false;
 
     protected List<String> beaconTypeCode;
@@ -27,15 +25,9 @@ import java.util.List;
         this.lonSeconds = 0;
     }
 
-    // Virtual Method.
-    // This method should be overwritten by sub-classes.
-    // Otherwise this method is respond and will NOT be
-    // able to decode because it always returns false.
-     boolean canDecode(String binCode) {
-        return false;
-    }
+    abstract boolean canDecode(String binCode);
 
-     List<HexAttribute> decodeSearch(String hexStr) {
+    List<HexAttribute> decodeSearch(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -48,7 +40,7 @@ import java.util.List;
     // all sub-classes should call super.decode(binStr)
     // as this method will decode those bits that are
     // common to ALL protocols.
-     List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         return new ArrayList<HexAttribute>(0);
         // "ERROR - decode() called from BeaconProtocol";
     }
@@ -389,7 +381,6 @@ import java.util.List;
         int sec = remain % 60;
         String secStr = Conversions.zeroPadFromLeft(sec + "", 2);
         String v = degStr + " " + minStr + " " + secStr + direction;
-
         return new HexAttribute("Latitude", v, e);
     }
 
@@ -400,7 +391,7 @@ import java.util.List;
         final double secs;
         if (this.lonSeconds < 0) {
             direction = "W";
-            secs = this.lonSeconds * - 1;
+            secs = this.lonSeconds * -1;
         } else {
             secs = this.lonSeconds;
         }
@@ -564,8 +555,8 @@ import java.util.List;
         }
         return removeLeadingZeros(result);
     }
-    
-    private static List<BeaconProtocol> createBeaconProtocols() {
+
+    public static List<BeaconProtocol> createBeaconProtocols() {
         List<BeaconProtocol> list = new ArrayList<BeaconProtocol>(35);
 
         // All National Protocols

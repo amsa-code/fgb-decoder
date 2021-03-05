@@ -25,7 +25,6 @@ class StandardLocationAircraftAddress extends StandardLocation {
         }
 
         result.add(this.aircraft24BitAddressBinary(binCode, 41, 64));
-
         return result;
     }
 

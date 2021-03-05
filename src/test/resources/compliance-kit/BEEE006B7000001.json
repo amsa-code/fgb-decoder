@@ -1,10 +1,10 @@
 {"Message Type":"User (Format - Unknown)",
 "Hex Data":"Unknown",
 "Hex Id":"BEEE006B7000001",
-"Country Code":"503",
+"Country Code":503,
 "User Protocol Type":"Serial",
 "Beacon Type":"Maritime (Non-Float Free)",
-"C/S cert. no. present":"NO",
-"Serial Number":"6876",
+"C/S cert. no. present":false,
+"Serial Number":6876,
 "National Use":"00000000000000000000",
 "Aux. radio-locating":"121.5 MHz"}

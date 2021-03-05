@@ -19,7 +19,6 @@ public final class DecodeAsJson implements DecodeFilter {
     private DecodeAsJson() {
         // prevent instantiation externally
         attributeTypes = loadAttributeTypes();
-        System.out.println(attributeTypes);
     }
 
     private static Map<String, String> loadAttributeTypes() {
@@ -28,7 +27,6 @@ public final class DecodeAsJson implements DecodeFilter {
                 StandardCharsets.UTF_8))) {
             return br //
                     .lines() //
-                    .peek(System.out::println)
                     .map(x -> x.trim()) //
                     .filter(x -> !x.startsWith("#")) //
                     .filter(x -> !x.isEmpty()) //
@@ -68,18 +66,42 @@ public final class DecodeAsJson implements DecodeFilter {
     }
 
     private String getValue(String key, String value) {
-        String type = attributeTypes.get(key);
-        if (type == null) {
-            throw new RuntimeException("unknown type: " + key);
-        } else if (type.equals("integer")) {
-            return value;
-        } else if (type.equals("boolean")) {
-            return value.equalsIgnoreCase("YES") + "";
-        } else if (type.equals("number")) {
-            return value;
+        if (key.equals("Latitude")) {
+            return "" + toLatitude(value);
+        } else if (key.equals("Longitude")) {
+            return "" + toLongitude(value);
         } else {
-            return quoted(value);
+            String type = attributeTypes.get(key);
+            if (type == null) {
+                throw new RuntimeException("unknown type: " + key);
+            } else if (type.equals("integer")) {
+                return value;
+            } else if (type.equals("boolean")) {
+                return value.equalsIgnoreCase("YES") + "";
+            } else if (type.equals("number")) {
+                return value;
+            } else {
+                return quoted(value);
+            }
         }
+    }
+
+    private static double toLatitude(String value) {
+        int d = Integer.parseInt(value.substring(0, 2));
+        int m = Integer.parseInt(value.substring(3, 5));
+        int s = Integer.parseInt(value.substring(6, 8));
+        boolean positive = value.charAt(8) == 'N';
+        int sign = positive ? 1 : -1;
+        return sign * (d + m / 60.0 + s / 3600.0);
+    }
+
+    private static double toLongitude(String value) {
+        int d = Integer.parseInt(value.substring(0, 3));
+        int m = Integer.parseInt(value.substring(4, 6));
+        int s = Integer.parseInt(value.substring(7, 9));
+        boolean positive = value.charAt(9) == 'N';
+        int sign = positive ? 1 : -1;
+        return sign * (d + m / 60.0 + s / 3600.0);
     }
 
     private static String escape(String raw) {

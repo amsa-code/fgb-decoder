@@ -1,6 +1,7 @@
 package com.amsa.fgb.internal;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.io.File;
 import java.io.IOException;
@@ -113,7 +114,7 @@ public class HexDecoderTest {
                 // TODO use Jackson for JSON equals
                 String expected = new String(Files.readAllBytes(file.toPath()),
                         StandardCharsets.UTF_8);
-                json.equals(expected);
+                assertEquals(expected, json);
             }
         }
     }
@@ -142,7 +143,7 @@ public class HexDecoderTest {
                         Files.write(f.toPath(), json.getBytes(StandardCharsets.UTF_8),
                                 StandardOpenOption.WRITE, StandardOpenOption.CREATE);
                     } catch (RuntimeException e) {
-                        System.out.println(x + "\n" + e.getMessage());
+                        System.out.println("Errored: " + x);
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }

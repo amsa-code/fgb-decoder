@@ -1,8 +1,8 @@
 {"Message Type":"Standard Location (Format - Unknown)",
 "Hex Data":"Unknown",
 "Hex Id":"3EE8344B6AFFBFF",
-"Country Code":"503",
+"Country Code":503,
 "Protocol Type":"ELT - Serial",
-"C/S Type Approval":"104",
-"Beacon Serial Number":"9653",
+"C/S Type approval":104,
+"Beacon Serial Number":9653,
 "Coarse Position":"DEFAULT"}

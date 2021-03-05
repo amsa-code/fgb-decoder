@@ -40,7 +40,7 @@ public final class HexDecoder {
         } else {
             // Convert the Hex String into Binary Code
             String binCode = com.amsa.fgb.internal.Conversions.hexToBinary(hexStr);
-            for (BeaconProtocol proto : BeaconProtocol.ALL) {
+            for (BeaconProtocol proto : BeaconProtocol.createBeaconProtocols()) {
                 if (proto.canDecode(binCode)) {
                     return attributesFunction.apply(proto, hexStr);
                 }
