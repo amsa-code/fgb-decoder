@@ -5,9 +5,7 @@
 "Protocol Type":"ELT - Serial",
 "C/S Type approval":104,
 "Beacon Serial Number":714,
-"Coarse Position":"DEFAULT",
 "Error Correcting Code":"011001010001101011000",
-"Spare":"FIXED VALUE",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":true,
 "Is Long Message Default":true}

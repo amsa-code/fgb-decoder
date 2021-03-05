@@ -50,19 +50,49 @@ public final class DecodeAsJson implements DecodeFilter {
             if (h.error != null && !h.error.trim().isEmpty()) {
                 throw new RuntimeException("Error occurred at position " + h.getPos()
                         + " with desc='" + h.desc + "', value='" + h.value + "':" + h.error);
-            }
-            if (!h.getDesc().isEmpty()) {
-                if (b.length() > 0) {
-                    b.append(",\n");
+            } else if (!h.getDesc().isEmpty() && !h.getDesc().equals("Spare")) {
+                if (h.getDesc().equals("Coarse Position")) {
+                    if (!h.getValue().equals("DEFAULT")) {
+                        addKeyValue(b, "Coarse Position Latitude",
+                                "" + this.getLatitudeFromCoarsePosition(h.getValue()));
+                        addKeyValue(b, "Coarse Position Longitude",
+                                "" + this.getLongitudeFromCoarsePosition(h.getValue()));
+                    }
+                } else {
+                    addKeyValue(b, h.getDesc(), h.getValue());
                 }
-                b.append(quoted(h.getDesc()));
-                b.append(COLON);
-                b.append(getValue(h.getDesc(), h.getValue()));
             }
         }
         b.insert(0, "{");
         b.append("}");
         return b.toString();
+    }
+
+    private void addKeyValue(StringBuilder b, String key, String value) {
+        if (b.length() > 0) {
+            b.append(",\n");
+        }
+        b.append(quoted(key));
+        b.append(COLON);
+        b.append(getValue(key, value));
+    }
+
+    // TODO unit test
+    private static double getLatitudeFromCoarsePosition(String value) {
+        // 35 44S 115 30E
+        int d = Integer.parseInt(value.substring(0, 2));
+        int m = Integer.parseInt(value.substring(3, 5));
+        int sign = value.charAt(6) == 'N' ? 1 : -1;
+        return sign * (d + m / 60.0);
+    }
+
+    // TODO unit test
+    private static double getLongitudeFromCoarsePosition(String value) {
+        // 35 44S 115 30E
+        int d = Integer.parseInt(value.substring(7, 10));
+        int m = Integer.parseInt(value.substring(11, 13));
+        int sign = value.charAt(13) == 'E' ? 1 : -1;
+        return sign * (d + m / 60.0);
     }
 
     private String getValue(String key, String value) {
@@ -86,6 +116,7 @@ public final class DecodeAsJson implements DecodeFilter {
         }
     }
 
+    // TODO unit test
     private static double toLatitude(String value) {
         int d = Integer.parseInt(value.substring(0, 2));
         int m = Integer.parseInt(value.substring(3, 5));
@@ -95,6 +126,7 @@ public final class DecodeAsJson implements DecodeFilter {
         return sign * (d + m / 60.0 + s / 3600.0);
     }
 
+    // TODO unit test
     private static double toLongitude(String value) {
         int d = Integer.parseInt(value.substring(0, 3));
         int m = Integer.parseInt(value.substring(4, 6));

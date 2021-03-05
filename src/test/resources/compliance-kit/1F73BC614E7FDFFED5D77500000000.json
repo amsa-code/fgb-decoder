@@ -4,8 +4,6 @@
 "Country Code":503,
 "Protocol Type":"Aircraft Address",
 "Aircraft 24 bit address":"HEX: BC614E OCTAL: 57060516",
-"Coarse Position":"DEFAULT",
 "Error Correcting Code":"110110101011101011101",
-"Spare":"FIXED VALUE",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":true}

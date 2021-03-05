@@ -12,7 +12,9 @@ Aux. radio-locating	string
 BCH-2	string
 Beacon Serial Number	integer
 Beacon Type	string
-Coarse Position	string?
+Coarse Position	string
+Coarse Position Latitude	number
+Coarse Position Longitude	number
 Country Code	integer
 C/S cert. no. present	boolean
 C/S Type approval	integer

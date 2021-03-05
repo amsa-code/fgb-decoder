@@ -4,9 +4,7 @@
 "Country Code":366,
 "Protocol Type":"Aircraft Address",
 "Aircraft 24 bit address":"HEX: AAAAAA OCTAL: 52525252",
-"Coarse Position":"DEFAULT",
 "Error Correcting Code":"000001000010001111100",
-"Spare":"FIXED VALUE",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":true,
 "Is Long Message Default":true}
