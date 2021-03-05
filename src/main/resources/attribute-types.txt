@@ -12,7 +12,6 @@ Aux. radio-locating	string
 BCH-2	string
 Beacon Serial Number	integer
 Beacon Type	string
-Coarse Position	string
 Coarse Position Latitude	number
 Coarse Position Longitude	number
 Country Code	integer
@@ -24,7 +23,8 @@ Emergency Code Flag	string
 Emergency Code	string
 Encoded Position Source	string
 Error Correcting Code	string
-Fine Position	string?
+Fine Position Latitude	number
+Fine Position Longitude	number
 Fire Flag	boolean
 Fixed bits	string
 Hex Data	string

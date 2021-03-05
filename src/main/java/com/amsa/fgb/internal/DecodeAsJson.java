@@ -54,9 +54,17 @@ public final class DecodeAsJson implements DecodeFilter {
                 if (h.getDesc().equals("Coarse Position")) {
                     if (!h.getValue().equals("DEFAULT")) {
                         addKeyValue(b, "Coarse Position Latitude",
-                                "" + this.getLatitudeFromCoarsePosition(h.getValue()));
+                                "" + getLatitudeFromCoarsePosition(h.getValue()));
                         addKeyValue(b, "Coarse Position Longitude",
-                                "" + this.getLongitudeFromCoarsePosition(h.getValue()));
+                                "" + getLongitudeFromCoarsePosition(h.getValue()));
+                    }
+                } else if (h.getDesc().equals("Fine Position")) {
+                    //TODO unit test
+                    if (!h.getValue().equals("DEFAULT")) {
+                        addKeyValue(b, "Fine Position Latitude",
+                                "" + toLatitude(h.getValue().substring(0, 9)));
+                        addKeyValue(b, "Fine Position Longitude",
+                                "" + getLongitudeFromCoarsePosition(h.getValue().substring(10)));
                     }
                 } else {
                     addKeyValue(b, h.getDesc(), h.getValue());
