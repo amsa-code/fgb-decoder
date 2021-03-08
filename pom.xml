@@ -195,55 +195,34 @@
 <!--                     <argLine>@{argLine}</argLine> -->
 <!--                 </configuration> -->
 <!--             </plugin> -->
-<!--             <plugin> -->
-<!--                 <groupId>org.jacoco</groupId> -->
-<!--                 <artifactId>jacoco-maven-plugin</artifactId> -->
-<!--                 <version>${jacoco.version}</version> -->
-<!--                 <executions> -->
-<!--                     <execution> -->
-<!--                         <id>prepare-agent</id> -->
-<!--                         <goals> -->
-<!--                             <goal>prepare-agent</goal> -->
-<!--                         </goals> -->
-<!--                     </execution> -->
-<!--                     <execution> -->
-<!--                         <id>report</id> -->
-<!--                         <phase>test</phase> -->
-<!--                         <goals> -->
-<!--                             <goal>report</goal> -->
-<!--                         </goals> -->
-<!--                     </execution> -->
-<!--                     <execution> -->
-<!--                         <id>check</id> -->
-<!--                         <goals> -->
-<!--                             <goal>check</goal> -->
-<!--                         </goals> -->
-<!--                         <configuration> -->
-<!--                             <rules> -->
-<!--                                 <rule> -->
-<!--                                     <element>CLASS</element> -->
-<!--                                     <limits> -->
-<!--                                         <limit> -->
-<!--                                             <counter>LINE</counter> -->
-<!--                                             <value>COVEREDRATIO</value> -->
-<!--                                             <minimum>${line.coverage}</minimum> -->
-<!--                                         </limit> -->
-<!--                                         <limit> -->
-<!--                                             <counter>BRANCH</counter> -->
-<!--                                             <value>COVEREDRATIO</value> -->
-<!--                                             <minimum>${branch.coverage}</minimum> -->
-<!--                                         </limit> -->
-<!--                                     </limits> -->
-<!--                                     <excludes> -->
-<!--                                     <exclude>com.xyz.ClassToExclude</exclude> -->
-<!--                                     </excludes> -->
-<!--                                 </rule> -->
-<!--                             </rules> -->
-<!--                         </configuration> -->
-<!--                     </execution> -->
-<!--                 </executions> -->
-<!--             </plugin> -->
-<!--             <plugin> -->
+                 <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <!-- configure jacoco to fail the build if not 100% 
+                            coverage -->
+                        <id>check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin><!--             <plugin> -->
 <!--                 <groupId>com.github.spotbugs</groupId> -->
 <!--                 <artifactId>spotbugs-maven-plugin</artifactId> -->
 <!--                 <version>${spotbugs.version}</version> -->
