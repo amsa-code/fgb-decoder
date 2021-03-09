@@ -41,7 +41,7 @@ class StandardLocationAircraftAddress extends StandardLocation {
         result.add(this.countryCode(binCode, 27, 36));
         result.add(this.protocolType(binCode, 37, 40));
 
-        result.add(this.aircraft24BitAddress(binCode, 41, 64));
+        result.addAll(this.aircraft24BitAddress(binCode, 41, 64));
 
         result.add(this.coarsePosition(binCode, 65, 85));
 

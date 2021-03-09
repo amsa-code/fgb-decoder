@@ -196,27 +196,29 @@ abstract class BeaconProtocol {
         return new HexAttribute("Beacon Serial Number", s, f, v, e);
     }
 
-    HexAttribute aircraft24BitAddress(String binCode, int s, int f) {
+    List<HexAttribute> aircraft24BitAddress(String binCode, int s, int f) {
         String code = binCode.substring(s, f + 1);
         String e = "";
+        List<HexAttribute> list = new ArrayList<>();
         String hex = Conversions.binaryToHex(code);
         String oct = removeLeadingZeros(Conversions.binaryToOctal(code));
-        String v = "HEX: " + hex + " OCTAL: " + oct;
 
+        list.add(new HexAttribute("Aircraft 24 bit address (hex)", s, f, hex, e));
+        list.add(new HexAttribute("Aircraft 24 bit address (octal)", s, f, oct, e));
+        
         HexAttribute h = this.aircraftCallSign(binCode, s, f);
         String result = h.getValue();
         if (result.length() > 0) {
             // 13 May 2005
             // Make the output align to the rest output
-            v += "\n                                           Aircraft Reg. Marking: " + result;
+            list.add(new HexAttribute("Aircraft Reg. Marking",s, f, result, e));
         }
 
         String countryReg = Conversions.getAircraftCountryOfReg(code);
         if (countryReg.length() > 0) {
-            v += "\n                                           Country: " + countryReg;
+            list.add(new HexAttribute("Country of Registration",s, f, countryReg, e));
         }
-
-        return new HexAttribute("Aircraft 24 bit address", s, f, v, e);
+        return list;
     }
 
     HexAttribute aircraft24BitAddressBinary(String binCode, int s, int f) {

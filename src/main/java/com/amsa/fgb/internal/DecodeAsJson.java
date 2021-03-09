@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -26,14 +27,18 @@ public final class DecodeAsJson implements DecodeFilter {
 
     private static Map<String, String> loadAttributeTypes() {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(
-                DecodeAsJson.class.getResourceAsStream("/attribute-types.txt"),
-                StandardCharsets.UTF_8))) {
+                DecodeAsJson.class.getResourceAsStream("/attribute-types.txt"), StandardCharsets.UTF_8))) {
             return br //
                     .lines() //
                     .map(x -> x.trim()) //
                     .filter(x -> !x.startsWith("#")) //
                     .filter(x -> !x.isEmpty()) //
                     .map(x -> x.split("\t")) //
+                    .peek(x -> {
+                        if (x.length != 2) {
+                            throw new RuntimeException("wrong item count: " + Arrays.toString(x));
+                        }
+                    }) //
                     .collect(Collectors.toMap(x -> x[0], x -> x[1]));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
@@ -51,21 +56,18 @@ public final class DecodeAsJson implements DecodeFilter {
             HexAttribute h = v.get(i);
 
             if (h.error != null && !h.error.trim().isEmpty()) {
-                throw new RuntimeException("Error occurred at position " + h.getPos()
-                        + " with desc='" + h.desc + "', value='" + h.value + "':" + h.error);
+                throw new RuntimeException("Error occurred at position " + h.getPos() + " with desc='" + h.desc
+                        + "', value='" + h.value + "':" + h.error);
             } else if (!h.getDesc().isEmpty() && !h.getDesc().equals("Spare")) {
                 if (h.getDesc().equals("Coarse Position")) {
                     if (!h.getValue().equals("DEFAULT")) {
-                        addKeyValue(b, "Coarse Position Latitude",
-                                "" + getLatitudeFromCoarsePosition(h.getValue()));
-                        addKeyValue(b, "Coarse Position Longitude",
-                                "" + getLongitudeFromCoarsePosition(h.getValue()));
+                        addKeyValue(b, "Coarse Position Latitude", "" + getLatitudeFromCoarsePosition(h.getValue()));
+                        addKeyValue(b, "Coarse Position Longitude", "" + getLongitudeFromCoarsePosition(h.getValue()));
                     }
                 } else if (h.getDesc().equals("Fine Position")) {
                     // TODO unit test
                     if (!h.getValue().equals("DEFAULT")) {
-                        addKeyValue(b, "Fine Position Latitude",
-                                "" + toLatitude(h.getValue().substring(0, 9)));
+                        addKeyValue(b, "Fine Position Latitude", "" + toLatitude(h.getValue().substring(0, 9)));
                         addKeyValue(b, "Fine Position Longitude",
                                 "" + getLongitudeFromCoarsePosition(h.getValue().substring(10)));
                     }

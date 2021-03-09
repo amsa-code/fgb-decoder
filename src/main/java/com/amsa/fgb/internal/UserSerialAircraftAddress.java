@@ -42,7 +42,7 @@ class UserSerialAircraftAddress extends UserSerial {
 
         result.add(this.beaconType(binCode, 40, 42));
         result.add(this.cospasSarsatAppCertFlag(binCode, 43));
-        result.add(this.aircraft24BitAddress(binCode, 44, 67));
+        result.addAll(this.aircraft24BitAddress(binCode, 44, 67));
         result.add(this.eltNumber(binCode, 68, 73));
 
         if (this.cospasSarsatAppCertFlagPresent(binCode)) {

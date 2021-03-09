@@ -3,7 +3,8 @@
 "Hex Id":"3EE778C29CFFBFF",
 "Country Code":503,
 "Protocol Type":"Aircraft Address",
-"Aircraft 24 bit address":"HEX: BC614E OCTAL: 57060516",
+"Aircraft 24 bit address (hex)":"BC614E",
+"Aircraft 24 bit address (octal)":"57060516",
 "Error Correcting Code":"110110101011101011101",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":true}

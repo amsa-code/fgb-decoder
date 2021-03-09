@@ -3,7 +3,8 @@ Activation Type	string
 Additional Data Flag	string
 Additional ELT numbers	integer
 Aircraft 24 bit address Binary	string
-Aircraft 24 bit address	string?
+Aircraft 24 bit address (hex)	string
+Aircraft 24 bit address (octal)	string
 Aircraft CallSign	string
 Aircraft Operator	string
 Aircraft Reg. Marking	string
@@ -15,6 +16,7 @@ Beacon Type	string
 Coarse Position Latitude	number
 Coarse Position Longitude	number
 Country Code	integer
+Country of Registration	string
 C/S cert. no. present	boolean
 C/S Type approval	integer
 C/S Type approval number	integer
