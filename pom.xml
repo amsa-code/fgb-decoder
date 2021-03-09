@@ -215,14 +215,6 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <!-- configure jacoco to fail the build if not 100% 
-                            coverage -->
-                        <id>check</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
                 </executions>
             </plugin><!--             <plugin> -->
 <!--                 <groupId>com.github.spotbugs</groupId> -->
