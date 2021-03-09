@@ -3,8 +3,8 @@ set -e
 count=1000000
 for f in /home/dxm/files/*
 do 
+  echo ------------------------------------------
   echo $f 
-  echo -------------------
   filename=${f:16}
   dest="src/test/resources/compliance-kit/$filename"
   cp -p $f $dest 
