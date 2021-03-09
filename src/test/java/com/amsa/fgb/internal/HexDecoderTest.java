@@ -108,7 +108,7 @@ public class HexDecoderTest {
 
     @Test
     public void testComplianceKit() throws IOException {
-        createComplianceKitTests();
+//        createComplianceKitTests();
         File[] files = new File("src/test/resources/compliance-kit").listFiles();
         // ensure deterministic
         Arrays.sort(files, (a, b) -> a.getName().compareTo(b.getName()));
