@@ -1,0 +1,10 @@
+{"Message Type":"Standard Location (Short)",
+"Hex Data":"05170200007FDFFE26D2B700000000",
+"Hex Id":"0A2E040000FFBFF",
+"Country Code":81,
+"Protocol Type":"PLB - Serial",
+"C/S Type approval":8,
+"Beacon Serial Number":0,
+"Error Correcting Code":"110001001101101001010",
+"Encoded Position Source":"INTERNAL",
+"121.5 MHz Homing":true}
