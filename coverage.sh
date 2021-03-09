@@ -5,7 +5,7 @@ counter=0
 for f in $HOME/files/*
 do 
   ((counter=counter+1))
-  if (( counter < 1000)); then
+  if (( counter > 1000)); then
   echo ------------------------------------------
   filename=${f:16}
   dest="src/test/resources/compliance-kit/$filename"
