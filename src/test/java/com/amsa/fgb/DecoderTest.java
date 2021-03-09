@@ -365,5 +365,21 @@ public class DecoderTest {
         assertTrue(Decoder.decodeFull("abc", Formatter.XML2).contains(HEXSTRING_LENGTH_MSG));
         assertTrue(Decoder.decodeFull("abc", Formatter.TEXT).contains(HEXSTRING_LENGTH_MSG));
     }
+    
+    @Test(expected=IllegalArgumentException.class)
+    public void testDecoderMainWrongNumberOfArguments() {
+        Decoder.main(new String[] {});
+    }
+    
+    @Test
+    public void testDecoderMain() {
+        //TODO capture output and test result
+        Decoder.main(new String[] {HEXSTRING_30_CHRS, "JSON"});
+    }
+    
+    @Test(expected=RuntimeException.class)
+    public void testDecoderWrongLength() {
+        Decoder.decodeFull("abc", Formatter.JSON);
+    }
 
 }

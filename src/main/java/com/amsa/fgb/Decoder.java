@@ -18,9 +18,7 @@ public final class Decoder {
 
     static void main(String[] args) {
         if (args.length != 2) {
-            System.out.println("Decoder: Wrong number of arguments");
-            System.out.println("Usage: <HexStr> [<HTML|TEXT|XML>]");
-            return;
+            throw new IllegalArgumentException("Wrong number of arguments, expecting <HexString> <HTML|TEXT|XML|JSON>");
         }
         String hex = args[0];
         String format = args[1];
