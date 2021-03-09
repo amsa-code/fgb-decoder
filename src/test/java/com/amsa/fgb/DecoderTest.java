@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 
@@ -331,7 +332,8 @@ public class DecoderTest {
 
     @Test
     public void testDecodeToJsonWith30Chr() {
-        assertEquals(load("/detection.json"), Decoder.decodeFull(HEXSTRING_30_CHRS, Formatter.JSON));
+        assertEquals(load("/detection.json"),
+                Decoder.decodeFull(HEXSTRING_30_CHRS, Formatter.JSON));
     }
 
     private static final String load(String resource) {
@@ -365,19 +367,26 @@ public class DecoderTest {
         assertTrue(Decoder.decodeFull("abc", Formatter.XML2).contains(HEXSTRING_LENGTH_MSG));
         assertTrue(Decoder.decodeFull("abc", Formatter.TEXT).contains(HEXSTRING_LENGTH_MSG));
     }
-    
-    @Test(expected=IllegalArgumentException.class)
+
+    @Test(expected = IllegalArgumentException.class)
     public void testDecoderMainWrongNumberOfArguments() {
         Decoder.main(new String[] {});
     }
-    
+
     @Test
     public void testDecoderMain() {
-        //TODO capture output and test result
-        Decoder.main(new String[] {HEXSTRING_30_CHRS, "JSON"});
+        // TODO capture output and test result
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        PrintStream out = new PrintStream(bytes);
+        PrintStream previous = System.out;
+        System.setOut(out);
+        Decoder.main(new String[] { HEXSTRING_30_CHRS, "JSON" });
+        System.setOut(previous);
+        assertEquals(load("/detection.json").trim(),
+                new String(bytes.toByteArray(), StandardCharsets.UTF_8).trim());
     }
-    
-    @Test(expected=RuntimeException.class)
+
+    @Test(expected = RuntimeException.class)
     public void testDecoderWrongLength() {
         Decoder.decodeFull("abc", Formatter.JSON);
     }
