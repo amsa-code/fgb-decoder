@@ -1,5 +1,7 @@
 package com.amsa.fgb.internal;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,9 +22,10 @@ public class CreateComplianceKitMain {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         long[] count = new long[1];
         long[] errors = new long[1];
-        File file = new File("/home/dxm/beacons.txt");
-        File files = new File("target/files");
-        files.mkdirs();
+        String home = System.getProperty("user.home");
+        File file = new File(home, "beacons.txt");
+        File files = new File(home, "files");
+        assertTrue(files.mkdirs());
         Arrays.stream(files.listFiles()).forEach(File::delete);
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
             br.lines() //
