@@ -4,7 +4,6 @@ count=`(mvn jacoco:prepare-agent test jacoco:report >/dev/null && cat  target/si
 for f in /home/dxm/files/*
 do 
   echo ------------------------------------------
-  echo $f 
   filename=${f:16}
   dest="src/test/resources/compliance-kit/$filename"
   cp -p $f $dest 
