@@ -59,7 +59,7 @@ Ship Security MMSI	integer
 Ship MMSI Last 6 Digits	string
 Spare	string
 Specific Beacon Number	string
-Specific ELT number	string
+Specific ELT number	integer
 Supplementary Data	string
 User Protocol Type	string
 US Manufacturer ID	integer

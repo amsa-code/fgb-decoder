@@ -3,7 +3,7 @@
 "Hex Id":"0418040000FFBFF",
 "Country Code":32,
 "Protocol Type":"Ship Security MMSI",
-"Ship Security MMSI":008192,
+"Ship Security MMSI":8192,
 "Fixed bits":"0000",
 "Error Correcting Code":"111000100101000111101",
 "Encoded Position Source":"INTERNAL",

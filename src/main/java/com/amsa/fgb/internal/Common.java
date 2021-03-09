@@ -181,7 +181,7 @@ class Common {
     static Position position(String binCode, int start, int length, int secondsPerUnit) {
         final int lonLength;
         // if odd number of bits then lon gets one more than lat
-        if (length % 2 == 1) {
+        if (length % 2 != 0) {
             lonLength = floorDiv(length, 2) + 1;
         } else {
             lonLength = length / 2;

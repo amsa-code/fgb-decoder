@@ -35,7 +35,7 @@ class UserAviation extends User {
         result.add(this.protocolType(binCode, 37, 39));
 
         result.add(this.aircraftRegistrationMarking(binCode, 40, 81));
-        result.add(this.specificELTIdentifier(binCode, 82, 83));
+        result.add(this.specificELTIdentifier(binCode, 82));
         result.add(this.auxRadioLocating(binCode, 84, 85));
 
         if (hexStr.length() > 15) {

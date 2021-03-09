@@ -150,11 +150,11 @@ public final class DecodeAsJson implements DecodeFilter {
             if (type == null) {
                 throw new RuntimeException("unknown type: " + key);
             } else if (type.equals("integer")) {
-                return value;
+                return Integer.parseInt(value) + "";
             } else if (type.equals("boolean")) {
                 return value.equalsIgnoreCase("YES") + "";
             } else if (type.equals("number")) {
-                return value;
+                return Double.parseDouble(value) + "";
             } else {
                 return quoted(value);
             }

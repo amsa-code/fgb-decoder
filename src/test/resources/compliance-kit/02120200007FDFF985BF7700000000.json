@@ -3,7 +3,7 @@
 "Hex Id":"0424040000FFBFF",
 "Country Code":33,
 "Protocol Type":"Maritime MMSI",
-"Ship MMSI":008192,
+"Ship MMSI":8192,
 "Specific Beacon Number":"0",
 "Error Correcting Code":"001100001011011111101",
 "Encoded Position Source":"INTERNAL",

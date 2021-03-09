@@ -73,27 +73,21 @@ abstract class User extends BeaconProtocol {
     }
 
     // This method is called by UserAviation.java
-    HexAttribute specificELTIdentifier(String binCode, int s, int f) {
-        String v = binCode.substring(s, f + 1);
+    HexAttribute specificELTIdentifier(String binCode, int s) {
+        String v = binCode.substring(s, s + 2);
         String e = "";
 
-        if (v.length() == 2) {
+        final int code ;
             if (v.equals("00")) {
-                v = "0";
+                code = 0;
             } else if (v.equals("01")) {
-                v = "1";
+                code = 1;
             } else if (v.equals("10")) {
-                v = "2";
-            } else if (v.equals("11")) {
-                v = "3";
+                code = 2;
             } else {
-                v += " (Non-Spec)";
-            }
-        } else {
-            v += " (Non-Spec)";
-        }
-
-        return new HexAttribute("Specific ELT number", s, f, v, e);
+                code = 3;
+            } 
+        return new HexAttribute("Specific ELT number", s,  s + 1, code, e);
     }
 
     // This method is called by UserAviation.java, UserMaritime.java and

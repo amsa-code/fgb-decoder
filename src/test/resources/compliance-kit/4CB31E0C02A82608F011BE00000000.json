@@ -4,7 +4,7 @@
 "Country Code":203,
 "User Protocol Type":"Aviation",
 "Aircraft Reg. Marking":"OE-5658",
-"Specific ELT number":"0",
+"Specific ELT number":0,
 "Aux. radio-locating":"121.5 MHz",
 "Error Correcting Code":"000111100000001000110",
 "Emergency Code":"Present (1)",
