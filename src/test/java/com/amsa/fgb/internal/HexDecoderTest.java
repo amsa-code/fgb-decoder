@@ -130,11 +130,11 @@ public class HexDecoderTest {
         Stream<String> b = Files.lines(new File("src/test/resources/ids.txt").toPath());
         File kit = new File("src/test/resources/compliance-kit");
         if (kit.exists()) {
-            delete(kit);
+            Util.delete(kit);
         }
         File tempKit = new File("target/compliance-kit");
         if (tempKit.exists()) {
-            delete(tempKit);
+            Util.delete(tempKit);
         }
         Stream.concat(a, b) //
                 // ensure deterministic
@@ -156,14 +156,4 @@ public class HexDecoderTest {
         tempKit.renameTo(kit);
     }
 
-    private static void delete(File file) {
-        if (file.isDirectory()) {
-            for (File f : file.listFiles()) {
-                delete(f);
-            }
-        }
-        if (!file.delete()) {
-            throw new RuntimeException("delete failed of " + file);
-        }
-    }
 }
