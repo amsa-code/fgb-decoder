@@ -6,6 +6,7 @@ do
   echo ------------------------------------------
   filename=${f:16}
   dest="src/test/resources/compliance-kit/$filename"
+  if [ ! -f "$dest" ]; then
   cp -p $f $dest 
   echo added $dest
   previous=$count
@@ -15,5 +16,6 @@ do
     echo removing $filename because missed coverage did not reduce 
     count=$previous
     rm $dest 
+  fi
   fi
 done
