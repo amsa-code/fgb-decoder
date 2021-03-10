@@ -57,6 +57,9 @@ public enum AttributeType {
     , AUX_RADIO_LOCATING("Aux. radio-locating") //
     , EMERGENCY_CODE("Emergency Code") //
     , ACTIVATION_TYPE("Activation Type") //
+    , AIRCRAFT_REG_MARKING("Aircraft Reg. Marking") //
+    , RADIO_CALLSIGN("Radio Callsign") //
+    , SHIP_MMSI_LAST_6_DIGITS("Ship MMSI Last 6 Digits") //
     ;
 
     private final String name;

@@ -79,7 +79,7 @@ class UserAviation extends User {
         if (e != null && e.length() > 0)
             e = "\nWARNING - SUSPECT NON-SPEC IN AIRCRAFT REG. MARKING\n" + e;
 
-        return new HexAttribute("Aircraft Reg. Marking", s, f, v, e);
+        return new HexAttribute(AttributeType.AIRCRAFT_REG_MARKING, s, f, v, e);
     }
 
     // This overidding method will be called by User.java

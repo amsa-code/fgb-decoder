@@ -11,7 +11,7 @@ class UserMaritime extends User {
     }
 
     @Override
-     List<HexAttribute> decodePartial(String hexStr) {
+    List<HexAttribute> decodePartial(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -24,7 +24,7 @@ class UserMaritime extends User {
     }
 
     @Override
-     List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
 
         String binCode = Conversions.hexToBinary(hexStr);
 
@@ -70,23 +70,22 @@ class UserMaritime extends User {
     }
 
     private HexAttribute getMMSI(String binCode, int s, int f) {
-        String d = "";
+        final AttributeType d;
         String v = "";
         String e = "";
 
         // 11 May 2005
-        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(),
-                binCode.substring(s, f + 1), 6);
+        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f + 1), 6);
 
         String code = vE[0];
         e = vE[1];
 
         if (Conversions.isNumeric(code)) {
-            d = "Ship MMSI";
+            d = AttributeType.SHIP_MMSI;
             int countryCode = this.getCountryCode(binCode, 27, 36);
             v = countryCode + code;
         } else {
-            d = "Radio Callsign";
+            d = AttributeType.RADIO_CALLSIGN;
             // 24 June 2005
             // Don't use double quote
             // v = "\"" + code + "\"" ;
@@ -97,23 +96,22 @@ class UserMaritime extends User {
     }
 
     private HexAttribute mmsi(String binCode, int s, int f) {
-        String d = "";
+        final AttributeType d;
         String v = "";
         String e = "";
 
         // 11 May 2005
-        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(),
-                binCode.substring(s, f + 1), 6);
+        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f + 1), 6);
 
         String code = vE[0];
         e = vE[1];
 
         if (Conversions.isNumeric(code)) {
-            d = "Ship MMSI Last 6 Digits";
+            d = AttributeType.SHIP_MMSI_LAST_6_DIGITS;
             v = code;
             // v = this.countryCode + code;
         } else {
-            d = "Radio Callsign";
+            d = AttributeType.RADIO_CALLSIGN;
 
             // 24 June 2005, Double quote is not used any more
             // v = "\"" + code + "\"" ;
@@ -121,7 +119,7 @@ class UserMaritime extends User {
         }
 
         if (e != null && e.length() > 0)
-            e = "\nWARNING - SUSPECT NON-SPEC IN " + d.toUpperCase() + "\n" + e;
+            e = "\nWARNING - SUSPECT NON-SPEC IN " + d.toString().toUpperCase() + "\n" + e;
 
         return new HexAttribute(d, s, f, v, e);
     }
