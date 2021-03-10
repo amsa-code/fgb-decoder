@@ -415,36 +415,13 @@ import java.util.Map.Entry;
         // The binCode in this case is the 24-bit Aircraft Address.
         // In the above hashMap there are values of length 14,12,9,6,4
         // We will take it in turn.
-        String code = binCode.substring(0, 14 - 1);
-        String r = airRegMap.get(code);
-        if (r != null) {
-            return r;
-        } else {
-            code = binCode.substring(0, 12 - 1);
-            r = airRegMap.get(code);
+        for (int length: new int[] {14, 12, 9, 6, 4}) {
+            String code = binCode.substring(0, length - 1);
+            String r = airRegMap.get(code);
             if (r != null) {
                 return r;
-            } else {
-                code = binCode.substring(0, 9 - 1);
-                r = airRegMap.get(code);
-                if (r != null) {
-                    return r;
-                } else {
-                    code = binCode.substring(0, 6 - 1);
-                    r = airRegMap.get(code);
-                    if (r != null) {
-                        return r;
-                    } else {
-                        code = binCode.substring(0, 4 - 1);
-                        r = airRegMap.get(code);
-                        if (r != null) {
-                            return r;
-                        }
-                    }
-                }
-            }
+            }   
         }
-
         return "";
     }
 
