@@ -41,7 +41,7 @@ abstract class StandardLocation extends BeaconProtocol {
      List<HexAttribute> decode(String hexStr) {
         List<HexAttribute> result = new ArrayList<HexAttribute>();
         String errorMsg = "ERROR: decode() called from StandardLocation";
-        result.add(new HexAttribute("", 0, "", errorMsg));
+        result.add(new HexAttribute(AttributeType.ERROR, 0, "", errorMsg));
 
         return result;
     }
@@ -88,7 +88,7 @@ abstract class StandardLocation extends BeaconProtocol {
             this.actualLatLong = true;
         }
 
-        return new HexAttribute("Coarse Position", s, f, v, e);
+        return new HexAttribute(AttributeType.COARSE_POSITION, s, f, v, e);
     }
 
     private String lat(String binCode) {
@@ -197,7 +197,7 @@ abstract class StandardLocation extends BeaconProtocol {
             pos = pos + " " + sec2;
         }
 
-        return new HexAttribute("Offset Position", s, f, pos, e);
+        return new HexAttribute(AttributeType.OFFSET_POSITION, s, f, pos, e);
     }
 
     // C/S Type Approval</TD><TD>b41-50</TD><TD>115</TD></TR>
@@ -205,7 +205,7 @@ abstract class StandardLocation extends BeaconProtocol {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 
-        return new HexAttribute("C/S Type approval", s, f, v, e);
+        return new HexAttribute(AttributeType.CS_TYPE_APPROVAL, s, f, v, e);
     }
 
 }

@@ -80,7 +80,7 @@ class StandardLocationShipSecurityAlertSystem extends StandardLocation {
         String v = countryCode + mmsi;
         String e = h.getError();
 
-        return new HexAttribute("Ship MMSI", v, e);
+        return new HexAttribute(AttributeType.SHIP_MMSI, v, e);
     }
 
     private HexAttribute mmsi(String binCode, int s, int f) {
@@ -92,7 +92,7 @@ class StandardLocationShipSecurityAlertSystem extends StandardLocation {
             value = "0" + value;
         }
 
-        return new HexAttribute("Ship Security MMSI", s, f, value, e);
+        return new HexAttribute(AttributeType.SHIP_SECURITY_MMSI, s, f, value, e);
     }
 
     private HexAttribute securityFixedBits(String binCode, int s, int f) {
@@ -103,6 +103,6 @@ class StandardLocationShipSecurityAlertSystem extends StandardLocation {
         if (!v.equals("0000"))
             v += " (Non-Spec)";
 
-        return new HexAttribute("Fixed bits", s, f, v, e);
+        return new HexAttribute(AttributeType.FIXED_BITS, s, f, v, e);
     }
 }

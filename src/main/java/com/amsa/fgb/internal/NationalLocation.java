@@ -267,7 +267,7 @@ abstract class NationalLocation extends BeaconProtocol {
             pos = pos + " " + sec2;
         }
 
-        return new HexAttribute(AttributeType.HEX_OFFSET, s, f, pos, e);
+        return new HexAttribute(AttributeType.OFFSET_POSITION, s, f, pos, e);
     }
 
 }

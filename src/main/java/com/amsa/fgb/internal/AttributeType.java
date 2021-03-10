@@ -47,6 +47,11 @@ public enum AttributeType {
     , RLM_CAPABILITY_TYPE_2_MANUAL("RLM Capability Type-2 (Manual)") //
     , RLM_RECEIVED_TYPE_1_AUTO("RLM Received Type-1 (Auto)") //
     , RLM_RECEIVED_TYPE_2_MANUAL("RLM Received Type-2 (Manual)") //
+    , OFFSET_POSITION("Offset Position") //
+    , CS_TYPE_APPROVAL("C/S Type approval") //
+    , SHIP_MMSI("Ship MMSI") //
+    , SHIP_SECURITY_MMSI("Ship Security MMSI") //
+    , FIXED_BITS("Fixed bits") //
     ;
 
     private final String name;
