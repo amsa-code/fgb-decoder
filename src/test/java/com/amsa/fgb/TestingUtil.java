@@ -1,6 +1,7 @@
 package com.amsa.fgb;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -46,6 +47,17 @@ public final class TestingUtil {
             return m.readTree(json1).equals(m.readTree(json2));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
+        }
+    }
+    
+    public static void delete(File file) {
+        if (file.isDirectory()) {
+            for (File f : file.listFiles()) {
+                delete(f);
+            }
+        }
+        if (!file.delete()) {
+            throw new RuntimeException("delete failed of " + file);
         }
     }
 

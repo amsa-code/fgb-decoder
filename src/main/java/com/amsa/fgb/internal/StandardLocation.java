@@ -74,11 +74,9 @@ abstract class StandardLocation extends BeaconProtocol {
         return new HexAttribute(AttributeType.HEX_ID, s, s + binHexId.length() - 1, v, e);
     }
 
-    HexAttribute coarsePosition(String binCode, int s, int f) {
+    List<HexAttribute> coarsePositions(String binCode, int s, int f) {
         String code = binCode.substring(s, f + 1);
         String v = "";
-        String e = "";
-
         if (code.equals("011111111101111111111")) {
             v = "DEFAULT";
         } else {
@@ -87,8 +85,7 @@ abstract class StandardLocation extends BeaconProtocol {
             v = lat + " " + lon;
             this.actualLatLong = true;
         }
-
-        return new HexAttribute(AttributeType.COARSE_POSITION, s, f, v, e);
+        return Util.coarsePositionAttributes(v, s, f);
     }
 
     private String lat(String binCode) {

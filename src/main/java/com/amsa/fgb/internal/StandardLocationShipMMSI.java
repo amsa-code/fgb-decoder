@@ -39,7 +39,7 @@ class StandardLocationShipMMSI extends StandardLocation {
         result.add(this.mmsi(binCode, 41, 60));
         result.add(this.specificBeaconNumber(binCode, 61, 64));
 
-        result.add(this.coarsePosition(binCode, 65, 85));
+        result.addAll(this.coarsePositions(binCode, 65, 85));
 
         if (hexStr.length() > 15) {
             // result.add(this.bch1(binCode, 86, 106));

@@ -43,7 +43,7 @@ class StandardLocationAircraftAddress extends StandardLocation {
 
         result.addAll(this.aircraft24BitAddress(binCode, 41, 64));
 
-        result.add(this.coarsePosition(binCode, 65, 85));
+        result.addAll(this.coarsePositions(binCode, 65, 85));
 
         if (hexStr.length() > 15) {
             result = this.bch1(result, binCode, hexId);

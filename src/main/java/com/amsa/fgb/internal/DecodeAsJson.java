@@ -59,19 +59,13 @@ public final class DecodeAsJson implements DecodeFilter {
                 throw new RuntimeException("Error occurred at position " + h.getPos() + " with desc='" + h.desc
                         + "', value='" + h.value + "':" + h.error);
             } else if (!h.getDesc().isEmpty() && !h.getDesc().equals("Spare")) {
-                if (h.getDesc().equals("Coarse Position")) {
-                    if (!h.getValue().equals("DEFAULT")) {
-                        addKeyValue(b, "Coarse Position Latitude", "" + getLatitudeFromCoarsePosition(h.getValue()));
-                        addKeyValue(b, "Coarse Position Longitude", "" + getLongitudeFromCoarsePosition(h.getValue()));
-                    }
-                } else if (h.getDesc().equals("Fine Position")) {
+                if (h.getDesc().equals(AttributeType.FINE_POSITION.toString())) {
                     // TODO unit test
                     if (!h.getValue().equals("DEFAULT")) {
                         addKeyValue(b, "Fine Position Latitude", "" + toLatitude(h.getValue().substring(0, 9)));
-                        addKeyValue(b, "Fine Position Longitude",
-                                "" + getLongitudeFromCoarsePosition(h.getValue().substring(10)));
+                        addKeyValue(b, "Fine Position Longitude", "" + toLongitude(h.getValue().substring(10)));
                     }
-                } else if (h.getDesc().equals("Offset Position")) {
+                } else if (h.getDesc().equals(AttributeType.OFFSET_POSITION.toString())) {
                     // TODO unit test
                     if (!h.getValue().equals("DEFAULT")) {
                         Offset offset = new Offset(h.getValue());
@@ -122,24 +116,6 @@ public final class DecodeAsJson implements DecodeFilter {
         b.append(quoted(key));
         b.append(COLON);
         b.append(getValue(key, value));
-    }
-
-    // TODO unit test
-    private static double getLatitudeFromCoarsePosition(String value) {
-        // 35 44S 115 30E
-        int d = Integer.parseInt(value.substring(0, 2));
-        int m = Integer.parseInt(value.substring(3, 5));
-        int sign = value.charAt(6) == 'N' ? 1 : -1;
-        return sign * (d + m / 60.0);
-    }
-
-    // TODO unit test
-    private static double getLongitudeFromCoarsePosition(String value) {
-        // 35 44S 115 30E
-        int d = Integer.parseInt(value.substring(7, 10));
-        int m = Integer.parseInt(value.substring(11, 13));
-        int sign = value.charAt(13) == 'E' ? 1 : -1;
-        return sign * (d + m / 60.0);
     }
 
     private String getValue(String key, String value) {

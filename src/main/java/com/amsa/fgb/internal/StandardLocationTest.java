@@ -26,7 +26,7 @@ class StandardLocationTest extends StandardLocation {
 
         result.add(this.nationalUse(binCode, 41, 64));
 
-        result.add(this.coarsePosition(binCode, 65, 85));
+        result.addAll(this.coarsePositions(binCode, 65, 85));
 
         if (hexStr.length() > 15) {
             // result.add(this.bch1(binCode, 86, 106));

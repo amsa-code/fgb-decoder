@@ -26,7 +26,7 @@ class StandardLocationEpirb extends StandardLocation {
         result.add(this.cospatSarsatTypeApp(binCode, 41, 50));
         result.add(this.beaconSerialNumber(binCode, 51, 64));
 
-        result.add(this.coarsePosition(binCode, 65, 85));
+        result.addAll(this.coarsePositions(binCode, 65, 85));
 
         if (hexStr.length() > 15) {
             // result.add(this.bch1(binCode, 86, 106));

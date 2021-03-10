@@ -18,8 +18,6 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-import com.amsa.fgb.internal.Util;
-
 /**
  * Tests the decoding methods of {@link Decoder}
  * 
@@ -360,7 +358,7 @@ public class DecoderTest {
 
     @Test
     public void testComplianceKit() throws IOException {
-        createComplianceKitTests();
+        // createComplianceKitTests();
         File[] files = new File("src/test/resources/compliance-kit").listFiles();
         // ensure deterministic
         Arrays.sort(files, (a, b) -> a.getName().compareTo(b.getName()));
@@ -386,11 +384,11 @@ public class DecoderTest {
                 .map(x -> x.getName().substring(0, x.getName().indexOf("."))).sorted().distinct();
         File kit = new File("src/test/resources/compliance-kit");
         if (kit.exists()) {
-            Util.delete(kit);
+            TestingUtil.delete(kit);
         }
         File tempKit = new File("target/compliance-kit");
         if (tempKit.exists()) {
-            Util.delete(tempKit);
+            TestingUtil.delete(tempKit);
         }
         hexes
                 // ensure deterministic

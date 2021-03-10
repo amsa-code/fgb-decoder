@@ -16,7 +16,8 @@ public enum AttributeType {
     BCH_2("BCH-2"), //
     BEACON_SERIAL_NUMBER("Beacon Serial Number", JsonType.INTEGER), //
     BEACON_TYPE("Beacon Type"), //
-    COARSE_POSITION("Coarse Position"), //
+    COARSE_POSITION_LATITUDE("Coarse Position Latitude"), //
+    COARSE_POSITION_LONGITUDE("Coarse Position Longitude"), //
     COUNTRY_CODE("Country Code", JsonType.INTEGER), //
     COUNTRY_OF_REGISTRATION("Country of Registration"), //
     CS_CERT_NO_PRESENT("C/S cert. no. present", JsonType.BOOLEAN), //

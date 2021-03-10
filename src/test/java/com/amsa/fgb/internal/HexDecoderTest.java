@@ -20,7 +20,6 @@ public class HexDecoderTest {
         assertEquals("EPIRB", map.get("Beacon Type").value);
         assertEquals("1099", map.get("RLS TAC Number").value);
         assertEquals("333", map.get("RLS ID").value);
-        assertEquals("DEFAULT", map.get("Coarse Position").value);
     }
 
     @Test    public void testDecodeWithRLSHasPosition() {
@@ -32,7 +31,8 @@ public class HexDecoderTest {
         assertEquals("EPIRB", map.get("Beacon Type").value);
         assertEquals("1001", map.get("RLS TAC Number").value);
         assertEquals("11111", map.get("RLS ID").value);
-        assertEquals("32 30S 160 00E", map.get("Coarse Position").value);
+        assertEquals("-32.5", map.get("Coarse Position Latitude").value);
+        assertEquals("160.0", map.get("Coarse Position Longitude").value);
     }
 
     @Test

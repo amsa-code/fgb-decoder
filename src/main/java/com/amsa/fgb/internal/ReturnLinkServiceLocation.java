@@ -35,7 +35,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
     }
 
     @Override
-     boolean canDecode(String binCode) {
+    boolean canDecode(String binCode) {
         String protocol = binCode.substring(25, 27);
 
         // System.out.println("Trying RLS Location " + name);
@@ -49,7 +49,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
     }
 
     @Override
-     List<HexAttribute> decodePartial(String hexStr) {
+    List<HexAttribute> decodePartial(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -73,7 +73,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
     // Change from "hexId()" to hexIdWithDefaultLocation()"
     // All beacon types conform to the following decode.
     @Override
-     List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -89,7 +89,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         result.add(beaconType(binCode, 41, 42));
         result.add(this.rlsTacNumber(binCode, 41, 52));
         result.add(this.rlsId(binCode, 53, 66));
-        result.add(this.coarsePositionAttribute(binCode));
+        result.addAll(this.coarsePositionAttributes(binCode));
 
         if (hexStr.length() > 15) {
             // result.add(this.bch1(binCode, 86, 106));
@@ -131,14 +131,13 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
     private List<HexAttribute> finePositionAttributes(String binCode) {
         Position p = finePosition(binCode);
         if (p == null) {
-            return Collections
-                    .singletonList(new HexAttribute(AttributeType.FINE_POSITION, 115, 132, "DEFAULT", ""));
+            return Collections.singletonList(new HexAttribute(AttributeType.FINE_POSITION, 115, 132, "DEFAULT", ""));
         } else {
             actualLatLong = true;
             latSeconds = p.latSeconds();
             lonSeconds = p.lonSeconds();
             List<HexAttribute> list = new ArrayList<HexAttribute>();
-            //TODO break this up
+            // TODO break this up
             list.add(new HexAttribute(AttributeType.LAT_LON, 115, 132, p.latLongDecimal(), ""));
             return list;
         }
@@ -242,13 +241,12 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         }
     }
 
-    private HexAttribute coarsePositionAttribute(String binCode) {
+    private List<HexAttribute> coarsePositionAttributes(String binCode) {
         String v = "";
-        String e = "";
         Position p = coarsePosition(binCode);
 
         if (p == null) {
-            v = "DEFAULT";
+            return Collections.emptyList();
         } else {
             String lat = p.latText();
             String lon = p.lonText();
@@ -256,10 +254,8 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
             lonSeconds = p.lonSeconds();
             v = lat + " " + lon;
             this.actualLatLong = true;
+            return Util.coarsePositionAttributes(v, COARSE_POSITION_START, COARSE_POSITION_FINISH);
         }
-
-        return new HexAttribute(AttributeType.COARSE_POSITION, COARSE_POSITION_START, COARSE_POSITION_FINISH, v,
-                e);
     }
 
     private static Position finePosition(String binCode) {

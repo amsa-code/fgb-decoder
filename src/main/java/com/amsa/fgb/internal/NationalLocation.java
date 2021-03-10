@@ -84,7 +84,7 @@ abstract class NationalLocation extends BeaconProtocol {
         result.add(this.protocolType(binCode, 37, 40));
 
         result.add(this.beaconSerialNumber(binCode, 41, 58));
-        result.add(this.coarsePosition(binCode, 59, 85));
+        result.addAll(this.coarsePosition(binCode, 59, 85));
 
         if (hexStr.length() > 15) {
             // result.add(this.bch1(binCode, 86, 106));
@@ -153,7 +153,7 @@ abstract class NationalLocation extends BeaconProtocol {
     }
 
     // Coarse Position</TD><TD>b59-85</TD><TD>35 44S 115 30E
-    private HexAttribute coarsePosition(String binCode, int s, int f) { // b59-85
+    private List<HexAttribute> coarsePosition(String binCode, int s, int f) { // b59-85
         String code = binCode.substring(s, f + 1);
         String v = "";
         String e = "";
@@ -166,8 +166,7 @@ abstract class NationalLocation extends BeaconProtocol {
             v = lat + " " + lon;
             this.actualLatLong = true;
         }
-
-        return new HexAttribute(AttributeType.COARSE_POSITION, s, f, v, e);
+        return Util.coarsePositionAttributes(v, s, f);
     }
 
     // Check the * 2 (it used to be *4)

@@ -25,7 +25,7 @@ class StandardLocationAircraftOperator extends StandardLocation {
         result.add(this.aircraftOperator(binCode, 41, 55));
         result.add(this.aircraftSerialNumber(binCode, 56, 64));
 
-        result.add(this.coarsePosition(binCode, 65, 85));
+        result.addAll(this.coarsePositions(binCode, 65, 85));
 
         if (hexStr.length() > 15) {
             result = this.bch1(result, binCode, hexId);
