@@ -156,7 +156,6 @@ abstract class NationalLocation extends BeaconProtocol {
     private List<HexAttribute> coarsePosition(String binCode, int s, int f) { // b59-85
         String code = binCode.substring(s, f + 1);
         String v = "";
-        String e = "";
 
         if (code.equals("011111110000001111111100000")) {
             v = "DEFAULT";
