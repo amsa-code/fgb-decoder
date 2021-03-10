@@ -5,7 +5,7 @@ import java.util.List;
 
 class Util {
 
- // TODO unit test
+    // TODO unit test
     private static double getLatitudeFromCoarsePosition(String value) {
         // 35 44S 115 30E
         int d = Integer.parseInt(value.substring(0, 2));
@@ -22,13 +22,15 @@ class Util {
         int sign = value.charAt(13) == 'E' ? 1 : -1;
         return sign * (d + m / 60.0);
     }
-    
+
     static List<HexAttribute> coarsePositionAttributes(String v, int start, int finish) {
         List<HexAttribute> list = new ArrayList<>();
-        list.add(new HexAttribute(AttributeType.COARSE_POSITION_LATITUDE, start,
-                finish, Util.getLatitudeFromCoarsePosition(v) + "", ""));
-        list.add(new HexAttribute(AttributeType.COARSE_POSITION_LONGITUDE, start,
-                finish, Util.getLongitudeFromCoarsePosition(v) + "", ""));
+        if (!v.equals("DEFAULT")) {
+            list.add(new HexAttribute(AttributeType.COARSE_POSITION_LATITUDE, start, finish,
+                    Util.getLatitudeFromCoarsePosition(v) + "", ""));
+            list.add(new HexAttribute(AttributeType.COARSE_POSITION_LONGITUDE, start, finish,
+                    Util.getLongitudeFromCoarsePosition(v) + "", ""));
+        }
         return list;
     }
 }
