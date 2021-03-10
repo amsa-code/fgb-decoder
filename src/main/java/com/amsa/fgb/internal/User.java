@@ -42,7 +42,7 @@ abstract class User extends BeaconProtocol {
      List<HexAttribute> decode(String hexStr) {
         List<HexAttribute> result = new ArrayList<HexAttribute>();
         String errorMsg = "ERROR: decode() called from User";
-        result.add(new HexAttribute("", 0, "", errorMsg));
+        result.add(new HexAttribute(AttributeType.ERROR, 0, "", errorMsg));
 
         return result;
     }
@@ -54,7 +54,7 @@ abstract class User extends BeaconProtocol {
         String name = this.getName();
         String e = "";
 
-        return new HexAttribute("User Protocol Type", s, f, name, e);
+        return new HexAttribute(AttributeType.USER_PROTOCOL_TYPE, s, f, name, e);
     }
 
     // Get the messageType. Is it LONG or SHORT?
@@ -87,7 +87,7 @@ abstract class User extends BeaconProtocol {
             } else {
                 code = 3;
             } 
-        return new HexAttribute("Specific ELT number", s,  s + 1, code, e);
+        return new HexAttribute(AttributeType.SPECIFIC_ELT_NUMBER, s,  s + 1, code, e);
     }
 
     // This method is called by UserAviation.java, UserMaritime.java and
@@ -99,7 +99,7 @@ abstract class User extends BeaconProtocol {
         if (v.length() == 2 && !v.equals("00"))
             v += " (Non-Spec)";
 
-        return new HexAttribute("Spare", s, f, v, e);
+        return new HexAttribute(AttributeType.SPARE, s, f, v, e);
     }
 
     HexAttribute auxRadioLocating(String binCode, int s, int f) {
@@ -116,7 +116,7 @@ abstract class User extends BeaconProtocol {
         } else {
             v = "Other device(s)";
         }
-        return new HexAttribute("Aux. radio-locating", s, f, v, e);
+        return new HexAttribute(AttributeType.AUX_RADIO_LOCATING, s, f, v, e);
     }
 
     private HexAttribute emergencyCode(String binCode, int s) {
@@ -133,7 +133,7 @@ abstract class User extends BeaconProtocol {
             v = "Default " + str;
         }
 
-        return new HexAttribute("Emergency Code", s, v, e);
+        return new HexAttribute(AttributeType.EMERGENCY_CODE, s, v, e);
     }
 
     private boolean emergencyCodePresent(String binCode) {
@@ -149,7 +149,7 @@ abstract class User extends BeaconProtocol {
             v = "Manual Activation Only";
         }
 
-        return new HexAttribute("Activation Type", s, v, e);
+        return new HexAttribute(AttributeType.ACTIVATION_TYPE, s, v, e);
     }
 
     /*
@@ -192,7 +192,7 @@ abstract class User extends BeaconProtocol {
             latitude = degStr + " " + minStr + " 00" + p;
         }
 
-        return new HexAttribute("Latitude", s, f, latitude, e);
+        return new HexAttribute(AttributeType.LATITUDE, s, f, latitude, e);
     }
 
     HexAttribute longitude(String binCode, int s, int f) { // b120-132
@@ -230,7 +230,7 @@ abstract class User extends BeaconProtocol {
             longitude = degStr + " " + minStr + " 00" + p;
         }
 
-        return new HexAttribute("Longitude", s, f, longitude, e);
+        return new HexAttribute(AttributeType.LONGITUDE, s, f, longitude, e);
     }
 
     // For bit 107-112. See C/S T.001 Figure A4
@@ -243,7 +243,7 @@ abstract class User extends BeaconProtocol {
 
         if (binCode.charAt(107) == '0') {
             String v = "Default(" + binCode.substring(109, 113) + ")";
-            result.add(new HexAttribute("Nature of Distress", 109, 112, v, ""));
+            result.add(new HexAttribute(AttributeType.NATURE_OF_DISTRESS, 109, 112, v, ""));
         } else
             result = allEmergencyCodes(result, binCode);
 

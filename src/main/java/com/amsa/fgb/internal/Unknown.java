@@ -25,7 +25,7 @@ class Unknown extends BeaconProtocol {
      List<HexAttribute> decode(String hexStr) {
         List<HexAttribute> result = new ArrayList<HexAttribute>();
         String errorMsg = "Unable to decode this hex string";
-        result.add(new HexAttribute("", 0, "", errorMsg));
+        result.add(new HexAttribute(AttributeType.ERROR, 0, "", errorMsg));
 
         return result;
     }

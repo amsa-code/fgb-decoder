@@ -52,6 +52,11 @@ public enum AttributeType {
     , SHIP_MMSI("Ship MMSI") //
     , SHIP_SECURITY_MMSI("Ship Security MMSI") //
     , FIXED_BITS("Fixed bits") //
+    , USER_PROTOCOL_TYPE("User Protocol Type") //
+    , SPECIFIC_ELT_NUMBER("Specific ELT number") //
+    , AUX_RADIO_LOCATING("Aux. radio-locating") //
+    , EMERGENCY_CODE("Emergency Code") //
+    , ACTIVATION_TYPE("Activation Type") //
     ;
 
     private final String name;
