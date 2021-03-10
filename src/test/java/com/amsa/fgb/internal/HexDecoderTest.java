@@ -22,7 +22,8 @@ public class HexDecoderTest {
         assertEquals("333", map.get("RLS ID").value);
     }
 
-    @Test    public void testDecodeWithRLSHasPosition() {
+    @Test
+    public void testDecodeWithRLSHasPosition() {
         String hex = "3EFA8035B3D0540";
         Map<String, HexAttribute> map = HexDecoder.decodeToMap(hex);
         assertEquals("3EFA8035B3BFDFF", map.get("Hex Id").value);
@@ -51,7 +52,6 @@ public class HexDecoderTest {
         assertEquals("NO", map.get("RLM Received Type-1 (Auto)").value);
         assertEquals("NO", map.get("RLM Received Type-2 (Manual)").value);
         assertEquals("Galileo", map.get("RLS Provider ID").value);
-        assertEquals("DEFAULT", map.get("Fine Position").value);
         assertEquals("011100110001", map.get("Error Correcting Code").value);
     }
 
@@ -86,11 +86,10 @@ public class HexDecoderTest {
         assertEquals("NO", map.get("RLM Received Type-1 (Auto)").value);
         assertEquals("NO", map.get("RLM Received Type-2 (Manual)").value);
         assertEquals("Galileo", map.get("RLS Provider ID").value);
-        assertEquals("-43.508 172.492", map.get("Lat Lon").value);
-        assertEquals("43 30 28S", map.get("Latitude").value);
-        assertEquals("172 29 32E", map.get("Longitude").value);
+        assertEquals(-43.507778, Double.parseDouble(map.get("Latitude").value), 0.0001);
+        assertEquals(172.492222, Double.parseDouble(map.get("Longitude").value), 0.0001);
     }
-    
+
     @Test
     public void testDecode() {
         String hex = "9F771CC3E7A3CE7225DEB7BD566D7E";

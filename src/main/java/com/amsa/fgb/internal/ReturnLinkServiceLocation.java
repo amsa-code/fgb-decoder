@@ -131,14 +131,14 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
     private List<HexAttribute> finePositionAttributes(String binCode) {
         Position p = finePosition(binCode);
         if (p == null) {
-            return Collections.singletonList(new HexAttribute(AttributeType.FINE_POSITION, 115, 132, "DEFAULT", ""));
+            return Collections.emptyList();
         } else {
             actualLatLong = true;
             latSeconds = p.latSeconds();
             lonSeconds = p.lonSeconds();
             List<HexAttribute> list = new ArrayList<HexAttribute>();
-            // TODO break this up
-            list.add(new HexAttribute(AttributeType.LAT_LON, 115, 132, p.latLongDecimal(), ""));
+            list.add(new HexAttribute(AttributeType.LATITUDE, 115, 132, p.latDecimal() + "", ""));
+            list.add(new HexAttribute(AttributeType.LONGITUDE, 115, 132, p.lonDecimal() + "", ""));
             return list;
         }
     }

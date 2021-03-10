@@ -47,8 +47,8 @@ public class DecoderTest {
             + "<TR><TD>US National Use</TD><TD>b76-83</TD><TD>01100001</TD></TR>"
             + "<TR><TD>Error Correcting Code</TD><TD>b86-106</TD><TD>001111111110101000100</TD></TR>"
             + "<TR><TD>Encoded Position Source</TD><TD>b107</TD><TD>EXTERNAL</TD></TR>"
-            + "<TR><TD>Latitude</TD><TD>b108-119</TD><TD>32 44 00N</TD></TR>"
-            + "<TR><TD>Longitude</TD><TD>b120-132</TD><TD>117 12 00W</TD></TR>"
+            + "<TR><TD>Latitude</TD><TD>b108-119</TD><TD>32.733333333333334</TD></TR>"
+            + "<TR><TD>Longitude</TD><TD>b120-132</TD><TD>-117.2</TD></TR>"
             + "<TR><TD>Error Correcting Code</TD><TD>b133-144</TD><TD>000000101101</TD></TR>" + "</table>" + "<table>"
             + "</table>" + "</body>" + "</html>";
     private static final String HEXSTRING_LENGTH_MSG = "HEX STRING MUST BE 15 OR 30 CHARACTERS IN LENGTH";
@@ -72,8 +72,8 @@ public class DecoderTest {
             + "<Name>US National Use</Name><Position>b76-83</Position><Value>01100001</Value></Line>" + "<Line>"
             + "<Name>Error Correcting Code</Name><Position>b86-106</Position><Value>001111111110101000100</Value></Line>"
             + "<Line>" + "<Name>Encoded Position Source</Name><Position>b107</Position><Value>EXTERNAL</Value></Line>"
-            + "<Line>" + "<Name>Latitude</Name><Position>b108-119</Position><Value>32 44 00N</Value></Line>" + "<Line>"
-            + "<Name>Longitude</Name><Position>b120-132</Position><Value>117 12 00W</Value></Line>" + "<Line>"
+            + "<Line>" + "<Name>Latitude</Name><Position>b108-119</Position><Value>32.733333333333334</Value></Line>" + "<Line>"
+            + "<Name>Longitude</Name><Position>b120-132</Position><Value>-117.2</Value></Line>" + "<Line>"
             + "<Name>Error Correcting Code</Name><Position>b133-144</Position><Value>000000101101</Value></Line>";
     private static final String DECODE_30_CHRS_XML_STRING = "<?xml version=\"1.0\"?>" + "<Hexdecode>"
             + "<MessageType><Position>b25-26</Position><Value>User Location (Long)</Value></MessageType>"
@@ -94,8 +94,8 @@ public class DecoderTest {
             + "<USNationalUse><Position>b76-83</Position><Value>01100001</Value></USNationalUse>"
             + "<ErrorCorrectingCode><Position>b86-106</Position><Value>001111111110101000100</Value></ErrorCorrectingCode>"
             + "<EncodedPositionSource><Position>b107</Position><Value>EXTERNAL</Value></EncodedPositionSource>"
-            + "<Latitude><Position>b108-119</Position><Value>32 44 00N</Value></Latitude>"
-            + "<Longitude><Position>b120-132</Position><Value>117 12 00W</Value></Longitude>"
+            + "<Latitude><Position>b108-119</Position><Value>32.733333333333334</Value></Latitude>"
+            + "<Longitude><Position>b120-132</Position><Value>-117.2</Value></Longitude>"
             + "<ErrorCorrectingCode><Position>b133-144</Position><Value>000000101101</Value></ErrorCorrectingCode>"
             + "</Hexdecode>";
     private static final String DECODE_30_CHRS_TEXT_STRING = //
@@ -117,8 +117,8 @@ public class DecoderTest {
                     + "US National Use               b76-83       01100001" //
                     + "Error Correcting Code         b86-106      001111111110101000100" //
                     + "Encoded Position Source       b107         EXTERNAL" //
-                    + "Latitude                      b108-119     32 44 00N" //
-                    + "Longitude                     b120-132     117 12 00W" //
+                    + "Latitude                      b108-119     32.733333333333334" //
+                    + "Longitude                     b120-132     -117.2" //
                     + "Error Correcting Code         b133-144     000000101101";
     private static final String DECODE_15_CHRS_AVIATION_TEXT_STRING = //
             "Message Type                  b25-26       User (Format - Unknown)" //

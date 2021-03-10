@@ -5,7 +5,7 @@
 "Protocol Type":"Ship Security MMSI",
 "Ship Security MMSI":496495,
 "Fixed bits":"1000 (Non-Spec)",
-"Coarse Position Latitude":-6.0,
+"Coarse Position Latitude":6.0,
 "Coarse Position Longitude":-192.0,
 "Error Correcting Code":"000000101110100110111",
 "Encoded Position Source":"EXTERNAL",

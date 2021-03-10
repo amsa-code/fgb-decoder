@@ -5,11 +5,11 @@
 "Protocol Type":"Aircraft Address",
 "Aircraft 24 bit address (hex)":"4BF8A7",
 "Aircraft 24 bit address (octal)":"22774247",
-"Coarse Position Latitude":-51.25,
+"Coarse Position Latitude":51.25,
 "Coarse Position Longitude":232.25,
 "Error Correcting Code":"010111110101011101100",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":false,
 "Is Long Message Default":true,
 "Latitude":51.25,
-"Longitude":-232.25}
+"Longitude":232.25}

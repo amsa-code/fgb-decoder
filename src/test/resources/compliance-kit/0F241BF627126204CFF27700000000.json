@@ -5,7 +5,7 @@
 "Protocol Type":"ELT - Serial",
 "C/S Type approval":111,
 "Beacon Serial Number":13863,
-"Coarse Position Latitude":-18.25,
+"Coarse Position Latitude":18.25,
 "Coarse Position Longitude":-16.0,
 "Error Correcting Code":"100110011111111001001",
 "Encoded Position Source":"INTERNAL",

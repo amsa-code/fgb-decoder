@@ -59,13 +59,7 @@ public final class DecodeAsJson implements DecodeFilter {
                 throw new RuntimeException("Error occurred at position " + h.getPos() + " with desc='" + h.desc
                         + "', value='" + h.value + "':" + h.error);
             } else if (!h.getDesc().isEmpty() && !h.getDesc().equals(AttributeType.SPARE.toString())) {
-                if (h.getDesc().equals(AttributeType.FINE_POSITION.toString())) {
-                    // TODO unit test
-                    if (!h.getValue().equals("DEFAULT")) {
-                        addKeyValue(b, "Fine Position Latitude", "" + Util.getLatitudeFromFinePosition(h.getValue()));
-                        addKeyValue(b, "Fine Position Longitude", "" + Util.getLongitudeFromFinePosition(h.getValue()));
-                    }
-                } else if (h.getDesc().equals(AttributeType.OFFSET_POSITION.toString())) {
+                if (h.getDesc().equals(AttributeType.OFFSET_POSITION.toString())) {
                     // TODO unit test
                     if (!h.getValue().equals("DEFAULT")) {
                         Offset offset = new Offset(h.getValue());
@@ -119,23 +113,18 @@ public final class DecodeAsJson implements DecodeFilter {
     }
 
     private String getValue(String key, String value) {
-        if (key.equals("Latitude")) {
-            return "" + Util.toLatitude(value);
-        } else if (key.equals("Longitude")) {
-            return "" + Util.toLongitude(value);
+
+        String type = attributeTypes.get(key);
+        if (type == null) {
+            throw new RuntimeException("unknown type: " + key);
+        } else if (type.equals("integer")) {
+            return Integer.parseInt(value) + "";
+        } else if (type.equals("boolean")) {
+            return value.equalsIgnoreCase("YES") + "";
+        } else if (type.equals("number")) {
+            return Double.parseDouble(value) + "";
         } else {
-            String type = attributeTypes.get(key);
-            if (type == null) {
-                throw new RuntimeException("unknown type: " + key);
-            } else if (type.equals("integer")) {
-                return Integer.parseInt(value) + "";
-            } else if (type.equals("boolean")) {
-                return value.equalsIgnoreCase("YES") + "";
-            } else if (type.equals("number")) {
-                return Double.parseDouble(value) + "";
-            } else {
-                return quoted(value);
-            }
+            return quoted(value);
         }
     }
 

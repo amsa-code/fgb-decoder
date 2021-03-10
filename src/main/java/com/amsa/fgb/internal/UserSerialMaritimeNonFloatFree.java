@@ -55,8 +55,9 @@ class UserSerialMaritimeNonFloatFree extends UserSerial {
                     if (this.default00000000(hexStr)) {
                         result.add(this.longMessage(binCode, 113, 144));
                     } else {
-                        result.add(this.latitude(binCode, 108, 119));
-                        result.add(this.longitude(binCode, 120, 132));
+                        List<HexAttribute> res = result;
+                        this.latitude(binCode, 108, 119).ifPresent(x -> res.add(x));
+                        this.longitude(binCode, 120, 132).ifPresent(x -> res.add(x));
                         result.add(this.bch2(binCode, 133, 144));
                     }
                 }

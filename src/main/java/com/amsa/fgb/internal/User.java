@@ -2,6 +2,7 @@ package com.amsa.fgb.internal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 abstract class User extends BeaconProtocol {
 
@@ -24,7 +25,7 @@ abstract class User extends BeaconProtocol {
     }
 
     @Override
-     boolean canDecode(String binCode) {
+    boolean canDecode(String binCode) {
         String beaconCode = binCode.substring(25, 27);
         // System.out.println("Trying User " + name);
 
@@ -39,7 +40,7 @@ abstract class User extends BeaconProtocol {
 
     // This method should be overwritten by sub-classes
     @Override
-     List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         List<HexAttribute> result = new ArrayList<HexAttribute>();
         String errorMsg = "ERROR: decode() called from User";
         result.add(new HexAttribute(AttributeType.ERROR, 0, "", errorMsg));
@@ -77,17 +78,17 @@ abstract class User extends BeaconProtocol {
         String v = binCode.substring(s, s + 2);
         String e = "";
 
-        final int code ;
-            if (v.equals("00")) {
-                code = 0;
-            } else if (v.equals("01")) {
-                code = 1;
-            } else if (v.equals("10")) {
-                code = 2;
-            } else {
-                code = 3;
-            } 
-        return new HexAttribute(AttributeType.SPECIFIC_ELT_NUMBER, s,  s + 1, code, e);
+        final int code;
+        if (v.equals("00")) {
+            code = 0;
+        } else if (v.equals("01")) {
+            code = 1;
+        } else if (v.equals("10")) {
+            code = 2;
+        } else {
+            code = 3;
+        }
+        return new HexAttribute(AttributeType.SPECIFIC_ELT_NUMBER, s, s + 1, code, e);
     }
 
     // This method is called by UserAviation.java, UserMaritime.java and
@@ -158,79 +159,41 @@ abstract class User extends BeaconProtocol {
      * ******************************************************
      */
 
-    HexAttribute latitude(String binCode, int s, int f) {
+    Optional<HexAttribute> latitude(String binCode, int s, int f) {
         // Latitude b108-119 1270 60S (NON-SPEC)
-        String latitude = "";
         String e = "";
         String def = "011111110000";
         String bits = binCode.substring(s, f + 1);
         if (bits.equals(def)) {
-            latitude = "DEFAULT";
+            return Optional.empty();
         } else {
             int deg = Conversions.binaryToDecimal(bits.substring(1, 8));
-            String degStr = deg + "";
-            for (int i = 0; i < (2 - degStr.length()); i++) {
-                degStr = "0" + degStr;
-            }
-
             this.latSeconds = deg * 60 * 60;
-
             int min = Conversions.binaryToDecimal(bits.substring(8, 12)) * 4;
-            String minStr = min + "";
-            int minStrLen = minStr.length();
-            for (int i = 0; i < (2 - minStrLen); i++) {
-                minStr = "0" + minStr;
-            }
-
             this.latSeconds += min * 60;
-
-            char p = 'N';
-            if (bits.charAt(0) == '1') {
-                p = 'S';
-                // this.latSeconds = this.latSeconds * -1;
-            }
-            latitude = degStr + " " + minStr + " 00" + p;
+            int sign = bits.charAt(0) == '1' ? -1 : 1;
+            this.latSeconds = sign * latSeconds;
         }
 
-        return new HexAttribute(AttributeType.LATITUDE, s, f, latitude, e);
+        return Optional.of(new HexAttribute(AttributeType.LATITUDE, s, f, latSeconds / 3600.0 + "", e));
     }
 
-    HexAttribute longitude(String binCode, int s, int f) { // b120-132
+    Optional<HexAttribute> longitude(String binCode, int s, int f) { // b120-132
         // Longitude b120-132 255 32W (NON-SPEC)
-        String longitude = "";
         String e = "";
         String def = "0111111110000";
         String bits = binCode.substring(s, f + 1);
         if (bits.equals(def)) {
-            longitude = "DEFAULT";
+            return Optional.empty();
         } else {
             int deg = Conversions.binaryToDecimal(bits.substring(1, 9));
-            String degStr = deg + "";
-            int degStrLen = degStr.length();
-            for (int i = 0; i < (3 - degStrLen); i++) {
-                degStr = "0" + degStr;
-            }
-
             this.lonSeconds = deg * 60 * 60;
-
             int min = Conversions.binaryToDecimal(bits.substring(9, 13)) * 4;
-            String minStr = min + "";
-            int minStrLen = minStr.length();
-            for (int i = 0; i < (2 - minStrLen); i++) {
-                minStr = "0" + minStr;
-            }
-
             this.lonSeconds += min * 60;
-
-            char p = 'E';
-            if (bits.charAt(0) == '1') {
-                p = 'W';
-                // this.lonSeconds = this.lonSeconds * -1;
-            }
-            longitude = degStr + " " + minStr + " 00" + p;
+            int sign = bits.charAt(0) == '1' ? -1 : 1;
+            this.lonSeconds = sign * lonSeconds;
         }
-
-        return new HexAttribute(AttributeType.LONGITUDE, s, f, longitude, e);
+        return Optional.of(new HexAttribute(AttributeType.LONGITUDE, s, f, this.lonSeconds / 3600.0 + "", e));
     }
 
     // For bit 107-112. See C/S T.001 Figure A4

@@ -10,7 +10,7 @@ class Util {
         // 35 44S 115 30E
         int d = Integer.parseInt(value.substring(0, 2));
         int m = Integer.parseInt(value.substring(3, 5));
-        int sign = value.charAt(6) == 'N' ? 1 : -1;
+        int sign = value.charAt(5) == 'N' ? 1 : -1;
         return sign * (d + m / 60.0);
     }
 
@@ -46,7 +46,7 @@ class Util {
         int d = Integer.parseInt(value.substring(0, 3));
         int m = Integer.parseInt(value.substring(4, 6));
         int s = Integer.parseInt(value.substring(7, 9));
-        boolean positive = value.charAt(9) == 'N';
+        boolean positive = value.charAt(9) == 'E';
         int sign = positive ? 1 : -1;
         return sign * (d + m / 60.0 + s / 3600.0);
     }
@@ -61,4 +61,5 @@ class Util {
         }
         return list;
     }
+    
 }

@@ -29,7 +29,6 @@ public enum AttributeType {
     ENCODED_POSITION_SOURCE("Encoded Position Source"), //
     ERROR(""), //
     ERROR_CORRECTING_CODE("Error Correcting Code"), //
-    FINE_POSITION("Fine Position"), //
     FIRE_FLAG("Fire Flag", JsonType.BOOLEAN), //
     FIXED_BITS("Fixed bits"), //
     HEX_DATA("Hex Data"), //
@@ -38,7 +37,6 @@ public enum AttributeType {
     ID_POSN("ID+POSN"), //
     IS_LONG_MESSAGE_DEFAULT("Is Long Message Default", JsonType.BOOLEAN), //
     LATITUDE("Latitude", JsonType.NUMBER), //
-    LAT_LON("Lat Lon"), //
     LONGITUDE("Longitude", JsonType.NUMBER), //
     MEDICAL_HELP_FLAG("Medical Help Flag", JsonType.BOOLEAN), //
     MESSAGE_TYPE("Message Type"), //

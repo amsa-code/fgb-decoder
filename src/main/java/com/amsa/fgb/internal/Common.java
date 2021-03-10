@@ -29,8 +29,8 @@ class Common {
                     mec + "(Fire/explosion) " + binCode.substring(109, 113), "");
             break;
         case 2:
-            maritimeEmergencyCodes = new HexAttribute(name, 109, 112,
-                    mec + "(Flooding) " + binCode.substring(109, 113), "");
+            maritimeEmergencyCodes = new HexAttribute(name, 109, 112, mec + "(Flooding) " + binCode.substring(109, 113),
+                    "");
             break;
         case 3:
             maritimeEmergencyCodes = new HexAttribute(name, 109, 112,
@@ -45,8 +45,8 @@ class Common {
                     mec + "(Listing, in danger of capsizing) " + binCode.substring(109, 113), "");
             break;
         case 6:
-            maritimeEmergencyCodes = new HexAttribute(name, 109, 112,
-                    mec + "(Sinking) " + binCode.substring(109, 113), "");
+            maritimeEmergencyCodes = new HexAttribute(name, 109, 112, mec + "(Sinking) " + binCode.substring(109, 113),
+                    "");
             break;
         case 7:
             maritimeEmergencyCodes = new HexAttribute(name, 109, 112,
@@ -57,8 +57,8 @@ class Common {
                     mec + "(Abandoning ship) " + binCode.substring(109, 113), "");
             break;
         default:
-            maritimeEmergencyCodes = new HexAttribute(name, 109, 112,
-                    mec + "(spare) " + binCode.substring(109, 113), "");
+            maritimeEmergencyCodes = new HexAttribute(name, 109, 112, mec + "(spare) " + binCode.substring(109, 113),
+                    "");
         }
 
         result.add(maritimeEmergencyCodes);
@@ -157,10 +157,18 @@ class Common {
             return lonText;
         }
 
+        double latDecimal() {
+            return latSeconds / 3600.0;
+        }
+
+        double lonDecimal() {
+            return lonSeconds / 3600.0;
+        }
+
         String latLongDecimal() {
             DecimalFormat latDf = new DecimalFormat("00.000");
             DecimalFormat lonDf = new DecimalFormat("000.000");
-            return latDf.format(latSeconds / 3600.00) + " " + lonDf.format(lonSeconds / 3600.0);
+            return latDf.format(latDecimal()) + " " + lonDf.format(lonDecimal());
         }
 
     }
@@ -212,8 +220,7 @@ class Common {
         final int lonSeconds;
         final String lonText;
         {
-            String lonBits = binCode.substring(start + latLength + 1,
-                    start + latLength + lonLength);
+            String lonBits = binCode.substring(start + latLength + 1, start + latLength + lonLength);
             int code = Conversions.binaryToDecimal(lonBits);
             final int codeSeconds = code * secondsPerUnit;
             final int deg = codeSeconds / 3600;

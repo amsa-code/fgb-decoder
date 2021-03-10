@@ -4,7 +4,7 @@
 "Country Code":366,
 "Protocol Type":"Test",
 "National Use":"000110011000000011101011",
-"Coarse Position Latitude":-50.0,
+"Coarse Position Latitude":50.0,
 "Coarse Position Longitude":-119.5,
 "Error Correcting Code":"100100010100011100111",
 "Encoded Position Source":"INTERNAL",
