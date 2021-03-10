@@ -1,0 +1,12 @@
+{"Message Type":"User (Short)",
+"Hex Data":"4D5462AC9A69AE8FB4B42300000000",
+"Hex Id":"9AA8C55934D35D1",
+"Country Code":213,
+"User Protocol Type":"Maritime",
+"Ship MMSI Last 6 Digits":"862000",
+"Specific Beacon Number":"1",
+"Aux. radio-locating":"121.5 MHz",
+"Error Correcting Code":"111101101001011010000",
+"Emergency Code":"Present (1)",
+"Activation Type":"Manual Activation Only",
+"Nature of Distress":"Maritime Emergency Codes(Collision) 0011"}

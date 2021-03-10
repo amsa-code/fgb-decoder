@@ -1,0 +1,13 @@
+{"Message Type":"Standard Location (Short)",
+"Hex Data":"19CE001BC7A27A7CB48FB2FFFFFFFF",
+"Hex Id":"339C00378EFFBFF",
+"Country Code":412,
+"Protocol Type":"Test",
+"National Use":"000000000001101111000111",
+"Coarse Position Latitude":-34.25,
+"Coarse Position Longitude":-211.75,
+"Error Correcting Code":"100101101001000111110",
+"Encoded Position Source":"INTERNAL",
+"121.5 MHz Homing":false,
+"Latitude":-34.25,
+"Longitude":-211.75}
