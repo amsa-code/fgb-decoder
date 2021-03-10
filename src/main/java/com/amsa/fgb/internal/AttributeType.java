@@ -64,6 +64,14 @@ public enum AttributeType {
     , ORBITOGRAPHY_DATA("Orbitography Data") //
     , ORBITOGRAPHY_ID("Orbitography ID") //
     , ORBITOGRAPHY_4_BITS("Orbitography 4 bits") //
+    , SERIAL_NUMBER("Serial Number") //
+    , CS_CERT_NO_PRESENT("C/S cert. no. present") //
+    , CS_TYPE_APPROVAL_NUMBER("C/S Type approval number") //
+    , US_MANUFACTURER_ID("US Manufacturer ID") //
+    , US_SEQUENCE_NO("US Sequence No.") //
+    , US_MODEL_ID("US Model ID") //
+    , US_RUN_NO("US Run No.") //
+    , US_NATIONAL_USE("US National Use") //
     ;
 
     private final String name;

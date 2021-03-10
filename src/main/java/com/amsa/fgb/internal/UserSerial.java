@@ -45,14 +45,14 @@ class UserSerial extends User {
         String v = serialBeaconType;
         String e = "";
 
-        return new HexAttribute("Beacon Type", s, f, v, e);
+        return new HexAttribute(AttributeType.BEACON_TYPE, s, f, v, e);
     }
 
     HexAttribute serialNumber(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 
-        return new HexAttribute("Serial Number", s, f, v, e);
+        return new HexAttribute(AttributeType.SERIAL_NUMBER, s, f, v, e);
     }
 
     boolean cospasSarsatAppCertFlagPresent(String binCode) {
@@ -68,49 +68,49 @@ class UserSerial extends User {
             v = "NO";
         }
 
-        return new HexAttribute("C/S cert. no. present", s, v, e);
+        return new HexAttribute(AttributeType.CS_CERT_NO_PRESENT, s, v, e);
     }
 
     HexAttribute cospasSarsatAppCertNumber(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 
-        return new HexAttribute("C/S Type approval number", s, f, v, e);
+        return new HexAttribute(AttributeType.CS_TYPE_APPROVAL_NUMBER, s, f, v, e);
     }
 
     HexAttribute usManufacturerId(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 
-        return new HexAttribute("US Manufacturer ID", s, f, v, e);
+        return new HexAttribute(AttributeType.US_MANUFACTURER_ID, s, f, v, e);
     }
 
     HexAttribute usSeqNo(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 
-        return new HexAttribute("US Sequence No.", s, f, v, e);
+        return new HexAttribute(AttributeType.US_SEQUENCE_NO, s, f, v, e);
     }
 
     HexAttribute usModelId(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 
-        return new HexAttribute("US Model ID.", s, f, v, e);
+        return new HexAttribute(AttributeType.US_MODEL_ID, s, f, v, e);
     }
 
     HexAttribute usRunNo(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 
-        return new HexAttribute("US Run No.", s, f, v, e);
+        return new HexAttribute(AttributeType.US_RUN_NO, s, f, v, e);
     }
 
     HexAttribute usNatUse(String binCode, int s, int f) {
         String v = binCode.substring(s, f + 1);
         String e = "";
 
-        return new HexAttribute("US National Use", s, f, v, e);
+        return new HexAttribute(AttributeType.US_NATIONAL_USE, s, f, v, e);
     }
 
 }

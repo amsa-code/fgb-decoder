@@ -145,7 +145,7 @@ class UserRadioCallsign extends User {
         // String vH = "\"" + v + h + "\"";
         String vH = (v + h).trim();
 
-        return new HexAttribute("Radio Callsign", s, f, vH, e);
+        return new HexAttribute(AttributeType.RADIO_CALLSIGN, s, f, vH, e);
     }
 
     // This overidding method will be called by User.java
