@@ -58,7 +58,7 @@ public final class DecodeAsJson implements DecodeFilter {
             if (h.error != null && !h.error.trim().isEmpty()) {
                 throw new RuntimeException("Error occurred at position " + h.getPos() + " with desc='" + h.desc
                         + "', value='" + h.value + "':" + h.error);
-            } else if (!h.getDesc().isEmpty() && !h.getDesc().equals("Spare")) {
+            } else if (!h.getDesc().isEmpty() && !h.getDesc().equals(AttributeType.SPARE.toString())) {
                 if (h.getDesc().equals(AttributeType.FINE_POSITION.toString())) {
                     // TODO unit test
                     if (!h.getValue().equals("DEFAULT")) {
