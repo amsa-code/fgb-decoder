@@ -1,0 +1,11 @@
+{"Message Type":"National Location (Long)",
+"Hex Data":"8E0B20595FC0FF07FC1473FFFFFFFF",
+"Hex Id":"1C1640B2BF81FE0",
+"Country Code":224,
+"Protocol Type":"Personal (PLB)",
+"Beacon Serial Number":33125,
+"Error Correcting Code":"111111111000001010001",
+"Additional Data Flag":"NATIONAL USE",
+"Encoded Position Source":"INTERNAL",
+"121.5 MHz Homing":true,
+"Is Long Message Default":true}
