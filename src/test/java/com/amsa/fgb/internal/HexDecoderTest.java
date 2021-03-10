@@ -31,8 +31,7 @@ public class HexDecoderTest {
         assertEquals("DEFAULT", map.get("Coarse Position").value);
     }
 
-    @Test
-    public void testDecodeWithRLSHasPosition() {
+    @Test    public void testDecodeWithRLSHasPosition() {
         String hex = "3EFA8035B3D0540";
         Map<String, HexAttribute> map = HexDecoder.decodeToMap(hex);
         assertEquals("3EFA8035B3BFDFF", map.get("Hex Id").value);
@@ -104,56 +103,6 @@ public class HexDecoderTest {
     public void testDecode() {
         String hex = "9F771CC3E7A3CE7225DEB7BD566D7E";
         Decoder.decodeFull(hex, Formatter.JSON);
-    }
-
-    @Test
-    public void testComplianceKit() throws IOException {
-//        createComplianceKitTests();
-        File[] files = new File("src/test/resources/compliance-kit").listFiles();
-        // ensure deterministic
-        Arrays.sort(files, (a, b) -> a.getName().compareTo(b.getName()));
-        for (File file : files) {
-            if (file.getName().endsWith(".json")) {
-                String hex = file.getName().substring(0, file.getName().lastIndexOf("."));
-                String json = Decoder.decodeFull(hex, Formatter.JSON);
-                // TODO use Jackson for JSON equals
-                String expected = new String(Files.readAllBytes(file.toPath()),
-                        StandardCharsets.UTF_8);
-                assertEquals(expected, json);
-            }
-        }
-    }
-
-    @SuppressWarnings("unused")
-    private static void createComplianceKitTests() throws IOException {
-        Stream<String> a = Files.lines(new File("src/test/resources/hexes.txt").toPath());
-        Stream<String> b = Files.lines(new File("src/test/resources/ids.txt").toPath());
-        File kit = new File("src/test/resources/compliance-kit");
-        if (kit.exists()) {
-            Util.delete(kit);
-        }
-        File tempKit = new File("target/compliance-kit");
-        if (tempKit.exists()) {
-            Util.delete(tempKit);
-        }
-        Stream.concat(a, b) //
-                // ensure deterministic
-                .sorted() //
-                .forEach(x -> {
-                    try {
-                        final String json = Decoder.decodeFull(x, Formatter.JSON);
-                        File f = new File(tempKit, x + ".json");
-                        f.getParentFile().mkdirs();
-                        f.delete();
-                        Files.write(f.toPath(), json.getBytes(StandardCharsets.UTF_8),
-                                StandardOpenOption.WRITE, StandardOpenOption.CREATE);
-                    } catch (RuntimeException e) {
-                        System.out.println("Errored: " + x +"\n" + e.getMessage());
-                    } catch (IOException e) {
-                        throw new UncheckedIOException(e);
-                    }
-                });
-        tempKit.renameTo(kit);
     }
 
 }
