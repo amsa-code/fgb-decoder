@@ -90,7 +90,7 @@ class UserMaritime extends User {
             // 24 June 2005
             // Don't use double quote
             // v = "\"" + code + "\"" ;
-            v = code;
+            v = code.trim();
         }
 
         return new HexAttribute(d, s, f, v, e);
@@ -117,7 +117,7 @@ class UserMaritime extends User {
 
             // 24 June 2005, Double quote is not used any more
             // v = "\"" + code + "\"" ;
-            v = code;
+            v = code.trim();
         }
 
         if (e != null && e.length() > 0)

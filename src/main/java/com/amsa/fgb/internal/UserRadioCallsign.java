@@ -143,7 +143,7 @@ class UserRadioCallsign extends User {
 
         // 24 June 2005, double quote is not used any more
         // String vH = "\"" + v + h + "\"";
-        String vH = v + h;
+        String vH = (v + h).trim();
 
         return new HexAttribute("Radio Callsign", s, f, vH, e);
     }
