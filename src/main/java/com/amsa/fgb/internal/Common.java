@@ -15,7 +15,7 @@ class Common {
         int bitToNum = Conversions.binaryToDecimal(binCode.substring(109, 113));
 
         String mec = "Maritime Emergency Codes";
-        String name = "Nature of Distress";
+        AttributeType name = AttributeType.NATURE_OF_DISTRESS;
 
         HexAttribute maritimeEmergencyCodes;
 
@@ -78,7 +78,7 @@ class Common {
         // This is grouped under "Nature of Distress" with the identation of 30 white
         // spaces
         // return new HexAttribute(" ", s, v, e);
-        return new HexAttribute("Fire Flag", s, v, e);
+        return new HexAttribute(AttributeType.FIRE_FLAG, s, v, e);
     }
 
     private static HexAttribute medicalHelpFlag(String binCode, int s) {
@@ -91,7 +91,7 @@ class Common {
         }
 
         // return new HexAttribute(" ", s, v, e);
-        return new HexAttribute("Medical Help Flag", s, v, e);
+        return new HexAttribute(AttributeType.MEDICAL_HELP_FLAG, s, v, e);
     }
 
     private static HexAttribute disabledFlag(String binCode, int s) {
@@ -103,7 +103,7 @@ class Common {
             v = "NO";
         }
 
-        return new HexAttribute("Disabled", s, v, e);
+        return new HexAttribute(AttributeType.DISABLED, s, v, e);
     }
 
     private static HexAttribute emergencySpare(String binCode, int s) {
@@ -115,19 +115,16 @@ class Common {
             v = binCode.charAt(s) + " (Non-Spec)";
         }
 
-        return new HexAttribute("Spare", s, v, e);
+        return new HexAttribute(AttributeType.SPARE, s, v, e);
     }
 
     // For bit 109-112 (Non-Maritime Emergency Codes). See C/S T.001 Table A5
     static List<HexAttribute> nonMaritimeEmergencyCodes(List<HexAttribute> result, String binCode) {
-        String name = "Nature of Distress";
-        result.add(new HexAttribute(name, 109, 112, binCode.substring(109, 113), ""));
-
+        result.add(new HexAttribute(AttributeType.NATURE_OF_DISTRESS, 109, 112, binCode.substring(109, 113), ""));
         result.add(fireFlag(binCode, 109));
         result.add(medicalHelpFlag(binCode, 110));
         result.add(disabledFlag(binCode, 111));
         result.add(emergencySpare(binCode, 112));
-
         return result;
     }
 

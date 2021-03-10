@@ -25,7 +25,11 @@ public enum AttributeType {
     , NATIONAL_USE("National Use") //
     , LATITUDE("Latitude") //
     , LONGITUDE("Longitude") //
-, ERROR_CORRECTING_CODE("Error Correcting Code") //
+    , ERROR_CORRECTING_CODE("Error Correcting Code") //
+    , NATURE_OF_DISTRESS("Nature of Distress") //
+    , FIRE_FLAG("Fire Flag") //
+    , MEDICAL_HELP_FLAG("Medical Help Flag") //
+    , DISABLED("Disabled") //
     ;
 
     private final String name;
