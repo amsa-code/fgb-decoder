@@ -36,7 +36,7 @@ class DecodeAsXML2 implements DecodeFilter {
 
         for (int i = 0; i < v.size(); i++) {
 
-            HexAttribute h = (HexAttribute) v.get(i);
+            HexAttribute h = v.get(i);
             String err = h.getError();
 
             String line = "";

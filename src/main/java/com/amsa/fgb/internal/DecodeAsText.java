@@ -38,7 +38,7 @@ class DecodeAsText implements DecodeFilter {
 
         // Get any errors that we might have encountered
         for (int i = 0; i < v.size(); i++) {
-            HexAttribute h = (HexAttribute) v.get(i);
+            HexAttribute h = v.get(i);
             String line = h.getError();
             if (h.error.length() > 0) {
                 data = data + line + "\n";

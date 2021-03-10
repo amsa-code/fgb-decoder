@@ -139,7 +139,7 @@ class UserRadioCallsign extends User {
         // Append the relevant elements in e2 to e
         for (int i = 0; i < h.length(); i++)
             if (h.charAt(i) == '?')
-                e += "?" + ++count + " = " + (String) e2.get(i);
+                e += "?" + ++count + " = " + e2.get(i);
 
         // 24 June 2005, double quote is not used any more
         // String vH = "\"" + v + h + "\"";

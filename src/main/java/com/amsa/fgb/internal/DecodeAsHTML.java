@@ -48,7 +48,7 @@ class DecodeAsHTML implements DecodeFilter {
             data = data + "<table>\n";
             // Get any errors that we might have encountered
             for (int i = 0; i < v.size(); i++) {
-                HexAttribute h = (HexAttribute) v.get(i);
+                HexAttribute h = v.get(i);
                 String err = h.getError();
                 String errMsg = "";
                 for (int j = 0; j < err.length(); j++) {
