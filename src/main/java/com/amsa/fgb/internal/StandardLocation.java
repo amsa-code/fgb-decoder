@@ -54,7 +54,7 @@ abstract class StandardLocation extends BeaconProtocol {
         // 16 May 2005
         v = this.getMsgTypeDesc(v, binCode);
 
-        return new HexAttribute("Message Type", s, f, v, e);
+        return new HexAttribute(AttributeType.MESSAGE_TYPE, s, f, v, e);
     }
 
     // 1/Nov/2005
@@ -71,7 +71,7 @@ abstract class StandardLocation extends BeaconProtocol {
         String v = Conversions.binaryToHex(binHexId);
         String e = "";
 
-        return new HexAttribute("Hex Id", s, s + binHexId.length() - 1, v, e);
+        return new HexAttribute(AttributeType.HEX_ID, s, s + binHexId.length() - 1, v, e);
     }
 
     HexAttribute coarsePosition(String binCode, int s, int f) {

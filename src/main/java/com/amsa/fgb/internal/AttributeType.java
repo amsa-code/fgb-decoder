@@ -36,6 +36,17 @@ public enum AttributeType {
     , ID_POSN("ID+POSN") //
     , SUPPLEMENTARY_DATA("Supplementary Data") //
     , MESSAGE_TYPE("Message Type") //
+    , COARSE_POSITION("Coarse Position") //
+    , HEX_OFFSET("Offset Position") //
+    , FINE_POSITION("Fine Position") //
+    , LAT_LON("Lat Lon") //
+    , RLM_CAPABILITY_TYPE("RLM Capability Type") //
+    , RLS_PROVIDER_ID("RLS Provider ID") //
+    , BEACON_TYPE("RLS Provider ID") //
+    , RLM_CAPABILITY_TYPE_1_AUTO("RLM Capability Type-1 (Auto)") //
+    , RLM_CAPABILITY_TYPE_2_MANUAL("RLM Capability Type-2 (Manual)") //
+    , RLM_RECEIVED_TYPE_1_AUTO("RLM Received Type-1 (Auto)") //
+    , RLM_RECEIVED_TYPE_2_MANUAL("RLM Received Type-2 (Manual)") //
     ;
 
     private final String name;

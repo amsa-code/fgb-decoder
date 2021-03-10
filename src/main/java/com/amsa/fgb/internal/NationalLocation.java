@@ -132,7 +132,7 @@ abstract class NationalLocation extends BeaconProtocol {
         // 16 May 2005
         v = this.getMsgTypeDesc(v, binCode);
 
-        return new HexAttribute("Message Type", s, f, v, e);
+        return new HexAttribute(AttributeType.MESSAGE_TYPE, s, f, v, e);
     }
 
     // 2/Nov/2005
@@ -149,7 +149,7 @@ abstract class NationalLocation extends BeaconProtocol {
 
         String v = Conversions.binaryToHex(binHexId);
         String e = "";
-        return new HexAttribute("Hex Id", s, s + binHexId.length() - 1, v, e);
+        return new HexAttribute(AttributeType.HEX_ID, s, s + binHexId.length() - 1, v, e);
     }
 
     // Coarse Position</TD><TD>b59-85</TD><TD>35 44S 115 30E
@@ -167,7 +167,7 @@ abstract class NationalLocation extends BeaconProtocol {
             this.actualLatLong = true;
         }
 
-        return new HexAttribute("Coarse Position", s, f, v, e);
+        return new HexAttribute(AttributeType.COARSE_POSITION, s, f, v, e);
     }
 
     // Check the * 2 (it used to be *4)
@@ -267,7 +267,7 @@ abstract class NationalLocation extends BeaconProtocol {
             pos = pos + " " + sec2;
         }
 
-        return new HexAttribute("Offset Position", s, f, pos, e);
+        return new HexAttribute(AttributeType.HEX_OFFSET, s, f, pos, e);
     }
 
 }

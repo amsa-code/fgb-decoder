@@ -69,7 +69,7 @@ abstract class User extends BeaconProtocol {
         else
             v = v + " (Format - Unknown)";
 
-        return new HexAttribute("Message Type", s, f, v, e);
+        return new HexAttribute(AttributeType.MESSAGE_TYPE, s, f, v, e);
     }
 
     // This method is called by UserAviation.java

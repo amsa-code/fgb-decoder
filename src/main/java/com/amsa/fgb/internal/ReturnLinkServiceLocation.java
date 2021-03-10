@@ -100,7 +100,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
             result.add(rlmCapabilityType1(binCode, 109));
             result.add(rlmCapabilityType2(binCode, 110));
             if (binCode.charAt(109) == '0' && binCode.charAt(110) == '0') {
-                result.add(new HexAttribute("RLM Capability Type", 109, 110, "00", "Invalid"));
+                result.add(new HexAttribute(AttributeType.RLM_CAPABILITY_TYPE, 109, 110, "00", "Invalid"));
             }
             result.add(rlmReceivedType1(binCode, 111));
             result.add(rlmReceivedType2(binCode, 112));
@@ -132,13 +132,14 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         Position p = finePosition(binCode);
         if (p == null) {
             return Collections
-                    .singletonList(new HexAttribute("Fine Position", 115, 132, "DEFAULT", ""));
+                    .singletonList(new HexAttribute(AttributeType.FINE_POSITION, 115, 132, "DEFAULT", ""));
         } else {
             actualLatLong = true;
             latSeconds = p.latSeconds();
             lonSeconds = p.lonSeconds();
             List<HexAttribute> list = new ArrayList<HexAttribute>();
-            list.add(new HexAttribute("Lat Lon", 115, 132, p.latLongDecimal(), ""));
+            //TODO break this up
+            list.add(new HexAttribute(AttributeType.LAT_LON, 115, 132, p.latLongDecimal(), ""));
             return list;
         }
     }
@@ -153,7 +154,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         } else {
             v = "SPARE";
         }
-        return new HexAttribute("RLS Provider ID", s, f, v, "");
+        return new HexAttribute(AttributeType.RLS_PROVIDER_ID, s, f, v, "");
     }
 
     // This method is called by ReturnLinkServiceLocation.java
@@ -177,27 +178,27 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
             v += " (Non-Spec)";
         }
 
-        return new HexAttribute("Beacon Type", s, f, v, e);
+        return new HexAttribute(AttributeType.BEACON_TYPE, s, f, v, e);
     }
 
     private static HexAttribute rlmCapabilityType1(String binCode, int i) {
         String v = binCode.charAt(i) == '1' ? "YES" : "NO";
-        return new HexAttribute("RLM Capability Type-1 (Auto)", i, i, v, "");
+        return new HexAttribute(AttributeType.RLM_CAPABILITY_TYPE_1_AUTO, i, i, v, "");
     }
 
     private static HexAttribute rlmCapabilityType2(String binCode, int i) {
         String v = binCode.charAt(i) == '1' ? "YES" : "NO";
-        return new HexAttribute("RLM Capability Type-2 (Manual)", i, i, v, "");
+        return new HexAttribute(AttributeType.RLM_CAPABILITY_TYPE_2_MANUAL, i, i, v, "");
     }
 
     private static HexAttribute rlmReceivedType1(String binCode, int i) {
         String v = binCode.charAt(i) == '1' ? "YES" : "NO";
-        return new HexAttribute("RLM Received Type-1 (Auto)", i, i, v, "");
+        return new HexAttribute(AttributeType.RLM_RECEIVED_TYPE_1_AUTO, i, i, v, "");
     }
 
     private static HexAttribute rlmReceivedType2(String binCode, int i) {
         String v = binCode.charAt(i) == '1' ? "YES" : "NO";
-        return new HexAttribute("RLM Received Type-2 (Manual)", i, i, v, "");
+        return new HexAttribute(AttributeType.RLM_RECEIVED_TYPE_2_MANUAL, i, i, v, "");
     }
 
     // Get the messageType. Is it LONG or SHORT?
@@ -208,7 +209,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         // // 16 May 2005
         // v = this.getMsgTypeDesc(v, binCode);
 
-        return new HexAttribute("Message Type", s, f, v, e);
+        return new HexAttribute(AttributeType.MESSAGE_TYPE, s, f, v, e);
     }
 
     // 2/Nov/2005
@@ -225,7 +226,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
 
         String v = Conversions.binaryToHex(binHexId);
         String e = "";
-        return new HexAttribute("Hex Id", s, s + binHexId.length() - 1, v, e);
+        return new HexAttribute(AttributeType.HEX_ID, s, s + binHexId.length() - 1, v, e);
     }
 
     private static Position coarsePosition(String binCode) {
@@ -257,7 +258,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
             this.actualLatLong = true;
         }
 
-        return new HexAttribute("Coarse Position", COARSE_POSITION_START, COARSE_POSITION_FINISH, v,
+        return new HexAttribute(AttributeType.COARSE_POSITION, COARSE_POSITION_START, COARSE_POSITION_FINISH, v,
                 e);
     }
 
