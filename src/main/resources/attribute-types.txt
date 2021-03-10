@@ -65,7 +65,7 @@ Specific ELT number	integer
 Supplementary Data	string
 User Protocol Type	string
 US Manufacturer ID	integer
-US Model ID.	integer
+US Model ID	integer
 US National Use	string
 US Run No.	integer
 US Sequence No.	integer

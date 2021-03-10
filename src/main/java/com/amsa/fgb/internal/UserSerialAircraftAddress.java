@@ -92,7 +92,7 @@ class UserSerialAircraftAddress extends UserSerial {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 
-        return new HexAttribute("Additional ELT numbers", s, f, v, e);
+        return new HexAttribute(AttributeType.ADDITIONAL_ELT_NUMBERS, s, f, v, e);
     }
 
     // This overidding method will be called by User.java

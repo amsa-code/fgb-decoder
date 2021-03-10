@@ -44,7 +44,7 @@ public class DecoderTest {
             + "<TR><TD>Aux. radio-locating</TD><TD>b84-85</TD><TD>121.5 MHz</TD></TR>"
             + "<TR><TD>US Manufacturer ID</TD><TD>b44-51</TD><TD>1</TD></TR>"
             + "<TR><TD>US Sequence No.</TD><TD>b52-63</TD><TD>1040</TD></TR>"
-            + "<TR><TD>US Model ID.</TD><TD>b64-67</TD><TD>0</TD></TR>"
+            + "<TR><TD>US Model ID</TD><TD>b64-67</TD><TD>0</TD></TR>"
             + "<TR><TD>US Run No.</TD><TD>b68-75</TD><TD>0</TD></TR>"
             + "<TR><TD>US National Use</TD><TD>b76-83</TD><TD>01100001</TD></TR>"
             + "<TR><TD>Error Correcting Code</TD><TD>b86-106</TD><TD>001111111110101000100</TD></TR>"
@@ -69,7 +69,7 @@ public class DecoderTest {
             + "<Name>Aux. radio-locating</Name><Position>b84-85</Position><Value>121.5 MHz</Value></Line>" + "<Line>"
             + "<Name>US Manufacturer ID</Name><Position>b44-51</Position><Value>1</Value></Line>" + "<Line>"
             + "<Name>US Sequence No.</Name><Position>b52-63</Position><Value>1040</Value></Line>" + "<Line>"
-            + "<Name>US Model ID.</Name><Position>b64-67</Position><Value>0</Value></Line>" + "<Line>"
+            + "<Name>US Model ID</Name><Position>b64-67</Position><Value>0</Value></Line>" + "<Line>"
             + "<Name>US Run No.</Name><Position>b68-75</Position><Value>0</Value></Line>" + "<Line>"
             + "<Name>US National Use</Name><Position>b76-83</Position><Value>01100001</Value></Line>" + "<Line>"
             + "<Name>Error Correcting Code</Name><Position>b86-106</Position><Value>001111111110101000100</Value></Line>"
@@ -114,7 +114,7 @@ public class DecoderTest {
                     + "Aux. radio-locating           b84-85       121.5 MHz" //
                     + "US Manufacturer ID            b44-51       1" //
                     + "US Sequence No.               b52-63       1040" //
-                    + "US Model ID.                  b64-67       0" //
+                    + "US Model ID                   b64-67       0" //
                     + "US Run No.                    b68-75       0" //
                     + "US National Use               b76-83       01100001" //
                     + "Error Correcting Code         b86-106      001111111110101000100" //
@@ -145,7 +145,7 @@ public class DecoderTest {
                     + "Aux. radio-locating           b84-85       121.5 MHz" //
                     + "US Manufacturer ID            b44-51       1" //
                     + "US Sequence No.               b52-63       1040" //
-                    + "US Model ID.                  b64-67       0" //
+                    + "US Model ID                   b64-67       0" //
                     + "US Run No.                    b68-75       0" //
                     + "US National Use               b76-83       01100001";
     private static final String DECODE_15_CHRS_XML2_STRING = "<Line>"
@@ -162,7 +162,7 @@ public class DecoderTest {
             + "<Name>Aux. radio-locating</Name><Position>b84-85</Position><Value>121.5 MHz</Value></Line>" + "<Line>"
             + "<Name>US Manufacturer ID</Name><Position>b44-51</Position><Value>1</Value></Line>" + "<Line>"
             + "<Name>US Sequence No.</Name><Position>b52-63</Position><Value>1040</Value></Line>" + "<Line>"
-            + "<Name>US Model ID.</Name><Position>b64-67</Position><Value>0</Value></Line>" + "<Line>"
+            + "<Name>US Model ID</Name><Position>b64-67</Position><Value>0</Value></Line>" + "<Line>"
             + "<Name>US Run No.</Name><Position>b68-75</Position><Value>0</Value></Line>" + "<Line>"
             + "<Name>US National Use</Name><Position>b76-83</Position><Value>01100001</Value></Line>";
     private static final String DECODE_15_CHRS_XML_STRING = "<?xml version=\"1.0\"?>" + "<Hexdecode>"
@@ -201,7 +201,7 @@ public class DecoderTest {
             + "<TR><TD>Aux. radio-locating</TD><TD>b84-85</TD><TD>121.5 MHz</TD></TR>"
             + "<TR><TD>US Manufacturer ID</TD><TD>b44-51</TD><TD>1</TD></TR>"
             + "<TR><TD>US Sequence No.</TD><TD>b52-63</TD><TD>1040</TD></TR>"
-            + "<TR><TD>US Model ID.</TD><TD>b64-67</TD><TD>0</TD></TR>"
+            + "<TR><TD>US Model ID</TD><TD>b64-67</TD><TD>0</TD></TR>"
             + "<TR><TD>US Run No.</TD><TD>b68-75</TD><TD>0</TD></TR>"
             + "<TR><TD>US National Use</TD><TD>b76-83</TD><TD>01100001</TD></TR>" + "</table>" + "<table>" + "</table>"
             + "</body>" + "</html>";

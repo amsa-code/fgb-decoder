@@ -42,7 +42,7 @@ public enum AttributeType {
     , LAT_LON("Lat Lon") //
     , RLM_CAPABILITY_TYPE("RLM Capability Type") //
     , RLS_PROVIDER_ID("RLS Provider ID") //
-    , BEACON_TYPE("RLS Provider ID") //
+    , BEACON_TYPE("Beacon Type") //
     , RLM_CAPABILITY_TYPE_1_AUTO("RLM Capability Type-1 (Auto)") //
     , RLM_CAPABILITY_TYPE_2_MANUAL("RLM Capability Type-2 (Manual)") //
     , RLM_RECEIVED_TYPE_1_AUTO("RLM Received Type-1 (Auto)") //
@@ -72,6 +72,7 @@ public enum AttributeType {
     , US_MODEL_ID("US Model ID") //
     , US_RUN_NO("US Run No.") //
     , US_NATIONAL_USE("US National Use") //
+    , ADDITIONAL_ELT_NUMBERS("Additional ELT numbers") //
     ;
 
     private final String name;

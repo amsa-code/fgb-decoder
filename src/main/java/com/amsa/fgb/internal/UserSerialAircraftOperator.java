@@ -78,7 +78,7 @@ class UserSerialAircraftOperator extends UserSerial {
         String v = vE[0];
         String e = vE[1];
 
-        return new HexAttribute("Aircraft Operator", s, f, v, e);
+        return new HexAttribute(AttributeType.AIRCRAFT_OPERATOR, s, f, v, e);
     }
 
     // This overidding method will be called by User.java
