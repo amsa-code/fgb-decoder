@@ -23,6 +23,26 @@ class Util {
         return sign * (d + m / 60.0);
     }
 
+    // TODO unit test
+    public static double toLatitude(String value) {
+        int d = Integer.parseInt(value.substring(0, 2));
+        int m = Integer.parseInt(value.substring(3, 5));
+        int s = Integer.parseInt(value.substring(6, 8));
+        boolean positive = value.charAt(8) == 'N';
+        int sign = positive ? 1 : -1;
+        return sign * (d + m / 60.0 + s / 3600.0);
+    }
+
+    // TODO unit test
+    public static double toLongitude(String value) {
+        int d = Integer.parseInt(value.substring(0, 3));
+        int m = Integer.parseInt(value.substring(4, 6));
+        int s = Integer.parseInt(value.substring(7, 9));
+        boolean positive = value.charAt(9) == 'N';
+        int sign = positive ? 1 : -1;
+        return sign * (d + m / 60.0 + s / 3600.0);
+    }
+
     static List<HexAttribute> coarsePositionAttributes(String v, int start, int finish) {
         List<HexAttribute> list = new ArrayList<>();
         if (!v.equals("DEFAULT")) {

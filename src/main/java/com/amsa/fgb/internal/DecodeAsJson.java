@@ -62,8 +62,8 @@ public final class DecodeAsJson implements DecodeFilter {
                 if (h.getDesc().equals(AttributeType.FINE_POSITION.toString())) {
                     // TODO unit test
                     if (!h.getValue().equals("DEFAULT")) {
-                        addKeyValue(b, "Fine Position Latitude", "" + toLatitude(h.getValue().substring(0, 9)));
-                        addKeyValue(b, "Fine Position Longitude", "" + toLongitude(h.getValue().substring(10)));
+                        addKeyValue(b, "Fine Position Latitude", "" + Util.toLatitude(h.getValue().substring(0, 9)));
+                        addKeyValue(b, "Fine Position Longitude", "" + Util.toLongitude(h.getValue().substring(10)));
                     }
                 } else if (h.getDesc().equals(AttributeType.OFFSET_POSITION.toString())) {
                     // TODO unit test
@@ -120,9 +120,9 @@ public final class DecodeAsJson implements DecodeFilter {
 
     private String getValue(String key, String value) {
         if (key.equals("Latitude")) {
-            return "" + toLatitude(value);
+            return "" + Util.toLatitude(value);
         } else if (key.equals("Longitude")) {
-            return "" + toLongitude(value);
+            return "" + Util.toLongitude(value);
         } else {
             String type = attributeTypes.get(key);
             if (type == null) {
@@ -137,26 +137,6 @@ public final class DecodeAsJson implements DecodeFilter {
                 return quoted(value);
             }
         }
-    }
-
-    // TODO unit test
-    private static double toLatitude(String value) {
-        int d = Integer.parseInt(value.substring(0, 2));
-        int m = Integer.parseInt(value.substring(3, 5));
-        int s = Integer.parseInt(value.substring(6, 8));
-        boolean positive = value.charAt(8) == 'N';
-        int sign = positive ? 1 : -1;
-        return sign * (d + m / 60.0 + s / 3600.0);
-    }
-
-    // TODO unit test
-    private static double toLongitude(String value) {
-        int d = Integer.parseInt(value.substring(0, 3));
-        int m = Integer.parseInt(value.substring(4, 6));
-        int s = Integer.parseInt(value.substring(7, 9));
-        boolean positive = value.charAt(9) == 'N';
-        int sign = positive ? 1 : -1;
-        return sign * (d + m / 60.0 + s / 3600.0);
     }
 
     private static String escape(String raw) {
