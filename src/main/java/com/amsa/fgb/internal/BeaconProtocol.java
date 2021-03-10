@@ -91,7 +91,7 @@ abstract class BeaconProtocol {
         String v = "YES";
         String e = "";
 
-        return new HexAttribute("Is Long Message Default", s, f, v, e);
+        return new HexAttribute(AttributeType.IS_LONG_MESSAGE_DEFAULT, s, f, v, e);
     }
 
     boolean default00000000(String hexStr) {
@@ -105,17 +105,16 @@ abstract class BeaconProtocol {
         String name = this.getName();
         String e = "";
 
-        return new HexAttribute("Protocol Type", s, f, name, e);
+        return new HexAttribute(AttributeType.PROTOCOL_TYPE, s, f, name, e);
     }
 
     HexAttribute rlsTacNumber(String binCode, int s, int f) {
         char prefix = rlsTacNumberPrefix(binCode, s);
         String v = binCode.substring(s + 2, f + 1);
-        String last3Digits = Conversions
-                .zeroPadFromLeft(Integer.toString(Conversions.binaryToDecimal(v)), 3);
+        String last3Digits = Conversions.zeroPadFromLeft(Integer.toString(Conversions.binaryToDecimal(v)), 3);
         String result = prefix + last3Digits;
         String e = "";
-        return new HexAttribute("RLS TAC Number", s, f, result, e);
+        return new HexAttribute(AttributeType.RLS_TAC_NUMBER, s, f, result, e);
     }
 
     private char rlsTacNumberPrefix(String binCode, int s) {
@@ -142,7 +141,7 @@ abstract class BeaconProtocol {
         String v = binCode.substring(s, f + 1);
         String e = "";
         int result = Conversions.binaryToDecimal(v);
-        return new HexAttribute("RLS ID", s, f, result, e);
+        return new HexAttribute(AttributeType.RLS_ID, s, f, result, e);
     }
 
     HexAttribute hexData(String hexStr, int s, int f) {
@@ -152,9 +151,9 @@ abstract class BeaconProtocol {
 
         // 16 May 2005
         if ((hexStr.trim()).length() != 30)
-            return new HexAttribute("Hex Data", 25, 144, "Unknown", e);
+            return new HexAttribute(AttributeType.HEX_DATA, 25, 144, "Unknown", e);
         else
-            return new HexAttribute("Hex Data", s, f, hexStr, e);
+            return new HexAttribute(AttributeType.HEX_DATA, s, f, hexStr, e);
     }
 
     HexAttribute hexId(String binCode, int s, int f) { // b26-85
@@ -162,7 +161,7 @@ abstract class BeaconProtocol {
         String v = Conversions.binaryToHex(binHexId);
         String e = "";
 
-        return new HexAttribute("Hex Id", s, f, v, e);
+        return new HexAttribute(AttributeType.HEX_ID, s, f, v, e);
     }
 
     int getCountryCode(String binCode, int s, int f) {
@@ -185,7 +184,7 @@ abstract class BeaconProtocol {
         UScodes.add("369");
 
         this.isUS = UScodes.contains(v);
-        return new HexAttribute("Country Code", s, f, v, e);
+        return new HexAttribute(AttributeType.COUNTRY_CODE, s, f, v, e);
     }
 
     // Beacon Serial Number</TD><TD>b51-64</TD><TD>999</TD></TR>
@@ -193,7 +192,7 @@ abstract class BeaconProtocol {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 
-        return new HexAttribute("Beacon Serial Number", s, f, v, e);
+        return new HexAttribute(AttributeType.BEACON_SERIAL_NUMBER, s, f, v, e);
     }
 
     List<HexAttribute> aircraft24BitAddress(String binCode, int s, int f) {
@@ -203,20 +202,20 @@ abstract class BeaconProtocol {
         String hex = Conversions.binaryToHex(code);
         String oct = removeLeadingZeros(Conversions.binaryToOctal(code));
 
-        list.add(new HexAttribute("Aircraft 24 bit address (hex)", s, f, hex, e));
-        list.add(new HexAttribute("Aircraft 24 bit address (octal)", s, f, oct, e));
-        
+        list.add(new HexAttribute(AttributeType.AIRCRAFT_24_BIT_ADDRESS_HEX, s, f, hex, e));
+        list.add(new HexAttribute(AttributeType.AIRCRAFT_24_BIT_ADDRESS_OCTAL, s, f, oct, e));
+
         HexAttribute h = this.aircraftCallSign(binCode, s, f);
         String result = h.getValue();
         if (result.length() > 0) {
             // 13 May 2005
             // Make the output align to the rest output
-            list.add(new HexAttribute("Aircraft Reg. Marking",s, f, result, e));
+            list.add(new HexAttribute(AttributeType.AIRCRAFT_CALL_SIGN, s, f, result, e));
         }
 
         String countryReg = Conversions.getAircraftCountryOfReg(code);
         if (countryReg.length() > 0) {
-            list.add(new HexAttribute("Country of Registration",s, f, countryReg, e));
+            list.add(new HexAttribute(AttributeType.COUNTRY_OF_REGISTRATION, s, f, countryReg, e));
         }
         return list;
     }
@@ -225,7 +224,7 @@ abstract class BeaconProtocol {
         String e = "";
         String v = binCode.substring(s, f + 1);
 
-        return new HexAttribute("Aircraft 24 bit address Binary", s, f, v, e);
+        return new HexAttribute(AttributeType.AIRCRAFT_24_BIT_ADDRESS_BINARY, s, f, v, e);
     }
 
     HexAttribute aircraftCallSign(String binCode, int s, int f) {
@@ -251,13 +250,12 @@ abstract class BeaconProtocol {
 
         // System.out.println("In BeaconProtocol.java, callSign: "+v);
 
-        return new HexAttribute("Aircraft CallSign", s, f, v, e);
+        return new HexAttribute(AttributeType.AIRCRAFT_CALL_SIGN, s, f, v, e);
     }
 
     HexAttribute specificBeaconNumber(String binCode, int s, int f) {
         // 11 May 2005
-        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(),
-                binCode.substring(s, f + 1), 6);
+        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f + 1), 6);
 
         String v = vE[0];
         // String e = "";
@@ -267,14 +265,13 @@ abstract class BeaconProtocol {
         if (e != null && e.length() > 0)
             e = "\nWARNING - SUSPECT NON-SPEC IN SPECIFIC BEACON NUMBER\n" + e;
 
-        return new HexAttribute("Specific Beacon Number", s, f, v, e);
+        return new HexAttribute(AttributeType.SPECIFIC_BEACON_NUMBER, s, f, v, e);
     }
 
     // sdc This needs to be converted using a 5 place BAUDOT conv.
     HexAttribute aircraftOperator(String binCode, int s, int f) {
         // 11 May 2005
-        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(),
-                binCode.substring(s, f + 1), 5);
+        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f + 1), 5);
         String v = vE[0];
 
         String e = vE[1];
@@ -282,13 +279,13 @@ abstract class BeaconProtocol {
         if (e != null && e.length() > 0)
             e = "\nWARNING - SUSPECT NON-SPEC IN AIRCRAFT OPERATOR\n" + e;
 
-        return new HexAttribute("Aircraft Operator", s, f, v, e);
+        return new HexAttribute(AttributeType.AIRCRAFT_OPERATOR, s, f, v, e);
     }
 
     HexAttribute aircraftSerialNumber(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
-        return new HexAttribute("Aircraft Serial Number", s, f, v, e);
+        return new HexAttribute(AttributeType.AIRCRAFT_SERIAL_NUMBER, s, f, v, e);
     }
 
     HexAttribute fixedBits(String binCode, int s, int f) {
@@ -303,7 +300,7 @@ abstract class BeaconProtocol {
             // e = "INVALID Spare. " + position + ": " + code;
         }
 
-        return new HexAttribute("Spare", s, f, v, e);
+        return new HexAttribute(AttributeType.SPARE, s, f, v, e);
     }
 
     boolean positionalDataPresent(String binCode) {
@@ -327,7 +324,7 @@ abstract class BeaconProtocol {
             }
         }
 
-        return new HexAttribute("Additional Data Flag", s, v, e);
+        return new HexAttribute(AttributeType.ADDITIONAL_DATA_FLAG, s, v, e);
     }
 
     HexAttribute encodedPositionSource(String binCode, int s) {
@@ -340,7 +337,7 @@ abstract class BeaconProtocol {
             v = "EXTERNAL";
         }
 
-        return new HexAttribute("Encoded Position Source", s, v, e);
+        return new HexAttribute(AttributeType.ENCODED_POSITION_SOURCE, s, v, e);
     }
 
     // 121.5 MHz Homing b112 NO
@@ -354,14 +351,14 @@ abstract class BeaconProtocol {
             v = "NO";
         }
 
-        return new HexAttribute("121.5 MHz Homing", s, v, e);
+        return new HexAttribute(AttributeType._121_5_MHZ_HOMING, s, v, e);
     }
 
     HexAttribute nationalUse(String binCode, int s, int f) {
         String v = binCode.substring(s, f + 1);
         String e = "";
 
-        return new HexAttribute("National Use", s, f, v, e);
+        return new HexAttribute(AttributeType.NATIONAL_USE, s, f, v, e);
     }
 
     // Latitude 36 00 20S
@@ -383,7 +380,7 @@ abstract class BeaconProtocol {
         int sec = remain % 60;
         String secStr = Conversions.zeroPadFromLeft(sec + "", 2);
         String v = degStr + " " + minStr + " " + secStr + direction;
-        return new HexAttribute("Latitude", v, e);
+        return new HexAttribute(AttributeType.LATITUDE, v, e);
     }
 
     // Longitude 115 07 36E
@@ -407,7 +404,7 @@ abstract class BeaconProtocol {
 
         String v = degStr + " " + minStr + " " + secStr + direction;
 
-        return new HexAttribute("Longitude", v, e);
+        return new HexAttribute(AttributeType.LONGITUDE, v, e);
     }
 
     HexAttribute bch1(String binCodeOrig, int s, int f) {
@@ -442,7 +439,7 @@ abstract class BeaconProtocol {
             e += "2. Section III/B.1.1.3 of C/S A.001 - Data Distribution Plan\n\n";
         }
 
-        return new HexAttribute("Error Correcting Code", s, f, binCode2, e);
+        return new HexAttribute(AttributeType.ERROR_CORRECTING_CODE, s, f, binCode2, e);
     }
 
     // 1/Nov/2005
@@ -468,8 +465,7 @@ abstract class BeaconProtocol {
                 String errPart1 = error.substring(0, noteInd);
                 String errPart2 = error.substring(noteInd);
 
-                error = errPart1 + "\n Hex Id with default location: " + hexId.getValue() + "\n"
-                        + errPart2;
+                error = errPart1 + "\n Hex Id with default location: " + hexId.getValue() + "\n" + errPart2;
                 bch1 = new HexAttribute(bch1.desc, bch1.start, bch1.finish + "", error);
             }
         }
@@ -502,7 +498,7 @@ abstract class BeaconProtocol {
             e = e + " BCH IS ...... " + binCode2;
         }
 
-        return new HexAttribute("Error Correcting Code", s, f, binCode2, e);
+        return new HexAttribute(AttributeType.ERROR_CORRECTING_CODE, s, f, binCode2, e);
     }
 
     private static String calcBCHCODE(String bitCode, String generatorPolynomial) {

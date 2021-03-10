@@ -2,13 +2,13 @@ package com.amsa.fgb.internal;
 
  final class HexAttribute {
 
-     final String desc;
+     final AttributeType desc;
      final int start;
      int finish;
      final String value;
      final String error;
 
-     HexAttribute(String d, int s, int f, String v, String e) {
+     HexAttribute(AttributeType d, int s, int f, String v, String e) {
         this.desc = d;
         this.start = s;
         this.finish = f;
@@ -16,7 +16,7 @@ package com.amsa.fgb.internal;
         this.error = e;
     }
 
-     HexAttribute(String d, int s, int f, int v, String e) {
+     HexAttribute(AttributeType d, int s, int f, int v, String e) {
         this.desc = d;
         this.start = s;
         this.finish = f;
@@ -24,14 +24,14 @@ package com.amsa.fgb.internal;
         this.error = e;
     }
 
-     HexAttribute(String d, int s, String v, String e) {
+     HexAttribute(AttributeType d, int s, String v, String e) {
         this.desc = d;
         this.start = s;
         this.value = v;
         this.error = e;
     }
 
-     HexAttribute(String d, String v, String e) {
+     HexAttribute(AttributeType d, String v, String e) {
         this.desc = d;
         this.value = v;
         this.error = e;
@@ -39,7 +39,7 @@ package com.amsa.fgb.internal;
     }
 
      String getDesc() {
-        return this.desc;
+        return this.desc.toString();
     }
 
      String getPos() {
