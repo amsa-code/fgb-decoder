@@ -1,4 +1,4 @@
-package com.amsa.fgb.internal;
+    package com.amsa.fgb.internal;
 
 import java.util.ArrayList;
 import java.util.List;
