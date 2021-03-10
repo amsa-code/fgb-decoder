@@ -1,6 +1,7 @@
 package com.amsa.fgb.internal;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 // NOTE: ALL other NationalLocation??? classes inheriting from this one
@@ -30,7 +31,7 @@ abstract class NationalLocation extends BeaconProtocol {
     }
 
     @Override
-     boolean canDecode(String binCode) {
+    boolean canDecode(String binCode) {
         String protocol = binCode.substring(25, 27);
 
         // System.out.println("Trying National Location " + name);
@@ -44,7 +45,7 @@ abstract class NationalLocation extends BeaconProtocol {
     }
 
     @Override
-     List<HexAttribute> decodePartial(String hexStr) {
+    List<HexAttribute> decodePartial(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -67,7 +68,7 @@ abstract class NationalLocation extends BeaconProtocol {
     // Change from "hexId()" to hexIdWithDefaultLocation()"
     // All beacon types conform to the following decode.
     @Override
-     List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
@@ -155,62 +156,37 @@ abstract class NationalLocation extends BeaconProtocol {
     // Coarse Position</TD><TD>b59-85</TD><TD>35 44S 115 30E
     private List<HexAttribute> coarsePosition(String binCode, int s, int f) { // b59-85
         String code = binCode.substring(s, f + 1);
-        String v = "";
-
         if (code.equals("011111110000001111111100000")) {
-            v = "DEFAULT";
+            return Collections.emptyList();
         } else {
-            String lat = this.lat(binCode);
-            String lon = this.lon(binCode);
-            v = lat + " " + lon;
+            this.latSeconds = latSeconds(binCode);
+            this.lonSeconds = lonSeconds(binCode);
             this.actualLatLong = true;
+            return Util.coarsePositionAttributes(latSeconds, lonSeconds, s, f);
         }
-        return Util.coarsePositionAttributes(v, s, f);
     }
 
     // Check the * 2 (it used to be *4)
-    private String lat(String binCode) {
-        String result = "";
+    private static double latSeconds(String binCode) {
         int deg = Conversions.binaryToDecimal(binCode.substring(60, 67));
-        String degStr = Conversions.zeroPadFromLeft(deg + "", 2);
-
-        this.latSeconds = deg * 60 * 60;
-
+        double latSeconds = deg * 60 * 60;
         int min = Conversions.binaryToDecimal(binCode.substring(67, 72)) * 2;
-        String minStr = Conversions.zeroPadFromLeft(min + "", 2);
-
-        this.latSeconds += min * 60;
-
-        char p = 'N';
+        latSeconds += min * 60;
         if (binCode.charAt(59) == '1') {
-            p = 'S';
-            this.latSeconds = this.latSeconds * -1;
+            latSeconds = latSeconds * -1;
         }
-        result = degStr + " " + minStr + p;
-
-        return result;
+        return latSeconds;
     }
 
-    private String lon(String binCode) {
-        String result = "";
+    private static double lonSeconds(String binCode) {
         int deg = Conversions.binaryToDecimal(binCode.substring(73, 81));
-        String degStr = Conversions.zeroPadFromLeft(deg + "", 3);
-
-        this.lonSeconds = deg * 60 * 60;
-
+        double lonSeconds = deg * 60 * 60;
         int min = Conversions.binaryToDecimal(binCode.substring(81, 86)) * 2;
-        String minStr = Conversions.zeroPadFromLeft(min + "", 2);
-
-        this.lonSeconds += min * 60;
-
-        char p = 'E';
+        lonSeconds += min * 60;
         if (binCode.charAt(72) == '1') {
-            p = 'W';
-            this.lonSeconds = this.lonSeconds * -1;
+            lonSeconds = lonSeconds * -1;
         }
-        result = degStr + " " + minStr + p;
-
-        return result;
+        return lonSeconds;
     }
 
     private HexAttribute offsetPosition(String binCode, int s, int f) {

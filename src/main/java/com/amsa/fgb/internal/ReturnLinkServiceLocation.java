@@ -10,8 +10,8 @@ import com.amsa.fgb.internal.Common.Position;
 
 class ReturnLinkServiceLocation extends BeaconProtocol {
 
-    private static final int COARSE_POSITION_FINISH = 85;
     private static final int COARSE_POSITION_START = 67;
+    private static final int COARSE_POSITION_FINISH = 85;
     private static final String rlsProtocolCode = "1101";
 
     ReturnLinkServiceLocation() {
@@ -100,7 +100,8 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
             result.add(rlmCapabilityType1(binCode, 109));
             result.add(rlmCapabilityType2(binCode, 110));
             if (binCode.charAt(109) == '0' && binCode.charAt(110) == '0') {
-                result.add(new HexAttribute(AttributeType.RLM_CAPABILITY_TYPE, 109, 110, "00", "Invalid"));
+                result.add(new HexAttribute(AttributeType.RLM_CAPABILITY_TYPE, 109, 110, "00",
+                        "Invalid"));
             }
             result.add(rlmReceivedType1(binCode, 111));
             result.add(rlmReceivedType2(binCode, 112));
@@ -242,19 +243,16 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
     }
 
     private List<HexAttribute> coarsePositionAttributes(String binCode) {
-        String v = "";
         Position p = coarsePosition(binCode);
 
         if (p == null) {
             return Collections.emptyList();
         } else {
-            String lat = p.latText();
-            String lon = p.lonText();
-            latSeconds = p.latSeconds();
-            lonSeconds = p.lonSeconds();
-            v = lat + " " + lon;
+            this.latSeconds = p.latSeconds();
+            this.lonSeconds = p.lonSeconds();
             this.actualLatLong = true;
-            return Util.coarsePositionAttributes(v, COARSE_POSITION_START, COARSE_POSITION_FINISH);
+            return Util.coarsePositionAttributes(latSeconds, lonSeconds, COARSE_POSITION_START,
+                    COARSE_POSITION_FINISH);
         }
     }
 
@@ -285,30 +283,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         // of value and then sign reapplied
         int latSeconds = (Math.abs(p.latSeconds()) + latOffsetSeconds) * sign(p.latSeconds());
         int lonSeconds = (Math.abs(p.lonSeconds()) + lonOffsetSeconds) * sign(p.lonSeconds());
-        final String latText;
-        {
-            int degrees = Math.abs(latSeconds) / 3600;
-            int minutes = Math.abs(latSeconds) % 3600 / 60;
-            int seconds = Math.abs(latSeconds) - degrees * 3600 - minutes * 60;
-            String direction = latSeconds >= 0 ? "N" : "S";
-            String deg = Conversions.zeroPadFromLeft(degrees + "", 2);
-            String min = Conversions.zeroPadFromLeft(minutes + "", 2);
-            String sec = Conversions.zeroPadFromLeft(seconds + "", 2);
-            latText = deg + " " + min + " " + sec + direction;
-        }
-
-        final String lonText;
-        {
-            int degrees = Math.abs(lonSeconds) / 3600;
-            int minutes = Math.abs(lonSeconds) % 3600 / 60;
-            int seconds = Math.abs(lonSeconds) - degrees * 3600 - minutes * 60;
-            String direction = lonSeconds >= 0 ? "E" : "W";
-            String deg = Conversions.zeroPadFromLeft(degrees + "", 3);
-            String min = Conversions.zeroPadFromLeft(minutes + "", 2);
-            String sec = Conversions.zeroPadFromLeft(seconds + "", 2);
-            lonText = deg + " " + min + " " + sec + direction;
-        }
-        return new Position(latSeconds, lonSeconds, latText, lonText);
+        return new Position(latSeconds, lonSeconds);
     }
 
     private static int sign(int n) {

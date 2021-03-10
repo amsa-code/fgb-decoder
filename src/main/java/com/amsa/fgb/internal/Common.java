@@ -5,7 +5,6 @@
 
 package com.amsa.fgb.internal;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 class Common {
@@ -131,14 +130,10 @@ class Common {
     static final class Position {
         private final int latSeconds;
         private final int lonSeconds;
-        private final String latText;
-        private final String lonText;
 
-        Position(int latSeconds, int lonSeconds, String latText, String lonText) {
+        Position(int latSeconds, int lonSeconds) {
             this.latSeconds = latSeconds;
             this.lonSeconds = lonSeconds;
-            this.latText = latText;
-            this.lonText = lonText;
         }
 
         int latSeconds() {
@@ -149,26 +144,12 @@ class Common {
             return lonSeconds;
         }
 
-        String latText() {
-            return latText;
-        }
-
-        String lonText() {
-            return lonText;
-        }
-
         double latDecimal() {
             return latSeconds / 3600.0;
         }
 
         double lonDecimal() {
             return lonSeconds / 3600.0;
-        }
-
-        String latLongDecimal() {
-            DecimalFormat latDf = new DecimalFormat("00.000");
-            DecimalFormat lonDf = new DecimalFormat("000.000");
-            return latDf.format(latDecimal()) + " " + lonDf.format(lonDecimal());
         }
 
     }
@@ -194,7 +175,6 @@ class Common {
         final int latLength = length - lonLength;
 
         final int latSeconds;
-        final String latText;
         {
             String latBits = binCode.substring(start + 1, start + latLength);
             int code = Conversions.binaryToDecimal(latBits);
@@ -202,23 +182,13 @@ class Common {
             final int deg = codeSeconds / 3600;
             final int min = codeSeconds % 3600 / 60;
             int seconds = deg * 3600 + min * 60;
-            char p = 'N';
             if (binCode.charAt(start) == '1') {
-                p = 'S';
                 seconds = seconds * -1;
             }
-
-            // Format data for display with zero padding.
-            String degStr = Conversions.zeroPadFromLeft(deg + "", 2);
-
-            String minStr = Conversions.zeroPadFromLeft(min + "", 2);
-
-            latText = degStr + " " + minStr + p;
             latSeconds = seconds;
         }
 
         final int lonSeconds;
-        final String lonText;
         {
             String lonBits = binCode.substring(start + latLength + 1, start + latLength + lonLength);
             int code = Conversions.binaryToDecimal(lonBits);
@@ -227,21 +197,12 @@ class Common {
             final int min = codeSeconds % 3600 / 60;
             int seconds = deg * 3600 + min * 60;
 
-            char p = 'E';
             if (binCode.charAt(start + latLength) == '1') {
-                p = 'W';
                 seconds = seconds * -1;
             }
-
-            // Format data for display with zero padding.
-            String degStr = Conversions.zeroPadFromLeft(deg + "", 3);
-            String minStr = Conversions.zeroPadFromLeft(min + "", 2);
-
-            lonText = degStr + " " + minStr + p;
             lonSeconds = seconds;
         }
-
-        return new Position(latSeconds, lonSeconds, latText, lonText);
+        return new Position(latSeconds, lonSeconds);
     }
 
     /**
