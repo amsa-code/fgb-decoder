@@ -382,7 +382,7 @@ public class DecoderTest {
     @SuppressWarnings("unused")
     private static void createComplianceKitTests() throws IOException {
         Stream<String> hexes = Arrays.stream(new File("src/test/resources/compliance-kit").listFiles())
-                .map(x -> x.getName().substring(0, x.getName().indexOf(".")));
+                .map(x -> x.getName().substring(0, x.getName().indexOf("."))).sorted().distinct();
         File kit = new File("src/test/resources/compliance-kit");
         if (kit.exists()) {
             Util.delete(kit);
