@@ -27,7 +27,7 @@ abstract class BeaconProtocol {
 
     abstract boolean canDecode(String binCode);
 
-    List<HexAttribute> decodeSearch(String hexStr) {
+    List<HexAttribute> decodePartial(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 

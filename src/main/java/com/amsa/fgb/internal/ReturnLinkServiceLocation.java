@@ -49,7 +49,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
     }
 
     @Override
-     List<HexAttribute> decodeSearch(String hexStr) {
+     List<HexAttribute> decodePartial(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 

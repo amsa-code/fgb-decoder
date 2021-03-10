@@ -23,7 +23,7 @@ public final class HexDecoder {
     }
 
     private static List<HexAttribute> getHexAttributesDecodePartial(String hexStr) {
-        return getHexAttributes(hexStr, (proto, hex) -> proto.decodeSearch(hex));
+        return getHexAttributes(hexStr, (proto, hex) -> proto.decodePartial(hex));
     }
 
     private static List<HexAttribute> getHexAttributesDecodeFull(String hexStr) {
