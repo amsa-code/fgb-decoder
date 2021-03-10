@@ -40,7 +40,7 @@ class LocationReserved extends BeaconProtocol {
 
         // 09 May 2005, based on CDP's guidance
         // Providing the binary codes from bit41 to bit 85 inclusively
-        result.add(new HexAttribute("ID+POSN", 41, 85, binCode.substring(41, 86), ""));
+        result.add(new HexAttribute(AttributeType.ID_POSN, 41, 85, binCode.substring(41, 86), ""));
 
         if (hexStr.length() > 15) {
             // Providing the BCH1 decoding
@@ -52,10 +52,10 @@ class LocationReserved extends BeaconProtocol {
             // 24 May 2005
             // CDP's latest Guidance
             if (this.isLongMessage(binCode)) {
-                result.add(new HexAttribute("PDF-2", 107, 132, binCode.substring(113, 133), ""));
-                result.add(new HexAttribute("BCH-2", 133, 144, binCode.substring(133, 145), ""));
+                result.add(new HexAttribute(AttributeType.PDF_2, 107, 132, binCode.substring(113, 133), ""));
+                result.add(new HexAttribute(AttributeType.BCH_2, 133, 144, binCode.substring(133, 145), ""));
             } else
-                result.add(new HexAttribute("Supplementary Data", 107, 112,
+                result.add(new HexAttribute(AttributeType.SUPPLEMENTARY_DATA, 107, 112,
                         binCode.substring(107, 113), ""));
 
         }
@@ -88,6 +88,6 @@ class LocationReserved extends BeaconProtocol {
         // 16 May 2005
         v = this.getMsgTypeDesc(v, binCode);
 
-        return new HexAttribute("Message Type", s, f, v, e);
+        return new HexAttribute(AttributeType.MESSAGE_TYPE, s, f, v, e);
     }
 }

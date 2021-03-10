@@ -30,6 +30,12 @@ public enum AttributeType {
     , FIRE_FLAG("Fire Flag") //
     , MEDICAL_HELP_FLAG("Medical Help Flag") //
     , DISABLED("Disabled") //
+    , ERROR("") //
+    , PDF_2("PDF-2") //
+    , BCH_2("BCH-2") //
+    , ID_POSN("ID+POSN") //
+    , SUPPLEMENTARY_DATA("Supplementary Data") //
+    , MESSAGE_TYPE("Message Type") //
     ;
 
     private final String name;
