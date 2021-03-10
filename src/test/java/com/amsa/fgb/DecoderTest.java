@@ -359,7 +359,7 @@ public class DecoderTest {
 
     @Test
     public void testComplianceKit() throws IOException {
-//        createComplianceKitTests();
+        createComplianceKitTests();
         File[] files = new File("src/test/resources/compliance-kit").listFiles();
         // ensure deterministic
         Arrays.sort(files, (a, b) -> a.getName().compareTo(b.getName()));
@@ -369,9 +369,9 @@ public class DecoderTest {
                 String expected = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
                 String json;
                 if (file.getName().contains("partial")) {
-                    json = Decoder.decodeFull(hex, Formatter.JSON);
-                } else {
                     json = Decoder.decodePartial(hex, Formatter.JSON);
+                } else {
+                    json = Decoder.decodeFull(hex, Formatter.JSON);
                 }
                 // TODO use Jackson for JSON equals
                 assertEquals(expected, json);
