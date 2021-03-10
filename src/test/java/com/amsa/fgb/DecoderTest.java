@@ -1,5 +1,6 @@
 package com.amsa.fgb;
 
+import static com.amsa.fgb.TestingUtil.assertJsonEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -349,7 +350,7 @@ public class DecoderTest {
         System.setOut(out);
         Decoder.main(new String[] { HEXSTRING_30_CHRS, "JSON" });
         System.setOut(previous);
-        assertEquals(load("/detection.json").trim(), new String(bytes.toByteArray(), StandardCharsets.UTF_8).trim());
+        assertJsonEquals(load("/detection.json").trim(), new String(bytes.toByteArray(), StandardCharsets.UTF_8).trim());
     }
 
     @Test(expected = RuntimeException.class)
@@ -374,7 +375,7 @@ public class DecoderTest {
                     json = Decoder.decodeFull(hex, Formatter.JSON);
                 }
                 // TODO use Jackson for JSON equals
-                assertEquals(expected, json);
+                assertJsonEquals(expected, json);
             }
         }
     }

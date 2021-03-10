@@ -2,15 +2,7 @@ package com.amsa.fgb.internal;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
-import java.util.Arrays;
 import java.util.Map;
-import java.util.stream.Stream;
 
 import org.junit.Test;
 
