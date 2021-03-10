@@ -38,7 +38,7 @@ class UserOrbitography extends User {
                 if (binCode.charAt(107) == '0')
                     result.add(this.nationalUse(binCode, 107, 112));
                 else {
-                    result.add(new HexAttribute("Emergency Code Flag", 107,
+                    result.add(new HexAttribute(AttributeType.EMERGENCY_CODE_FLAG, 107,
                             "Non-Spec (" + binCode.charAt(107) + ")", ""));
                     result.add(this.nationalUse(binCode, 108, 112));
                 }
@@ -54,7 +54,7 @@ class UserOrbitography extends User {
         String v1 = binCode.substring(s, f + 1);
         String e1 = "";
 
-        result.add(new HexAttribute("Orbitography Data", s, f, v1, e1));
+        result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_DATA, s, f, v1, e1));
 
         // bit 40-81
         String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(),
@@ -67,16 +67,16 @@ class UserOrbitography extends User {
         if (e2 != null && e2.length() > 0)
             e2 = "\nWARNING - SUSPECT NON-SPEC IN ORBITOGRAPHY BEACON CLEAR TEXT IDENTIFIER\n" + e2;
 
-        result.add(new HexAttribute("Orbitography ID", s, f - 4, v2, e2));
+        result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_ID, s, f - 4, v2, e2));
 
         // Bit 82-85
         String v3 = binCode.substring(f - 4 + 1, f + 1);
 
         if (v3.equals("0000"))
-            result.add(new HexAttribute("Orbitography 4 bits", f - 4 + 1, f, v3, ""));
+            result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_4_BITS, f - 4 + 1, f, v3, ""));
         else
             result.add(
-                    new HexAttribute("Orbitography 4 bits", f - 4 + 1, f, v3 + " (Non-Spec)", ""));
+                    new HexAttribute(AttributeType.ORBITOGRAPHY_4_BITS, f - 4 + 1, f, v3 + " (Non-Spec)", ""));
 
         return result;
     }

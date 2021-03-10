@@ -60,6 +60,10 @@ public enum AttributeType {
     , AIRCRAFT_REG_MARKING("Aircraft Reg. Marking") //
     , RADIO_CALLSIGN("Radio Callsign") //
     , SHIP_MMSI_LAST_6_DIGITS("Ship MMSI Last 6 Digits") //
+    , EMERGENCY_CODE_FLAG("Emergency Code Flag") //
+    , ORBITOGRAPHY_DATA("Orbitography Data") //
+    , ORBITOGRAPHY_ID("Orbitography ID") //
+    , ORBITOGRAPHY_4_BITS("Orbitography 4 bits") //
     ;
 
     private final String name;
