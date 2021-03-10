@@ -23,6 +23,14 @@ class Util {
         return sign * (d + m / 60.0);
     }
 
+    public static double getLatitudeFromFinePosition(String value) {
+        return toLatitude(value.substring(0, 9));
+    }
+
+    public static double getLongitudeFromFinePosition(String value) {
+        return toLongitude(value.substring(10));
+    }
+
     // TODO unit test
     public static double toLatitude(String value) {
         int d = Integer.parseInt(value.substring(0, 2));

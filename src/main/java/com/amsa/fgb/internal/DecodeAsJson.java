@@ -62,8 +62,8 @@ public final class DecodeAsJson implements DecodeFilter {
                 if (h.getDesc().equals(AttributeType.FINE_POSITION.toString())) {
                     // TODO unit test
                     if (!h.getValue().equals("DEFAULT")) {
-                        addKeyValue(b, "Fine Position Latitude", "" + Util.toLatitude(h.getValue().substring(0, 9)));
-                        addKeyValue(b, "Fine Position Longitude", "" + Util.toLongitude(h.getValue().substring(10)));
+                        addKeyValue(b, "Fine Position Latitude", "" + Util.getLatitudeFromFinePosition(h.getValue()));
+                        addKeyValue(b, "Fine Position Longitude", "" + Util.getLongitudeFromFinePosition(h.getValue()));
                     }
                 } else if (h.getDesc().equals(AttributeType.OFFSET_POSITION.toString())) {
                     // TODO unit test
