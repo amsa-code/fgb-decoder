@@ -378,7 +378,7 @@ import java.util.Map.Entry;
         int len = binCode.length();
         for (int i = 0; i < len; i = i + 3) {
             String bits = binCode.substring(i, i + 3);
-            String t = (String) octMap.get(bits);
+            String t = octMap.get(bits);
             if (t != null) {
                 octStr = octStr + t;
             }
@@ -401,7 +401,7 @@ import java.util.Map.Entry;
             // Start decoding
             for (int i = 0; i < len; i = i + 4) {
                 String bits = binCode.substring(i, i + 4);
-                String t = (String) hexMap.get(bits);
+                String t = hexMap.get(bits);
                 if (t != null) {
                     hexStr = hexStr + t;
                 }
@@ -416,27 +416,27 @@ import java.util.Map.Entry;
         // In the above hashMap there are values of length 14,12,9,6,4
         // We will take it in turn.
         String code = binCode.substring(0, 14 - 1);
-        String r = (String) airRegMap.get(code);
+        String r = airRegMap.get(code);
         if (r != null) {
             return r;
         } else {
             code = binCode.substring(0, 12 - 1);
-            r = (String) airRegMap.get(code);
+            r = airRegMap.get(code);
             if (r != null) {
                 return r;
             } else {
                 code = binCode.substring(0, 9 - 1);
-                r = (String) airRegMap.get(code);
+                r = airRegMap.get(code);
                 if (r != null) {
                     return r;
                 } else {
                     code = binCode.substring(0, 6 - 1);
-                    r = (String) airRegMap.get(code);
+                    r = airRegMap.get(code);
                     if (r != null) {
                         return r;
                     } else {
                         code = binCode.substring(0, 4 - 1);
-                        r = (String) airRegMap.get(code);
+                        r = airRegMap.get(code);
                         if (r != null) {
                             return r;
                         }
@@ -491,7 +491,7 @@ import java.util.Map.Entry;
     private static String getAircraftCallsign(int value) {
         try {
 
-            String S1 = (String) aircraftMap.get(value + "");
+            String S1 = aircraftMap.get(value + "");
 
             if (S1 != null) {
                 return S1;
@@ -510,7 +510,7 @@ import java.util.Map.Entry;
             String r = "";
             for (int i = 0; i < len; i++) {
                 String letter = hexStr.substring(i, i + 1);
-                String t = (String) binMap.get(letter);
+                String t = binMap.get(letter);
 
                 if (t != null) {
                     r = r + t;
@@ -652,7 +652,7 @@ import java.util.Map.Entry;
             while (num < mbaudotStr.length()) {
                 // if (mbaudotStr.charAt(num) == '*' || mbaudotStr.charAt(num) == '?')
                 if (mbaudotStr.charAt(num) == '?') {
-                    errStr += "?" + countNum++ + " = " + (String) e.get(num);
+                    errStr += "?" + countNum++ + " = " + e.get(num);
                 }
 
                 num++;
