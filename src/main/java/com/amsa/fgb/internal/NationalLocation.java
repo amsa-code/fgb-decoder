@@ -104,7 +104,7 @@ abstract class NationalLocation extends BeaconProtocol {
                         result.add(this.longMessage(binCode, 113, 144));
                     } else {
                         if (this.positionalDataPresent(binCode)) {
-                            result.add(offsetPosition(binCode, 113, 126));
+                            result.addAll(offsetPosition(binCode, 113, 126));
                             result.add(nationalUse(binCode, 127, 132));
                         } else {
                             result.add(nationalUse(binCode, 113, 132));
@@ -189,23 +189,17 @@ abstract class NationalLocation extends BeaconProtocol {
         return lonSeconds;
     }
 
-    private HexAttribute offsetPosition(String binCode, int s, int f) {
-        String e = "";
+    private List<HexAttribute> offsetPosition(String binCode, int s, int f) {
         String def = "10011111001111";
-
         String bits = binCode.substring(s, f + 1);
-        String pos = "";
         if (bits.equals(def)) {
-            pos = "DEFAULT";
+            return Collections.emptyList();
         } else {
             // Lat Offset
             int min1 = Conversions.binaryToDecimal(bits.substring(1, 3));
             int sec1 = Conversions.binaryToDecimal(bits.substring(3, 7)) * 4;
             int offset1 = (min1 * 60) + sec1;
-            if (bits.charAt(0) == '1') {
-                pos = "+";
-            } else {
-                pos = "-";
+            if (bits.charAt(0) != '1') {
                 offset1 = offset1 * -1;
             }
 
@@ -216,17 +210,11 @@ abstract class NationalLocation extends BeaconProtocol {
                 tempLat *= -1;
             this.latSeconds = tempLat;
 
-            pos = pos + min1;
-            pos = pos + " " + sec1;
-
             // Lon Offset
             int min2 = Conversions.binaryToDecimal(bits.substring(8, 10));
             int sec2 = Conversions.binaryToDecimal(bits.substring(10, 14)) * 4;
             int offset2 = (min2 * 60) + sec2;
-            if (bits.charAt(7) == '1') {
-                pos = pos + " +";
-            } else {
-                pos = pos + " -";
+            if (bits.charAt(7) != '1') {
                 offset2 = offset2 * -1;
             }
 
@@ -236,12 +224,7 @@ abstract class NationalLocation extends BeaconProtocol {
             if (this.lonSeconds < 0)
                 tempLon *= -1;
             this.lonSeconds = tempLon;
-
-            pos = pos + min2;
-            pos = pos + " " + sec2;
+            return Util.offsetPositionAttributes(offset1, offset2, s, f);
         }
-
-        return new HexAttribute(AttributeType.OFFSET_POSITION, s, f, pos, e);
     }
-
 }

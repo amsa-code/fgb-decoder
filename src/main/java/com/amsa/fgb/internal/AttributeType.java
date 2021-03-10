@@ -33,7 +33,6 @@ public enum AttributeType {
     FIXED_BITS("Fixed bits"), //
     HEX_DATA("Hex Data"), //
     HEX_ID("Hex Id"), //
-    HEX_OFFSET("Offset Position"), //
     ID_POSN("ID+POSN"), //
     IS_LONG_MESSAGE_DEFAULT("Is Long Message Default", JsonType.BOOLEAN), //
     LATITUDE("Latitude", JsonType.NUMBER), //
@@ -42,7 +41,8 @@ public enum AttributeType {
     MESSAGE_TYPE("Message Type"), //
     NATIONAL_USE("National Use"), //
     NATURE_OF_DISTRESS("Nature of Distress"), //
-    OFFSET_POSITION("Offset Position"), //
+    OFFSET_POSITION_LATITUDE_DIFF("Offset Position Latitude Diff"), //
+    OFFSET_POSITION_LONGITUDE_DIFF("Offset Position Longitude Diff"), //
     ORBITOGRAPHY_4_BITS("Orbitography 4 bits"), //
     ORBITOGRAPHY_DATA("Orbitography Data"), //
     ORBITOGRAPHY_ID("Orbitography ID"), //

@@ -10,8 +10,8 @@
 "Error Correcting Code":"111001111000111000111",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":true,
-"Offset Position Latitude Diff":6.933333333333334,
-"Offset Position Longitude Diff":11.466666666666667,
+"Offset Position Latitude Diff" : 0.11555555555555555,
+"Offset Position Longitude Diff" : 0.19111111111111112,
 "Error Correcting Code":"000001110010",
 "Latitude":32.11555555555555,
 "Longitude":-110.94111111111111}

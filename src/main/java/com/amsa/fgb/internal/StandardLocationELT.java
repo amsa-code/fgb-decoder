@@ -43,7 +43,7 @@ class StandardLocationELT extends StandardLocation {
                     if (this.default00000000(hexStr)) {
                         result.add(this.longMessage(binCode, 113, 144));
                     } else {
-                        result.add(offsetPosition(binCode, 113, 132));
+                        result.addAll(offsetPosition(binCode, 113, 132));
                         result.add(this.bch2(binCode, 133, 144));
                     }
                 }

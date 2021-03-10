@@ -8,10 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
 import java.util.stream.Collectors;
-
-import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
 
 public final class DecodeAsJson implements DecodeFilter {
 
@@ -27,7 +24,8 @@ public final class DecodeAsJson implements DecodeFilter {
 
     private static Map<String, String> loadAttributeTypes() {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(
-                DecodeAsJson.class.getResourceAsStream("/attribute-types.txt"), StandardCharsets.UTF_8))) {
+                DecodeAsJson.class.getResourceAsStream("/attribute-types.txt"),
+                StandardCharsets.UTF_8))) {
             return br //
                     .lines() //
                     .map(x -> x.trim()) //
@@ -56,51 +54,16 @@ public final class DecodeAsJson implements DecodeFilter {
             HexAttribute h = v.get(i);
 
             if (h.error != null && !h.error.trim().isEmpty()) {
-                throw new RuntimeException("Error occurred at position " + h.getPos() + " with desc='" + h.desc
-                        + "', value='" + h.value + "':" + h.error);
-            } else if (!h.getDesc().isEmpty() && !h.getDesc().equals(AttributeType.SPARE.toString())) {
-                if (h.getDesc().equals(AttributeType.OFFSET_POSITION.toString())) {
-                    // TODO unit test
-                    if (!h.getValue().equals("DEFAULT")) {
-                        Offset offset = new Offset(h.getValue());
-                        addKeyValue(b, "Offset Position Latitude Diff", "" + offset.latDiff);
-                        addKeyValue(b, "Offset Position Longitude Diff", "" + offset.lonDiff);
-                    }
-                } else {
-                    addKeyValue(b, h.getDesc(), h.getValue());
-                }
+                throw new RuntimeException("Error occurred at position " + h.getPos()
+                        + " with desc='" + h.desc + "', value='" + h.value + "':" + h.error);
+            } else if (!h.getDesc().isEmpty()
+                    && !h.getDesc().equals(AttributeType.SPARE.toString())) {
+                addKeyValue(b, h.getDesc(), h.getValue());
             }
         }
         b.insert(0, "{");
         b.append("}");
         return b.toString();
-    }
-
-    @VisibleForTesting
-    static final class Offset {
-        final double latDiff;
-        final double lonDiff;
-
-        // TODO unit test
-        Offset(String value) {
-            // +15 20 -22 24
-            // +0 20 -0 24
-            StringTokenizer t = new StringTokenizer(value);
-            {
-                String a = t.nextToken();
-                int signLat = a.charAt(0) == '+' ? 1 : -1;
-                int latDegs = Integer.parseInt(a.substring(1));
-                int latMins = Integer.parseInt(t.nextToken());
-                this.latDiff = signLat * (latDegs + latMins / 60.0);
-            }
-            {
-                String a = t.nextToken();
-                int signLon = a.charAt(0) == '+' ? 1 : -1;
-                int lonDegs = Integer.parseInt(a.substring(1));
-                int lonMins = Integer.parseInt(t.nextToken());
-                this.lonDiff = signLon * (lonDegs + lonMins / 60.0);
-            }
-        }
     }
 
     private void addKeyValue(StringBuilder b, String key, String value) {

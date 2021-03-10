@@ -113,24 +113,18 @@ abstract class StandardLocation extends BeaconProtocol {
         return lonSeconds;
     }
 
-    HexAttribute offsetPosition(String binCode, int s, int f) {
-        String e = "";
+    List<HexAttribute> offsetPosition(String binCode, int s, int f) {
         String def = "10000011111000001111";
-
         String bits = binCode.substring(s, f + 1);
-        String pos = "";
         if (bits.equals(def)) {
-            pos = "DEFAULT";
+            return Collections.emptyList();
         } else {
             // Lat Offset
             int min1 = Conversions.binaryToDecimal(bits.substring(1, 6));
             int sec1 = Conversions.binaryToDecimal(bits.substring(6, 10)) * 4;
             int offset1 = (min1 * 60) + sec1;
 
-            if (bits.charAt(0) == '1') {
-                pos = "+";
-            } else {
-                pos = "-";
+            if (bits.charAt(0) != '1') {
                 offset1 = offset1 * -1;
             }
 
@@ -141,18 +135,12 @@ abstract class StandardLocation extends BeaconProtocol {
                 tempLat *= -1;
             this.latSeconds = tempLat;
 
-            pos = pos + min1;
-            pos = pos + " " + sec1;
-
             // Lon Offset
             int min2 = Conversions.binaryToDecimal(bits.substring(11, 16));
             int sec2 = Conversions.binaryToDecimal(bits.substring(16, 20)) * 4;
             int offset2 = (min2 * 60) + sec2;
 
-            if (bits.charAt(10) == '1') {
-                pos = pos + " +";
-            } else {
-                pos = pos + " -";
+            if (bits.charAt(10) != '1') {
                 offset2 = offset2 * -1;
             }
 
@@ -162,12 +150,8 @@ abstract class StandardLocation extends BeaconProtocol {
             if (this.lonSeconds < 0)
                 tempLon *= -1;
             this.lonSeconds = tempLon;
-
-            pos = pos + min2;
-            pos = pos + " " + sec2;
+            return Util.offsetPositionAttributes(offset1, offset2, s, f);
         }
-
-        return new HexAttribute(AttributeType.OFFSET_POSITION, s, f, pos, e);
     }
 
     // C/S Type Approval</TD><TD>b41-50</TD><TD>115</TD></TR>
