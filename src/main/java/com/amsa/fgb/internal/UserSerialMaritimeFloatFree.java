@@ -67,7 +67,6 @@ class UserSerialMaritimeFloatFree extends UserSerial {
                 result = this.nonNationalUse(result, binCode);
             }
         }
-
         return result;
     }
 
@@ -75,7 +74,6 @@ class UserSerialMaritimeFloatFree extends UserSerial {
     @Override
     List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
         result = Common.maritimeEmergencyCodes(result, binCode);
-
         return result;
     }
 

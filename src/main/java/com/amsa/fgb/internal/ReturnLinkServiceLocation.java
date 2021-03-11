@@ -100,8 +100,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
             result.add(rlmCapabilityType1(binCode, 109));
             result.add(rlmCapabilityType2(binCode, 110));
             if (binCode.charAt(109) == '0' && binCode.charAt(110) == '0') {
-                result.add(new HexAttribute(AttributeType.RLM_CAPABILITY_TYPE, 109, 110, "00",
-                        "Invalid"));
+                result.add(new HexAttribute(AttributeType.RLM_CAPABILITY_TYPE, 109, 110, "00", "Invalid"));
             }
             result.add(rlmReceivedType1(binCode, 111));
             result.add(rlmReceivedType2(binCode, 112));
@@ -162,20 +161,14 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         String v = binCode.substring(s, f + 1);
         String e = "";
 
-        if (v.length() == 2) {
-            if (v.equals("00")) {
-                v = "ELT";
-            } else if (v.equals("01")) {
-                v = "EPIRB";
-            } else if (v.equals("10")) {
-                v = "PLB";
-            } else if (v.equals("11")) {
-                v = "SPARE";
-            } else {
-                v += " (Non-Spec)";
-            }
+        if (v.equals("00")) {
+            v = "ELT";
+        } else if (v.equals("01")) {
+            v = "EPIRB";
+        } else if (v.equals("10")) {
+            v = "PLB";
         } else {
-            v += " (Non-Spec)";
+            v = "SPARE";
         }
 
         return new HexAttribute(AttributeType.BEACON_TYPE, s, f, v, e);
@@ -251,8 +244,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
             this.latSeconds = p.latSeconds();
             this.lonSeconds = p.lonSeconds();
             this.actualLatLong = true;
-            return Util.coarsePositionAttributes(latSeconds, lonSeconds, COARSE_POSITION_START,
-                    COARSE_POSITION_FINISH);
+            return Util.coarsePositionAttributes(latSeconds, lonSeconds, COARSE_POSITION_START, COARSE_POSITION_FINISH);
         }
     }
 

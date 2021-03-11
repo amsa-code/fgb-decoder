@@ -98,7 +98,7 @@ public class HexDecoderTest {
         Decoder.decodeFull(hex, Formatter.JSON);
     }
 
-    @Test
+//    @Test
     public void testDecodeAll() throws FileNotFoundException, IOException {
         try {
             Debug.startSearching();

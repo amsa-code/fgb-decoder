@@ -213,7 +213,7 @@ abstract class User extends BeaconProtocol {
         return result;
     }
 
-    // This method should be overiddded by the subclasses
+    // This method may be overiddden by the subclasses
     List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
         return result;
     }

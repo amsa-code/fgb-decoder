@@ -74,6 +74,7 @@ class UserSerialPersonal extends UserSerial {
     // This overidding method will be called by User.java
     @Override
     List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
-        return Common.nonMaritimeEmergencyCodes(result, binCode);
+        result = Common.nonMaritimeEmergencyCodes(result, binCode);
+        return result;
     }
 }
