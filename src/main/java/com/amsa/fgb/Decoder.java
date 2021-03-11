@@ -16,7 +16,7 @@ public final class Decoder {
 
     static void main(String[] args) {
         if (args.length != 1) {
-            throw new IllegalArgumentException("Wrong number of arguments, expecting <HexString>");
+            throw new IllegalArgumentException("Only expecting one argument: <HexString>");
         }
         String hex = args[0];
         String output = decodeFullAsJson(hex);
