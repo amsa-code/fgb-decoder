@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.amsa.fgb.Decoder;
+import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
 
 public final class Debug {
 
@@ -52,22 +53,27 @@ public final class Debug {
                     try {
                         String json = Decoder.decodeFullAsJson(hex);
                         File f = new File("src/test/resources/compliance-kit/" + hex + ".json");
-                        if (!f.exists()) {
-                            try {
-                                Files.write(f.toPath(), json.getBytes(StandardCharsets.UTF_8));
-                            } catch (IOException e) {
-                                throw new UncheckedIOException(e);
-                            }
-                            System.out.println("added " + f.getName() + " to compliance-kit");
-                        } else {
-                            System.out.println("already added " + f.getName());
-                        }
+                        writeToFile(json, f);
                         break;
                     } catch (RuntimeException e) {
                         System.out.println("errored " + hex);
                     }
                 }
             }
+        }
+    }
+
+    @VisibleForTesting
+    static void writeToFile(String json, File f) {
+        if (!f.exists()) {
+            try {
+                Files.write(f.toPath(), json.getBytes(StandardCharsets.UTF_8));
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
+            }
+            System.out.println("added " + f.getName() + " to compliance-kit");
+        } else {
+            System.out.println("already added " + f.getName());
         }
     }
 
