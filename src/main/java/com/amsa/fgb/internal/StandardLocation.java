@@ -111,7 +111,7 @@ abstract class StandardLocation extends BeaconProtocol {
             // Lat Offset
             int min1 = Conversions.binaryToDecimal(bits.substring(1, 6));
             int sec1 = Conversions.binaryToDecimal(bits.substring(6, 10)) * 4;
-            int offset1 = (min1 * 60) + sec1;
+            int offset1 = min1 * 60 + sec1;
 
             if (bits.charAt(0) != '1') {
                 offset1 = offset1 * -1;
@@ -127,7 +127,7 @@ abstract class StandardLocation extends BeaconProtocol {
             // Lon Offset
             int min2 = Conversions.binaryToDecimal(bits.substring(11, 16));
             int sec2 = Conversions.binaryToDecimal(bits.substring(16, 20)) * 4;
-            int offset2 = (min2 * 60) + sec2;
+            int offset2 = min2 * 60 + sec2;
 
             if (bits.charAt(10) != '1') {
                 offset2 = offset2 * -1;

@@ -56,8 +56,8 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
-        result.add(this.messageType(binCode, 25, 26));
-        result.add(this.hexData(hexStr, 25, (binCode.length() - 1)));
+        result.add(this.messageType(25, 26));
+        result.add(this.hexData(hexStr, 25, binCode.length() - 1));
 
         // for some reason we always report the hex id with no location (called default)
         HexAttribute hexId = this.hexIdWithDefaultLocation(binCode, 26, 67);
@@ -174,7 +174,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
     }
 
     // Get the messageType. Is it LONG or SHORT?
-    private HexAttribute messageType(String binCode, int s, int f) { // b25-26
+    private HexAttribute messageType(int s, int f) { // b25-26
         String v = "Return Link Service Location";
         String e = "";
 

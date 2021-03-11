@@ -16,7 +16,7 @@ class StandardLocationAircraftOperator extends StandardLocation {
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
         result.add(this.messageType(binCode, 25, 26));
-        result.add(this.hexData(hexStr, 25, (binCode.length() - 1)));
+        result.add(this.hexData(hexStr, 25, binCode.length() - 1));
         HexAttribute hexId = this.hexIdWithDefaultLocation(binCode, 26, 65);
         result.add(hexId);
         result.add(this.countryCode(binCode, 27, 36));

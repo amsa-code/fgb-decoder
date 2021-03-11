@@ -18,7 +18,7 @@ class UserSerialSpare2 extends UserSerial {
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
         result.add(this.messageType(binCode, 25, 26));
-        result.add(this.hexData(hexStr, 25, (binCode.length() - 1)));
+        result.add(this.hexData(hexStr, 25, binCode.length() - 1));
         result.add(this.hexId(binCode, 26, 85));
         result.add(this.countryCode(binCode, 27, 36));
         result.add(this.protocolType(binCode, 37, 39));
@@ -66,7 +66,7 @@ class UserSerialSpare2 extends UserSerial {
 
             // Note: SubClass Constructor sets the serialCode in
             // Only 111, 101 (which are the user serial spare codes) >= 0
-            return (serCode.compareTo(this.serialCode) >= 0);
+            return serCode.compareTo(this.serialCode) >= 0;
         }
         return false;
     }

@@ -17,7 +17,7 @@ class StandardLocationPLB extends StandardLocation {
 
         result.add(this.messageType(binCode, 25, 26));
 
-        result.add(this.hexData(hexStr, 25, (binCode.length() - 1)));
+        result.add(this.hexData(hexStr, 25, binCode.length() - 1));
         // There will be "default" position to append from bit65 to bit85 and this only
         // applies to StandardLocation and its subclasses
         // result.add(this.hexId(binCode, 26, 65));
