@@ -412,12 +412,8 @@ abstract class BeaconProtocol {
         String binCode2 = binCodeOrig.substring(s, f + 1);
         String e = "";
 
-        int lenStr = binCode.length();
-        int a = 26 - lenStr;
-        binCode = addZerosOnRight(binCode, a);
-
-        int b = 12;
-        binCode = addZerosOnRight(binCode, b);
+        binCode = addZerosOnRight(binCode, 26 - binCode.length());
+        binCode = addZerosOnRight(binCode, 12);
 
         String bchCode = calcBCHCODE(binCode, "1010100111001");
 
@@ -431,10 +427,11 @@ abstract class BeaconProtocol {
     }
 
     private static String addZerosOnRight(String s, int n) {
+        StringBuilder b = new StringBuilder(s);
         for (int i = 0; i < n; i++) {
-            s = s + "0";
+            b.append("0");
         }
-        return s;
+        return b.toString();
     }
 
     private static String calcBCHCODE(String bitCode, String generatorPolynomial) {
