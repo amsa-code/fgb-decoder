@@ -38,7 +38,6 @@ class LocationSpare extends BeaconProtocol {
         // 09 May 2005, based on CDP's guidance
         // Providing the binary codes from bit41 to bit 85 inclusively
         result.add(new HexAttribute(AttributeType.ID_POSN, 41, 85, binCode.substring(41, 86), ""));
-
         if (hexStr.length() > 15) {
             // Providing the BCH1 decoding
             result.add(this.bch1(binCode, 86, 106));

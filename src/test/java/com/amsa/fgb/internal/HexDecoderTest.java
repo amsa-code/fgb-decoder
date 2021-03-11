@@ -2,14 +2,8 @@ package com.amsa.fgb.internal;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
-import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
@@ -101,13 +95,18 @@ public class HexDecoderTest {
     @Test
     public void testDecode() {
         String hex = "D6E67C5F61F89568772240FFFFFFFF";
-        System.out.println(Decoder.decodeFull(hex, Formatter.JSON));
+        Decoder.decodeFull(hex, Formatter.JSON);
     }
 
-//    @Test
+    @Test
     public void testDecodeAll() throws FileNotFoundException, IOException {
-        DecodeHistoricalFilesMain.decode();
-        Debug.writeFoundToComplianceKit();
+        try {
+            Debug.startSearching();
+            DecodeHistoricalFilesMain.decode();
+            Debug.writeFoundToComplianceKit();
+        } finally {
+            Debug.stopSearching();
+        }
     }
 
 }

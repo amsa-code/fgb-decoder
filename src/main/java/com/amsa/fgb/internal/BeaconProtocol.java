@@ -114,21 +114,14 @@ abstract class BeaconProtocol {
 
     private char rlsTacNumberPrefix(String binCode, int s) {
         final String v = binCode.substring(s, s + 2);
-
-        if (v.length() == 2) {
-            if (v.equals("00")) {
-                return '2';
-            } else if (v.equals("01")) {
-                return '1';
-            } else if (v.equals("10")) {
-                return '3';
-            } else if (v.equals("11")) {
-                return 'T';
-            } else {
-                return '?';
-            }
+        if (v.equals("00")) {
+            return '2';
+        } else if (v.equals("01")) {
+            return '1';
+        } else if (v.equals("10")) {
+            return '3';
         } else {
-            return '?';
+            return 'T';
         }
     }
 
@@ -359,13 +352,13 @@ abstract class BeaconProtocol {
     // Latitude 36 00 20S
     HexAttribute actualLatitude() {
         String e = "";
-        return new HexAttribute(AttributeType.LATITUDE, latSeconds/3600.0 + "", e);
+        return new HexAttribute(AttributeType.LATITUDE, latSeconds / 3600.0 + "", e);
     }
 
     // Longitude 115 07 36E
     HexAttribute actualLongitude() {
         String e = "";
-        return new HexAttribute(AttributeType.LONGITUDE, lonSeconds/3600.0 + "", e);
+        return new HexAttribute(AttributeType.LONGITUDE, lonSeconds / 3600.0 + "", e);
     }
 
     HexAttribute bch1(String binCodeOrig, int s, int f) {
