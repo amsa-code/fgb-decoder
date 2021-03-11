@@ -12,12 +12,12 @@ import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
-import java.util.Arrays;
 
 import com.amsa.fgb.Decoder;
 import com.amsa.fgb.Formatter;
+import com.amsa.fgb.TestingUtil;
 
-public class CreateComplianceKitMain {
+public class CreateHistoricalJsonFilesMain {
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
         long[] count = new long[1];
@@ -25,8 +25,8 @@ public class CreateComplianceKitMain {
         String home = System.getProperty("user.home");
         File file = new File(home, "beacons.txt");
         File files = new File(home, "files");
+        TestingUtil.delete(files);
         assertTrue(files.mkdirs());
-        Arrays.stream(files.listFiles()).forEach(File::delete);
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
             br.lines() //
                     .map(x -> x.trim()) //
