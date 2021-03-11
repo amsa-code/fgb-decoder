@@ -5,6 +5,8 @@ import java.util.List;
 
 abstract class BeaconProtocol {
 
+    private static final String GENERATOR_POLYNOMIAL = "1001101101100111100011";
+
     protected boolean isUS = false;
 
     protected List<String> beaconTypeCode;
@@ -352,18 +354,11 @@ abstract class BeaconProtocol {
 
         String e = "";
 
-        int lenStr = binCode.length();
-        int a = 61 - lenStr;
-        for (int i = 0; i < a; i++) {
-            binCode = binCode + "0";
-        }
+        binCode = addZerosOnRight(binCode, 61 - binCode.length());
 
-        int b = 21;
-        for (int i = 0; i < b; i++) {
-            binCode = binCode + "0";
-        }
+        binCode = addZerosOnRight(binCode, 21);
 
-        String bchCode = calcBCHCODE(binCode, "1001101101100111100011");
+        String bchCode = calcBCHCODE(binCode, GENERATOR_POLYNOMIAL);
 
         if (!bchCode.equals(binCode2)) {
             e = "WARNING - ERROR IN FIRST PROTECTED FIELD\n";
@@ -419,14 +414,10 @@ abstract class BeaconProtocol {
 
         int lenStr = binCode.length();
         int a = 26 - lenStr;
-        for (int i = 0; i < a; i++) {
-            binCode = binCode + "0";
-        }
+        binCode = addZerosOnRight(binCode, a);
 
         int b = 12;
-        for (int i = 0; i < b; i++) {
-            binCode = binCode + "0";
-        }
+        binCode = addZerosOnRight(binCode, b);
 
         String bchCode = calcBCHCODE(binCode, "1010100111001");
 
@@ -438,6 +429,13 @@ abstract class BeaconProtocol {
         }
 
         return new HexAttribute(AttributeType.ERROR_CORRECTING_CODE_2, s, f, binCode2, e);
+    }
+
+    private static String addZerosOnRight(String s, int n) {
+        for (int i = 0; i < n; i++) {
+            s = s + "0";
+        }
+        return s;
     }
 
     private static String calcBCHCODE(String bitCode, String generatorPolynomial) {
