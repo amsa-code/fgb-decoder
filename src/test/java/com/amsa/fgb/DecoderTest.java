@@ -25,10 +25,10 @@ import org.junit.Test;
  */
 public class DecoderTest {
 
-    private static final String HEXSTRING_15_CHRS = "ADCC40504000185";
-    private static final String HEXSTRING_15_CHRS_AVIATION = "BEE64BE562F9BD9";
+//    private static final String HEXSTRING_15_CHRS = "ADCC40504000185";
+//    private static final String HEXSTRING_15_CHRS_AVIATION = "BEE64BE562F9BD9";
     private static final String HEXSTRING_30_CHRS = "D6E6202820000C29FF51041775302D";
-    
+
     @Test
     public void testDecodeToJsonWith30Chr() {
         assertEquals(load("/detection.json"), Decoder.decodeFullAsJson(HEXSTRING_30_CHRS));
@@ -80,13 +80,15 @@ public class DecoderTest {
 //         createComplianceKitTests();
         File[] files = new File("src/test/resources/compliance-kit").listFiles();
         // ensure deterministic
-        Arrays.sort(files, (a, b) -> a.getName().compareTo(b.getName()));
-        for (File file : files) {
-            if (file.getName().endsWith(".json")) {
-                String hex = file.getName().substring(0, file.getName().indexOf("."));
-                String expected = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
-                String json = Decoder.decodeFullAsJson(hex);
-                assertJsonEquals(expected, json);
+        if (files != null) {
+            Arrays.sort(files, (a, b) -> a.getName().compareTo(b.getName()));
+            for (File file : files) {
+                if (file.getName().endsWith(".json")) {
+                    String hex = file.getName().substring(0, file.getName().indexOf("."));
+                    String expected = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
+                    String json = Decoder.decodeFullAsJson(hex);
+                    assertJsonEquals(expected, json);
+                }
             }
         }
     }

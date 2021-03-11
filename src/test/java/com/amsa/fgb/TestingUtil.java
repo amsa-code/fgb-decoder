@@ -40,7 +40,7 @@ public final class TestingUtil {
             throw new ComparisonFailure("unequal json", Json.prettyPrint(expected), Json.prettyPrint(json));
         }
     }
-    
+
     private static boolean equals(String json1, String json2) {
         ObjectMapper m = new ObjectMapper();
         try {
@@ -49,11 +49,14 @@ public final class TestingUtil {
             throw new RuntimeException(e);
         }
     }
-    
+
     public static void delete(File file) {
         if (file.isDirectory()) {
-            for (File f : file.listFiles()) {
-                delete(f);
+            File[] list = file.listFiles();
+            if (list != null) {
+                for (File f : list) {
+                    delete(f);
+                }
             }
         }
         if (!file.delete()) {
