@@ -127,10 +127,11 @@ class UserRadioCallsign extends User {
         // Replace all rest * to ?, eg "*9 " to "?9 "
         h = h.replace('*', '?');
         // Append the relevant elements in e2 to e
+        StringBuilder b = new StringBuilder();
         for (int i = 0; i < h.length(); i++)
             if (h.charAt(i) == '?')
-                e += "?" + ++count + " = " + e2.get(i);
-
+                b.append("?" + ++count + " = " + e2.get(i));
+        e+= b.toString();
         // 24 June 2005, double quote is not used any more
         // String vH = "\"" + v + h + "\"";
         String vH = (v + h).trim();

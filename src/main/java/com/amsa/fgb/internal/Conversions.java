@@ -509,7 +509,6 @@ final class Conversions {
 
         // HashTable e = new HashTable();
         List<String> e = new ArrayList<>();
-        String errStr = "";
 
         String mbaudotStr = "";
         int n = mbaudotBits.length() / bits;
@@ -585,19 +584,20 @@ final class Conversions {
 
         } // end of for loop
 
-        // Deal with SPACE if the protocol is not User Radion Call Sign, these protocols
+        // Deal with SPACE if the protocol is not User Radio Call Sign, these protocols
         // are: UserAviation, UserMaritime and UserSerialAircraftOperator
         int len = mbaudotStr.length();
-        String temp = "";
+        StringBuilder temp = new StringBuilder();
         for (int i = 0; i < len; i++) {
-            temp += "*";
+            temp.append("*");
         }
 
+        StringBuilder errStr = new StringBuilder();
         int countNum = 1;
         // 02/Nov/2005
         // If mbaudotStr is all "*", then they are all spaces, which is allowed in the
         // Orbitography User protocol
-        if (!mbaudotStr.equalsIgnoreCase(temp)) {
+        if (!mbaudotStr.equalsIgnoreCase(temp.toString())) {
             int index = mbaudotStr.length() - 1;
             for (; index >= 0; index--) {
                 if (mbaudotStr.charAt(index) == '*')
@@ -620,7 +620,7 @@ final class Conversions {
             while (num < mbaudotStr.length()) {
                 // if (mbaudotStr.charAt(num) == '*' || mbaudotStr.charAt(num) == '?')
                 if (mbaudotStr.charAt(num) == '?') {
-                    errStr += "?" + countNum++ + " = " + e.get(num);
+                    errStr.append("?" + countNum++ + " = " + e.get(num));
                 }
 
                 num++;
@@ -633,7 +633,7 @@ final class Conversions {
         }
 
         vE[0] = mbaudotStr;
-        vE[1] = errStr;
+        vE[1] = errStr.toString();
         vE[2] = (countNum - 1) + "";
 
         return vE;

@@ -467,7 +467,7 @@ abstract class BeaconProtocol {
 
     private static String removeLeadingZeros(String str) {
         int i = 0;
-        while (str.charAt(i) == '0') {
+        while (i < str.length() && str.charAt(i) == '0') {
             i++;
         }
         return str.substring(i);
