@@ -54,9 +54,10 @@ class LocationReserved extends BeaconProtocol {
             if (this.isLongMessage(binCode)) {
                 result.add(new HexAttribute(AttributeType.PDF_2, 107, 132, binCode.substring(113, 133), ""));
                 result.add(new HexAttribute(AttributeType.BCH_2, 133, 144, binCode.substring(133, 145), ""));
-            } else
+            } else {
                 result.add(new HexAttribute(AttributeType.SUPPLEMENTARY_DATA, 107, 112,
                         binCode.substring(107, 113), ""));
+            }
 
         }
 

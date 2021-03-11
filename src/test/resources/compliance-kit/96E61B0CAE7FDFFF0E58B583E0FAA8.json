@@ -1,0 +1,11 @@
+{"Message Type":"Standard Location (Long)",
+"Hex Data":"96E61B0CAE7FDFFF0E58B583E0FAA8",
+"Hex Id":"2DCC36195CFFBFF",
+"Country Code":366,
+"Protocol Type":"EPIRB - Serial",
+"C/S Type approval":108,
+"Beacon Serial Number":3246,
+"Error Correcting Code":"111000011100101100010",
+"Encoded Position Source":"EXTERNAL",
+"121.5 MHz Homing":true,
+"Error Correcting Code":"101010101000"}

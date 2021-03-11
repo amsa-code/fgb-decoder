@@ -1,0 +1,11 @@
+{"Message Type":"Standard Location (Long)",
+"Hex Data":"A5DC19E1A07FDFFE5C803483E0FCCA",
+"Hex Id":"4BB833C340FFBFF",
+"Country Code":605,
+"Protocol Type":"Ship Security MMSI",
+"Ship Security MMSI":106010,
+"Fixed bits":"0000",
+"Error Correcting Code":"110010111001000000000",
+"Encoded Position Source":"EXTERNAL",
+"121.5 MHz Homing":false,
+"Error Correcting Code":"110011001010"}
