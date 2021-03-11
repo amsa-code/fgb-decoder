@@ -1,0 +1,11 @@
+{"Message Type":"Standard Location (Long)",
+"Hex Data":"8CD5315E757FDFF9D1123783E0F66C",
+"Hex Id":"19AA62BCEAFFBFF",
+"Country Code":205,
+"Protocol Type":"Aircraft Operator",
+"Aircraft Operator":"NHV",
+"Aircraft Serial Number":117,
+"Error Correcting Code":"001110100010001001000",
+"Encoded Position Source":"INTERNAL",
+"121.5 MHz Homing":true,
+"Error Correcting Code":"011001101100"}

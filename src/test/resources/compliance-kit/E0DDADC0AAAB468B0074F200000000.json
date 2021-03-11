@@ -1,0 +1,12 @@
+{"Message Type":"User Location (Long)",
+"Hex Data":"E0DDADC0AAAB468B0074F200000000",
+"Hex Id":"C1BB5B8155568D1",
+"Country Code":525,
+"User Protocol Type":"Radio Call Sign",
+"Radio Callsign":"YC5655",
+"Specific Beacon Number":"0",
+"Aux. radio-locating":"121.5 MHz",
+"Error Correcting Code":"011000000000111010011",
+"Encoded Position Source":"INTERNAL",
+"Is Long Message Default":true,
+"National Use":"00000000000000000000000000000000"}
