@@ -422,7 +422,6 @@ abstract class BeaconProtocol {
         String bchCode = calcBCHCODE(binCode, "1010100111001");
 
         if (!bchCode.equals(binCode2)) {
-            Debug.found();
             e = "WARNING - ERROR IN SECOND PROTECTED FIELD\n";
             e = e + " BCH SHOULD BE " + bchCode + "\n";
             e = e + " BCH IS ...... " + binCode2;

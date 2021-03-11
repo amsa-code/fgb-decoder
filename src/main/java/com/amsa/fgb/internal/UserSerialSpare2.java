@@ -54,7 +54,7 @@ class UserSerialSpare2 extends UserSerial {
             } else {
                 result.add(this.nationalUse(binCode, 107, 112));
             }
-        }
+        } 
 
         return result;
     }

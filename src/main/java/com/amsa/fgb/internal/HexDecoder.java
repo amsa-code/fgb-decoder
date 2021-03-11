@@ -14,6 +14,10 @@ import java.util.function.BiFunction;
  */
 public final class HexDecoder {
 
+    private HexDecoder() {
+        // prevent instantiation
+    }
+
     private static List<HexAttribute> getHexAttributesDecodeFull(String hexStr) {
         return getHexAttributes(hexStr, (proto, hex) -> proto.decode(hex));
     }
@@ -28,13 +32,16 @@ public final class HexDecoder {
         } else {
             // Convert the Hex String into Binary Code
             String binCode = com.amsa.fgb.internal.Conversions.hexToBinary(hexStr);
-            for (BeaconProtocol proto : BeaconProtocol.createBeaconProtocols()) {
-                if (proto.canDecode(binCode)) {
-                    return attributesFunction.apply(proto, hexStr);
-                }
-            }
+            String h = hexStr;
+            // Note that the last protocol UnknownProtocol will always match so a return is
+            // guaranteed
+            return BeaconProtocol.createBeaconProtocols() //
+                    .stream() //
+                    .filter(proto -> proto.canDecode(binCode)) //
+                    .map(proto -> attributesFunction.apply(proto, h)) //
+                    .findFirst() //
+                    .get();
         }
-        return Collections.emptyList();
     }
 
     static Map<String, HexAttribute> decodeToMap(String hexStr) {

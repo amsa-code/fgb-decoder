@@ -9,8 +9,15 @@ import java.util.Map;
 import org.junit.Test;
 
 import com.amsa.fgb.Decoder;
+import com.github.davidmoten.junit.Asserts;
 
 public class HexDecoderTest {
+
+    @Test
+    public void isUtilityClass() {
+        Asserts.assertIsUtilityClass(HexDecoder.class);
+    }
+
     @Test
     public void testDecodeWithRLSHasDefaultPositionOnly() {
         String hex = "3EFA8C60A6BFDFF";
@@ -106,6 +113,30 @@ public class HexDecoderTest {
     @Test(expected = RuntimeException.class)
     public void testDecodeWithBch2Error() {
         String hex = "D52FE0000000000FB7EC00FFFFFFFF";
+        Decoder.decodeFullAsJson(hex);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testDecodeOfUserSerialSpare2() {
+        String hex = "64D7C638B761FA2B92137DFFFFFFFF";
+        Decoder.decodeFullAsJson(hex);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testDecodeOfUserSerialSpare2CospasSarsatAppCertFlagPresent() {
+        String hex = "4157E0002CDAC2C8A08844FFFFFFFF";
+        Decoder.decodeFullAsJson(hex);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testDecodeOfUserSerialSpare2IsUS() {
+        String hex = "56E7FF0FC620FF082B9650FFFFFFFF";
+        Decoder.decodeFullAsJson(hex);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testDecodeOfUserSerialSpare2LongMessage() {
+        String hex = "F207D401EB1F4E80362765FFFFFFFF";
         Decoder.decodeFullAsJson(hex);
     }
     

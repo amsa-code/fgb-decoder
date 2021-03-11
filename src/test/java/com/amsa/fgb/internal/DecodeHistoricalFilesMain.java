@@ -26,7 +26,7 @@ public final class DecodeHistoricalFilesMain {
                             errors[0]++;
                         }
                         count[0]++;
-                        if (count[0] % 1000 == 0) {
+                        if (count[0] % 10000 == 0) {
                             System.out.println("count=" + count[0] + ", errors=" + errors[0]);
                         }
                     });

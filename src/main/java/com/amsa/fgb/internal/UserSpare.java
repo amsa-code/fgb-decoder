@@ -12,7 +12,6 @@ class UserSpare extends User {
 
     @Override
      List<HexAttribute> decode(String hexStr) {
-
         String binCode = Conversions.hexToBinary(hexStr);
 
         List<HexAttribute> result = new ArrayList<HexAttribute>();
