@@ -97,6 +97,18 @@ public class HexDecoderTest {
         Decoder.decodeFullAsJson(hex);
     }
 
+    @Test(expected = RuntimeException.class)
+    public void testDecodeWithBch1Error() {
+        String hex = "A74334D34D1C9A92216E75FFFFFFFF";
+        Decoder.decodeFullAsJson(hex);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testDecodeWithBch2Error() {
+        String hex = "D52FE0000000000FB7EC00FFFFFFFF";
+        Decoder.decodeFullAsJson(hex);
+    }
+    
 //    @Test
     public void testDecodeAll() throws FileNotFoundException, IOException {
         try {

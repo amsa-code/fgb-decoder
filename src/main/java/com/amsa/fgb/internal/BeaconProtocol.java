@@ -199,13 +199,6 @@ abstract class BeaconProtocol {
         return list;
     }
 
-    final HexAttribute aircraft24BitAddressBinary(String binCode, int s, int f) {
-        String e = "";
-        String v = binCode.substring(s, f + 1);
-
-        return new HexAttribute(AttributeType.AIRCRAFT_24_BIT_ADDRESS_BINARY, s, f, v, e);
-    }
-
     HexAttribute aircraftCallSign(String binCode, int s, int f) {
         String e = "";
         String v = "";
@@ -438,6 +431,7 @@ abstract class BeaconProtocol {
         String bchCode = calcBCHCODE(binCode, "1010100111001");
 
         if (!bchCode.equals(binCode2)) {
+            Debug.found();
             e = "WARNING - ERROR IN SECOND PROTECTED FIELD\n";
             e = e + " BCH SHOULD BE " + bchCode + "\n";
             e = e + " BCH IS ...... " + binCode2;
