@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -362,39 +363,39 @@ final class Conversions {
     }
 
     static String decimalToBinary(int dec) {
-        String result = "";
-        String temp = "";
+        StringBuilder result = new StringBuilder();
+        StringBuilder temp = new StringBuilder();
 
         while (dec > 1) {
-            temp += dec % 2;
+            temp.append(dec % 2);
             dec = dec / 2;
         }
         if (dec != 0)
-            temp += dec;
+            temp.append( dec);
 
         // Reverse the string
         for (int i = temp.length() - 1; i >= 0; i--)
-            result += temp.charAt(i);
+            result.append( temp.charAt(i));
 
-        return result;
+        return result.toString();
     }
 
     static String binaryToOctal(String binCode) {
-        String octStr = "";
+        StringBuilder octStr = new StringBuilder();
         int len = binCode.length();
         for (int i = 0; i < len; i = i + 3) {
             String bits = binCode.substring(i, i + 3);
             String t = octMap.get(bits);
             if (t != null) {
-                octStr = octStr + t;
+                octStr.append(t);
             }
         }
-        return octStr;
+        return octStr.toString();
     }
 
     static String binaryToHex(String binCode) {
         Preconditions.checkNotNull(binCode);
-        String hexStr = "";
+        StringBuilder hexStr = new StringBuilder();
 
         // obtain the length of the Binary Code
         int len = binCode.length();
@@ -405,12 +406,12 @@ final class Conversions {
                 String bits = binCode.substring(i, i + 4);
                 String t = hexMap.get(bits);
                 if (t != null) {
-                    hexStr = hexStr + t;
+                    hexStr.append(t);
                 }
             }
         }
 
-        return hexStr;
+        return hexStr.toString();
     }
 
     static String getAircraftCountryOfReg(String binCode) {
@@ -478,14 +479,14 @@ final class Conversions {
 
     static String hexToBinary(String hexStr) {
         int len = hexStr.length();
-        hexStr = hexStr.toUpperCase();
-        String r = "";
+        hexStr = hexStr.toUpperCase(Locale.ENGLISH);
+        StringBuilder r = new StringBuilder();
         for (int i = 0; i < len; i++) {
             String letter = hexStr.substring(i, i + 1);
             String t = binMap.get(letter);
 
             if (t != null) {
-                r = r + t;
+                r.append(t);
             }
         }
 
