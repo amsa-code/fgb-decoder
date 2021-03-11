@@ -53,7 +53,7 @@ abstract class NationalLocation extends BeaconProtocol {
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
         result.add(this.messageType(binCode, 25, 26));
-        result.add(this.hexData(hexStr, 25, (binCode.length() - 1)));
+        result.add(this.hexData(hexStr, 25, binCode.length() - 1));
         // 2/Nov/2005
         // result.add(this.hexId(binCode, 26, 59));
         // HexAttribute hexId = this.hexId(binCode, 26, 85);
@@ -178,7 +178,7 @@ abstract class NationalLocation extends BeaconProtocol {
             // Lat Offset
             int min1 = Conversions.binaryToDecimal(bits.substring(1, 3));
             int sec1 = Conversions.binaryToDecimal(bits.substring(3, 7)) * 4;
-            int offset1 = (min1 * 60) + sec1;
+            int offset1 = min1 * 60 + sec1;
             if (bits.charAt(0) != '1') {
                 offset1 = offset1 * -1;
             }
@@ -193,7 +193,7 @@ abstract class NationalLocation extends BeaconProtocol {
             // Lon Offset
             int min2 = Conversions.binaryToDecimal(bits.substring(8, 10));
             int sec2 = Conversions.binaryToDecimal(bits.substring(10, 14)) * 4;
-            int offset2 = (min2 * 60) + sec2;
+            int offset2 = min2 * 60 + sec2;
             if (bits.charAt(7) != '1') {
                 offset2 = offset2 * -1;
             }
