@@ -4,7 +4,7 @@ package com.amsa.fgb.internal;
 
      final AttributeType desc;
      final int start;
-     int finish;
+     final int finish;
      final String value;
      final String error;
 
@@ -29,6 +29,7 @@ package com.amsa.fgb.internal;
         this.start = s;
         this.value = v;
         this.error = e;
+        this.finish = 0;
     }
 
      HexAttribute(AttributeType d, String v, String e) {
@@ -36,21 +37,11 @@ package com.amsa.fgb.internal;
         this.value = v;
         this.error = e;
         this.start = 0;
+        this.finish = 0;
     }
 
      String getDesc() {
         return this.desc.toString();
-    }
-
-     String getPos() {
-        String pos = "";
-        if (this.start > 0) {
-            pos = "b" + this.start;
-            if (this.finish > 0) {
-                pos += "-" + this.finish;
-            }
-        }
-        return pos;
     }
 
      String getValue() {

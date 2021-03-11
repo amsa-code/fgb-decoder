@@ -17,16 +17,15 @@ public final class DecodeAsJson {
         return "\"" + escape(s) + "\"";
     }
 
-   public String getData(List<HexAttribute> v) {
+    public String getData(List<HexAttribute> v) {
         StringBuilder b = new StringBuilder();
         for (int i = 0; i < v.size(); i++) {
             HexAttribute h = v.get(i);
 
             if (h.error != null && !h.error.trim().isEmpty()) {
-                throw new RuntimeException("Error occurred at position " + h.getPos()
+                throw new RuntimeException("Error occurred at position, start= " + h.start + ", finish=" + h.finish
                         + " with desc='" + h.desc + "', value='" + h.value + "':" + h.error);
-            } else if (!h.getDesc().isEmpty()
-                    && !h.getDesc().equals(AttributeType.SPARE.toString())) {
+            } else if (!h.getDesc().isEmpty() && !h.getDesc().equals(AttributeType.SPARE.toString())) {
                 addKeyValue(b, h.getJsonType(), h.getDesc(), h.getValue());
             }
         }
