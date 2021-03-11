@@ -7,7 +7,7 @@
 "Specific Beacon Number":"10",
 "Coarse Position Latitude":-28.5,
 "Coarse Position Longitude":86.75,
-"Error Correcting Code":"111001110010001101001",
+"Error Correcting Code 1":"111001110010001101001",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":false,
 "Is Long Message Default":true,

@@ -9,7 +9,6 @@ import java.util.Map;
 import org.junit.Test;
 
 import com.amsa.fgb.Decoder;
-import com.amsa.fgb.Formatter;
 
 public class HexDecoderTest {
     @Test
@@ -54,7 +53,7 @@ public class HexDecoderTest {
         assertEquals("NO", map.get("RLM Received Type-1 (Auto)").value);
         assertEquals("NO", map.get("RLM Received Type-2 (Manual)").value);
         assertEquals("Galileo", map.get("RLS Provider ID").value);
-        assertEquals("011100110001", map.get("Error Correcting Code").value);
+        assertEquals("011100110001", map.get("Error Correcting Code 2").value);
     }
 
     @Test
@@ -95,10 +94,10 @@ public class HexDecoderTest {
     @Test
     public void testDecode() {
         String hex = "D6E67C5F61F89568772240FFFFFFFF";
-        Decoder.decodeFull(hex, Formatter.JSON);
+        Decoder.decodeFullAsJson(hex);
     }
 
-    @Test
+//    @Test
     public void testDecodeAll() throws FileNotFoundException, IOException {
         try {
             Debug.startSearching();

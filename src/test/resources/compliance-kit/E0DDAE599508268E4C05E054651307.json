@@ -6,9 +6,9 @@
 "Radio Callsign":"YDB4841",
 "Specific Beacon Number":"0",
 "Aux. radio-locating":"121.5 MHz",
-"Error Correcting Code":"110010011000000010111",
+"Error Correcting Code 1":"110010011000000010111",
 "Encoded Position Source":"EXTERNAL",
 "Latitude":2.6666666666666665,
 "Longitude":101.06666666666666,
-"Error Correcting Code":"001100000111",
+"Error Correcting Code 2":"001100000111",
 "National Use":"01010100011001010001001100000111"}

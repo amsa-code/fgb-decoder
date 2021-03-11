@@ -7,11 +7,11 @@
 "Specific Beacon Number":"0",
 "Coarse Position Latitude":-5.0,
 "Coarse Position Longitude":121.75,
-"Error Correcting Code":"101110010011110000010",
+"Error Correcting Code 1":"101110010011110000010",
 "Encoded Position Source":"INTERNAL",
 "121.5 MHz Homing":true,
 "Offset Position Latitude Diff":-0.04777777777777778,
 "Offset Position Longitude Diff":0.23777777777777778,
-"Error Correcting Code":"111111010111",
+"Error Correcting Code 2":"111111010111",
 "Latitude":-4.952222222222222,
 "Longitude":121.98777777777778}

@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.github.davidmoten.guavamini.Preconditions;
 
-public final class DecodeAsJson implements DecodeFilter {
+public final class DecodeAsJson {
 
-    public static final DecodeFilter INSTANCE = new DecodeAsJson();
+    public static final DecodeAsJson INSTANCE = new DecodeAsJson();
     private static final String COLON = ":";
 
     private DecodeAsJson() {
@@ -17,8 +17,7 @@ public final class DecodeAsJson implements DecodeFilter {
         return "\"" + escape(s) + "\"";
     }
 
-    @Override
-    public String getData(List<HexAttribute> v) {
+   public String getData(List<HexAttribute> v) {
         StringBuilder b = new StringBuilder();
         for (int i = 0; i < v.size(); i++) {
             HexAttribute h = v.get(i);

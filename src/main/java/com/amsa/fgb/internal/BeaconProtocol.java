@@ -384,7 +384,7 @@ abstract class BeaconProtocol {
             e += "2. Section III/B.1.1.3 of C/S A.001 - Data Distribution Plan\n\n";
         }
 
-        return new HexAttribute(AttributeType.ERROR_CORRECTING_CODE, s, f, binCode2, e);
+        return new HexAttribute(AttributeType.ERROR_CORRECTING_CODE_1, s, f, binCode2, e);
     }
 
     // 1/Nov/2005
@@ -443,7 +443,7 @@ abstract class BeaconProtocol {
             e = e + " BCH IS ...... " + binCode2;
         }
 
-        return new HexAttribute(AttributeType.ERROR_CORRECTING_CODE, s, f, binCode2, e);
+        return new HexAttribute(AttributeType.ERROR_CORRECTING_CODE_2, s, f, binCode2, e);
     }
 
     private static String calcBCHCODE(String bitCode, String generatorPolynomial) {

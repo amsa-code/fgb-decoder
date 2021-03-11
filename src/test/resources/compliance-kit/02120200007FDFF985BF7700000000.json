@@ -5,6 +5,6 @@
 "Protocol Type":"Maritime MMSI",
 "Ship MMSI":8192,
 "Specific Beacon Number":"0",
-"Error Correcting Code":"001100001011011111101",
+"Error Correcting Code 1":"001100001011011111101",
 "Encoded Position Source":"INTERNAL",
 "121.5 MHz Homing":true}

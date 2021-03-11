@@ -5,7 +5,7 @@
 "Protocol Type":"Aircraft Address",
 "Aircraft 24 bit address (hex)":"AAAAAA",
 "Aircraft 24 bit address (octal)":"52525252",
-"Error Correcting Code":"000001000010001111100",
+"Error Correcting Code 1":"000001000010001111100",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":true,
 "Is Long Message Default":true}

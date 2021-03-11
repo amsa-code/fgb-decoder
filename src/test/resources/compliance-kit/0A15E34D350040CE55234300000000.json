@@ -7,7 +7,7 @@
 "Aircraft Serial Number":309,
 "Coarse Position Latitude":0.25,
 "Coarse Position Longitude":6.25,
-"Error Correcting Code":"110010101010010001101",
+"Error Correcting Code 1":"110010101010010001101",
 "Encoded Position Source":"INTERNAL",
 "121.5 MHz Homing":true,
 "Latitude":0.25,

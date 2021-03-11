@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.amsa.fgb.Decoder;
-import com.amsa.fgb.Formatter;
 
 public final class Debug {
 
@@ -51,7 +50,7 @@ public final class Debug {
             for (String hex : entry.getValue()) {
                 if (hex != null) {
                     try {
-                        String json = Decoder.decodeFull(hex, Formatter.JSON);
+                        String json = Decoder.decodeFullAsJson(hex);
                         File f = new File("src/test/resources/compliance-kit/" + hex + ".json");
                         if (!f.exists()) {
                             try {

@@ -6,9 +6,9 @@
 "Ship MMSI Last 6 Digits":"123456",
 "Specific Beacon Number":"0",
 "Aux. radio-locating":"121.5 MHz",
-"Error Correcting Code":"001001111110001011010",
+"Error Correcting Code 1":"001001111110001011010",
 "Encoded Position Source":"INTERNAL",
 "Latitude":22.2,
 "Longitude":114.53333333333333,
-"Error Correcting Code":"001011101100",
+"Error Correcting Code 2":"001011101100",
 "National Use":"11000110011100101000001011101100"}

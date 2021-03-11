@@ -5,7 +5,7 @@
 "Protocol Type":"Aircraft Operator",
 "Aircraft Operator":"NHV",
 "Aircraft Serial Number":117,
-"Error Correcting Code":"001110100010001001000",
+"Error Correcting Code 1":"001110100010001001000",
 "Encoded Position Source":"INTERNAL",
 "121.5 MHz Homing":true,
-"Error Correcting Code":"011001101100"}
+"Error Correcting Code 2":"011001101100"}

@@ -7,7 +7,7 @@
 "Fixed bits":"1000 (Non-Spec)",
 "Coarse Position Latitude":6.0,
 "Coarse Position Longitude":-192.0,
-"Error Correcting Code":"000000101110100110111",
+"Error Correcting Code 1":"000000101110100110111",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":false,
 "Latitude":6.0,

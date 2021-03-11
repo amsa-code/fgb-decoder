@@ -5,7 +5,7 @@
 "Protocol Type":"ELT - Serial",
 "C/S Type approval":104,
 "Beacon Serial Number":705,
-"Error Correcting Code":"000001110110100001000",
+"Error Correcting Code 1":"000001110110100001000",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":true,
 "Is Long Message Default":true}

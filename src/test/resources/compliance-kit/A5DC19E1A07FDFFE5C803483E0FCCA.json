@@ -5,7 +5,7 @@
 "Protocol Type":"Ship Security MMSI",
 "Ship Security MMSI":106010,
 "Fixed bits":"0000",
-"Error Correcting Code":"110010111001000000000",
+"Error Correcting Code 1":"110010111001000000000",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":false,
-"Error Correcting Code":"110011001010"}
+"Error Correcting Code 2":"110011001010"}

@@ -8,7 +8,7 @@
 "RLS ID":5,
 "Coarse Position Latitude":39.0,
 "Coarse Position Longitude":-77.0,
-"Error Correcting Code":"100011001111110111000",
+"Error Correcting Code 1":"100011001111110111000",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":false,
 "RLM Capability Type-1 (Auto)":true,
@@ -18,6 +18,6 @@
 "RLS Provider ID":"Galileo",
 "Latitude":38.92666666666667,
 "Longitude":-76.97777777777777,
-"Error Correcting Code":"001011101000",
+"Error Correcting Code 2":"001011101000",
 "Latitude":38.92666666666667,
 "Longitude":-76.97777777777777}

@@ -5,7 +5,7 @@
 "Protocol Type":"EPIRB - Serial",
 "C/S Type approval":108,
 "Beacon Serial Number":3246,
-"Error Correcting Code":"111000011100101100010",
+"Error Correcting Code 1":"111000011100101100010",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":true,
-"Error Correcting Code":"101010101000"}
+"Error Correcting Code 2":"101010101000"}

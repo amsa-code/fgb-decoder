@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import com.amsa.fgb.Decoder;
-import com.amsa.fgb.Formatter;
 
 public final class DecodeHistoricalFilesMain {
 
@@ -22,7 +21,7 @@ public final class DecodeHistoricalFilesMain {
                     .filter(x -> !x.isEmpty()) //
                     .forEach(x -> {
                         try {
-                            Decoder.decodeFull(x, Formatter.JSON);
+                            Decoder.decodeFullAsJson(x);
                         } catch (RuntimeException e) {
                             errors[0]++;
                         }

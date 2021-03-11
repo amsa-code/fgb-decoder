@@ -28,7 +28,8 @@ public enum AttributeType {
     EMERGENCY_CODE_FLAG("Emergency Code Flag"), //
     ENCODED_POSITION_SOURCE("Encoded Position Source"), //
     ERROR(""), //
-    ERROR_CORRECTING_CODE("Error Correcting Code"), //
+    ERROR_CORRECTING_CODE_1("Error Correcting Code 1"), //
+    ERROR_CORRECTING_CODE_2("Error Correcting Code 2"), //
     FIRE_FLAG("Fire Flag", JsonType.BOOLEAN), //
     FIXED_BITS("Fixed bits"), //
     HEX_DATA("Hex Data"), //

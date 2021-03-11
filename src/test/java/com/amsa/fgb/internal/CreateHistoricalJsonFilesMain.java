@@ -14,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 
 import com.amsa.fgb.Decoder;
-import com.amsa.fgb.Formatter;
 import com.amsa.fgb.TestingUtil;
 
 public class CreateHistoricalJsonFilesMain {
@@ -33,7 +32,7 @@ public class CreateHistoricalJsonFilesMain {
                     .filter(x -> !x.isEmpty()) //
                     .forEach(x -> {
                         try {
-                            String json = Decoder.decodeFull(x, Formatter.JSON);
+                            String json = Decoder.decodeFullAsJson(x);
                             Files.write(new File(files, x + ".json").toPath(), json.getBytes(StandardCharsets.UTF_8),
                                     StandardOpenOption.CREATE_NEW);
                         } catch (RuntimeException e) {

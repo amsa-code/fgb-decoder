@@ -7,11 +7,11 @@
 "Beacon Serial Number":22,
 "Coarse Position Latitude":21.0,
 "Coarse Position Longitude":105.5,
-"Error Correcting Code":"110010011011000101100",
+"Error Correcting Code 1":"110010011011000101100",
 "Encoded Position Source":"INTERNAL",
 "121.5 MHz Homing":false,
 "Offset Position Latitude Diff":0.04111111111111111,
 "Offset Position Longitude Diff":-0.01,
-"Error Correcting Code":"010000110111",
+"Error Correcting Code 2":"010000110111",
 "Latitude":21.04111111111111,
 "Longitude":105.49}

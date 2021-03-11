@@ -8,7 +8,7 @@
 "RLS ID":3,
 "Coarse Position Latitude":41.0,
 "Coarse Position Longitude":17.0,
-"Error Correcting Code":"001010011000010011010",
+"Error Correcting Code 1":"001010011000010011010",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":false,
 "RLM Capability Type-1 (Auto)":true,

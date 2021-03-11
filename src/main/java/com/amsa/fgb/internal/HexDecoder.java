@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 
-import com.amsa.fgb.Formatter;
-
 /**
  * Contains methods to decode hex strings
  * 
@@ -48,27 +46,9 @@ public final class HexDecoder {
     }
 
     // This is the method that is used to decode the entire Hex Str.
-    public static String decodeFull(String hexStr, Formatter formatter) {
+    public static String decodeFullAsJson(String hexStr) {
         List<HexAttribute> r = getHexAttributesDecodeFull(hexStr);
-        return format(formatter, r);
+        return DecodeAsJson.INSTANCE.getData(r);
     }
 
-    private static String format(Formatter formatter, List<HexAttribute> r) {
-        final DecodeFilter f;
-
-        if (formatter == Formatter.HTML) {
-            f = DecodeAsHTML.INSTANCE;
-        } else if (formatter == Formatter.XML) {
-            f = DecodeAsXML.INSTANCE;
-        } else if (formatter == Formatter.XML2) {
-            f = DecodeAsXML2.INSTANCE;
-        } else if (formatter == Formatter.JSON) {
-            f = DecodeAsJson.INSTANCE;
-        } else {
-            // plain text
-            f = DecodeAsText.INSTANCE;
-        }
-        return f.getData(r);
-    }
-    
 }

@@ -7,7 +7,7 @@
 "Aircraft 24 bit address (octal)":"22774247",
 "Coarse Position Latitude":51.25,
 "Coarse Position Longitude":232.25,
-"Error Correcting Code":"010111110101011101100",
+"Error Correcting Code 1":"010111110101011101100",
 "Encoded Position Source":"EXTERNAL",
 "121.5 MHz Homing":false,
 "Is Long Message Default":true,

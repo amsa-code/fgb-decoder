@@ -4,7 +4,7 @@
 "Country Code":227,
 "Protocol Type":"Personal (PLB)",
 "Beacon Serial Number":26491,
-"Error Correcting Code":"111100000010101111101",
+"Error Correcting Code 1":"111100000010101111101",
 "Additional Data Flag":"POSITION DATA",
 "Encoded Position Source":"INTERNAL",
 "121.5 MHz Homing":true,

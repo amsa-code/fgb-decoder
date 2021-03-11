@@ -14,8 +14,8 @@
 "US Model ID":0,
 "US Run No.":0,
 "US National Use":"01100001",
-"Error Correcting Code":"001111111110101000100",
+"Error Correcting Code 1":"001111111110101000100",
 "Encoded Position Source":"EXTERNAL",
 "Latitude":32.733333333333334,
 "Longitude":-117.2,
-"Error Correcting Code":"000000101101"}
+"Error Correcting Code 2":"000000101101"}

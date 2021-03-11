@@ -5,7 +5,7 @@
 "Protocol Type":"PLB - Serial",
 "C/S Type approval":713,
 "Beacon Serial Number":51,
-"Error Correcting Code":"000000101011100110011",
+"Error Correcting Code 1":"000000101011100110011",
 "Encoded Position Source":"INTERNAL",
 "121.5 MHz Homing":false,
 "Is Long Message Default":true}

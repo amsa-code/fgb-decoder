@@ -6,7 +6,7 @@
 "Beacon Serial Number":92103,
 "Coarse Position Latitude":38.833333333333336,
 "Coarse Position Longitude":115.5,
-"Error Correcting Code":"110111010011100101001",
+"Error Correcting Code 1":"110111010011100101001",
 "Additional Data Flag":"0 (Non-Spec)",
 "Encoded Position Source":"INTERNAL",
 "121.5 MHz Homing":false,

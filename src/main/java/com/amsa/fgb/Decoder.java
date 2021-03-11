@@ -9,18 +9,17 @@ public final class Decoder {
         // prevent instantiation
     }
 
-    public static String decodeFull(String hexStr, Formatter formatter) {
+    public static String decodeFullAsJson(String hexStr) {
         Debug.lastHexStr=hexStr;
-        return HexDecoder.decodeFull(hexStr, formatter);
+        return HexDecoder.decodeFullAsJson(hexStr);
     }
 
     static void main(String[] args) {
-        if (args.length != 2) {
-            throw new IllegalArgumentException("Wrong number of arguments, expecting <HexString> <HTML|TEXT|XML|JSON>");
+        if (args.length != 1) {
+            throw new IllegalArgumentException("Wrong number of arguments, expecting <HexString>");
         }
         String hex = args[0];
-        String format = args[1];
-        String output = decodeFull(hex, Formatter.valueOf(format.toUpperCase()));
+        String output = decodeFullAsJson(hex);
         System.out.println(output);
     }
 }
