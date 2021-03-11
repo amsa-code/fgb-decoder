@@ -61,4 +61,8 @@ package com.amsa.fgb.internal;
         return this.error;
     }
 
+    public JsonType getJsonType() {
+        return desc.jsonType();
+    }
+
 }

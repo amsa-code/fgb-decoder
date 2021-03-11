@@ -1,46 +1,16 @@
 package com.amsa.fgb.internal;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+
+import com.github.davidmoten.guavamini.Preconditions;
 
 public final class DecodeAsJson implements DecodeFilter {
 
     public static final DecodeFilter INSTANCE = new DecodeAsJson();
     private static final String COLON = ":";
 
-    private final Map<String, String> attributeTypes;
-
     private DecodeAsJson() {
         // prevent instantiation externally
-        attributeTypes = loadAttributeTypes();
-    }
-
-    private static Map<String, String> loadAttributeTypes() {
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(
-                DecodeAsJson.class.getResourceAsStream("/attribute-types.txt"),
-                StandardCharsets.UTF_8))) {
-            return br //
-                    .lines() //
-                    .map(x -> x.trim()) //
-                    .filter(x -> !x.startsWith("#")) //
-                    .filter(x -> !x.isEmpty()) //
-                    .map(x -> x.split("\t")) //
-                    .peek(x -> {
-                        if (x.length != 2) {
-                            throw new RuntimeException("wrong item count: " + Arrays.toString(x));
-                        }
-                    }) //
-                    .collect(Collectors.toMap(x -> x[0], x -> x[1]));
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
     }
 
     private static String quoted(String s) {
@@ -58,7 +28,7 @@ public final class DecodeAsJson implements DecodeFilter {
                         + " with desc='" + h.desc + "', value='" + h.value + "':" + h.error);
             } else if (!h.getDesc().isEmpty()
                     && !h.getDesc().equals(AttributeType.SPARE.toString())) {
-                addKeyValue(b, h.getDesc(), h.getValue());
+                addKeyValue(b, h.getJsonType(), h.getDesc(), h.getValue());
             }
         }
         b.insert(0, "{");
@@ -66,25 +36,22 @@ public final class DecodeAsJson implements DecodeFilter {
         return b.toString();
     }
 
-    private void addKeyValue(StringBuilder b, String key, String value) {
+    private void addKeyValue(StringBuilder b, JsonType jsonType, String key, String value) {
         if (b.length() > 0) {
             b.append(",\n");
         }
         b.append(quoted(key));
         b.append(COLON);
-        b.append(getValue(key, value));
+        b.append(getValue(jsonType, key, value));
     }
 
-    private String getValue(String key, String value) {
-
-        String type = attributeTypes.get(key);
-        if (type == null) {
-            throw new RuntimeException("unknown type: " + key);
-        } else if (type.equals("integer")) {
+    private String getValue(JsonType jsonType, String key, String value) {
+        Preconditions.checkNotNull(jsonType);
+        if (jsonType == JsonType.INTEGER) {
             return Integer.parseInt(value) + "";
-        } else if (type.equals("boolean")) {
+        } else if (jsonType == JsonType.BOOLEAN) {
             return value.equalsIgnoreCase("YES") + "";
-        } else if (type.equals("number")) {
+        } else if (jsonType == JsonType.NUMBER) {
             return Double.parseDouble(value) + "";
         } else {
             return quoted(value);

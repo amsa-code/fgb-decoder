@@ -16,8 +16,8 @@ public enum AttributeType {
     BCH_2("BCH-2"), //
     BEACON_SERIAL_NUMBER("Beacon Serial Number", JsonType.INTEGER), //
     BEACON_TYPE("Beacon Type"), //
-    COARSE_POSITION_LATITUDE("Coarse Position Latitude"), //
-    COARSE_POSITION_LONGITUDE("Coarse Position Longitude"), //
+    COARSE_POSITION_LATITUDE("Coarse Position Latitude", JsonType.NUMBER), //
+    COARSE_POSITION_LONGITUDE("Coarse Position Longitude", JsonType.NUMBER), //
     COUNTRY_CODE("Country Code", JsonType.INTEGER), //
     COUNTRY_OF_REGISTRATION("Country of Registration"), //
     CS_CERT_NO_PRESENT("C/S cert. no. present", JsonType.BOOLEAN), //
@@ -41,8 +41,8 @@ public enum AttributeType {
     MESSAGE_TYPE("Message Type"), //
     NATIONAL_USE("National Use"), //
     NATURE_OF_DISTRESS("Nature of Distress"), //
-    OFFSET_POSITION_LATITUDE_DIFF("Offset Position Latitude Diff"), //
-    OFFSET_POSITION_LONGITUDE_DIFF("Offset Position Longitude Diff"), //
+    OFFSET_POSITION_LATITUDE_DIFF("Offset Position Latitude Diff", JsonType.NUMBER), //
+    OFFSET_POSITION_LONGITUDE_DIFF("Offset Position Longitude Diff", JsonType.NUMBER), //
     ORBITOGRAPHY_4_BITS("Orbitography 4 bits"), //
     ORBITOGRAPHY_DATA("Orbitography Data"), //
     ORBITOGRAPHY_ID("Orbitography ID"), //
