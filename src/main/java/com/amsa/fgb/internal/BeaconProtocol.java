@@ -40,14 +40,9 @@ abstract class BeaconProtocol {
     // all sub-classes should call super.decode(binStr)
     // as this method will decode those bits that are
     // common to ALL protocols.
-    List<HexAttribute> decode(String hexStr) {
-        return new ArrayList<HexAttribute>(0);
-        // "ERROR - decode() called from BeaconProtocol";
-    }
+    abstract List<HexAttribute> decode(String hexStr);
 
-    String getName() {
-        return "";
-    }
+    abstract String getName();
 
     boolean isLongMessage(String binCode) {
         String code = binCode.substring(25, 27);

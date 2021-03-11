@@ -1,5 +1,6 @@
 package com.amsa.fgb;
 
+import com.amsa.fgb.internal.Debug;
 import com.amsa.fgb.internal.HexDecoder;
 
 public final class Decoder {
@@ -13,6 +14,7 @@ public final class Decoder {
     }
 
     public static String decodeFull(String hexStr, Formatter formatter) {
+        Debug.lastHexStr=hexStr;
         return HexDecoder.decodeFull(hexStr, formatter);
     }
 

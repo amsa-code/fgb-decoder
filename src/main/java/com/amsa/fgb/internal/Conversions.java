@@ -7,7 +7,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
- final class Conversions {
+import com.github.davidmoten.guavamini.Preconditions;
+
+final class Conversions {
+
+    private Conversions() {
+        // prevent instantiation
+    }
 
     static private Map<String, String> hexMap;
     static private Map<String, String> binMap;
@@ -387,12 +393,8 @@ import java.util.Map.Entry;
     }
 
     static String binaryToHex(String binCode) {
+        Preconditions.checkNotNull(binCode);
         String hexStr = "";
-
-        // Check for NULL values
-        if (binCode == null) {
-            binCode = "";
-        }
 
         // obtain the length of the Binary Code
         int len = binCode.length();
@@ -415,12 +417,12 @@ import java.util.Map.Entry;
         // The binCode in this case is the 24-bit Aircraft Address.
         // In the above hashMap there are values of length 14,12,9,6,4
         // We will take it in turn.
-        for (int length: new int[] {14, 12, 9, 6, 4}) {
+        for (int length : new int[] { 14, 12, 9, 6, 4 }) {
             String code = binCode.substring(0, length - 1);
             String r = airRegMap.get(code);
             if (r != null) {
                 return r;
-            }   
+            }
         }
         return "";
     }
@@ -466,47 +468,37 @@ import java.util.Map.Entry;
     }
 
     private static String getAircraftCallsign(int value) {
-        try {
-
-            String S1 = aircraftMap.get(value + "");
-
-            if (S1 != null) {
-                return S1;
-            } else {
-                return "?";
-            }
-        } catch (Exception e) {
+        String s = aircraftMap.get(value + "");
+        if (s != null) {
+            return s;
+        } else {
             return "?";
         }
     }
 
-     static String hexToBinary(String hexStr) {
+    static String hexToBinary(String hexStr) {
         int len = hexStr.length();
         hexStr = hexStr.toUpperCase();
-        try {
-            String r = "";
-            for (int i = 0; i < len; i++) {
-                String letter = hexStr.substring(i, i + 1);
-                String t = binMap.get(letter);
+        String r = "";
+        for (int i = 0; i < len; i++) {
+            String letter = hexStr.substring(i, i + 1);
+            String t = binMap.get(letter);
 
-                if (t != null) {
-                    r = r + t;
-                }
+            if (t != null) {
+                r = r + t;
             }
+        }
 
-            // 16 May 2005
-            // r = "0000000000000000000000000" + r;
+        // 16 May 2005
+        // r = "0000000000000000000000000" + r;
 
-            if (len == 15) {
-                // right shift, assume short message
-                // return "0" + r;
-                // 16 May 2005, Can NOT assume short message! CDP's Guidance
-                return "0000000000000000000000000" + "?" + r;
-            } else {
-                return "0000000000000000000000000" + r;
-            }
-        } catch (Exception e) {
-            return "Unable to convert to binary. Exception caught: " + e.getMessage();
+        if (len == 15) {
+            // right shift, assume short message
+            // return "0" + r;
+            // 16 May 2005, Can NOT assume short message! CDP's Guidance
+            return "0000000000000000000000000" + "?" + r;
+        } else {
+            return "0000000000000000000000000" + r;
         }
     }
 
@@ -545,7 +537,6 @@ import java.util.Map.Entry;
                     if (protocolName.equalsIgnoreCase("Radio Call Sign")) {
                         // 13 May 2005
                         // mbaudotStr = mbaudotStr + "?";
-
                         mbaudotStr = mbaudotStr + "?";
                         if (spaceCount == j && n != 1) { // n==1 && UserMaritime (or User
                                                          // RadioCallsign) means it is for Specidic
@@ -554,8 +545,7 @@ import java.util.Map.Entry;
                             spaceCount++;
                         } else
                             e.add(mbaudotSubBits + " = Space - Non-Spec\n");
-                    } else if (protocolName.equalsIgnoreCase("Aviation")
-                            || protocolName.equalsIgnoreCase("Maritime")
+                    } else if (protocolName.equalsIgnoreCase("Aviation") || protocolName.equalsIgnoreCase("Maritime")
                             || protocolName.equalsIgnoreCase("Orbitography")) {
                         // n==1 && UserMaritime (or User RadioCallsign) means it is for Specidic
                         // Beacon Number (bit 76-81)
