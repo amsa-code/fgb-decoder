@@ -466,25 +466,26 @@ abstract class BeaconProtocol {
     }
 
     private static String removeLeadingZeros(String str) {
-        while (str.length() > 0 && str.substring(0, 1).equals("0")) {
-            str = str.substring(1, str.length());
+        int i = 0;
+        while (str.charAt(i) == '0') {
+            i++;
         }
-        return str;
+        return str.substring(i);
     }
 
     // do a bitwise XOR of G and R to form new R
     private static String xor(String bitStrA, String bitStrB) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < bitStrA.length(); i++) {
             boolean bA = bitStrA.charAt(i) == '1';
             boolean bB = bitStrB.charAt(i) == '1';
             if (bA == bB) {
-                result += "0";
+                result.append("0");
             } else {
-                result += "1";
+                result.append("1");
             }
         }
-        return removeLeadingZeros(result);
+        return removeLeadingZeros(result.toString());
     }
 
     // don't make this a singleton because the protocol objects are not safe for
