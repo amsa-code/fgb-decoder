@@ -2,6 +2,7 @@ package com.amsa.fgb.internal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 class UserMaritime extends User {
 
@@ -81,7 +82,7 @@ class UserMaritime extends User {
         }
 
         if (e != null && e.length() > 0)
-            e = "\nWARNING - SUSPECT NON-SPEC IN " + d.toString().toUpperCase() + "\n" + e;
+            e = "\nWARNING - SUSPECT NON-SPEC IN " + d.toString().toUpperCase(Locale.ENGLISH) + "\n" + e;
 
         return new HexAttribute(d, s, f, v, e);
     }

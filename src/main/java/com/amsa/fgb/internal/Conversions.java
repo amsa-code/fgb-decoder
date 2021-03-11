@@ -371,11 +371,11 @@ final class Conversions {
             dec = dec / 2;
         }
         if (dec != 0)
-            temp.append( dec);
+            temp.append(dec);
 
         // Reverse the string
         for (int i = temp.length() - 1; i >= 0; i--)
-            result.append( temp.charAt(i));
+            result.append(temp.charAt(i));
 
         return result.toString();
     }
@@ -518,7 +518,7 @@ final class Conversions {
         int spaceCount = 0;
 
         for (int j = 0; j < n; j++) {
-            String mbaudotSubBits = mbaudotBits.substring(j * bits, (j * bits) + bits);
+            String mbaudotSubBits = mbaudotBits.substring(j * bits, j * bits + bits);
             int d = 0;
 
             if (bits == 5) {
@@ -642,13 +642,10 @@ final class Conversions {
     static boolean isNumeric(String str) {
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
-            if (c >= '0' && c <= '9') {
-                // do nothing
-            } else {
+            if (c < '0' || c > '9') {
                 return false;
             }
         }
-
         return true;
     }
 

@@ -23,7 +23,7 @@ public final class HexDecoder {
     }
 
     private static List<HexAttribute> getHexAttributes(String hexStr,
-            BiFunction<com.amsa.fgb.internal.BeaconProtocol, String, List<HexAttribute>> attributesFunction) {
+            BiFunction<BeaconProtocol, String, List<HexAttribute>> attributesFunction) {
         hexStr = hexStr.trim();
         int hexLen = hexStr.length();
         if (!(hexLen == 15 || hexLen == 30)) {

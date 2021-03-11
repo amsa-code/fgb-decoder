@@ -131,7 +131,7 @@ abstract class BeaconProtocol {
         // return new HexAttribute("Hex Data", s, f, hexStr, e);
 
         // 16 May 2005
-        if ((hexStr.trim()).length() != 30)
+        if (hexStr.trim().length() != 30)
             return new HexAttribute(AttributeType.HEX_DATA, 25, 144, "Unknown", e);
         else
             return new HexAttribute(AttributeType.HEX_DATA, s, f, hexStr, e);

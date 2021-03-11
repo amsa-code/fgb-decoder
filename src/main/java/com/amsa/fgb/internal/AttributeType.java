@@ -76,11 +76,11 @@ public enum AttributeType {
     private final String name;
     private final JsonType jsonType;
 
-    private AttributeType(String name) {
+    AttributeType(String name) {
         this(name, JsonType.STRING);
     }
 
-    private AttributeType(String name, JsonType jsonType) {
+    AttributeType(String name, JsonType jsonType) {
         this.name = name;
         this.jsonType = jsonType;
     }

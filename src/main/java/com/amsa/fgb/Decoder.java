@@ -10,7 +10,7 @@ public final class Decoder {
     }
 
     public static String decodeFullAsJson(String hexStr) {
-        Debug.lastHexStr=hexStr;
+        Debug.setLastHexStr(hexStr);
         return HexDecoder.decodeFullAsJson(hexStr);
     }
 

@@ -17,7 +17,7 @@ public class DebugTest {
         PrintStream previous = System.out;
         System.setOut(out);
         try {
-            Debug.lastHexStr = "020C0200007FDFFF128F7700000000";
+            Debug.setLastHexStr("020C0200007FDFFF128F7700000000");
             Debug.startSearching();
             Debug.found();
             Debug.writeFoundToComplianceKit();

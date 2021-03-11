@@ -40,10 +40,10 @@ public final class DecodeAsJson {
         }
         b.append(quoted(key));
         b.append(COLON);
-        b.append(getValue(jsonType, key, value));
+        b.append(getValue(jsonType, value));
     }
 
-    private String getValue(JsonType jsonType, String key, String value) {
+    private String getValue(JsonType jsonType, String value) {
         Preconditions.checkNotNull(jsonType);
         if (jsonType == JsonType.INTEGER) {
             return Integer.parseInt(value) + "";

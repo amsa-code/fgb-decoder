@@ -16,7 +16,7 @@ import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
 
 public final class Debug {
 
-    public static String lastHexStr;
+    private static String lastHexStr;
 
     private static Map<String, List<String>> found = new HashMap<>();
 
@@ -24,6 +24,10 @@ public final class Debug {
 
     private Debug() {
         // prevent instantiation
+    }
+    
+    public static void setLastHexStr(String hex) {
+        lastHexStr = hex;
     }
 
     public static void startSearching() {
