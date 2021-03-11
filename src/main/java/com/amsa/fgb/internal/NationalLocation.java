@@ -44,26 +44,6 @@ abstract class NationalLocation extends BeaconProtocol {
         return false;
     }
 
-    @Override
-    List<HexAttribute> decodePartial(String hexStr) {
-        String binCode = Conversions.hexToBinary(hexStr);
-        List<HexAttribute> result = new ArrayList<HexAttribute>();
-
-        // 16/03/2005, why 26-65??? decode() is 26-59
-        // And do we need to decode more besides these 2 for decodeSearch() (like
-        // decode() does)?
-
-        // result.add(this.hexId(binCode, 26, 65));
-        // result.add(this.beaconSerialNumber(binCode, 41, 58));
-
-        // 02/Nov/2005
-        // result.add(this.hexId(binCode,26,59));
-        result.add(this.hexId(binCode, 26, 85));
-        result.add(this.beaconSerialNumber(binCode, 41, 58));
-
-        return result;
-    }
-
     // 2/Nov/2005
     // Change from "hexId()" to hexIdWithDefaultLocation()"
     // All beacon types conform to the following decode.

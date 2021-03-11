@@ -7,7 +7,11 @@ package com.amsa.fgb.internal;
 
 import java.util.List;
 
-class Common {
+final class Common {
+    
+    private Common() {
+        // prevent instantiation
+    }
     // For bit 109-112 (Maritime Emergency Codes). See C/S T.001 Table A4
     static List<HexAttribute> maritimeEmergencyCodes(List<HexAttribute> result, String binCode) {
         // Convert bit 109-112 to decimal

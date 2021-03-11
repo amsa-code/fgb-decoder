@@ -1,6 +1,5 @@
 package com.amsa.fgb.internal;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -35,16 +34,6 @@ abstract class StandardLocation extends BeaconProtocol {
         }
 
         return false;
-    }
-
-    // This method should be overwritten by sub-classes
-    @Override
-    List<HexAttribute> decode(String hexStr) {
-        List<HexAttribute> result = new ArrayList<HexAttribute>();
-        String errorMsg = "ERROR: decode() called from StandardLocation";
-        result.add(new HexAttribute(AttributeType.ERROR, 0, "", errorMsg));
-
-        return result;
     }
 
     // Get the messageType. Is it LONG or SHORT?

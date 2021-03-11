@@ -11,24 +11,6 @@ class UserSerialAircraftAddress extends UserSerial {
     }
 
     @Override
-     List<HexAttribute> decodePartial(String hexStr) {
-        String binCode = Conversions.hexToBinary(hexStr);
-        List<HexAttribute> result = new ArrayList<HexAttribute>();
-
-        result.add(this.hexId(binCode, 26, 85));
-
-        HexAttribute h = this.aircraftCallSign(binCode, 44, 67);
-        String value = h.getValue();
-        if (value.length() > 0) {
-            result.add(h);
-        }
-
-        result.add(this.aircraft24BitAddressBinary(binCode, 44, 67));
-
-        return result;
-    }
-
-    @Override
      List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
 

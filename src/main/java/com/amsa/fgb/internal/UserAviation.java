@@ -11,17 +11,6 @@ class UserAviation extends User {
     }
 
     @Override
-    List<HexAttribute> decodePartial(String hexStr) {
-        String binCode = Conversions.hexToBinary(hexStr);
-        List<HexAttribute> result = new ArrayList<HexAttribute>();
-
-        result.add(this.hexId(binCode, 26, 85));
-        result.add(this.aircraftRegistrationMarking(binCode, 40, 81));
-
-        return result;
-    }
-
-    @Override
     List<HexAttribute> decode(String hexStr) {
 
         String binCode = Conversions.hexToBinary(hexStr);

@@ -27,15 +27,6 @@ abstract class BeaconProtocol {
 
     abstract boolean canDecode(String binCode);
 
-    List<HexAttribute> decodePartial(String hexStr) {
-        String binCode = Conversions.hexToBinary(hexStr);
-        List<HexAttribute> result = new ArrayList<HexAttribute>();
-
-        result.add(this.hexId(binCode, 26, 85));
-
-        return result;
-    }
-
     // This method is also overwritten by subclasses but
     // all sub-classes should call super.decode(binStr)
     // as this method will decode those bits that are
@@ -208,7 +199,7 @@ abstract class BeaconProtocol {
         return list;
     }
 
-    HexAttribute aircraft24BitAddressBinary(String binCode, int s, int f) {
+    final HexAttribute aircraft24BitAddressBinary(String binCode, int s, int f) {
         String e = "";
         String v = binCode.substring(s, f + 1);
 

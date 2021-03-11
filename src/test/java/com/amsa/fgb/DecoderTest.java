@@ -72,8 +72,8 @@ public class DecoderTest {
             + "<Name>US National Use</Name><Position>b76-83</Position><Value>01100001</Value></Line>" + "<Line>"
             + "<Name>Error Correcting Code</Name><Position>b86-106</Position><Value>001111111110101000100</Value></Line>"
             + "<Line>" + "<Name>Encoded Position Source</Name><Position>b107</Position><Value>EXTERNAL</Value></Line>"
-            + "<Line>" + "<Name>Latitude</Name><Position>b108-119</Position><Value>32.733333333333334</Value></Line>" + "<Line>"
-            + "<Name>Longitude</Name><Position>b120-132</Position><Value>-117.2</Value></Line>" + "<Line>"
+            + "<Line>" + "<Name>Latitude</Name><Position>b108-119</Position><Value>32.733333333333334</Value></Line>"
+            + "<Line>" + "<Name>Longitude</Name><Position>b120-132</Position><Value>-117.2</Value></Line>" + "<Line>"
             + "<Name>Error Correcting Code</Name><Position>b133-144</Position><Value>000000101101</Value></Line>";
     private static final String DECODE_30_CHRS_XML_STRING = "<?xml version=\"1.0\"?>" + "<Hexdecode>"
             + "<MessageType><Position>b25-26</Position><Value>User Location (Long)</Value></MessageType>"
@@ -203,57 +203,6 @@ public class DecoderTest {
             + "<TR><TD>US Run No.</TD><TD>b68-75</TD><TD>0</TD></TR>"
             + "<TR><TD>US National Use</TD><TD>b76-83</TD><TD>01100001</TD></TR>" + "</table>" + "<table>" + "</table>"
             + "</body>" + "</html>";
-    private static final String DECODESEARCH_HTML_STRING = "<html>" + "<head>"
-            + "<title>HEXDECODE of 406 Beacon</title>" + "</head>" + "<body>" + "<table>"
-            + "<TR ALIGN=LEFT><TH>Item</TH><TH>Bits</TH><TH>Value</TH></TR>"
-            + "<TR><TD>Hex Id</TD><TD>b26-85</TD><TD>ADCC40504000185</TD></TR>"
-            + "<TR><TD>Serial Number</TD><TD>b44-63</TD><TD>5136</TD></TR>" + "</table>" + "<table>" + "</table>"
-            + "</body>" + "</html>";
-    private static final String DECODESEARCH_XML2_STRING = "<Line>"
-            + "<Name>Hex Id</Name><Position>b26-85</Position><Value>ADCC40504000185</Value></Line>" + "<Line>"
-            + "<Name>Serial Number</Name><Position>b44-63</Position><Value>5136</Value></Line>";
-    private static final String DECODESEARCH_TEXT_STRING = "Hex Id                        b26-85       ADCC40504000185"
-            + "Serial Number                 b44-63       5136";
-    private static final String DECODESEARCH_XML_STRING = "<?xml version=\"1.0\"?>" + "<Hexdecode>"
-            + "<HexId><Position>b26-85</Position><Value>ADCC40504000185</Value></HexId>"
-            + "<SerialNumber><Position>b44-63</Position><Value>5136</Value></SerialNumber>" + "</Hexdecode>";
-
-    /**
-     * Tests <code>decodeSearch</code> for a given 15 character hex string.
-     */
-    @Test
-    public void testDecodeSearchWith15Chr() {
-        assertEquals(DECODESEARCH_HTML_STRING,
-                Decoder.decodePartial(HEXSTRING_15_CHRS, Formatter.HTML).replace("\n", ""));
-
-        assertEquals(DECODESEARCH_XML_STRING,
-                Decoder.decodePartial(HEXSTRING_15_CHRS, Formatter.XML).replace("\n", ""));
-
-        assertEquals(DECODESEARCH_XML2_STRING,
-                Decoder.decodePartial(HEXSTRING_15_CHRS, Formatter.XML2).replace("\n", ""));
-
-        assertEquals(DECODESEARCH_TEXT_STRING,
-                Decoder.decodePartial(HEXSTRING_15_CHRS, Formatter.TEXT).replace("\n", ""));
-    }
-
-    /**
-     * Tests decodeSearch for a given 30 character hex string.
-     */
-    @Test
-    public void testDecodeSearchWith30Chr() {
-        assertEquals(DECODESEARCH_HTML_STRING,
-                Decoder.decodePartial(HEXSTRING_30_CHRS, Formatter.HTML).replace("\n", ""));
-
-        assertEquals(DECODESEARCH_XML_STRING,
-                Decoder.decodePartial(HEXSTRING_30_CHRS, Formatter.XML).replace("\n", ""));
-
-        assertEquals(DECODESEARCH_XML2_STRING,
-                Decoder.decodePartial(HEXSTRING_30_CHRS, Formatter.XML2).replace("\n", ""));
-
-        assertEquals(DECODESEARCH_TEXT_STRING,
-                Decoder.decodePartial(HEXSTRING_30_CHRS, Formatter.TEXT).replace("\n", ""));
-
-    }
 
     /**
      * Tests <code>decode</code> for a given 15 character hex string.
@@ -324,10 +273,6 @@ public class DecoderTest {
      * Tests for length of hex string which must be 15 or 30 characters.
      */
     public void testHexStringLength() {
-        assertTrue(Decoder.decodePartial("abc", Formatter.HTML).contains(HEXSTRING_LENGTH_MSG));
-        assertTrue(Decoder.decodePartial("abc", Formatter.XML).contains(HEXSTRING_LENGTH_MSG));
-        assertTrue(Decoder.decodePartial("abc", Formatter.XML2).contains(HEXSTRING_LENGTH_MSG));
-        assertTrue(Decoder.decodePartial("abc", Formatter.TEXT).contains(HEXSTRING_LENGTH_MSG));
         assertTrue(Decoder.decodeFull("abc", Formatter.HTML).contains(HEXSTRING_LENGTH_MSG));
         assertTrue(Decoder.decodeFull("abc", Formatter.XML).contains(HEXSTRING_LENGTH_MSG));
         assertTrue(Decoder.decodeFull("abc", Formatter.XML2).contains(HEXSTRING_LENGTH_MSG));
@@ -348,7 +293,8 @@ public class DecoderTest {
         System.setOut(out);
         Decoder.main(new String[] { HEXSTRING_30_CHRS, "JSON" });
         System.setOut(previous);
-        assertJsonEquals(load("/detection.json").trim(), new String(bytes.toByteArray(), StandardCharsets.UTF_8).trim());
+        assertJsonEquals(load("/detection.json").trim(),
+                new String(bytes.toByteArray(), StandardCharsets.UTF_8).trim());
     }
 
     @Test(expected = RuntimeException.class)
@@ -366,13 +312,7 @@ public class DecoderTest {
             if (file.getName().endsWith(".json")) {
                 String hex = file.getName().substring(0, file.getName().indexOf("."));
                 String expected = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
-                String json;
-                if (file.getName().contains("partial")) {
-                    json = Decoder.decodePartial(hex, Formatter.JSON);
-                } else {
-                    json = Decoder.decodeFull(hex, Formatter.JSON);
-                }
-                // TODO use Jackson for JSON equals
+                String json = Decoder.decodeFull(hex, Formatter.JSON);
                 assertJsonEquals(expected, json);
             }
         }
@@ -398,14 +338,6 @@ public class DecoderTest {
                         {
                             final String json = Decoder.decodeFull(x, Formatter.JSON);
                             File f = new File(tempKit, x + ".json");
-                            f.getParentFile().mkdirs();
-                            f.delete();
-                            Files.write(f.toPath(), json.getBytes(StandardCharsets.UTF_8), StandardOpenOption.WRITE,
-                                    StandardOpenOption.CREATE);
-                        }
-                        {
-                            final String json = Decoder.decodePartial(x, Formatter.JSON);
-                            File f = new File(tempKit, x + ".partial.json");
                             f.getParentFile().mkdirs();
                             f.delete();
                             Files.write(f.toPath(), json.getBytes(StandardCharsets.UTF_8), StandardOpenOption.WRITE,

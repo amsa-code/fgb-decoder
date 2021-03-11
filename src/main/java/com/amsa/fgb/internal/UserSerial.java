@@ -1,8 +1,5 @@
 package com.amsa.fgb.internal;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class UserSerial extends User {
 
     String serialCode;
@@ -28,17 +25,6 @@ class UserSerial extends User {
             return serCode.equals(this.serialCode);
         }
         return false;
-    }
-
-    @Override
-     List<HexAttribute> decodePartial(String hexStr) {
-        String binCode = Conversions.hexToBinary(hexStr);
-        List<HexAttribute> result = new ArrayList<HexAttribute>();
-
-        result.add(this.hexId(binCode, 26, 85));
-        result.add(this.serialNumber(binCode, 44, 63));
-
-        return result;
     }
 
     HexAttribute beaconType(String binCode, int s, int f) {

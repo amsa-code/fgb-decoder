@@ -11,24 +11,6 @@ class StandardLocationAircraftAddress extends StandardLocation {
     }
 
     @Override
-     List<HexAttribute> decodePartial(String hexStr) {
-        String binCode = Conversions.hexToBinary(hexStr);
-        List<HexAttribute> result = new ArrayList<HexAttribute>();
-
-        // result.add(this.hexId(binCode, 26, 65));
-        result.add(this.hexId(binCode, 26, 85));
-
-        HexAttribute h = this.aircraftCallSign(binCode, 41, 64);
-        String value = h.getValue();
-        if (value.length() > 0) {
-            result.add(h);
-        }
-
-        result.add(this.aircraft24BitAddressBinary(binCode, 41, 64));
-        return result;
-    }
-
-    @Override
      List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();

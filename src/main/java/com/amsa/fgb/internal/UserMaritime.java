@@ -11,19 +11,6 @@ class UserMaritime extends User {
     }
 
     @Override
-    List<HexAttribute> decodePartial(String hexStr) {
-        String binCode = Conversions.hexToBinary(hexStr);
-        List<HexAttribute> result = new ArrayList<HexAttribute>();
-
-        result.add(this.hexId(binCode, 26, 85));
-        // result.add(this.getMMSI(binCode, 40, 81));
-
-        result.add(this.getMMSI(binCode, 40, 75));
-
-        return result;
-    }
-
-    @Override
     List<HexAttribute> decode(String hexStr) {
 
         String binCode = Conversions.hexToBinary(hexStr);
@@ -68,32 +55,6 @@ class UserMaritime extends User {
         }
 
         return result;
-    }
-
-    private HexAttribute getMMSI(String binCode, int s, int f) {
-        final AttributeType d;
-        String v = "";
-        String e = "";
-
-        // 11 May 2005
-        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f + 1), 6);
-
-        String code = vE[0];
-        e = vE[1];
-
-        if (Conversions.isNumeric(code)) {
-            d = AttributeType.SHIP_MMSI;
-            int countryCode = this.getCountryCode(binCode, 27, 36);
-            v = countryCode + code;
-        } else {
-            d = AttributeType.RADIO_CALLSIGN;
-            // 24 June 2005
-            // Don't use double quote
-            // v = "\"" + code + "\"" ;
-            v = code.trim();
-        }
-
-        return new HexAttribute(d, s, f, v, e);
     }
 
     private HexAttribute mmsi(String binCode, int s, int f) {

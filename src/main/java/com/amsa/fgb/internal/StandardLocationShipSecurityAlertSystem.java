@@ -11,18 +11,6 @@ class StandardLocationShipSecurityAlertSystem extends StandardLocation {
     }
 
     @Override
-     List<HexAttribute> decodePartial(String hexStr) {
-        String binCode = Conversions.hexToBinary(hexStr);
-        List<HexAttribute> result = new ArrayList<HexAttribute>();
-
-        // result.add(this.hexId(binCode, 26, 65));
-        result.add(this.hexId(binCode, 26, 85));
-        result.add(this.getMMSI(binCode, 41, 60));
-
-        return result;
-    }
-
-    @Override
      List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<HexAttribute>();
@@ -71,16 +59,6 @@ class StandardLocationShipSecurityAlertSystem extends StandardLocation {
         }
 
         return result;
-    }
-
-    private HexAttribute getMMSI(String binCode, int s, int f) {
-        int countryCode = this.getCountryCode(binCode, 27, 36);
-        HexAttribute h = this.mmsi(binCode, s, f);
-        String mmsi = h.getValue();
-        String v = countryCode + mmsi;
-        String e = h.getError();
-
-        return new HexAttribute(AttributeType.SHIP_MMSI, v, e);
     }
 
     private HexAttribute mmsi(String binCode, int s, int f) {

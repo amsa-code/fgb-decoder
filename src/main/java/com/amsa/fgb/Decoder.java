@@ -9,10 +9,6 @@ public final class Decoder {
         // prevent instantiation
     }
 
-    public static String decodePartial(String hexStr, Formatter formatter) {
-        return HexDecoder.decodePartial(hexStr, formatter);
-    }
-
     public static String decodeFull(String hexStr, Formatter formatter) {
         Debug.lastHexStr=hexStr;
         return HexDecoder.decodeFull(hexStr, formatter);

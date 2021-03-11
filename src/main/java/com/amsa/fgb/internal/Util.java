@@ -3,7 +3,11 @@ package com.amsa.fgb.internal;
 import java.util.ArrayList;
 import java.util.List;
 
-class Util {
+final class Util {
+    
+    private Util() {
+        //prevent instantiation
+    }
 
     public static List<HexAttribute> coarsePositionAttributes(double latSeconds, double lonSeconds,
             int s, int f) {

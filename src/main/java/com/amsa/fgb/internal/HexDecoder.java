@@ -16,16 +16,6 @@ import com.amsa.fgb.Formatter;
  */
 public final class HexDecoder {
 
-    // This is the decode that is used by the Incident Navigator SAR Search
-    public static String decodePartial(String hexStr, Formatter formatter) {
-        List<HexAttribute> r = getHexAttributesDecodePartial(hexStr);
-        return format(formatter, r);
-    }
-
-    private static List<HexAttribute> getHexAttributesDecodePartial(String hexStr) {
-        return getHexAttributes(hexStr, (proto, hex) -> proto.decodePartial(hex));
-    }
-
     private static List<HexAttribute> getHexAttributesDecodeFull(String hexStr) {
         return getHexAttributes(hexStr, (proto, hex) -> proto.decode(hex));
     }
