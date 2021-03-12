@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import com.amsa.fgb.Decoder;
 
 public final class DecodeHistoricalFilesMain {
-    
+
     private DecodeHistoricalFilesMain() {
         // prevent instantiation
     }
