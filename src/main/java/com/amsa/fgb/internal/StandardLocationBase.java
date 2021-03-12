@@ -3,11 +3,11 @@ package com.amsa.fgb.internal;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class StandardLocationShipMMSIOrAircraftOrSecurityAlertSystemBase extends StandardLocation {
+abstract class StandardLocationBase extends StandardLocation {
 
     private Consumer consumer;
 
-    StandardLocationShipMMSIOrAircraftOrSecurityAlertSystemBase(String stdProtocolCode, String protocolName, Consumer consumer) {
+    StandardLocationBase(String stdProtocolCode, String protocolName, Consumer consumer) {
         this.stdProtocolCode = stdProtocolCode;
         this.protocolName = protocolName;
         this.consumer = consumer;
@@ -21,7 +21,6 @@ abstract class StandardLocationShipMMSIOrAircraftOrSecurityAlertSystemBase exten
         result.add(this.hexData(hexStr, 25, binCode.length() - 1));
         HexAttribute hexId = this.hexIdWithDefaultLocation(binCode, 26, 65);
         result.add(hexId);
-
         result.add(this.countryCode(binCode, 27, 36));
         result.add(this.protocolType(binCode, 37, 40));
 
@@ -56,7 +55,6 @@ abstract class StandardLocationShipMMSIOrAircraftOrSecurityAlertSystemBase exten
                 result.add(actualLongitude());
             }
         }
-
         return result;
     }
 
@@ -80,7 +78,7 @@ abstract class StandardLocationShipMMSIOrAircraftOrSecurityAlertSystemBase exten
     }
 
     interface Consumer {
-        void accept(StandardLocationShipMMSIOrAircraftOrSecurityAlertSystemBase s, String binCode, List<HexAttribute> result);
+        void accept(StandardLocationBase s, String binCode, List<HexAttribute> result);
     }
 
 }

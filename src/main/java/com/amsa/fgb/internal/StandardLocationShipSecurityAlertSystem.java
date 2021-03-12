@@ -1,6 +1,6 @@
 package com.amsa.fgb.internal;
 
-class StandardLocationShipSecurityAlertSystem extends StandardLocationShipMMSIOrAircraftOrSecurityAlertSystemBase {
+class StandardLocationShipSecurityAlertSystem extends StandardLocationBase {
 
     StandardLocationShipSecurityAlertSystem() {
         super("1100", "Ship Security MMSI", (s, binCode, result) -> {
