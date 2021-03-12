@@ -8,8 +8,7 @@ abstract class UserSerialAircraftBase extends UserSerial {
     private final Consumer consumer;
 
     UserSerialAircraftBase(String serialBeaconType, String serialCode, Consumer consumer) {
-        this.serialBeaconType = serialBeaconType;
-        this.serialCode = serialCode;
+        super(serialBeaconType, serialCode);
         this.consumer = consumer;
     }
 

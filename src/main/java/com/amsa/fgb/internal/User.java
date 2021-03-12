@@ -6,7 +6,7 @@ import java.util.Optional;
 
 abstract class User extends BeaconProtocol {
 
-    String userProtocolCode;
+    protected String userProtocolCode;
 
     User() {
         this.beaconTypeCode.add("01");

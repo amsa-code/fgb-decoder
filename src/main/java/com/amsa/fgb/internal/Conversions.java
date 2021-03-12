@@ -16,13 +16,13 @@ final class Conversions {
         // prevent instantiation
     }
 
-    static private Map<String, String> hexMap;
-    static private Map<String, String> binMap;
-    static private Map<String, String> octMap;
-    static private Map<String, String> mbaudotToAsciiMap;
-    static private Map<String, String> asciiToMbaudotMap;
-    static private Map<String, String> aircraftMap;
-    static private Map<String, String> airRegMap;
+    private static Map<String, String> hexMap;
+    private static Map<String, String> binMap;
+    private static Map<String, String> octMap;
+    private static Map<String, String> mbaudotToAsciiMap;
+    private static Map<String, String> asciiToMbaudotMap;
+    private static Map<String, String> aircraftMap;
+    private static Map<String, String> airRegMap;
 
     static {
         hexMap = new HashMap<>();
@@ -437,10 +437,10 @@ final class Conversions {
         // 15 July 2005
         // This should work properly!
         int dec = origDec;
-        int L1 = dec / 1296;
+        int a1 = dec / 1296;
         int remainder = dec % 1296;
-        int L2 = remainder / 36;
-        int L3 = remainder % 36;
+        int a2 = remainder / 36;
+        int a3 = remainder % 36;
 
         // System.out.println("L1=" + L1);
         // System.out.println("L2=" + L2);
@@ -463,9 +463,9 @@ final class Conversions {
          */
 
         String result = "VH-";
-        result += Conversions.getAircraftCallsign(L1);
-        result += Conversions.getAircraftCallsign(L2);
-        result += Conversions.getAircraftCallsign(L3);
+        result += Conversions.getAircraftCallsign(a1);
+        result += Conversions.getAircraftCallsign(a2);
+        result += Conversions.getAircraftCallsign(a3);
 
         return result;
     }
@@ -571,9 +571,7 @@ final class Conversions {
                             || protocolName.equalsIgnoreCase("Radio Call Sign"))) {
                         mbaudotStr = mbaudotStr + "?";
                         e.add(mbaudotSubBits + " = Hyphen(-) - Non-Spec\n");
-                    }
-                    // 04 Jan 2007
-                    else {
+                    } else {
                         mbaudotStr = mbaudotStr + s;
                         e.add(mbaudotSubBits + " = Spec\n");
                     }

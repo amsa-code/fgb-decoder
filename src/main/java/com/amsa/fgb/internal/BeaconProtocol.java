@@ -150,14 +150,14 @@ abstract class BeaconProtocol {
         String v = cc + "";
 
         // Is this a US beacon
-        List<String> UScodes = new ArrayList<String>(0);
-        UScodes.add("338");
-        UScodes.add("366");
-        UScodes.add("367");
-        UScodes.add("368");
-        UScodes.add("369");
+        List<String> usCodes = new ArrayList<String>(0);
+        usCodes.add("338");
+        usCodes.add("366");
+        usCodes.add("367");
+        usCodes.add("368");
+        usCodes.add("369");
 
-        this.isUS = UScodes.contains(v);
+        this.isUS = usCodes.contains(v);
         return new HexAttribute(AttributeType.COUNTRY_CODE, s, f, v, e);
     }
 

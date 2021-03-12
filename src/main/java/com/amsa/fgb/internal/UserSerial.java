@@ -3,15 +3,16 @@ package com.amsa.fgb.internal;
 import java.util.ArrayList;
 import java.util.List;
 
-class UserSerial extends User {
+abstract class UserSerial extends User {
 
-    String serialCode;
-    String serialBeaconType;
+    protected String serialCode;
+    protected String serialBeaconType;
 
-    UserSerial() {
-        protocolName = "Serial";
-        userProtocolCode = "011";
-
+    UserSerial(String serialBeaconType, String serialCode) {
+        this.serialBeaconType = serialBeaconType;
+        this.serialCode = serialCode;
+        this.protocolName = "Serial";
+        this.userProtocolCode = "011";
     }
 
     @Override

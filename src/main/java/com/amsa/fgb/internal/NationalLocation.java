@@ -10,7 +10,7 @@ import java.util.List;
 
 abstract class NationalLocation extends BeaconProtocol {
 
-    String natProtocolCode; // Set in constructors of sub-classes
+    protected String natProtocolCode; // Set in constructors of sub-classes
 
     NationalLocation() {
         beaconTypeCode.add("00");

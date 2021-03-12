@@ -5,7 +5,7 @@ import java.util.List;
 
 abstract class StandardLocation extends BeaconProtocol {
 
-    String stdProtocolCode; // Set in constructors of sub-classes
+    protected String stdProtocolCode; // Set in constructors of sub-classes
 
     StandardLocation() {
         beaconTypeCode.add("00");

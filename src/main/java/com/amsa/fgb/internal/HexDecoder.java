@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.function.BiFunction;
 
 /**
- * Contains methods to decode hex strings
+ * Contains methods to decode hex strings.
  *
  * @author smw01
  *

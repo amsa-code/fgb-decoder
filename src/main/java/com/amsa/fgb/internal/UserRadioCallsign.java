@@ -28,7 +28,7 @@ final class UserRadioCallsign extends UserAviationOrMaritimeOrRadioCallsign {
         }
 
         // String h = Conversions.binaryToHex(binCode.substring(s+24, f+1));
-        int digits[] = new int[3];
+        int[] digits = new int[3];
         digits[0] = Conversions.binaryToDecimal(binCode.substring(s + 24, s + 28));
         digits[1] = Conversions.binaryToDecimal(binCode.substring(s + 28, s + 32));
         digits[2] = Conversions.binaryToDecimal(binCode.substring(s + 32, f + 1));

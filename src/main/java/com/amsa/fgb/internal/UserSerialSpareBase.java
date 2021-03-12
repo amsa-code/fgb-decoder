@@ -5,8 +5,7 @@ import java.util.List;
 abstract class UserSerialSpareBase extends UserSerial {
 
     UserSerialSpareBase(String serialBeaconType, String serialCode) {
-        this.serialBeaconType = serialBeaconType;
-        this.serialCode = serialCode;
+        super(serialBeaconType, serialCode);
     }
 
     @Override

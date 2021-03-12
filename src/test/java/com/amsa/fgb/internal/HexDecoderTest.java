@@ -11,7 +11,7 @@ import org.junit.Test;
 import com.amsa.fgb.Decoder;
 import com.github.davidmoten.junit.Asserts;
 
-public class HexDecoderTest {
+public final class HexDecoderTest {
 
     @Test
     public void isUtilityClass() {
