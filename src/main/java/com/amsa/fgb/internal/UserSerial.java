@@ -1,5 +1,8 @@
 package com.amsa.fgb.internal;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class UserSerial extends User {
 
     String serialCode;
@@ -99,4 +102,33 @@ class UserSerial extends User {
         return new HexAttribute(AttributeType.US_NATIONAL_USE, s, f, v, e);
     }
 
+    static List<HexAttribute> userSerialFragment1(UserSerial u,String hexStr, String binCode) {
+        List<HexAttribute> result = new ArrayList<HexAttribute>();
+        result.add(u.messageType(binCode, 25, 26));
+        result.add(u.hexData(hexStr, 25, binCode.length() - 1));
+        result.add(u.hexId(binCode, 26, 85));
+        result.add(u.countryCode(binCode, 27, 36));
+        result.add(u.protocolType(binCode, 37, 39));
+        result.add(u.beaconType(binCode, 40, 42));
+        result.add(u.cospasSarsatAppCertFlag(binCode, 43));
+        result.add(u.serialNumber(binCode, 44, 63));
+
+        if (u.cospasSarsatAppCertFlagPresent(binCode)) {
+            result.add(u.nationalUse(binCode, 64, 73));
+            result.add(u.cospasSarsatAppCertNumber(binCode, 74, 83));
+        } else {
+            result.add(u.nationalUse(binCode, 64, 83));
+        }
+
+        result.add(u.auxRadioLocating(binCode, 84, 85));
+
+        if (u.isUS) {
+            result.add(u.usManufacturerId(binCode, 44, 51));
+            result.add(u.usSeqNo(binCode, 52, 63));
+            result.add(u.usModelId(binCode, 64, 67));
+            result.add(u.usRunNo(binCode, 68, 75));
+            result.add(u.usNatUse(binCode, 76, 83));
+        }
+        return result;
+    }
 }
