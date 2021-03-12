@@ -1,6 +1,6 @@
 package com.amsa.fgb.internal;
 
-final class StandardLocationAircraftOperator extends StandardLocationAircraft {
+final class StandardLocationAircraftOperator extends StandardLocationShipMMSIOrAircraftOrSecurityAlertSystemBase {
 
     StandardLocationAircraftOperator() {
         super( "0101","Aircraft Operator", (s, binCode, result)-> {

@@ -3,30 +3,25 @@ package com.amsa.fgb.internal;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class StandardLocationAircraft extends StandardLocation {
+abstract class StandardLocationShipMMSIOrAircraftOrSecurityAlertSystemBase extends StandardLocation {
 
-    private final Consumer consumer;
-    
-    protected StandardLocationAircraft(String stdProtocolCode, String protocolName, Consumer consumer) {
+    private Consumer consumer;
+
+    StandardLocationShipMMSIOrAircraftOrSecurityAlertSystemBase(String stdProtocolCode, String protocolName, Consumer consumer) {
         this.stdProtocolCode = stdProtocolCode;
         this.protocolName = protocolName;
         this.consumer = consumer;
     }
-    
-    interface Consumer {
-        void accept(StandardLocationAircraft s, String binCode, List<HexAttribute> list);
-    }
 
     @Override
-     List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
-        List<HexAttribute> result = new ArrayList<HexAttribute>();
-
+        List<HexAttribute> result = new ArrayList<>();
         result.add(this.messageType(binCode, 25, 26));
         result.add(this.hexData(hexStr, 25, binCode.length() - 1));
         HexAttribute hexId = this.hexIdWithDefaultLocation(binCode, 26, 65);
         result.add(hexId);
-        // result.add(this.hexId(binCode, 26, 65));
+
         result.add(this.countryCode(binCode, 27, 36));
         result.add(this.protocolType(binCode, 37, 40));
 
@@ -36,7 +31,6 @@ abstract class StandardLocationAircraft extends StandardLocation {
 
         if (hexStr.length() > 15) {
             result = this.bch1(result, binCode, hexId);
-            // result.add(this.bch1(binCode, 86, 106));
 
             result.add(this.fixedBits(binCode, 107, 110));
 
@@ -64,6 +58,29 @@ abstract class StandardLocationAircraft extends StandardLocation {
         }
 
         return result;
+    }
+
+    protected HexAttribute mmsi(AttributeType type, String binCode, int s, int f) {
+        int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
+        String e = "";
+        String value = v + "";
+        int len = value.length();
+        for (int i = 0; i < (6 - len); i++) {
+            value = "0" + value;
+        }
+        return new HexAttribute(type, s, f, value, e);
+    }
+
+    @Override
+    HexAttribute specificBeaconNumber(String binCode, int s, int f) {
+        int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
+        String e = "";
+
+        return new HexAttribute(AttributeType.SPECIFIC_BEACON_NUMBER, s, f, v, e);
+    }
+
+    interface Consumer {
+        void accept(StandardLocationShipMMSIOrAircraftOrSecurityAlertSystemBase s, String binCode, List<HexAttribute> result);
     }
 
 }
