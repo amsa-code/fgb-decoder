@@ -2,11 +2,13 @@ package com.amsa.fgb.internal;
 
 import java.util.ArrayList;
 
-final class UserRadioCallsign extends UserMaritimeOrRadioCallsign {
+final class UserRadioCallsign extends UserAviationOrMaritimeOrRadioCallsign {
 
     UserRadioCallsign() {
         super("Radio Call Sign", "110", (u, binCode, result) -> {
             result.add(((UserRadioCallsign) u).radioCallsign(binCode, 40, 75));
+            result.add(u.specificBeaconNumber(binCode, 76, 81));
+            result.add(u.spare(binCode, 82, 83));
         });
     }
 

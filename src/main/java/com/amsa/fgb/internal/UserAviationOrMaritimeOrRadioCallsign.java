@@ -3,18 +3,18 @@ package com.amsa.fgb.internal;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class UserMaritimeOrRadioCallsign extends User {
+abstract class UserAviationOrMaritimeOrRadioCallsign extends User {
 
     private final Consumer consumer;
 
-    UserMaritimeOrRadioCallsign(String protocolName, String userProtocolCode, Consumer consumer) {
+    UserAviationOrMaritimeOrRadioCallsign(String protocolName, String userProtocolCode, Consumer consumer) {
         this.protocolName = protocolName;
         this.userProtocolCode = userProtocolCode;
         this.consumer = consumer;
     }
 
     interface Consumer {
-        void accept(UserMaritimeOrRadioCallsign u, String binCode, List<HexAttribute> result);
+        void accept(UserAviationOrMaritimeOrRadioCallsign u, String binCode, List<HexAttribute> result);
     }
 
     @Override
@@ -31,9 +31,7 @@ abstract class UserMaritimeOrRadioCallsign extends User {
         result.add(this.protocolType(binCode, 37, 39));
 
         consumer.accept(this, binCode, result);
-        result.add(this.specificBeaconNumber(binCode, 76, 81));
-
-        result.add(this.spare(binCode, 82, 83));
+        
         result.add(this.auxRadioLocating(binCode, 84, 85));
 
         if (hexStr.length() > 15) {
@@ -56,7 +54,6 @@ abstract class UserMaritimeOrRadioCallsign extends User {
             }
             // 14/03/2005
             else {
-                // result = Common.CommonInUserProtocols(result, binCode, 107, 112);
                 result = this.nonNationalUse(result, binCode);
             }
         }

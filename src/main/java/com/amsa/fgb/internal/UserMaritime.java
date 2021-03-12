@@ -2,11 +2,13 @@ package com.amsa.fgb.internal;
 
 import java.util.Locale;
 
-final class UserMaritime extends UserMaritimeOrRadioCallsign {
+final class UserMaritime extends UserAviationOrMaritimeOrRadioCallsign {
 
     UserMaritime() {
         super("Maritime", "010", (u, binCode, result) -> {
             result.add(((UserMaritime) u).mmsi(binCode, 40, 75));
+            result.add(u.specificBeaconNumber(binCode, 76, 81));
+            result.add(u.spare(binCode, 82, 83));
         });
     }
 
