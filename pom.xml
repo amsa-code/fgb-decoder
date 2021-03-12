@@ -292,36 +292,36 @@
                     <obrRepository>NONE</obrRepository>
                 </configuration>
             </plugin>
-            <!-- <plugin> -->
-            <!-- <groupId>org.apache.maven.plugins</groupId> -->
-            <!-- <artifactId>maven-checkstyle-plugin</artifactId> -->
-            <!-- <version>${checkstyle.version}</version> -->
-            <!-- <configuration> -->
-            <!-- <includeTestSourceDirectory>true</includeTestSourceDirectory> -->
-            <!-- <configLocation>${checkstyle.xml}</configLocation> -->
-            <!-- <encoding>UTF-8</encoding> -->
-            <!-- <consoleOutput>true</consoleOutput> -->
-            <!-- <failsOnError>true</failsOnError> -->
-            <!-- <linkXRef>false</linkXRef> -->
-            <!-- <suppressionsLocation>${checkstyle.suppressions.xml}</suppressionsLocation> -->
-            <!-- </configuration> -->
-            <!-- <dependencies> -->
-            <!-- <dependency> -->
-            <!-- <groupId>com.puppycrawl.tools</groupId> -->
-            <!-- <artifactId>checkstyle</artifactId> -->
-            <!-- <version>${checkstyle.core.version}</version> -->
-            <!-- </dependency> -->
-            <!-- </dependencies> -->
-            <!-- <executions> -->
-            <!-- <execution> -->
-            <!-- <id>validate</id> -->
-            <!-- <phase>validate</phase> -->
-            <!-- <goals> -->
-            <!-- <goal>check</goal> -->
-            <!-- </goals> -->
-            <!-- </execution> -->
-            <!-- </executions> -->
-            <!-- </plugin> -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle.version}</version>
+                <configuration>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <configLocation>${checkstyle.xml}</configLocation>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <linkXRef>false</linkXRef>
+                    <suppressionsLocation>${checkstyle.suppressions.xml}</suppressionsLocation>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${checkstyle.core.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <reporting>
