@@ -3,9 +3,9 @@ package com.amsa.fgb.internal;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class StandardLocationELTOrEpirbBase extends StandardLocation {
+abstract class StandardLocationELTOrEpirbOrPLBBase extends StandardLocation {
 
-    StandardLocationELTOrEpirbBase(String stdProtocolCode, String protocolName) {
+    StandardLocationELTOrEpirbOrPLBBase(String stdProtocolCode, String protocolName) {
         this.stdProtocolCode = stdProtocolCode;
         this.protocolName = protocolName;
     }
@@ -51,12 +51,11 @@ abstract class StandardLocationELTOrEpirbBase extends StandardLocation {
                 result.add(this.encodedPositionSource(binCode, 111));
                 result.add(this.homing(binCode, 112));
             }
-            if (this.actualLatLong) {
-                result.add(actualLatitude());
-                result.add(actualLongitude());
-            }
         }
-
+        if (this.actualLatLong) {
+            result.add(actualLatitude());
+            result.add(actualLongitude());
+        }
         return result;
     }
 
