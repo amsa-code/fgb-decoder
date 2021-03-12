@@ -17,19 +17,19 @@ public final class DecodeHistoricalFilesMain {
         File file = new File(home, "beacons.txt");
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
             br.lines() //
-                    .map(x -> x.trim()) //
-                    .filter(x -> !x.isEmpty()) //
-                    .forEach(x -> {
-                        try {
-                            Decoder.decodeFullAsJson(x);
-                        } catch (RuntimeException e) {
-                            errors[0]++;
-                        }
-                        count[0]++;
-                        if (count[0] % 10000 == 0) {
-                            System.out.println("count=" + count[0] + ", errors=" + errors[0]);
-                        }
-                    });
+            .map(x -> x.trim()) //
+            .filter(x -> !x.isEmpty()) //
+            .forEach(x -> {
+                try {
+                    Decoder.decodeFullAsJson(x);
+                } catch (RuntimeException e) {
+                    errors[0]++;
+                }
+                count[0]++;
+                if (count[0] % 10000 == 0) {
+                    System.out.println("count=" + count[0] + ", errors=" + errors[0]);
+                }
+            });
         }
     }
 }

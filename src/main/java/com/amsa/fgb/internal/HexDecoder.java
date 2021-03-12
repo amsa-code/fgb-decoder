@@ -8,9 +8,9 @@ import java.util.function.BiFunction;
 
 /**
  * Contains methods to decode hex strings
- * 
+ *
  * @author smw01
- * 
+ *
  */
 public final class HexDecoder {
 

@@ -23,8 +23,9 @@ final class UserRadioCallsign extends UserAviationOrMaritimeOrRadioCallsign {
         String e = vE[1];
         int count = Integer.parseInt(vE[2]);
 
-        if (e != null && e.length() > 0)
+        if (e != null && e.length() > 0) {
             e = "\nWARNING - SUSPECT NON-SPEC IN RADIO CALL SIGN\n" + e;
+        }
 
         // String h = Conversions.binaryToHex(binCode.substring(s+24, f+1));
         int digits[] = new int[3];
@@ -66,26 +67,30 @@ final class UserRadioCallsign extends UserAviationOrMaritimeOrRadioCallsign {
         // Replace "*" with " " at the end, eg, "*9*" to "*9 "
         int index = h.length() - 1;
         for (; index >= 0; index--) {
-            if (h.charAt(index) == '*')
+            if (h.charAt(index) == '*') {
                 continue;
-            else
+            } else {
                 break;
+            }
         }
 
         // System.out.println("index=" + index);
 
         for (int i = index + 1; i >= 0 && i < h.length(); i++) {
-            if (h.charAt(i) == '*')
+            if (h.charAt(i) == '*') {
                 h = h.substring(0, i) + " " + h.substring(i + 1);
+            }
         }
 
         // Replace all rest * to ?, eg "*9 " to "?9 "
         h = h.replace('*', '?');
         // Append the relevant elements in e2 to e
         StringBuilder b = new StringBuilder();
-        for (int i = 0; i < h.length(); i++)
-            if (h.charAt(i) == '?')
+        for (int i = 0; i < h.length(); i++) {
+            if (h.charAt(i) == '?') {
                 b.append("?" + ++count + " = " + e2.get(i));
+            }
+        }
         e += b.toString();
         // 24 June 2005, double quote is not used any more
         // String vH = "\"" + v + h + "\"";

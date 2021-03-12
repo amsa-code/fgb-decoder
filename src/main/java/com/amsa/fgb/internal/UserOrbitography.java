@@ -31,9 +31,9 @@ class UserOrbitography extends User {
             }
             // 07/04/2005
             else {
-                if (binCode.charAt(107) == '0')
+                if (binCode.charAt(107) == '0') {
                     result.add(this.nationalUse(binCode, 107, 112));
-                else {
+                } else {
                     result.add(new HexAttribute(AttributeType.EMERGENCY_CODE_FLAG, 107,
                             "Non-Spec (" + binCode.charAt(107) + ")", ""));
                     result.add(this.nationalUse(binCode, 108, 112));
@@ -59,18 +59,20 @@ class UserOrbitography extends User {
         String v2 = vE[0];
         String e2 = vE[1];
 
-        if (e2 != null && e2.length() > 0)
+        if (e2 != null && e2.length() > 0) {
             e2 = "\nWARNING - SUSPECT NON-SPEC IN ORBITOGRAPHY BEACON CLEAR TEXT IDENTIFIER\n" + e2;
+        }
 
         result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_ID, s, f - 4, v2, e2));
 
         // Bit 82-85
         String v3 = binCode.substring(f - 4 + 1, f + 1);
 
-        if (v3.equals("0000"))
+        if (v3.equals("0000")) {
             result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_4_BITS, f - 4 + 1, f, v3, ""));
-        else
+        } else {
             result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_4_BITS, f - 4 + 1, f, v3 + " (Non-Spec)", ""));
+        }
 
         return result;
     }

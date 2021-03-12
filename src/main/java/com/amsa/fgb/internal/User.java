@@ -63,12 +63,13 @@ abstract class User extends BeaconProtocol {
         String v = "User";
         String e = "";
 
-        if (this.isLongMessage(binCode))
+        if (this.isLongMessage(binCode)) {
             v = v + " Location (Long)";
-        else if (this.isShortMessage(binCode))
+        } else if (this.isShortMessage(binCode)) {
             v = v + " (Short)";
-        else
+        } else {
             v = v + " (Format - Unknown)";
+        }
 
         return new HexAttribute(AttributeType.MESSAGE_TYPE, s, f, v, e);
     }
@@ -97,8 +98,9 @@ abstract class User extends BeaconProtocol {
         String v = binCode.substring(s, f + 1);
         String e = "";
 
-        if (v.length() == 2 && !v.equals("00"))
+        if (v.length() == 2 && !v.equals("00")) {
             v += " (Non-Spec)";
+        }
 
         return new HexAttribute(AttributeType.SPARE, s, f, v, e);
     }
@@ -207,8 +209,9 @@ abstract class User extends BeaconProtocol {
         if (binCode.charAt(107) == '0') {
             String v = "Default(" + binCode.substring(109, 113) + ")";
             result.add(new HexAttribute(AttributeType.NATURE_OF_DISTRESS, 109, 112, v, ""));
-        } else
+        } else {
             result = allEmergencyCodes(result, binCode);
+        }
 
         return result;
     }

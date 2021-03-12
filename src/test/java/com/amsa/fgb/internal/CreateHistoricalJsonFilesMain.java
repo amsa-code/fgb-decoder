@@ -28,23 +28,23 @@ public class CreateHistoricalJsonFilesMain {
         assertTrue(files.mkdirs());
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
             br.lines() //
-                    .map(x -> x.trim()) //
-                    .filter(x -> !x.isEmpty()) //
-                    .forEach(x -> {
-                        try {
-                            String json = Decoder.decodeFullAsJson(x);
-                            Files.write(new File(files, x + ".json").toPath(), json.getBytes(StandardCharsets.UTF_8),
-                                    StandardOpenOption.CREATE_NEW);
-                        } catch (RuntimeException e) {
-                            errors[0]++;
-                        } catch (IOException e) {
-                            throw new UncheckedIOException(e);
-                        }
-                        count[0]++;
-                        if (count[0] % 1000 == 0) {
-                            System.out.println("count=" + count[0] + ", errors=" + errors[0]);
-                        }
-                    });
+            .map(x -> x.trim()) //
+            .filter(x -> !x.isEmpty()) //
+            .forEach(x -> {
+                try {
+                    String json = Decoder.decodeFullAsJson(x);
+                    Files.write(new File(files, x + ".json").toPath(), json.getBytes(StandardCharsets.UTF_8),
+                            StandardOpenOption.CREATE_NEW);
+                } catch (RuntimeException e) {
+                    errors[0]++;
+                } catch (IOException e) {
+                    throw new UncheckedIOException(e);
+                }
+                count[0]++;
+                if (count[0] % 1000 == 0) {
+                    System.out.println("count=" + count[0] + ", errors=" + errors[0]);
+                }
+            });
         }
     }
 

@@ -370,12 +370,14 @@ final class Conversions {
             temp.append(dec % 2);
             dec = dec / 2;
         }
-        if (dec != 0)
+        if (dec != 0) {
             temp.append(dec);
+        }
 
         // Reverse the string
-        for (int i = temp.length() - 1; i >= 0; i--)
+        for (int i = temp.length() - 1; i >= 0; i--) {
             result.append(temp.charAt(i));
+        }
 
         return result.toString();
     }
@@ -447,16 +449,16 @@ final class Conversions {
         /*
          * // 14 July 2005 // This doesn't work properly for boundary cases! double dec
          * = origDec; int L1 = (int)(dec/1296);
-         * 
+         *
          * //System.out.println("L1=" + L1);
-         * 
+         *
          * dec = dec/1296.0 - (int)(dec/1296); int L2 = (int)(dec*36.0+0.000005);
-         * 
+         *
          * //System.out.println("L2=" + L2);
-         * 
+         *
          * dec = dec*36.0 - (int)(dec*36+0.000005); // Add 0.000005 is for adjusting the
          * loss precision of double value int L3 = (int)(dec*36.0+0.000005);
-         * 
+         *
          * //System.out.println("L3=" + L3);
          */
 
@@ -524,8 +526,9 @@ final class Conversions {
             if (bits == 5) {
                 mbaudotSubBits = "1" + mbaudotSubBits;
                 d = binaryToDecimal(mbaudotSubBits);
-            } else
+            } else {
                 d = binaryToDecimal(mbaudotSubBits);
+            }
 
             String s;
             Object obj = mbaudotToAsciiMap.get(d + "");
@@ -539,12 +542,13 @@ final class Conversions {
                         // mbaudotStr = mbaudotStr + "?";
                         mbaudotStr = mbaudotStr + "?";
                         if (spaceCount == j && n != 1) { // n==1 && UserMaritime (or User
-                                                         // RadioCallsign) means it is for Specidic
-                                                         // Beacon Number (bit 76-81)
+                            // RadioCallsign) means it is for Specidic
+                            // Beacon Number (bit 76-81)
                             e.add(mbaudotSubBits + " = Space - Left Justified\n");
                             spaceCount++;
-                        } else
+                        } else {
                             e.add(mbaudotSubBits + " = Space - Non-Spec\n");
+                        }
                     } else if (protocolName.equalsIgnoreCase("Aviation") || protocolName.equalsIgnoreCase("Maritime")
                             || protocolName.equalsIgnoreCase("Orbitography")) {
                         // n==1 && UserMaritime (or User RadioCallsign) means it is for Specidic
@@ -600,14 +604,16 @@ final class Conversions {
         if (!mbaudotStr.equalsIgnoreCase(temp.toString())) {
             int index = mbaudotStr.length() - 1;
             for (; index >= 0; index--) {
-                if (mbaudotStr.charAt(index) == '*')
+                if (mbaudotStr.charAt(index) == '*') {
                     continue;
-                else
+                } else {
                     break;
+                }
             }
             for (int i = 0; i < index; i++) {
-                if (mbaudotStr.charAt(i) == '*')
+                if (mbaudotStr.charAt(i) == '*') {
                     mbaudotStr = mbaudotStr.substring(0, i) + " " + mbaudotStr.substring(i + 1);
+                }
             }
 
             for (int i = 0; i < mbaudotStr.length(); i++) {
@@ -627,8 +633,9 @@ final class Conversions {
             }
         } else {
             for (int i = 0; i < mbaudotStr.length(); i++) {
-                if (mbaudotStr.charAt(i) == '*')
+                if (mbaudotStr.charAt(i) == '*') {
                     mbaudotStr = mbaudotStr.substring(0, i) + " " + mbaudotStr.substring(i + 1);
+                }
             }
         }
 

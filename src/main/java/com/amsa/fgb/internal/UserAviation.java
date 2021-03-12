@@ -22,8 +22,9 @@ class UserAviation extends UserAviationOrMaritimeOrRadioCallsign {
         // String e = "";
         String e = vE[1];
 
-        if (e != null && e.length() > 0)
+        if (e != null && e.length() > 0) {
             e = "\nWARNING - SUSPECT NON-SPEC IN AIRCRAFT REG. MARKING\n" + e;
+        }
 
         return new HexAttribute(AttributeType.AIRCRAFT_REG_MARKING, s, f, v, e);
     }

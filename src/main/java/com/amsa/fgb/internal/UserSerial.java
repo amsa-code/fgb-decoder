@@ -6,7 +6,7 @@ import java.util.List;
 class UserSerial extends User {
 
     String serialCode;
-    String serialBeaconType;;
+    String serialBeaconType;
 
     UserSerial() {
         protocolName = "Serial";

@@ -5,7 +5,7 @@ import java.util.List;
 
 abstract class StandardLocationBase extends StandardLocation {
 
-    private Consumer consumer;
+    private final Consumer consumer;
 
     StandardLocationBase(String stdProtocolCode, String protocolName, Consumer consumer) {
         this.stdProtocolCode = stdProtocolCode;

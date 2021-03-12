@@ -19,14 +19,14 @@ import org.junit.Test;
 
 /**
  * Tests the decoding methods of {@link Decoder}
- * 
+ *
  * @author smw01
- * 
+ *
  */
 public class DecoderTest {
 
-//    private static final String HEXSTRING_15_CHRS = "ADCC40504000185";
-//    private static final String HEXSTRING_15_CHRS_AVIATION = "BEE64BE562F9BD9";
+    //    private static final String HEXSTRING_15_CHRS = "ADCC40504000185";
+    //    private static final String HEXSTRING_15_CHRS_AVIATION = "BEE64BE562F9BD9";
     private static final String HEXSTRING_30_CHRS = "D6E6202820000C29FF51041775302D";
 
     @Test
@@ -77,7 +77,7 @@ public class DecoderTest {
 
     @Test
     public void testComplianceKit() throws IOException {
-//         createComplianceKitTests();
+        //         createComplianceKitTests();
         File[] files = new File("src/test/resources/compliance-kit").listFiles();
         // ensure deterministic
         if (files != null) {
@@ -106,24 +106,24 @@ public class DecoderTest {
             TestingUtil.delete(tempKit);
         }
         hexes
-                // ensure deterministic
-                .sorted() //
-                .forEach(x -> {
-                    try {
-                        {
-                            final String json = Decoder.decodeFullAsJson(x);
-                            File f = new File(tempKit, x + ".json");
-                            f.getParentFile().mkdirs();
-                            f.delete();
-                            Files.write(f.toPath(), json.getBytes(StandardCharsets.UTF_8), StandardOpenOption.WRITE,
-                                    StandardOpenOption.CREATE);
-                        }
-                    } catch (RuntimeException e) {
-                        System.out.println("Errored: " + x + "\n" + e.getMessage());
-                    } catch (IOException e) {
-                        throw new UncheckedIOException(e);
-                    }
-                });
+        // ensure deterministic
+        .sorted() //
+        .forEach(x -> {
+            try {
+                {
+                    final String json = Decoder.decodeFullAsJson(x);
+                    File f = new File(tempKit, x + ".json");
+                    f.getParentFile().mkdirs();
+                    f.delete();
+                    Files.write(f.toPath(), json.getBytes(StandardCharsets.UTF_8), StandardOpenOption.WRITE,
+                            StandardOpenOption.CREATE);
+                }
+            } catch (RuntimeException e) {
+                System.out.println("Errored: " + x + "\n" + e.getMessage());
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
+            }
+        });
         tempKit.renameTo(kit);
     }
 

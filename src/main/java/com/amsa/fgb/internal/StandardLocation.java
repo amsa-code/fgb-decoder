@@ -120,8 +120,9 @@ abstract class StandardLocation extends BeaconProtocol {
             // Apply offset to absolute value of coarse position
             double tempLat = Math.abs(this.latSeconds);
             tempLat += offset1;
-            if (this.latSeconds < 0)
+            if (this.latSeconds < 0) {
                 tempLat *= -1;
+            }
             this.latSeconds = tempLat;
 
             // Lon Offset
@@ -136,8 +137,9 @@ abstract class StandardLocation extends BeaconProtocol {
             // Apply offset to absolute value of coarse position
             double tempLon = Math.abs(this.lonSeconds);
             tempLon += offset2;
-            if (this.lonSeconds < 0)
+            if (this.lonSeconds < 0) {
                 tempLon *= -1;
+            }
             this.lonSeconds = tempLon;
             return Util.offsetPositionAttributes(offset1, offset2, s, f);
         }

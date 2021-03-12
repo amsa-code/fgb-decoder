@@ -21,7 +21,7 @@ abstract class BeaconProtocol {
     protected String defaultFixedBits;
 
     BeaconProtocol() {
-        beaconTypeCode = new ArrayList<String>(2);
+        this.beaconTypeCode = new ArrayList<>(2);
         this.actualLatLong = false;
         this.latSeconds = 0;
         this.lonSeconds = 0;
@@ -39,60 +39,54 @@ abstract class BeaconProtocol {
 
     boolean isLongMessage(String binCode) {
         String code = binCode.substring(25, 27);
-        List<String> longCodes = new ArrayList<String>(2);
+        List<String> longCodes = new ArrayList<>(2);
         longCodes.add("10");
         longCodes.add("11");
-
         return longCodes.contains(code);
     }
 
     // 16 May 2005
     boolean isShortMessage(String binCode) {
         String code = binCode.substring(25, 27);
-        List<String> longCodes = new ArrayList<String>(2);
-        longCodes.add("00");
-        longCodes.add("01");
-
-        return longCodes.contains(code);
+        List<String> shortCodes = new ArrayList<>(2);
+        shortCodes.add("00");
+        shortCodes.add("01");
+        return shortCodes.contains(code);
     }
 
     // 16 May 2005
     String getMsgTypeDesc(String v, String binCode) {
-        if (this.isLongMessage(binCode))
+        if (this.isLongMessage(binCode)) {
             v = v + " (Long)";
-        else if (this.isShortMessage(binCode))
+        } else if (this.isShortMessage(binCode)) {
             v = v + " (Short)";
-        else
+        } else {
             v = v + " (Format - Unknown)";
-
+        }
         return v;
     }
 
     boolean defaultFFFFFFFF(String hexStr) {
         int len = hexStr.length();
         String code = hexStr.substring(len - 8, len);
-
         return code.equals("FFFFFFFF");
     }
 
     HexAttribute longMessage(String binCode, int s, int f) {
         String v = "YES";
         String e = "";
-
         return new HexAttribute(AttributeType.IS_LONG_MESSAGE_DEFAULT, s, f, v, e);
     }
 
     boolean default00000000(String hexStr) {
         int len = hexStr.length();
         String code = hexStr.substring(len - 8, len);
-
         return code.equals("00000000");
     }
 
     HexAttribute protocolType(String binCode, int s, int f) {
         String name = this.getName();
         String e = "";
-
         return new HexAttribute(AttributeType.PROTOCOL_TYPE, s, f, name, e);
     }
 
@@ -131,23 +125,22 @@ abstract class BeaconProtocol {
         // return new HexAttribute("Hex Data", s, f, hexStr, e);
 
         // 16 May 2005
-        if (hexStr.trim().length() != 30)
+        if (hexStr.trim().length() != 30) {
             return new HexAttribute(AttributeType.HEX_DATA, 25, 144, "Unknown", e);
-        else
+        } else {
             return new HexAttribute(AttributeType.HEX_DATA, s, f, hexStr, e);
+        }
     }
 
     HexAttribute hexId(String binCode, int s, int f) { // b26-85
         String binHexId = binCode.substring(s, f + 1);
         String v = Conversions.binaryToHex(binHexId);
         String e = "";
-
         return new HexAttribute(AttributeType.HEX_ID, s, f, v, e);
     }
 
     int getCountryCode(String binCode, int s, int f) {
         String binCC = binCode.substring(s, f + 1);
-
         return Conversions.binaryToDecimal(binCC);
     }
 
@@ -236,8 +229,9 @@ abstract class BeaconProtocol {
 
         String e = vE[1];
 
-        if (e != null && e.length() > 0)
+        if (e != null && e.length() > 0) {
             e = "\nWARNING - SUSPECT NON-SPEC IN SPECIFIC BEACON NUMBER\n" + e;
+        }
 
         return new HexAttribute(AttributeType.SPECIFIC_BEACON_NUMBER, s, f, v, e);
     }
@@ -250,8 +244,9 @@ abstract class BeaconProtocol {
 
         String e = vE[1];
 
-        if (e != null && e.length() > 0)
+        if (e != null && e.length() > 0) {
             e = "\nWARNING - SUSPECT NON-SPEC IN AIRCRAFT OPERATOR\n" + e;
+        }
 
         return new HexAttribute(AttributeType.AIRCRAFT_OPERATOR, s, f, v, e);
     }
@@ -270,7 +265,7 @@ abstract class BeaconProtocol {
             v = "FIXED VALUE";
         } else {
             v = code + " (Non-Spec)";
-//			String position = "b" + s + "-" + f;
+            //			String position = "b" + s + "-" + f;
             // e = "INVALID Spare. " + position + ": " + code;
         }
 

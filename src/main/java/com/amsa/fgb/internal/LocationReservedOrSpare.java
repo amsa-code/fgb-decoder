@@ -5,7 +5,7 @@ import java.util.List;
 
 abstract class LocationReservedOrSpare extends BeaconProtocol {
 
-    private String stdProtocolCode;
+    private final String stdProtocolCode;
 
     LocationReservedOrSpare(String stdProtocolCode, String protocolName) {
         beaconTypeCode.add("00");

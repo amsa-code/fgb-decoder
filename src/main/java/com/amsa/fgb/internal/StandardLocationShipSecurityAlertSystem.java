@@ -14,8 +14,9 @@ class StandardLocationShipSecurityAlertSystem extends StandardLocationBase {
         String e = "";
 
         // 08 Aug 2006
-        if (!v.equals("0000"))
+        if (!v.equals("0000")) {
             v += " (Non-Spec)";
+        }
 
         return new HexAttribute(AttributeType.FIXED_BITS, s, f, v, e);
     }

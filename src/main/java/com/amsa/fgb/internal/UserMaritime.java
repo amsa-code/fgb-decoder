@@ -35,8 +35,9 @@ final class UserMaritime extends UserAviationOrMaritimeOrRadioCallsign {
             v = code.trim();
         }
 
-        if (e != null && e.length() > 0)
+        if (e != null && e.length() > 0) {
             e = "\nWARNING - SUSPECT NON-SPEC IN " + d.toString().toUpperCase(Locale.ENGLISH) + "\n" + e;
+        }
 
         return new HexAttribute(d, s, f, v, e);
     }
