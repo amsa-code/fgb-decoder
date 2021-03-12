@@ -72,7 +72,7 @@ abstract class LocationReservedOrSpare extends BeaconProtocol {
         String protocol = binCode.substring(25, 27);
 
         // System.out.println("Trying " + name);
-        int f = (this instanceof LocationReserved) ? 40 : 41;
+        int f = this instanceof LocationReserved ? 40 : 41;
         if (beaconTypeCode.contains(protocol)) {
             String protocolCode = binCode.substring(37, f);
             return protocolCode.equals(this.stdProtocolCode);
