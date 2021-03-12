@@ -1,14 +1,14 @@
 package com.amsa.fgb.internal;
 
- final class HexAttribute {
+final class HexAttribute {
 
-     final AttributeType desc;
-     final int start;
-     final int finish;
-     final String value;
-     final String error;
+    final AttributeType desc;
+    final int start;
+    final int finish;
+    final String value;
+    final String error;
 
-     HexAttribute(AttributeType d, int s, int f, String v, String e) {
+    HexAttribute(AttributeType d, int s, int f, String v, String e) {
         this.desc = d;
         this.start = s;
         this.finish = f;
@@ -16,7 +16,7 @@ package com.amsa.fgb.internal;
         this.error = e;
     }
 
-     HexAttribute(AttributeType d, int s, int f, int v, String e) {
+    HexAttribute(AttributeType d, int s, int f, int v, String e) {
         this.desc = d;
         this.start = s;
         this.finish = f;
@@ -24,7 +24,7 @@ package com.amsa.fgb.internal;
         this.error = e;
     }
 
-     HexAttribute(AttributeType d, int s, String v, String e) {
+    HexAttribute(AttributeType d, int s, String v, String e) {
         this.desc = d;
         this.start = s;
         this.value = v;
@@ -32,7 +32,7 @@ package com.amsa.fgb.internal;
         this.finish = 0;
     }
 
-     HexAttribute(AttributeType d, String v, String e) {
+    HexAttribute(AttributeType d, String v, String e) {
         this.desc = d;
         this.value = v;
         this.error = e;
@@ -40,15 +40,15 @@ package com.amsa.fgb.internal;
         this.finish = 0;
     }
 
-     String getDesc() {
+    String getDesc() {
         return this.desc.toString();
     }
 
-     String getValue() {
+    String getValue() {
         return this.value;
     }
 
-     String getError() {
+    String getError() {
         return this.error;
     }
 

@@ -25,7 +25,7 @@ public final class Debug {
     private Debug() {
         // prevent instantiation
     }
-    
+
     public static void setLastHexStr(String hex) {
         lastHexStr = hex;
     }

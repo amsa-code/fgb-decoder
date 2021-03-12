@@ -26,7 +26,7 @@ abstract class UserAviationOrMaritimeOrRadioCallsign extends User {
         userFragment(this, hexStr, binCode, result);
 
         consumer.accept(this, binCode, result);
-        
+
         result.add(this.auxRadioLocating(binCode, 84, 85));
 
         if (hexStr.length() > 15) {
@@ -54,7 +54,7 @@ abstract class UserAviationOrMaritimeOrRadioCallsign extends User {
         }
         return result;
     }
-    
+
     // This overidding method will be called by User.java
     @Override
     List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {

@@ -14,7 +14,7 @@ abstract class UserSerialAircraftBase extends UserSerial {
     }
 
     @Override
-     List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
 
         List<HexAttribute> result = new ArrayList<HexAttribute>();
@@ -23,7 +23,7 @@ abstract class UserSerialAircraftBase extends UserSerial {
 
         result.add(this.beaconType(binCode, 40, 42));
         result.add(this.cospasSarsatAppCertFlag(binCode, 43));
-        
+
         consumer.accept(this, binCode, result);
 
         if (this.cospasSarsatAppCertFlagPresent(binCode)) {
@@ -51,7 +51,7 @@ abstract class UserSerialAircraftBase extends UserSerial {
         result = Common.nonMaritimeEmergencyCodes(result, binCode);
         return result;
     }
-    
+
     interface Consumer {
         void accept(UserSerialAircraftBase u, String binCode, List<HexAttribute> result);
     }

@@ -11,7 +11,7 @@ class Unknown extends BeaconProtocol {
     // This is should always return true.
     // This will be the last beacon decode attempt.
     @Override
-     boolean canDecode(String binCode) {
+    boolean canDecode(String binCode) {
         // System.out.println("Trying Unknown Protocol " );
         return true;
     }
@@ -22,7 +22,7 @@ class Unknown extends BeaconProtocol {
     }
 
     @Override
-     List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         List<HexAttribute> result = new ArrayList<HexAttribute>();
         String errorMsg = "Unable to decode this hex string";
         result.add(new HexAttribute(AttributeType.ERROR, 0, "", errorMsg));

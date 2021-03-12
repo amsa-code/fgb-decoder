@@ -6,7 +6,7 @@ import java.util.List;
 abstract class UserBase extends User {
 
     private final Consumer consumer;
-    
+
     UserBase(String protocolName, String userProtocolCode, Consumer consumer) {
         this.protocolName = protocolName;
         this.userProtocolCode = userProtocolCode;
@@ -16,9 +16,9 @@ abstract class UserBase extends User {
     interface Consumer {
         void accept(UserBase u, String binCode, List<HexAttribute> result);
     }
-    
+
     @Override
-     List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<>();
 
@@ -32,8 +32,7 @@ abstract class UserBase extends User {
             result.add(this.bch1(binCode, 86, 106));
             if (this.isLongMessage(binCode)) {
                 consumer.accept(this, binCode, result);
-            }
-            else {
+            } else {
                 result.add(this.nationalUse(binCode, 107, 112));
             }
         }

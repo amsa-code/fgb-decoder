@@ -3,6 +3,6 @@ package com.amsa.fgb.internal;
 class UserSerialAviation extends UserSerialAviationOrPersonalOrMaritimeBase {
 
     UserSerialAviation() {
-        super( "Aviation", "000");
+        super("Aviation", "000");
     }
 }

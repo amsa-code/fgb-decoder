@@ -217,7 +217,7 @@ abstract class User extends BeaconProtocol {
     List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
         return result;
     }
-    
+
     static void userFragment(User u, String hexStr, String binCode, List<HexAttribute> result) {
         result.add(u.messageType(binCode, 25, 26));
         result.add(u.hexData(hexStr, 25, binCode.length() - 1));
@@ -225,5 +225,5 @@ abstract class User extends BeaconProtocol {
         result.add(u.countryCode(binCode, 27, 36));
         result.add(u.protocolType(binCode, 37, 39));
     }
-    
+
 }

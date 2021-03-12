@@ -20,7 +20,7 @@ class UserSerial extends User {
     }
 
     @Override
-     boolean canDecode(String binCode) {
+    boolean canDecode(String binCode) {
         if (super.canDecode(binCode)) {
             String serCode = binCode.substring(40, 43);
 
@@ -102,9 +102,9 @@ class UserSerial extends User {
         return new HexAttribute(AttributeType.US_NATIONAL_USE, s, f, v, e);
     }
 
-    static List<HexAttribute> userSerialFragment1(UserSerial u,String hexStr, String binCode) {
+    static List<HexAttribute> userSerialFragment1(UserSerial u, String hexStr, String binCode) {
         List<HexAttribute> result = new ArrayList<HexAttribute>();
-        User.userFragment(u, hexStr, binCode, result);        
+        User.userFragment(u, hexStr, binCode, result);
         result.add(u.beaconType(binCode, 40, 42));
         result.add(u.cospasSarsatAppCertFlag(binCode, 43));
         result.add(u.serialNumber(binCode, 44, 63));
@@ -127,8 +127,9 @@ class UserSerial extends User {
         }
         return result;
     }
-    
-    static List<HexAttribute> userSerialFragment2(UserSerial u, String hexStr, String binCode, List<HexAttribute> result) {
+
+    static List<HexAttribute> userSerialFragment2(UserSerial u, String hexStr, String binCode,
+            List<HexAttribute> result) {
         if (hexStr.length() > 15) {
             result.add(u.bch1(binCode, 86, 106));
             if (u.isLongMessage(binCode)) {

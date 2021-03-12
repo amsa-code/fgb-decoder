@@ -3,7 +3,7 @@ package com.amsa.fgb.internal;
 final class StandardLocationPLB extends StandardLocationELTOrEpirbOrPLBBase {
 
     StandardLocationPLB() {
-        super("0111","PLB - Serial");
+        super("0111", "PLB - Serial");
     }
 
 }

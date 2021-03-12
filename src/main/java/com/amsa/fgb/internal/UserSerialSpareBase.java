@@ -3,14 +3,14 @@ package com.amsa.fgb.internal;
 import java.util.List;
 
 abstract class UserSerialSpareBase extends UserSerial {
-    
+
     UserSerialSpareBase(String serialBeaconType, String serialCode) {
         this.serialBeaconType = serialBeaconType;
         this.serialCode = serialCode;
     }
 
     @Override
-     List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = UserSerial.userSerialFragment1(this, hexStr, binCode);
 
@@ -28,7 +28,7 @@ abstract class UserSerialSpareBase extends UserSerial {
     }
 
     @Override
-     boolean canDecode(String binCode) {
+    boolean canDecode(String binCode) {
         if (super.canDecode(binCode)) {
             String serCode = binCode.substring(40, 43);
 

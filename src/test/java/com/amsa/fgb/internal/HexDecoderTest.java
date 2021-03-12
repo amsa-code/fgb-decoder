@@ -139,7 +139,7 @@ public class HexDecoderTest {
         String hex = "F207D401EB1F4E80362765FFFFFFFF";
         Decoder.decodeFullAsJson(hex);
     }
-    
+
 //    @Test
     public void testDecodeAll() throws FileNotFoundException, IOException {
         try {
