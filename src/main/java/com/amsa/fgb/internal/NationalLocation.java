@@ -79,18 +79,16 @@ abstract class NationalLocation extends BeaconProtocol {
                 result.add(this.homing(binCode, 112));
                 if (this.defaultFFFFFFFF(hexStr)) {
                     result.add(this.longMessage(binCode, 113, 144));
+                } else if (this.default00000000(hexStr)) {
+                    result.add(this.longMessage(binCode, 113, 144));
                 } else {
-                    if (this.default00000000(hexStr)) {
-                        result.add(this.longMessage(binCode, 113, 144));
+                    if (this.positionalDataPresent(binCode)) {
+                        result.addAll(offsetPosition(binCode, 113, 126));
+                        result.add(nationalUse(binCode, 127, 132));
                     } else {
-                        if (this.positionalDataPresent(binCode)) {
-                            result.addAll(offsetPosition(binCode, 113, 126));
-                            result.add(nationalUse(binCode, 127, 132));
-                        } else {
-                            result.add(nationalUse(binCode, 113, 132));
-                        }
-                        result.add(this.bch2(binCode, 133, 144));
+                        result.add(nationalUse(binCode, 113, 132));
                     }
+                    result.add(this.bch2(binCode, 133, 144));
                 }
             } else {
                 result.add(this.encodedPositionSource(binCode, 111));
@@ -101,7 +99,6 @@ abstract class NationalLocation extends BeaconProtocol {
                 result.add(actualLongitude());
             }
         }
-
         return result;
     }
 

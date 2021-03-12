@@ -265,7 +265,7 @@ abstract class BeaconProtocol {
             v = "FIXED VALUE";
         } else {
             v = code + " (Non-Spec)";
-            //			String position = "b" + s + "-" + f;
+            // String position = "b" + s + "-" + f;
             // e = "INVALID Spare. " + position + ": " + code;
         }
 

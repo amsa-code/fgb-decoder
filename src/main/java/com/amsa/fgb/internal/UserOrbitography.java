@@ -28,18 +28,13 @@ class UserOrbitography extends User {
 
             if (this.isLongMessage(binCode)) {
                 result.add(this.nationalUse(binCode, 107, 144));
+            } else if (binCode.charAt(107) == '0') {
+                result.add(this.nationalUse(binCode, 107, 112));
+            } else {
+                result.add(new HexAttribute(AttributeType.EMERGENCY_CODE_FLAG, 107,
+                        "Non-Spec (" + binCode.charAt(107) + ")", ""));
+                result.add(this.nationalUse(binCode, 108, 112));
             }
-            // 07/04/2005
-            else {
-                if (binCode.charAt(107) == '0') {
-                    result.add(this.nationalUse(binCode, 107, 112));
-                } else {
-                    result.add(new HexAttribute(AttributeType.EMERGENCY_CODE_FLAG, 107,
-                            "Non-Spec (" + binCode.charAt(107) + ")", ""));
-                    result.add(this.nationalUse(binCode, 108, 112));
-                }
-            }
-
         }
 
         return result;

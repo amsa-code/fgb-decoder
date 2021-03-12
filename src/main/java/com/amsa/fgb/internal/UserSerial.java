@@ -137,15 +137,13 @@ abstract class UserSerial extends User {
                 result.add(u.encodedPositionSource(binCode, 107));
                 if (u.defaultFFFFFFFF(hexStr)) {
                     result.add(u.longMessage(binCode, 113, 144));
+                } else if (u.default00000000(hexStr)) {
+                    result.add(u.longMessage(binCode, 113, 144));
                 } else {
-                    if (u.default00000000(hexStr)) {
-                        result.add(u.longMessage(binCode, 113, 144));
-                    } else {
-                        List<HexAttribute> res = result;
-                        u.latitude(binCode, 108, 119).ifPresent(x -> res.add(x));
-                        u.longitude(binCode, 120, 132).ifPresent(x -> res.add(x));
-                        result.add(u.bch2(binCode, 133, 144));
-                    }
+                    List<HexAttribute> res = result;
+                    u.latitude(binCode, 108, 119).ifPresent(x -> res.add(x));
+                    u.longitude(binCode, 120, 132).ifPresent(x -> res.add(x));
+                    result.add(u.bch2(binCode, 133, 144));
                 }
             } else {
                 result = u.nonNationalUse(result, binCode);

@@ -89,13 +89,11 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
             // this is a defensive check not mentioned in the spec
             if (this.defaultFFFFFFFF(hexStr)) {
                 result.add(this.longMessage(binCode, 113, 144));
-            } else {
+            } else if (this.default00000000(hexStr)) {
                 // this is a defensive check not mentioned in the spec
-                if (this.default00000000(hexStr)) {
-                    result.add(this.longMessage(binCode, 113, 144));
-                } else {
-                    result.add(this.bch2(binCode, 133, 144));
-                }
+                result.add(this.longMessage(binCode, 113, 144));
+            } else {
+                result.add(this.bch2(binCode, 133, 144));
             }
 
             if (this.actualLatLong) {
