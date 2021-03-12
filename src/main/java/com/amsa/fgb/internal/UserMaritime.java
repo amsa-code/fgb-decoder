@@ -1,61 +1,13 @@
 package com.amsa.fgb.internal;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
-class UserMaritime extends User {
+final class UserMaritime extends UserMaritimeOrRadioCallsign {
 
     UserMaritime() {
-        protocolName = "Maritime";
-        userProtocolCode = "010";
-    }
-
-    @Override
-    List<HexAttribute> decode(String hexStr) {
-
-        String binCode = Conversions.hexToBinary(hexStr);
-
-        List<HexAttribute> result = new ArrayList<HexAttribute>();
-
-        result.add(this.messageType(binCode, 25, 26));
-        result.add(this.hexData(hexStr, 25, binCode.length() - 1));
-        result.add(this.hexId(binCode, 26, 85));
-        result.add(this.countryCode(binCode, 27, 36));
-        result.add(this.protocolType(binCode, 37, 39));
-
-        result.add(this.mmsi(binCode, 40, 75));
-        result.add(this.specificBeaconNumber(binCode, 76, 81));
-
-        result.add(this.spare(binCode, 82, 83));
-        result.add(this.auxRadioLocating(binCode, 84, 85));
-
-        if (hexStr.length() > 15) {
-            result.add(this.bch1(binCode, 86, 106));
-            if (this.isLongMessage(binCode)) {
-                result.add(this.encodedPositionSource(binCode, 111));
-                if (this.defaultFFFFFFFF(hexStr)) {
-                    result.add(this.longMessage(binCode, 113, 144));
-                } else {
-                    if (this.default00000000(hexStr)) {
-                        result.add(this.longMessage(binCode, 113, 144));
-                    } else {
-                        List<HexAttribute> res = result;
-                        this.latitude(binCode, 108, 119).ifPresent(x -> res.add(x));
-                        this.longitude(binCode, 120, 132).ifPresent(x -> res.add(x));
-                        result.add(this.bch2(binCode, 133, 144));
-                    }
-                    result.add(this.nationalUse(binCode, 113, 144));
-                }
-            }
-            // 14/03/2005
-            else {
-                // result = Common.CommonInUserProtocols(result, binCode, 107, 112);
-                result = this.nonNationalUse(result, binCode);
-            }
-        }
-
-        return result;
+        super("Maritime", "010", (u, binCode, result) -> {
+            result.add(((UserMaritime) u).mmsi(binCode, 40, 75));
+        });
     }
 
     private HexAttribute mmsi(String binCode, int s, int f) {
@@ -87,11 +39,4 @@ class UserMaritime extends User {
         return new HexAttribute(d, s, f, v, e);
     }
 
-    // This overidding method will be called by User.java
-    @Override
-    List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
-        result = Common.maritimeEmergencyCodes(result, binCode);
-
-        return result;
-    }
 }
