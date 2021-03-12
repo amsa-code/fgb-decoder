@@ -39,8 +39,8 @@
         <bundle.plugin.version>5.1.1</bundle.plugin.version>
         <jacoco.version>0.8.6</jacoco.version>
 
-        <line.coverage>1.00</line.coverage>
-        <branch.coverage>1.00</branch.coverage>
+        <line.coverage>0.95</line.coverage>
+        <branch.coverage>0.80</branch.coverage>
 
     </properties>
 
@@ -220,6 +220,36 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                    </execution>
+                    <execution>
+                        <!-- configure jacoco to fail the build if not 100% 
+                            coverage -->
+                        <id>check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>BUNDLE</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>${line.coverage}</minimum>
+                                        </limit>
+                                        <limit>
+                                            <counter>BRANCH</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>${branch.coverage}</minimum>
+                                        </limit>
+                                    </limits>
+                                    <!-- <excludes> -->
+                                    <!-- <exclude>com.xyz.ClassToExclude</exclude> -->
+                                    <!-- </excludes> -->
+                                </rule>
+                            </rules>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
