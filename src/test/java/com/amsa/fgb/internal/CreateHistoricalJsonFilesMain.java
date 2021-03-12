@@ -17,6 +17,10 @@ import com.amsa.fgb.Decoder;
 import com.amsa.fgb.TestingUtil;
 
 public class CreateHistoricalJsonFilesMain {
+    
+    private CreateHistoricalJsonFilesMain() {
+        // prevent instantiation
+    }
 
     public static void main(String[] args) throws FileNotFoundException, IOException {
         long[] count = new long[1];

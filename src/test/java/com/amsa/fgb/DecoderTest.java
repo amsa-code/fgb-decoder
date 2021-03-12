@@ -34,7 +34,7 @@ public class DecoderTest {
         assertEquals(load("/detection.json"), Decoder.decodeFullAsJson(HEXSTRING_30_CHRS));
     }
 
-    private static final String load(String resource) {
+    private static String load(String resource) {
         try (InputStream in = DecoderTest.class.getResourceAsStream(resource)) {
             return new String(read(in), StandardCharsets.UTF_8);
         } catch (IOException e) {
@@ -42,7 +42,7 @@ public class DecoderTest {
         }
     }
 
-    private static final byte[] read(InputStream in) throws IOException {
+    private static byte[] read(InputStream in) throws IOException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         byte[] buffer = new byte[8192];
         int n;

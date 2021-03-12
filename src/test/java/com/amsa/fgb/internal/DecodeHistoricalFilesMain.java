@@ -9,6 +9,10 @@ import java.io.InputStreamReader;
 import com.amsa.fgb.Decoder;
 
 public final class DecodeHistoricalFilesMain {
+    
+    private DecodeHistoricalFilesMain() {
+        // prevent instantiation
+    }
 
     public static void decode() throws IOException {
         long[] count = new long[1];

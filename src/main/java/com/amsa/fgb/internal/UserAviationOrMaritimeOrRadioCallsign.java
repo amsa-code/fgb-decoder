@@ -46,9 +46,7 @@ abstract class UserAviationOrMaritimeOrRadioCallsign extends User {
                     }
                     result.add(this.nationalUse(binCode, 113, 144));
                 }
-            }
-            // 14/03/2005
-            else {
+            } else {
                 result = this.nonNationalUse(result, binCode);
             }
         }
