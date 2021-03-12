@@ -131,4 +131,31 @@ class UserSerial extends User {
         }
         return result;
     }
+    
+    static List<HexAttribute> userSerialFragment2(UserSerial u, String hexStr, String binCode, List<HexAttribute> result) {
+        if (hexStr.length() > 15) {
+            result.add(u.bch1(binCode, 86, 106));
+            if (u.isLongMessage(binCode)) {
+                result.add(u.encodedPositionSource(binCode, 107));
+                if (u.defaultFFFFFFFF(hexStr)) {
+                    result.add(u.longMessage(binCode, 113, 144));
+                } else {
+                    if (u.default00000000(hexStr)) {
+                        result.add(u.longMessage(binCode, 113, 144));
+                    } else {
+                        List<HexAttribute> res = result;
+                        u.latitude(binCode, 108, 119).ifPresent(x -> res.add(x));
+                        u.longitude(binCode, 120, 132).ifPresent(x -> res.add(x));
+                        result.add(u.bch2(binCode, 133, 144));
+                    }
+                }
+            }
+            // 14/03/2005
+            else {
+                result = u.nonNationalUse(result, binCode);
+            }
+        }
+
+        return result;
+    }
 }
