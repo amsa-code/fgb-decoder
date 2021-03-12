@@ -18,11 +18,7 @@ class UserOrbitography extends User {
 
         List<HexAttribute> result = new ArrayList<HexAttribute>();
 
-        result.add(this.messageType(binCode, 25, 26));
-        result.add(this.hexData(hexStr, 25, binCode.length() - 1));
-        result.add(this.hexId(binCode, 26, 85));
-        result.add(this.countryCode(binCode, 27, 36));
-        result.add(this.protocolType(binCode, 37, 39));
+        userFragment(this, hexStr, binCode, result);
 
         result = this.orbitographyData(result, binCode, 40, 85);
 

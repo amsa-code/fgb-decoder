@@ -22,7 +22,7 @@ abstract class UserBase extends User {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<>();
 
-        userFragment1(this, hexStr, binCode, result);
+        userFragment(this, hexStr, binCode, result);
 
         // 25 May 2005
         // CDP's latest guideline

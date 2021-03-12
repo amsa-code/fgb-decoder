@@ -218,11 +218,12 @@ abstract class User extends BeaconProtocol {
         return result;
     }
     
-    static void userFragment1(User u, String hexStr, String binCode, List<HexAttribute> result) {
+    static void userFragment(User u, String hexStr, String binCode, List<HexAttribute> result) {
         result.add(u.messageType(binCode, 25, 26));
         result.add(u.hexData(hexStr, 25, binCode.length() - 1));
         result.add(u.hexId(binCode, 26, 85));
         result.add(u.countryCode(binCode, 27, 36));
         result.add(u.protocolType(binCode, 37, 39));
     }
+    
 }

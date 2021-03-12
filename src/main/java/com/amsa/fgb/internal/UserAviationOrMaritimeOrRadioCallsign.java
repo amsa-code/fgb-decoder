@@ -23,7 +23,7 @@ abstract class UserAviationOrMaritimeOrRadioCallsign extends User {
         String binCode = Conversions.hexToBinary(hexStr);
         List<HexAttribute> result = new ArrayList<>();
 
-        userFragment1(this, hexStr, binCode, result);
+        userFragment(this, hexStr, binCode, result);
 
         consumer.accept(this, binCode, result);
         
