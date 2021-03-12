@@ -15,7 +15,7 @@ final class UserRadioCallsign extends UserAviationOrMaritimeOrRadioCallsign {
     private HexAttribute radioCallsign(String binCode, int s, int f) {
         // 11 May 2005
         // Passed back the String[]
-        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, s + 24), 6);
+        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, s + 24), 6);
         // String v = Conversions.mBaudotBits2mBaudotStr(binCode.substring(s, s+24), 6);
         // String h = Conversions.binaryToHex(binCode.substring(s+24, f+1));
 

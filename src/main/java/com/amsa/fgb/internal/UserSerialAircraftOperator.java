@@ -12,7 +12,7 @@ class UserSerialAircraftOperator extends UserSerialAircraftBase {
     @Override
     public HexAttribute aircraftOperator(String binCode, int s, int f) {
         // 11 May 2005
-        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName() + " " + serialBeaconType,
+        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName() + " " + serialBeaconType,
                 binCode.substring(s, f + 1), 6);
         String v = vE[0];
         String e = vE[1];

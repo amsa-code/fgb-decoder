@@ -53,7 +53,7 @@ class UserOrbitography extends User {
         result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_DATA, s, f, v1, e1));
 
         // bit 40-81
-        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f - 4 + 1), 6);
+        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f - 4 + 1), 6);
         // 24 June 2005, double quote is not used any more
         // String v2 = "\"" + vE[0] + "\"";
         String v2 = vE[0];

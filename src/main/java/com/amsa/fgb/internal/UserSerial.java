@@ -146,13 +146,10 @@ class UserSerial extends User {
                         result.add(u.bch2(binCode, 133, 144));
                     }
                 }
-            }
-            // 14/03/2005
-            else {
+            } else {
                 result = u.nonNationalUse(result, binCode);
             }
         }
-
         return result;
     }
 }

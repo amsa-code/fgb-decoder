@@ -222,7 +222,7 @@ abstract class BeaconProtocol {
 
     HexAttribute specificBeaconNumber(String binCode, int s, int f) {
         // 11 May 2005
-        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f + 1), 6);
+        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f + 1), 6);
 
         String v = vE[0];
         // String e = "";
@@ -239,7 +239,7 @@ abstract class BeaconProtocol {
     // sdc This needs to be converted using a 5 place BAUDOT conv.
     HexAttribute aircraftOperator(String binCode, int s, int f) {
         // 11 May 2005
-        String vE[] = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f + 1), 5);
+        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f + 1), 5);
         String v = vE[0];
 
         String e = vE[1];

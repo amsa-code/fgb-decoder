@@ -507,7 +507,7 @@ final class Conversions {
 
     // 11 May 2005, return String[] instead of String
     static String[] mBaudotBits2mBaudotStr(String protocolName, String mbaudotBits, int bits) {
-        String vE[] = new String[3];
+        String[] vE = new String[3];
 
         // HashTable e = new HashTable();
         List<String> e = new ArrayList<>();
