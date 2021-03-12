@@ -3,15 +3,15 @@ package com.amsa.fgb.internal;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class UserSerialAviationOrPersonal extends UserSerial {
+abstract class UserSerialAviationOrPersonalOrMaritimeBase extends UserSerial {
 
-    UserSerialAviationOrPersonal(String serialBeaconType, String serialCode) {
+    UserSerialAviationOrPersonalOrMaritimeBase(String serialBeaconType, String serialCode) {
         this.serialBeaconType = serialBeaconType;
         this.serialCode = serialCode;
     }
 
     @Override
-     List<HexAttribute> decode(String hexStr) {
+    List<HexAttribute> decode(String hexStr) {
 
         String binCode = Conversions.hexToBinary(hexStr);
 
@@ -74,8 +74,11 @@ abstract class UserSerialAviationOrPersonal extends UserSerial {
     // This overidding method will be called by User.java
     @Override
     List<HexAttribute> allEmergencyCodes(List<HexAttribute> result, String binCode) {
-        result = Common.nonMaritimeEmergencyCodes(result, binCode);
-
+        if (this instanceof UserSerialMaritime) {
+            result = Common.maritimeEmergencyCodes(result, binCode);
+        } else {
+            result = Common.nonMaritimeEmergencyCodes(result, binCode);
+        }
         return result;
     }
 
