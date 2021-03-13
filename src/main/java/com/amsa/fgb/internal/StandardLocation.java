@@ -7,19 +7,20 @@ import com.github.davidmoten.guavamini.Lists;
 
 abstract class StandardLocation extends BeaconProtocol {
 
-    protected String stdProtocolCode; // Set in constructors of sub-classes
+    private final String stdProtocolCode; // Set in constructors of sub-classes
 
-    StandardLocation() {
+    StandardLocation(String stdProtocolCode, String protocolName) {
         // 16 May 2005
         // ?0 is for 15-char Hex string where bit25 is unknown since it starts with
         // bit26
-        super(Lists.newArrayList("00", "10", "?0"));
+        super(Lists.newArrayList("00", "10", "?0"), protocolName);
+        this.stdProtocolCode = stdProtocolCode;
         defaultFixedBits = "1101";
     }
 
     @Override
     String getName() {
-        return protocolName;
+        return protocolName();
     }
 
     @Override

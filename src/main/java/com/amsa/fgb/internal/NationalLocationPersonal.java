@@ -3,8 +3,7 @@ package com.amsa.fgb.internal;
 class NationalLocationPersonal extends NationalLocation {
 
     NationalLocationPersonal() {
-        natProtocolCode = "1011";
-        protocolName = "Personal (PLB)";
+        super("1011", "Personal (PLB)");
     }
 
 }

@@ -7,7 +7,7 @@ import java.util.List;
 class Unknown extends BeaconProtocol {
 
     Unknown() {
-        super(Collections.emptyList());
+        super(Collections.emptyList(), "Unknown");
     }
 
     // This is should always return true.

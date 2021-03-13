@@ -8,8 +8,7 @@ import java.util.List;
 class UserOrbitography extends User {
 
     UserOrbitography() {
-        protocolName = "Orbitography";
-        userProtocolCode = "000";
+        super("Orbitography","000");
     }
 
     @Override
@@ -41,14 +40,16 @@ class UserOrbitography extends User {
     }
 
     // This is where changes go
-    private List<HexAttribute> orbitographyData(List<HexAttribute> result, String binCode, int s, int f) {
+    private List<HexAttribute> orbitographyData(List<HexAttribute> result, String binCode, int s,
+            int f) {
         String v1 = binCode.substring(s, f + 1);
         String e1 = "";
 
         result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_DATA, s, f, v1, e1));
 
         // bit 40-81
-        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f - 4 + 1), 6);
+        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(),
+                binCode.substring(s, f - 4 + 1), 6);
         // 24 June 2005, double quote is not used any more
         // String v2 = "\"" + vE[0] + "\"";
         String v2 = vE[0];
@@ -66,7 +67,8 @@ class UserOrbitography extends User {
         if (v3.equals("0000")) {
             result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_4_BITS, f - 4 + 1, f, v3, ""));
         } else {
-            result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_4_BITS, f - 4 + 1, f, v3 + " (Non-Spec)", ""));
+            result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_4_BITS, f - 4 + 1, f,
+                    v3 + " (Non-Spec)", ""));
         }
 
         return result;

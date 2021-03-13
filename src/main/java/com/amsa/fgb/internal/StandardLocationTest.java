@@ -6,8 +6,7 @@ import java.util.List;
 class StandardLocationTest extends StandardLocation {
 
     StandardLocationTest() {
-        stdProtocolCode = "1110";
-        protocolName = "Test";
+        super("1110", "Test");
     }
 
     @Override

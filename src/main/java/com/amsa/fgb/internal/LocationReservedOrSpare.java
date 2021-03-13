@@ -13,14 +13,13 @@ abstract class LocationReservedOrSpare extends BeaconProtocol {
         // 16 May 2005
         // ?0 is for 15-char Hex string where bit25 is unknown since it starts with
         // bit26
-        super(Lists.newArrayList("00", "10", "?0"));
+        super(Lists.newArrayList("00", "10", "?0"), protocolName);
         this.stdProtocolCode = stdProtocolCode;
-        this.protocolName = protocolName;
     }
 
     @Override
     String getName() {
-        return protocolName;
+        return protocolName();
     }
 
     @Override

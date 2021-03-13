@@ -5,19 +5,26 @@ import java.util.List;
 
 abstract class UserSerial extends User {
 
-    protected String serialCode;
-    protected String serialBeaconType;
+    private final String serialCode;
+    private final String serialBeaconType;
 
     UserSerial(String serialBeaconType, String serialCode) {
+        super("Serial", "011");
         this.serialBeaconType = serialBeaconType;
         this.serialCode = serialCode;
-        this.protocolName = "Serial";
-        this.userProtocolCode = "011";
+    }
+
+    protected String serialBeaconType() {
+        return serialBeaconType;
+    }
+    
+    protected String serialCode() {
+        return serialCode;
     }
 
     @Override
     String getName() {
-        return protocolName;
+        return protocolName();
     }
 
     @Override

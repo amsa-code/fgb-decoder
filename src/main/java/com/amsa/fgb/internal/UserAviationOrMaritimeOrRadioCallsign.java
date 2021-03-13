@@ -7,14 +7,15 @@ abstract class UserAviationOrMaritimeOrRadioCallsign extends User {
 
     private final Consumer consumer;
 
-    UserAviationOrMaritimeOrRadioCallsign(String protocolName, String userProtocolCode, Consumer consumer) {
-        this.protocolName = protocolName;
-        this.userProtocolCode = userProtocolCode;
+    UserAviationOrMaritimeOrRadioCallsign(String protocolName, String userProtocolCode,
+            Consumer consumer) {
+        super(protocolName, userProtocolCode);
         this.consumer = consumer;
     }
 
     interface Consumer {
-        void accept(UserAviationOrMaritimeOrRadioCallsign u, String binCode, List<HexAttribute> result);
+        void accept(UserAviationOrMaritimeOrRadioCallsign u, String binCode,
+                List<HexAttribute> result);
     }
 
     @Override

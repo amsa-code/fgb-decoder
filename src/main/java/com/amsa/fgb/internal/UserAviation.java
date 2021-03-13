@@ -13,7 +13,8 @@ class UserAviation extends UserAviationOrMaritimeOrRadioCallsign {
 
     private HexAttribute aircraftRegistrationMarking(String binCode, int s, int f) {
         // 11 May 2005
-        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f + 1), 6);
+        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(),
+                binCode.substring(s, f + 1), 6);
         // 24 June 2005
         // Don't use double quote again on CDP's agreement
         // String v = "\"" + vE[0] + "\"";

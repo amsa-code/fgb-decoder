@@ -12,20 +12,21 @@ import com.github.davidmoten.guavamini.Lists;
 
 abstract class NationalLocation extends BeaconProtocol {
 
-    protected String natProtocolCode; // Set in constructors of sub-classes
+    private final String natProtocolCode; // Set in constructors of sub-classes
 
-    NationalLocation() {
+    NationalLocation(String natProtocolCode, String protocolName) {
         // 16 May 2005
         // This is for 15-char Hex string where bit25 is unknown since it starts with
         // bit26
-        super(Lists.newArrayList("00", "10", "?0"));
+        super(Lists.newArrayList("00", "10", "?0"), protocolName);
+        this.natProtocolCode = natProtocolCode;
         defaultFixedBits = "110";
     }
 
     @Override
     String getName() {
 
-        return protocolName;
+        return protocolName();
     }
 
     @Override

@@ -8,19 +8,19 @@ import com.github.davidmoten.guavamini.Lists;
 
 abstract class User extends BeaconProtocol {
 
-    protected String userProtocolCode;
+    private final String userProtocolCode;
 
-    User() {
+    User(String protocolName, String userProtocolCode) {
         // 16 May 2005
         // ?1  is for 15-char Hex string where bit25 is unknown since it starts
         // with bit26
-
-        super(Lists.newArrayList("01", "11", "?1"));
+        super(Lists.newArrayList("01", "11", "?1"), protocolName);
+        this.userProtocolCode = userProtocolCode;
     }
 
     @Override
     String getName() {
-        return protocolName;
+        return protocolName();
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.amsa.fgb.internal;
 class UserSerialAircraftOperator extends UserSerialAircraftBase {
 
     UserSerialAircraftOperator() {
-        super("Aircraft Operator", "001", (u, binCode, result) -> {
+        super("Aircraft Operator", "001",(u, binCode, result) -> {
             result.add(((UserSerialAircraftOperator) u).aircraftOperator(binCode, 44, 61));
             result.add(((UserSerialAircraftOperator) u).aircraftSerialNumber(binCode, 62, 73));
         });
@@ -12,7 +12,7 @@ class UserSerialAircraftOperator extends UserSerialAircraftBase {
     @Override
     public HexAttribute aircraftOperator(String binCode, int s, int f) {
         // 11 May 2005
-        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName() + " " + serialBeaconType,
+        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName() + " " + serialBeaconType(),
                 binCode.substring(s, f + 1), 6);
         String v = vE[0];
         String e = vE[1];

@@ -33,7 +33,7 @@ abstract class UserSerialSpareBase extends UserSerial {
 
             // Note: SubClass Constructor sets the serialCode in
             // Only 111, 101 (which are the user serial spare codes) >= 0
-            return serCode.compareTo(this.serialCode) >= 0;
+            return serCode.compareTo(this.serialCode()) >= 0;
         }
         return false;
     }

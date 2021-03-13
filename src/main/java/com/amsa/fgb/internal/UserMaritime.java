@@ -18,7 +18,8 @@ final class UserMaritime extends UserAviationOrMaritimeOrRadioCallsign {
         String e = "";
 
         // 11 May 2005
-        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f + 1), 6);
+        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(),
+                binCode.substring(s, f + 1), 6);
 
         String code = vE[0];
         e = vE[1];
@@ -36,7 +37,8 @@ final class UserMaritime extends UserAviationOrMaritimeOrRadioCallsign {
         }
 
         if (e != null && e.length() > 0) {
-            e = "\nWARNING - SUSPECT NON-SPEC IN " + d.toString().toUpperCase(Locale.ENGLISH) + "\n" + e;
+            e = "\nWARNING - SUSPECT NON-SPEC IN " + d.toString().toUpperCase(Locale.ENGLISH) + "\n"
+                    + e;
         }
 
         return new HexAttribute(d, s, f, v, e);

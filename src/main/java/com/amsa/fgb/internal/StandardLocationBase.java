@@ -8,8 +8,7 @@ abstract class StandardLocationBase extends StandardLocation {
     private final Consumer consumer;
 
     StandardLocationBase(String stdProtocolCode, String protocolName, Consumer consumer) {
-        this.stdProtocolCode = stdProtocolCode;
-        this.protocolName = protocolName;
+        super(stdProtocolCode, protocolName);
         this.consumer = consumer;
     }
 

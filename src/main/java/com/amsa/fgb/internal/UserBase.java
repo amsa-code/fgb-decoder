@@ -8,8 +8,7 @@ abstract class UserBase extends User {
     private final Consumer consumer;
 
     UserBase(String protocolName, String userProtocolCode, Consumer consumer) {
-        this.protocolName = protocolName;
-        this.userProtocolCode = userProtocolCode;
+        super(protocolName, userProtocolCode);
         this.consumer = consumer;
     }
 
