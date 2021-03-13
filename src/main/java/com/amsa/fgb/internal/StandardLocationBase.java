@@ -47,7 +47,7 @@ abstract class StandardLocationBase extends StandardLocation {
                 result.add(this.encodedPositionSource(binCode, 111));
                 result.add(this.homing(binCode, 112));
             }
-            if (this.actualLatLong) {
+            if (this.actualLatLong()) {
                 result.add(actualLatitude());
                 result.add(actualLongitude());
             }

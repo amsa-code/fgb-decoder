@@ -169,15 +169,15 @@ abstract class User extends BeaconProtocol {
             return Optional.empty();
         } else {
             int deg = Conversions.binaryToDecimal(bits.substring(1, 8));
-            this.latSeconds = deg * 60 * 60;
+            double latSeconds = deg * 60 * 60;
             int min = Conversions.binaryToDecimal(bits.substring(8, 12)) * 4;
-            this.latSeconds += min * 60;
+            latSeconds += min * 60;
             int sign = bits.charAt(0) == '1' ? -1 : 1;
-            this.latSeconds = sign * latSeconds;
+            latSeconds = sign * latSeconds;
+            super.setLatSeconds(latSeconds);
+            return Optional.of(
+                    new HexAttribute(AttributeType.LATITUDE, s, f, latSeconds / 3600.0 + "", e));
         }
-
-        return Optional
-                .of(new HexAttribute(AttributeType.LATITUDE, s, f, latSeconds / 3600.0 + "", e));
     }
 
     Optional<HexAttribute> longitude(String binCode, int s, int f) { // b120-132
@@ -189,14 +189,15 @@ abstract class User extends BeaconProtocol {
             return Optional.empty();
         } else {
             int deg = Conversions.binaryToDecimal(bits.substring(1, 9));
-            this.lonSeconds = deg * 60 * 60;
+            double lonSeconds = deg * 60 * 60;
             int min = Conversions.binaryToDecimal(bits.substring(9, 13)) * 4;
-            this.lonSeconds += min * 60;
+            lonSeconds += min * 60;
             int sign = bits.charAt(0) == '1' ? -1 : 1;
-            this.lonSeconds = sign * lonSeconds;
+            lonSeconds = sign * lonSeconds;
+            setLonSeconds(lonSeconds);
+            return Optional.of(new HexAttribute(AttributeType.LONGITUDE, s, f,
+                    lonSeconds / 3600.0 + "", e));
         }
-        return Optional.of(
-                new HexAttribute(AttributeType.LONGITUDE, s, f, this.lonSeconds / 3600.0 + "", e));
     }
 
     // For bit 107-112. See C/S T.001 Figure A4

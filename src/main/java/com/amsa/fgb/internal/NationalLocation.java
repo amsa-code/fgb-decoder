@@ -93,7 +93,7 @@ abstract class NationalLocation extends BeaconProtocol {
                 result.add(this.encodedPositionSource(binCode, 111));
                 result.add(this.homing(binCode, 112));
             }
-            if (this.actualLatLong) {
+            if (this.actualLatLong()) {
                 result.add(actualLatitude());
                 result.add(actualLongitude());
             }
@@ -135,9 +135,9 @@ abstract class NationalLocation extends BeaconProtocol {
         if (code.equals("011111110000001111111100000")) {
             return Collections.emptyList();
         } else {
-            this.latSeconds = latSeconds(binCode);
-            this.lonSeconds = lonSeconds(binCode);
-            this.actualLatLong = true;
+            double latSeconds = latSeconds(binCode);
+            double lonSeconds = lonSeconds(binCode);
+            this.setPosition(latSeconds, lonSeconds);
             return Util.coarsePositionAttributes(latSeconds, lonSeconds, s, f);
         }
     }
@@ -180,12 +180,11 @@ abstract class NationalLocation extends BeaconProtocol {
             }
 
             // Apply offset to absolute value of coarse position
-            double tempLat = Math.abs(this.latSeconds);
+            double tempLat = Math.abs(this.latSeconds());
             tempLat += offset1;
-            if (this.latSeconds < 0) {
+            if (this.latSeconds() < 0) {
                 tempLat *= -1;
             }
-            this.latSeconds = tempLat;
 
             // Lon Offset
             int min2 = Conversions.binaryToDecimal(bits.substring(8, 10));
@@ -196,12 +195,12 @@ abstract class NationalLocation extends BeaconProtocol {
             }
 
             // Apply offset to absolute value of coarse position
-            double tempLon = Math.abs(this.lonSeconds);
+            double tempLon = Math.abs(this.lonSeconds());
             tempLon += offset2;
-            if (this.lonSeconds < 0) {
+            if (this.lonSeconds() < 0) {
                 tempLon *= -1;
             }
-            this.lonSeconds = tempLon;
+            setPosition(tempLat, tempLon);
             return Util.offsetPositionAttributes(offset1, offset2, s, f);
         }
     }

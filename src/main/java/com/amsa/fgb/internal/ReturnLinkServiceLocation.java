@@ -74,7 +74,8 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
             result.add(rlmCapabilityType1(binCode, 109));
             result.add(rlmCapabilityType2(binCode, 110));
             if (binCode.charAt(109) == '0' && binCode.charAt(110) == '0') {
-                result.add(new HexAttribute(AttributeType.RLM_CAPABILITY_TYPE, 109, 110, "00", "Invalid"));
+                result.add(new HexAttribute(AttributeType.RLM_CAPABILITY_TYPE, 109, 110, "00",
+                        "Invalid"));
             }
             result.add(rlmReceivedType1(binCode, 111));
             result.add(rlmReceivedType2(binCode, 112));
@@ -91,7 +92,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
                 result.add(this.bch2(binCode, 133, 144));
             }
 
-            if (this.actualLatLong) {
+            if (this.actualLatLong()) {
                 result.add(actualLatitude());
                 result.add(actualLongitude());
             }
@@ -105,9 +106,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         if (p == null) {
             return Collections.emptyList();
         } else {
-            actualLatLong = true;
-            latSeconds = p.latSeconds();
-            lonSeconds = p.lonSeconds();
+            setPosition(p.latSeconds(), p.lonSeconds());
             List<HexAttribute> list = new ArrayList<HexAttribute>();
             list.add(new HexAttribute(AttributeType.LATITUDE, 115, 132, p.latDecimal() + "", ""));
             list.add(new HexAttribute(AttributeType.LONGITUDE, 115, 132, p.lonDecimal() + "", ""));
@@ -213,10 +212,9 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         if (p == null) {
             return Collections.emptyList();
         } else {
-            this.latSeconds = p.latSeconds();
-            this.lonSeconds = p.lonSeconds();
-            this.actualLatLong = true;
-            return Util.coarsePositionAttributes(latSeconds, lonSeconds, COARSE_POSITION_START, COARSE_POSITION_FINISH);
+            setPosition(p.latSeconds(), p.lonSeconds());
+            return Util.coarsePositionAttributes(p.latSeconds(), p.lonSeconds(),
+                    COARSE_POSITION_START, COARSE_POSITION_FINISH);
         }
     }
 

@@ -15,9 +15,9 @@ abstract class BeaconProtocol {
     // String messageTypeDesc;
     // String countryCode;
 
-    protected boolean actualLatLong;
-    protected double latSeconds;
-    protected double lonSeconds;
+    private boolean actualLatLong;
+    private double latSeconds;
+    private double lonSeconds;
 
     protected String defaultFixedBits;
 
@@ -49,6 +49,32 @@ abstract class BeaconProtocol {
     
     String protocolName() {
         return protocolName;
+    }
+    
+    protected void setPosition(double latSeconds, double lonSeconds) {
+        this.latSeconds = latSeconds;
+        this.lonSeconds = lonSeconds;
+        this.actualLatLong = true;
+    }
+    
+    protected double latSeconds() {
+        return latSeconds;
+    }
+    
+    protected double lonSeconds() {
+        return lonSeconds;
+    }
+    
+    protected void setLatSeconds(double latSeconds) {
+        this.latSeconds  = latSeconds;
+    }
+    
+    protected void setLonSeconds(double lonSeconds) {
+        this.lonSeconds  = lonSeconds;
+    }
+    
+    protected boolean actualLatLong() {
+        return actualLatLong;
     }
 
     boolean isLongMessage(String binCode) {
