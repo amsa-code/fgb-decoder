@@ -221,7 +221,7 @@ abstract class BeaconProtocol {
         list.add(new HexAttribute(AttributeType.AIRCRAFT_24_BIT_ADDRESS_OCTAL, s, f, oct, e));
 
         HexAttribute h = this.aircraftCallSign(binCode, s, f);
-        String result = h.getValue();
+        String result = h.value();
         if (result.length() > 0) {
             // 13 May 2005
             // Make the output align to the rest output
@@ -419,13 +419,13 @@ abstract class BeaconProtocol {
     List<HexAttribute> bch1(List<HexAttribute> result, String binCode, HexAttribute hexId) {
         HexAttribute bch1 = bch1(binCode, 86, 106);
 
-        String error = bch1.getError();
+        String error = bch1.error();
         if (error != null && error.length() > 0) {
             // To remove the hexId with the default value in b66-85 if not the
             // same
-            String hexIdDefaultLoc = hexId.getValue();
+            String hexIdDefaultLoc = hexId.value();
             HexAttribute hexIdOrig = hexId(binCode, 26, 85);
-            String hexIdOrigLoc = hexIdOrig.getValue();
+            String hexIdOrigLoc = hexIdOrig.value();
 
             if (!hexIdDefaultLoc.equalsIgnoreCase(hexIdOrigLoc)) {
                 int hexIdInd = result.indexOf(hexId);
@@ -436,9 +436,9 @@ abstract class BeaconProtocol {
                 String errPart1 = error.substring(0, noteInd);
                 String errPart2 = error.substring(noteInd);
 
-                error = errPart1 + "\n Hex Id with default location: " + hexId.getValue() + "\n"
+                error = errPart1 + "\n Hex Id with default location: " + hexId.value() + "\n"
                         + errPart2;
-                bch1 = new HexAttribute(bch1.desc, bch1.start, bch1.finish + "", error);
+                bch1 = new HexAttribute(bch1.desc(), bch1.start(), bch1.finish() + "", error);
             }
         }
 

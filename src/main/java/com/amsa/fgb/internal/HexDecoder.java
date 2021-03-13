@@ -47,7 +47,7 @@ public final class HexDecoder {
     static Map<String, HexAttribute> decodeToMap(String hexStr) {
         Map<String, HexAttribute> map = new HashMap<String, HexAttribute>();
         for (HexAttribute h : getHexAttributesDecodeFull(hexStr)) {
-            map.put(h.desc.toString(), h);
+            map.put(h.desc().toString(), h);
         }
         return map;
     }

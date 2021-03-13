@@ -2,11 +2,11 @@ package com.amsa.fgb.internal;
 
 final class HexAttribute {
 
-    final AttributeType desc;
-    final int start;
-    final int finish;
-    final String value;
-    final String error;
+    private final AttributeType desc;
+    private final int start;
+    private final int finish;
+    private final String value;
+    private final String error;
 
     HexAttribute(AttributeType d, int s, int f, String v, String e) {
         this.desc = d;
@@ -39,20 +39,28 @@ final class HexAttribute {
         this.start = 0;
         this.finish = 0;
     }
-
-    String getDesc() {
-        return this.desc.toString();
+    
+    AttributeType desc() {
+        return desc;
+    }
+    
+    int start() {
+        return start;
+    }
+    
+    int finish() {
+        return finish;
     }
 
-    String getValue() {
+    String value() {
         return this.value;
     }
 
-    String getError() {
+    String error() {
         return this.error;
     }
 
-    public JsonType getJsonType() {
+    public JsonType jsonType() {
         return desc.jsonType();
     }
 
