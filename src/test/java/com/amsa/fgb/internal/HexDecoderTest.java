@@ -151,7 +151,7 @@ public final class HexDecoderTest {
             Debug.stopSearching();
         }
     }
-    
+
     private static Map<String, HexAttribute> decodeToMap(String hexStr) {
         Map<String, HexAttribute> map = new HashMap<String, HexAttribute>();
         for (HexAttribute h : HexDecoder.getHexAttributesDecodeFull(hexStr)) {
