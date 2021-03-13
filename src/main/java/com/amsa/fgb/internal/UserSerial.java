@@ -45,7 +45,7 @@ abstract class UserSerial extends User {
         return new HexAttribute(AttributeType.BEACON_TYPE, s, f, v, e);
     }
 
-    HexAttribute serialNumber(String binCode, int s, int f) {
+    private HexAttribute serialNumber(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
         String e = "";
 

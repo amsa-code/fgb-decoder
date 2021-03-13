@@ -58,7 +58,7 @@ abstract class User extends BeaconProtocol {
     }
 
     // Get the messageType. Is it LONG or SHORT?
-    HexAttribute messageType(String binCode, int s, int f) { // b25-26
+    private HexAttribute messageType(String binCode, int s, int f) { // b25-26
         String v = "User";
         String e = "";
 

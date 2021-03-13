@@ -1,10 +1,10 @@
 package com.amsa.fgb.internal;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.BiFunction;
+
+import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
 
 /**
  * Contains methods to decode hex strings.
@@ -18,7 +18,8 @@ public final class HexDecoder {
         // prevent instantiation
     }
 
-    private static List<HexAttribute> getHexAttributesDecodeFull(String hexStr) {
+    @VisibleForTesting
+    static List<HexAttribute> getHexAttributesDecodeFull(String hexStr) {
         return getHexAttributes(hexStr, (proto, hex) -> proto.decode(hex));
     }
 
@@ -42,14 +43,6 @@ public final class HexDecoder {
                     .findFirst() //
                     .get();
         }
-    }
-
-    static Map<String, HexAttribute> decodeToMap(String hexStr) {
-        Map<String, HexAttribute> map = new HashMap<String, HexAttribute>();
-        for (HexAttribute h : getHexAttributesDecodeFull(hexStr)) {
-            map.put(h.desc().toString(), h);
-        }
-        return map;
     }
 
     // This is the method that is used to decode the entire Hex Str.

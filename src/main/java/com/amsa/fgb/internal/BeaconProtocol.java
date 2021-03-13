@@ -183,13 +183,13 @@ abstract class BeaconProtocol {
         return new HexAttribute(AttributeType.HEX_ID, s, f, v, e);
     }
 
-    int getCountryCode(String binCode, int s, int f) {
+    private static int getCountryCode(String binCode, int s, int f) {
         String binCC = binCode.substring(s, f + 1);
         return Conversions.binaryToDecimal(binCC);
     }
 
     HexAttribute countryCode(String binCode, int s, int f) {
-        int cc = this.getCountryCode(binCode, s, f);
+        int cc = getCountryCode(binCode, s, f);
         String e = "";
         String v = cc + "";
 
@@ -223,7 +223,7 @@ abstract class BeaconProtocol {
         list.add(new HexAttribute(AttributeType.AIRCRAFT_24_BIT_ADDRESS_HEX, s, f, hex, e));
         list.add(new HexAttribute(AttributeType.AIRCRAFT_24_BIT_ADDRESS_OCTAL, s, f, oct, e));
 
-        HexAttribute h = this.aircraftCallSign(binCode, s, f);
+        HexAttribute h = aircraftCallSign(binCode, s, f);
         String result = h.value();
         if (result.length() > 0) {
             // 13 May 2005
@@ -238,7 +238,7 @@ abstract class BeaconProtocol {
         return list;
     }
 
-    HexAttribute aircraftCallSign(String binCode, int s, int f) {
+    private static HexAttribute aircraftCallSign(String binCode, int s, int f) {
         String e = "";
         String v = "";
         String country = binCode.substring(s, s + 6);

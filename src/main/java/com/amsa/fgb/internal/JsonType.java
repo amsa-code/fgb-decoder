@@ -1,6 +1,6 @@
 package com.amsa.fgb.internal;
 
-public enum JsonType {
+enum JsonType {
 
     INTEGER, NUMBER, STRING, BOOLEAN;
 

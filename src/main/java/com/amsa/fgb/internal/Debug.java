@@ -30,11 +30,11 @@ public final class Debug {
         lastHexStr = hex;
     }
 
-    public static void startSearching() {
+    static void startSearching() {
         searching = true;
     }
 
-    public static void found() {
+    static void found() {
         if (searching) {
             StackTraceElement s = Thread.currentThread().getStackTrace()[2];
             String key = s.getClassName() + ":" + s.getMethodName() + ":" + s.getLineNumber();
@@ -48,7 +48,7 @@ public final class Debug {
         }
     }
 
-    public static void writeFoundToComplianceKit() {
+    static void writeFoundToComplianceKit() {
         searching = false;
         for (Entry<String, List<String>> entry : found.entrySet()) {
             System.out.println("writing found for " + entry.getKey());
@@ -81,7 +81,7 @@ public final class Debug {
         }
     }
 
-    public static void stopSearching() {
+    static void stopSearching() {
         searching = false;
     }
 }

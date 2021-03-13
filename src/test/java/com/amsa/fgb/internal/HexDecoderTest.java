@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Test;
@@ -21,7 +22,7 @@ public final class HexDecoderTest {
     @Test
     public void testDecodeWithRLSHasDefaultPositionOnly() {
         String hex = "3EFA8C60A6BFDFF";
-        Map<String, HexAttribute> map = HexDecoder.decodeToMap(hex);
+        Map<String, HexAttribute> map = decodeToMap(hex);
         assertEquals("3EFA8C60A6BFDFF", map.get("Hex Id").value());
         assertEquals("503", map.get("Country Code").value());
         assertEquals("Return Link Service", map.get("Protocol Type").value());
@@ -33,7 +34,7 @@ public final class HexDecoderTest {
     @Test
     public void testDecodeWithRLSHasPosition() {
         String hex = "3EFA8035B3D0540";
-        Map<String, HexAttribute> map = HexDecoder.decodeToMap(hex);
+        Map<String, HexAttribute> map = decodeToMap(hex);
         assertEquals("3EFA8035B3BFDFF", map.get("Hex Id").value());
         assertEquals("503", map.get("Country Code").value());
         assertEquals("Return Link Service", map.get("Protocol Type").value());
@@ -47,7 +48,7 @@ public final class HexDecoderTest {
     @Test
     public void testDecodeFullHexString() {
         String hex = "9F7D4630535FEFF91E066861F0F731";
-        Map<String, HexAttribute> map = HexDecoder.decodeToMap(hex);
+        Map<String, HexAttribute> map = decodeToMap(hex);
         assertEquals("3EFA8C60A6BFDFF", map.get("Hex Id").value());
         assertEquals("503", map.get("Country Code").value());
         assertEquals("Return Link Service", map.get("Protocol Type").value());
@@ -66,7 +67,7 @@ public final class HexDecoderTest {
     @Test
     public void testRlsPlb() {
         String hex = "3EFB0C80D3BFDFF";
-        Map<String, HexAttribute> map = HexDecoder.decodeToMap(hex);
+        Map<String, HexAttribute> map = decodeToMap(hex);
         assertEquals("Return Link Service Location", map.get("Message Type").value());
         assertEquals("3EFB0C80D3BFDFF", map.get("Hex Id").value());
         assertEquals("503", map.get("Country Code").value());
@@ -81,7 +82,7 @@ public final class HexDecoderTest {
         // TODO get confirmed values (McMurdo encoder and decoder broken for RLS as of
         // 17 April 2019. John Ophel to raise issue with them)
         String hex = "9F7D401037AAEACE32F4E863C1E8C0";
-        Map<String, HexAttribute> map = HexDecoder.decodeToMap(hex);
+        Map<String, HexAttribute> map = decodeToMap(hex);
         assertEquals("3EFA80206F3FDFF", map.get("Hex Id").value());
         assertEquals("503", map.get("Country Code").value());
         assertEquals("Return Link Service", map.get("Protocol Type").value());
@@ -149,6 +150,14 @@ public final class HexDecoderTest {
         } finally {
             Debug.stopSearching();
         }
+    }
+    
+    private static Map<String, HexAttribute> decodeToMap(String hexStr) {
+        Map<String, HexAttribute> map = new HashMap<String, HexAttribute>();
+        for (HexAttribute h : HexDecoder.getHexAttributesDecodeFull(hexStr)) {
+            map.put(h.desc().toString(), h);
+        }
+        return map;
     }
 
 }

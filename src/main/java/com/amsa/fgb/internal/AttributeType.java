@@ -90,7 +90,7 @@ public enum AttributeType {
         return name;
     }
 
-    public JsonType jsonType() {
+    JsonType jsonType() {
         return jsonType;
     }
 }
