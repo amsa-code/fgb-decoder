@@ -1,6 +1,7 @@
 package com.amsa.fgb.internal;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 abstract class BeaconProtocol {
@@ -40,11 +41,11 @@ abstract class BeaconProtocol {
     boolean isUS() {
         return isUS;
     }
-    
+
     List<String> beaconTypeCodes() {
-        return beaconTypeCodes;
+        return Collections.unmodifiableList(beaconTypeCodes);
     }
-    
+
     boolean isLongMessage(String binCode) {
         String code = binCode.substring(25, 27);
         List<String> longCodes = new ArrayList<>(2);
@@ -101,7 +102,8 @@ abstract class BeaconProtocol {
     HexAttribute rlsTacNumber(String binCode, int s, int f) {
         char prefix = rlsTacNumberPrefix(binCode, s);
         String v = binCode.substring(s + 2, f + 1);
-        String last3Digits = Conversions.zeroPadFromLeft(Integer.toString(Conversions.binaryToDecimal(v)), 3);
+        String last3Digits = Conversions
+                .zeroPadFromLeft(Integer.toString(Conversions.binaryToDecimal(v)), 3);
         String result = prefix + last3Digits;
         String e = "";
         return new HexAttribute(AttributeType.RLS_TAC_NUMBER, s, f, result, e);
@@ -230,7 +232,8 @@ abstract class BeaconProtocol {
 
     HexAttribute specificBeaconNumber(String binCode, int s, int f) {
         // 11 May 2005
-        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f + 1), 6);
+        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(),
+                binCode.substring(s, f + 1), 6);
 
         String v = vE[0];
         // String e = "";
@@ -247,7 +250,8 @@ abstract class BeaconProtocol {
     // sdc This needs to be converted using a 5 place BAUDOT conv.
     HexAttribute aircraftOperator(String binCode, int s, int f) {
         // 11 May 2005
-        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(), binCode.substring(s, f + 1), 5);
+        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(),
+                binCode.substring(s, f + 1), 5);
         String v = vE[0];
 
         String e = vE[1];
@@ -401,7 +405,8 @@ abstract class BeaconProtocol {
                 String errPart1 = error.substring(0, noteInd);
                 String errPart2 = error.substring(noteInd);
 
-                error = errPart1 + "\n Hex Id with default location: " + hexId.getValue() + "\n" + errPart2;
+                error = errPart1 + "\n Hex Id with default location: " + hexId.getValue() + "\n"
+                        + errPart2;
                 bch1 = new HexAttribute(bch1.desc, bch1.start, bch1.finish + "", error);
             }
         }

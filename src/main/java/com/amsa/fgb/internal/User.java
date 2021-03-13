@@ -11,12 +11,11 @@ abstract class User extends BeaconProtocol {
     protected String userProtocolCode;
 
     User() {
-        super(Lists.newArrayList("01", "11"));
-
         // 16 May 2005
-        // This is for 15-char Hex string where bit25 is unknown since it starts
+        // ?1  is for 15-char Hex string where bit25 is unknown since it starts
         // with bit26
-        this.beaconTypeCodes().add("?1");
+
+        super(Lists.newArrayList("01", "11", "?1"));
     }
 
     @Override

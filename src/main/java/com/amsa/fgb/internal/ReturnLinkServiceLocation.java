@@ -16,12 +16,10 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
     private static final String rlsProtocolCode = "1101";
 
     ReturnLinkServiceLocation() {
-        super(Lists.newArrayList("00", "10"));
-
         // 16 May 2005
-        // This is for 15-char Hex string where bit25 is unknown since it starts
+        // ?0 is for 15-char Hex string where bit25 is unknown since it starts
         // with bit26
-        beaconTypeCodes().add("?0");
+        super(Lists.newArrayList("00", "10", "?0"));
 
         defaultFixedBits = "110";
 

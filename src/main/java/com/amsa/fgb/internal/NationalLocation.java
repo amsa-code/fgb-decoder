@@ -15,13 +15,10 @@ abstract class NationalLocation extends BeaconProtocol {
     protected String natProtocolCode; // Set in constructors of sub-classes
 
     NationalLocation() {
-        super(Lists.newArrayList("00", "10"));
-
         // 16 May 2005
         // This is for 15-char Hex string where bit25 is unknown since it starts with
         // bit26
-        beaconTypeCodes().add("?0");
-
+        super(Lists.newArrayList("00", "10", "?0"));
         defaultFixedBits = "110";
     }
 
