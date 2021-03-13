@@ -8,7 +8,7 @@ import java.util.List;
 class UserOrbitography extends User {
 
     UserOrbitography() {
-        super("Orbitography","000");
+        super("Orbitography", "000");
     }
 
     @Override

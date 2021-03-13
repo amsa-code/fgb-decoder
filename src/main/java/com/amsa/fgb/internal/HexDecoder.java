@@ -27,8 +27,8 @@ public final class HexDecoder {
         hexStr = hexStr.trim();
         int hexLen = hexStr.length();
         if (!(hexLen == 15 || hexLen == 30)) {
-            return Collections.singletonList(
-                    new HexAttribute(AttributeType.ERROR, "", "HEX STRING MUST BE 15 OR 30 CHARACTERS IN LENGTH"));
+            return Collections.singletonList(new HexAttribute(AttributeType.ERROR, "",
+                    "HEX STRING MUST BE 15 OR 30 CHARACTERS IN LENGTH"));
         } else {
             // Convert the Hex String into Binary Code
             String binCode = com.amsa.fgb.internal.Conversions.hexToBinary(hexStr);

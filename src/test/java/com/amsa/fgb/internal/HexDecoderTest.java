@@ -140,7 +140,7 @@ public final class HexDecoderTest {
         Decoder.decodeFullAsJson(hex);
     }
 
-    //    @Test
+    // @Test
     public void testDecodeAll() throws FileNotFoundException, IOException {
         try {
             Debug.startSearching();

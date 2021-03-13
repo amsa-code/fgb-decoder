@@ -12,7 +12,7 @@ abstract class User extends BeaconProtocol {
 
     User(String protocolName, String userProtocolCode) {
         // 16 May 2005
-        // ?1  is for 15-char Hex string where bit25 is unknown since it starts
+        // ?1 is for 15-char Hex string where bit25 is unknown since it starts
         // with bit26
         super(Lists.newArrayList("01", "11", "?1"), protocolName);
         this.userProtocolCode = userProtocolCode;
@@ -195,8 +195,8 @@ abstract class User extends BeaconProtocol {
             int sign = bits.charAt(0) == '1' ? -1 : 1;
             lonSeconds = sign * lonSeconds;
             setLonSeconds(lonSeconds);
-            return Optional.of(new HexAttribute(AttributeType.LONGITUDE, s, f,
-                    lonSeconds / 3600.0 + "", e));
+            return Optional.of(
+                    new HexAttribute(AttributeType.LONGITUDE, s, f, lonSeconds / 3600.0 + "", e));
         }
     }
 

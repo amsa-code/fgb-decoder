@@ -39,15 +39,15 @@ final class HexAttribute {
         this.start = 0;
         this.finish = 0;
     }
-    
+
     AttributeType desc() {
         return desc;
     }
-    
+
     int start() {
         return start;
     }
-    
+
     int finish() {
         return finish;
     }

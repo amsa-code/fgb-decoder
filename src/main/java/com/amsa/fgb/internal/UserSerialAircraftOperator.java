@@ -3,7 +3,7 @@ package com.amsa.fgb.internal;
 class UserSerialAircraftOperator extends UserSerialAircraftBase {
 
     UserSerialAircraftOperator() {
-        super("Aircraft Operator", "001",(u, binCode, result) -> {
+        super("Aircraft Operator", "001", (u, binCode, result) -> {
             result.add(((UserSerialAircraftOperator) u).aircraftOperator(binCode, 44, 61));
             result.add(((UserSerialAircraftOperator) u).aircraftSerialNumber(binCode, 62, 73));
         });

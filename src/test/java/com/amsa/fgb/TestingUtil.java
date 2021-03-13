@@ -37,7 +37,8 @@ public final class TestingUtil {
     public static void assertJsonEquals(String expected, String json) throws ComparisonFailure {
         if (!equals(expected, json)) {
             System.out.println("not expected: " + json);
-            throw new ComparisonFailure("unequal json", Json.prettyPrint(expected), Json.prettyPrint(json));
+            throw new ComparisonFailure("unequal json", Json.prettyPrint(expected),
+                    Json.prettyPrint(json));
         }
     }
 

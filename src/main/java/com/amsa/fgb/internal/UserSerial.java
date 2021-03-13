@@ -17,7 +17,7 @@ abstract class UserSerial extends User {
     protected String serialBeaconType() {
         return serialBeaconType;
     }
-    
+
     protected String serialCode() {
         return serialCode;
     }

@@ -33,8 +33,8 @@ final class Common {
                     mec + "(Fire/explosion) " + binCode.substring(109, 113), "");
             break;
         case 2:
-            maritimeEmergencyCodes = new HexAttribute(name, 109, 112, mec + "(Flooding) " + binCode.substring(109, 113),
-                    "");
+            maritimeEmergencyCodes = new HexAttribute(name, 109, 112,
+                    mec + "(Flooding) " + binCode.substring(109, 113), "");
             break;
         case 3:
             maritimeEmergencyCodes = new HexAttribute(name, 109, 112,
@@ -49,8 +49,8 @@ final class Common {
                     mec + "(Listing, in danger of capsizing) " + binCode.substring(109, 113), "");
             break;
         case 6:
-            maritimeEmergencyCodes = new HexAttribute(name, 109, 112, mec + "(Sinking) " + binCode.substring(109, 113),
-                    "");
+            maritimeEmergencyCodes = new HexAttribute(name, 109, 112,
+                    mec + "(Sinking) " + binCode.substring(109, 113), "");
             break;
         case 7:
             maritimeEmergencyCodes = new HexAttribute(name, 109, 112,
@@ -61,8 +61,8 @@ final class Common {
                     mec + "(Abandoning ship) " + binCode.substring(109, 113), "");
             break;
         default:
-            maritimeEmergencyCodes = new HexAttribute(name, 109, 112, mec + "(spare) " + binCode.substring(109, 113),
-                    "");
+            maritimeEmergencyCodes = new HexAttribute(name, 109, 112,
+                    mec + "(spare) " + binCode.substring(109, 113), "");
         }
 
         result.add(maritimeEmergencyCodes);
@@ -124,7 +124,8 @@ final class Common {
 
     // For bit 109-112 (Non-Maritime Emergency Codes). See C/S T.001 Table A5
     static List<HexAttribute> nonMaritimeEmergencyCodes(List<HexAttribute> result, String binCode) {
-        result.add(new HexAttribute(AttributeType.NATURE_OF_DISTRESS, 109, 112, binCode.substring(109, 113), ""));
+        result.add(new HexAttribute(AttributeType.NATURE_OF_DISTRESS, 109, 112,
+                binCode.substring(109, 113), ""));
         result.add(fireFlag(binCode, 109));
         result.add(medicalHelpFlag(binCode, 110));
         result.add(disabledFlag(binCode, 111));
@@ -195,7 +196,8 @@ final class Common {
 
         final int lonSeconds;
         {
-            String lonBits = binCode.substring(start + latLength + 1, start + latLength + lonLength);
+            String lonBits = binCode.substring(start + latLength + 1,
+                    start + latLength + lonLength);
             int code = Conversions.binaryToDecimal(lonBits);
             final int codeSeconds = code * secondsPerUnit;
             final int deg = codeSeconds / 3600;

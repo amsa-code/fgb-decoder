@@ -420,7 +420,7 @@ final class Conversions {
         // The binCode in this case is the 24-bit Aircraft Address.
         // In the above hashMap there are values of length 14,12,9,6,4
         // We will take it in turn.
-        for (int length : new int[] { 14, 12, 9, 6, 4 }) {
+        for (int length : new int[] {14, 12, 9, 6, 4}) {
             String code = binCode.substring(0, length - 1);
             String r = airRegMap.get(code);
             if (r != null) {
@@ -549,7 +549,8 @@ final class Conversions {
                         } else {
                             e.add(mbaudotSubBits + " = Space - Non-Spec\n");
                         }
-                    } else if (protocolName.equalsIgnoreCase("Aviation") || protocolName.equalsIgnoreCase("Maritime")
+                    } else if (protocolName.equalsIgnoreCase("Aviation")
+                            || protocolName.equalsIgnoreCase("Maritime")
                             || protocolName.equalsIgnoreCase("Orbitography")) {
                         // n==1 && UserMaritime (or User RadioCallsign) means it is for Specidic
                         // Beacon Number (bit 76-81)

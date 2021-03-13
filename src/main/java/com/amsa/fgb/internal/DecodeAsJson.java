@@ -23,9 +23,11 @@ public final class DecodeAsJson {
             HexAttribute h = v.get(i);
 
             if (h.error() != null && !h.error().trim().isEmpty()) {
-                throw new RuntimeException("Error occurred at position, start= " + h.start() + ", finish=" + h.finish()
-                        + " with desc='" + h.desc() + "', value='" + h.value() + "':" + h.error());
-            } else if (!h.desc().toString().isEmpty() && !h.desc().toString().equals(AttributeType.SPARE.toString())) {
+                throw new RuntimeException("Error occurred at position, start= " + h.start()
+                        + ", finish=" + h.finish() + " with desc='" + h.desc() + "', value='"
+                        + h.value() + "':" + h.error());
+            } else if (!h.desc().toString().isEmpty()
+                    && !h.desc().toString().equals(AttributeType.SPARE.toString())) {
                 addKeyValue(b, h.jsonType(), h.desc().toString(), h.value());
             }
         }
