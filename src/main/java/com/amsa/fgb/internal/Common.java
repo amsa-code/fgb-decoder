@@ -180,20 +180,14 @@ final class Common {
         }
         final int latLength = length - lonLength;
 
-        final int latSeconds;
-        {
-            String latBits = binCode.substring(start + 1, start + latLength);
-            int code = Conversions.binaryToDecimal(latBits);
-            final int codeSeconds = code * secondsPerUnit;
-            final int deg = codeSeconds / 3600;
-            final int min = codeSeconds % 3600 / 60;
-            int seconds = deg * 3600 + min * 60;
-            if (binCode.charAt(start) == '1') {
-                seconds = seconds * -1;
-            }
-            latSeconds = seconds;
-        }
+        final int latSeconds = extractLatSeconds(binCode, start, secondsPerUnit, latLength);
+        final int lonSeconds = extractLonSeconds(binCode, start, secondsPerUnit, lonLength, latLength);
+        
+        return new Position(latSeconds, lonSeconds);
+    }
 
+    private static int extractLonSeconds(String binCode, int start, int secondsPerUnit, final int lonLength,
+            final int latLength) {
         final int lonSeconds;
         {
             String lonBits = binCode.substring(start + latLength + 1,
@@ -209,7 +203,25 @@ final class Common {
             }
             lonSeconds = seconds;
         }
-        return new Position(latSeconds, lonSeconds);
+        return lonSeconds;
+    }
+
+    private static int extractLatSeconds(String binCode, int start, int secondsPerUnit,
+            final int latLength) {
+        final int latSeconds;
+        {
+            String latBits = binCode.substring(start + 1, start + latLength);
+            int code = Conversions.binaryToDecimal(latBits);
+            final int codeSeconds = code * secondsPerUnit;
+            final int deg = codeSeconds / 3600;
+            final int min = codeSeconds % 3600 / 60;
+            int seconds = deg * 3600 + min * 60;
+            if (binCode.charAt(start) == '1') {
+                seconds = seconds * -1;
+            }
+            latSeconds = seconds;
+        }
+        return latSeconds;
     }
 
     /**

@@ -22,7 +22,7 @@ abstract class BeaconProtocol {
     BeaconProtocol(List<String> beaconTypeCodes, String protocolName) {
         this(beaconTypeCodes, protocolName, null);
     }
-    
+
     BeaconProtocol(List<String> beaconTypeCodes, String protocolName, String defaultFixedBits) {
         this.beaconTypeCodes = beaconTypeCodes;
         this.protocolName = protocolName;

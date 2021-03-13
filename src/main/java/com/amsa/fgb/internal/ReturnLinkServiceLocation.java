@@ -221,20 +221,8 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         if (latBits.equals("100001111")) {
             return null;
         }
-        final int latOffsetSeconds;
-        {
-            int sign = binCode.charAt(115) == '1' ? 1 : -1;
-            int minutes = Conversions.binaryToDecimal(binCode.substring(116, 119));
-            int seconds = Conversions.binaryToDecimal(binCode.substring(120, 123)) * 4;
-            latOffsetSeconds = sign * (minutes * 60 + seconds);
-        }
-        final int lonOffsetSeconds;
-        {
-            int sign = binCode.charAt(124) == '1' ? 1 : -1;
-            int minutes = Conversions.binaryToDecimal(binCode.substring(125, 128));
-            int seconds = Conversions.binaryToDecimal(binCode.substring(129, 132)) * 4;
-            lonOffsetSeconds = sign * (minutes * 60 + seconds);
-        }
+        final int latOffsetSeconds = extractLatOffsetSeconds(binCode);
+        final int lonOffsetSeconds = extractLonOffsetSeconds(binCode);
         Position p = coarsePosition(binCode);
         if (p == null) {
             return null;
@@ -244,6 +232,28 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         int latSeconds = (Math.abs(p.latSeconds()) + latOffsetSeconds) * sign(p.latSeconds());
         int lonSeconds = (Math.abs(p.lonSeconds()) + lonOffsetSeconds) * sign(p.lonSeconds());
         return new Position(latSeconds, lonSeconds);
+    }
+
+    private static int extractLonOffsetSeconds(String binCode) {
+        final int lonOffsetSeconds;
+        {
+            int sign = binCode.charAt(124) == '1' ? 1 : -1;
+            int minutes = Conversions.binaryToDecimal(binCode.substring(125, 128));
+            int seconds = Conversions.binaryToDecimal(binCode.substring(129, 132)) * 4;
+            lonOffsetSeconds = sign * (minutes * 60 + seconds);
+        }
+        return lonOffsetSeconds;
+    }
+
+    private static int extractLatOffsetSeconds(String binCode) {
+        final int latOffsetSeconds;
+        {
+            int sign = binCode.charAt(115) == '1' ? 1 : -1;
+            int minutes = Conversions.binaryToDecimal(binCode.substring(116, 119));
+            int seconds = Conversions.binaryToDecimal(binCode.substring(120, 123)) * 4;
+            latOffsetSeconds = sign * (minutes * 60 + seconds);
+        }
+        return latOffsetSeconds;
     }
 
     private static int sign(int n) {
