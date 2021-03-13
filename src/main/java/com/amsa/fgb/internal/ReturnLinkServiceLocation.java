@@ -235,25 +235,17 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
     }
 
     private static int extractLonOffsetSeconds(String binCode) {
-        final int lonOffsetSeconds;
-        {
-            int sign = binCode.charAt(124) == '1' ? 1 : -1;
-            int minutes = Conversions.binaryToDecimal(binCode.substring(125, 128));
-            int seconds = Conversions.binaryToDecimal(binCode.substring(129, 132)) * 4;
-            lonOffsetSeconds = sign * (minutes * 60 + seconds);
-        }
-        return lonOffsetSeconds;
+        int sign = binCode.charAt(124) == '1' ? 1 : -1;
+        int minutes = Conversions.binaryToDecimal(binCode.substring(125, 128));
+        int seconds = Conversions.binaryToDecimal(binCode.substring(129, 132)) * 4;
+        return sign * (minutes * 60 + seconds);
     }
 
     private static int extractLatOffsetSeconds(String binCode) {
-        final int latOffsetSeconds;
-        {
-            int sign = binCode.charAt(115) == '1' ? 1 : -1;
-            int minutes = Conversions.binaryToDecimal(binCode.substring(116, 119));
-            int seconds = Conversions.binaryToDecimal(binCode.substring(120, 123)) * 4;
-            latOffsetSeconds = sign * (minutes * 60 + seconds);
-        }
-        return latOffsetSeconds;
+        int sign = binCode.charAt(115) == '1' ? 1 : -1;
+        int minutes = Conversions.binaryToDecimal(binCode.substring(116, 119));
+        int seconds = Conversions.binaryToDecimal(binCode.substring(120, 123)) * 4;
+        return sign * (minutes * 60 + seconds);
     }
 
     private static int sign(int n) {

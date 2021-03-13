@@ -182,7 +182,6 @@ final class Common {
 
         final int latSeconds = extractLatSeconds(binCode, start, secondsPerUnit, latLength);
         final int lonSeconds = extractLonSeconds(binCode, start, secondsPerUnit, lonLength, latLength);
-        
         return new Position(latSeconds, lonSeconds);
     }
 
