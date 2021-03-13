@@ -185,42 +185,33 @@ final class Common {
         return new Position(latSeconds, lonSeconds);
     }
 
-    private static int extractLonSeconds(String binCode, int start, int secondsPerUnit, final int lonLength,
-            final int latLength) {
-        final int lonSeconds;
-        {
-            String lonBits = binCode.substring(start + latLength + 1,
-                    start + latLength + lonLength);
-            int code = Conversions.binaryToDecimal(lonBits);
-            final int codeSeconds = code * secondsPerUnit;
-            final int deg = codeSeconds / 3600;
-            final int min = codeSeconds % 3600 / 60;
-            int seconds = deg * 3600 + min * 60;
+    private static int extractLonSeconds(String binCode, int start, int secondsPerUnit,
+            final int lonLength, final int latLength) {
+        String lonBits = binCode.substring(start + latLength + 1, start + latLength + lonLength);
+        int code = Conversions.binaryToDecimal(lonBits);
+        final int codeSeconds = code * secondsPerUnit;
+        final int deg = codeSeconds / 3600;
+        final int min = codeSeconds % 3600 / 60;
+        int seconds = deg * 3600 + min * 60;
 
-            if (binCode.charAt(start + latLength) == '1') {
-                seconds = seconds * -1;
-            }
-            lonSeconds = seconds;
+        if (binCode.charAt(start + latLength) == '1') {
+            seconds = seconds * -1;
         }
-        return lonSeconds;
+        return seconds;
     }
 
     private static int extractLatSeconds(String binCode, int start, int secondsPerUnit,
             final int latLength) {
-        final int latSeconds;
-        {
-            String latBits = binCode.substring(start + 1, start + latLength);
-            int code = Conversions.binaryToDecimal(latBits);
-            final int codeSeconds = code * secondsPerUnit;
-            final int deg = codeSeconds / 3600;
-            final int min = codeSeconds % 3600 / 60;
-            int seconds = deg * 3600 + min * 60;
-            if (binCode.charAt(start) == '1') {
-                seconds = seconds * -1;
-            }
-            latSeconds = seconds;
+        String latBits = binCode.substring(start + 1, start + latLength);
+        int code = Conversions.binaryToDecimal(latBits);
+        final int codeSeconds = code * secondsPerUnit;
+        final int deg = codeSeconds / 3600;
+        final int min = codeSeconds % 3600 / 60;
+        int seconds = deg * 3600 + min * 60;
+        if (binCode.charAt(start) == '1') {
+            seconds = seconds * -1;
         }
-        return latSeconds;
+        return seconds;
     }
 
     /**
