@@ -12,21 +12,24 @@ abstract class BeaconProtocol {
 
     private final List<String> beaconTypeCodes;
     private final String protocolName;
-    // String messageTypeDesc;
-    // String countryCode;
 
     private boolean actualLatLong;
     private double latSeconds;
     private double lonSeconds;
 
-    protected String defaultFixedBits;
+    private final String defaultFixedBits;
 
     BeaconProtocol(List<String> beaconTypeCodes, String protocolName) {
+        this(beaconTypeCodes, protocolName, null);
+    }
+    
+    BeaconProtocol(List<String> beaconTypeCodes, String protocolName, String defaultFixedBits) {
         this.beaconTypeCodes = beaconTypeCodes;
         this.protocolName = protocolName;
         this.actualLatLong = false;
         this.latSeconds = 0;
         this.lonSeconds = 0;
+        this.defaultFixedBits = defaultFixedBits;
     }
 
     abstract boolean canDecode(String binCode);

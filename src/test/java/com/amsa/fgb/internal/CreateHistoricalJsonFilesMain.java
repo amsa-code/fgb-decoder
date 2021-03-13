@@ -16,7 +16,7 @@ import java.nio.file.StandardOpenOption;
 import com.amsa.fgb.Decoder;
 import com.amsa.fgb.TestingUtil;
 
-public class CreateHistoricalJsonFilesMain {
+public final class CreateHistoricalJsonFilesMain {
 
     private CreateHistoricalJsonFilesMain() {
         // prevent instantiation

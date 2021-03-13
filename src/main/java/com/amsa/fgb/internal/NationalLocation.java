@@ -18,9 +18,8 @@ abstract class NationalLocation extends BeaconProtocol {
         // 16 May 2005
         // This is for 15-char Hex string where bit25 is unknown since it starts with
         // bit26
-        super(Lists.newArrayList("00", "10", "?0"), protocolName);
+        super(Lists.newArrayList("00", "10", "?0"), protocolName, "110");
         this.natProtocolCode = natProtocolCode;
-        defaultFixedBits = "110";
     }
 
     @Override

@@ -13,9 +13,8 @@ abstract class StandardLocation extends BeaconProtocol {
         // 16 May 2005
         // ?0 is for 15-char Hex string where bit25 is unknown since it starts with
         // bit26
-        super(Lists.newArrayList("00", "10", "?0"), protocolName);
+        super(Lists.newArrayList("00", "10", "?0"), protocolName, "1101");
         this.stdProtocolCode = stdProtocolCode;
-        defaultFixedBits = "1101";
     }
 
     @Override

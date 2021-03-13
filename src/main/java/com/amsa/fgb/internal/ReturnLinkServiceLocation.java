@@ -19,9 +19,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         // 16 May 2005
         // ?0 is for 15-char Hex string where bit25 is unknown since it starts
         // with bit26
-        super(Lists.newArrayList("00", "10", "?0"), "Return Link Service");
-
-        defaultFixedBits = "110";
+        super(Lists.newArrayList("00", "10", "?0"), "Return Link Service", "110");
     }
 
     @Override

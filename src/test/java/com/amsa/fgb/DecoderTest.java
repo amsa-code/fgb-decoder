@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 import org.junit.Test;
 
 /**
- * Tests the decoding methods of {@link Decoder}
+ * Tests the decoding methods of {@link Decoder}.
  *
  * @author smw01
  *
