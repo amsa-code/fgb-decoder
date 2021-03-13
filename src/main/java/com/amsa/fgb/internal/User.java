@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.github.davidmoten.guavamini.Lists;
+
 abstract class User extends BeaconProtocol {
 
     protected String userProtocolCode;
 
     User() {
-        this.beaconTypeCodes().add("01");
-        this.beaconTypeCodes().add("11");
+        super(Lists.newArrayList("01", "11"));
 
         // 16 May 2005
         // This is for 15-char Hex string where bit25 is unknown since it starts

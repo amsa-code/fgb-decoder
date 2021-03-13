@@ -1,11 +1,13 @@
 package com.amsa.fgb.internal;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Unknown extends BeaconProtocol {
 
     Unknown() {
+        super(Collections.emptyList());
     }
 
     // This is should always return true.

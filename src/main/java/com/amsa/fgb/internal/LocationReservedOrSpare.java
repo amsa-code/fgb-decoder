@@ -3,13 +3,14 @@ package com.amsa.fgb.internal;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.github.davidmoten.guavamini.Lists;
+
 abstract class LocationReservedOrSpare extends BeaconProtocol {
 
     private final String stdProtocolCode;
 
     LocationReservedOrSpare(String stdProtocolCode, String protocolName) {
-        beaconTypeCodes().add("00");
-        beaconTypeCodes().add("10");
+        super(Lists.newArrayList("00", "10"));
 
         // 16 May 2005
         // This is for 15-char Hex string where bit25 is unknown since it starts with

@@ -20,8 +20,8 @@ abstract class BeaconProtocol {
 
     protected String defaultFixedBits;
 
-    BeaconProtocol() {
-        this.beaconTypeCodes = new ArrayList<>(2);
+    BeaconProtocol(List<String> beaconTypeCodes) {
+        this.beaconTypeCodes = beaconTypeCodes;
         this.actualLatLong = false;
         this.latSeconds = 0;
         this.lonSeconds = 0;

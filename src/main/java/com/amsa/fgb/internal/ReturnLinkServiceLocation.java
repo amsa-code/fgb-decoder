@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.amsa.fgb.internal.Common.Position;
+import com.github.davidmoten.guavamini.Lists;
 
 // NOTE: This is a new location protocol (based on NationalLocation with minor modifications).
 
@@ -15,8 +16,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
     private static final String rlsProtocolCode = "1101";
 
     ReturnLinkServiceLocation() {
-        beaconTypeCodes().add("00");
-        beaconTypeCodes().add("10");
+        super(Lists.newArrayList("00", "10"));
 
         // 16 May 2005
         // This is for 15-char Hex string where bit25 is unknown since it starts
