@@ -8,13 +8,13 @@ abstract class StandardLocation extends BeaconProtocol {
     protected String stdProtocolCode; // Set in constructors of sub-classes
 
     StandardLocation() {
-        beaconTypeCode.add("00");
-        beaconTypeCode.add("10");
+        beaconTypeCodes().add("00");
+        beaconTypeCodes().add("10");
 
         // 16 May 2005
         // This is for 15-char Hex string where bit25 is unknown since it starts with
         // bit26
-        beaconTypeCode.add("?0");
+        beaconTypeCodes().add("?0");
 
         defaultFixedBits = "1101";
     }
@@ -28,7 +28,7 @@ abstract class StandardLocation extends BeaconProtocol {
     boolean canDecode(String binCode) {
         String protocol = binCode.substring(25, 27);
         // System.out.println("Trying Standard Location " + name);
-        if (beaconTypeCode.contains(protocol)) {
+        if (beaconTypeCodes().contains(protocol)) {
             String protocolCode = binCode.substring(37, 41);
             return protocolCode.equals(this.stdProtocolCode);
         }

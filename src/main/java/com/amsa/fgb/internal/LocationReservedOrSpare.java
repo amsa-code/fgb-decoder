@@ -8,13 +8,13 @@ abstract class LocationReservedOrSpare extends BeaconProtocol {
     private final String stdProtocolCode;
 
     LocationReservedOrSpare(String stdProtocolCode, String protocolName) {
-        beaconTypeCode.add("00");
-        beaconTypeCode.add("10");
+        beaconTypeCodes().add("00");
+        beaconTypeCodes().add("10");
 
         // 16 May 2005
         // This is for 15-char Hex string where bit25 is unknown since it starts with
         // bit26
-        beaconTypeCode.add("?0");
+        beaconTypeCodes().add("?0");
 
         this.stdProtocolCode = stdProtocolCode;
         this.protocolName = protocolName;
@@ -53,11 +53,13 @@ abstract class LocationReservedOrSpare extends BeaconProtocol {
             // 24 May 2005
             // CDP's latest Guidance
             if (this.isLongMessage(binCode)) {
-                result.add(new HexAttribute(AttributeType.PDF_2, 107, 132, binCode.substring(113, 133), ""));
-                result.add(new HexAttribute(AttributeType.BCH_2, 133, 144, binCode.substring(133, 145), ""));
+                result.add(new HexAttribute(AttributeType.PDF_2, 107, 132,
+                        binCode.substring(113, 133), ""));
+                result.add(new HexAttribute(AttributeType.BCH_2, 133, 144,
+                        binCode.substring(133, 145), ""));
             } else {
-                result.add(
-                        new HexAttribute(AttributeType.SUPPLEMENTARY_DATA, 107, 112, binCode.substring(107, 113), ""));
+                result.add(new HexAttribute(AttributeType.SUPPLEMENTARY_DATA, 107, 112,
+                        binCode.substring(107, 113), ""));
             }
 
         }
@@ -73,7 +75,7 @@ abstract class LocationReservedOrSpare extends BeaconProtocol {
 
         // System.out.println("Trying " + name);
         int f = this instanceof LocationReserved ? 40 : 41;
-        if (beaconTypeCode.contains(protocol)) {
+        if (beaconTypeCodes().contains(protocol)) {
             String protocolCode = binCode.substring(37, f);
             return protocolCode.equals(this.stdProtocolCode);
         }

@@ -9,14 +9,13 @@ abstract class User extends BeaconProtocol {
     protected String userProtocolCode;
 
     User() {
-        this.beaconTypeCode.add("01");
-        this.beaconTypeCode.add("11");
+        this.beaconTypeCodes().add("01");
+        this.beaconTypeCodes().add("11");
 
         // 16 May 2005
         // This is for 15-char Hex string where bit25 is unknown since it starts
         // with bit26
-        this.beaconTypeCode.add("?1");
-
+        this.beaconTypeCodes().add("?1");
     }
 
     @Override
@@ -29,7 +28,7 @@ abstract class User extends BeaconProtocol {
         String beaconCode = binCode.substring(25, 27);
         // System.out.println("Trying User " + name);
 
-        if (beaconTypeCode.contains(beaconCode)) {
+        if (beaconTypeCodes().contains(beaconCode)) {
             // String protocolCode = binCode.substring(27, 40);
             String protocolCode = binCode.substring(37, 40);
             return protocolCode.equals(this.userProtocolCode);
@@ -177,7 +176,8 @@ abstract class User extends BeaconProtocol {
             this.latSeconds = sign * latSeconds;
         }
 
-        return Optional.of(new HexAttribute(AttributeType.LATITUDE, s, f, latSeconds / 3600.0 + "", e));
+        return Optional
+                .of(new HexAttribute(AttributeType.LATITUDE, s, f, latSeconds / 3600.0 + "", e));
     }
 
     Optional<HexAttribute> longitude(String binCode, int s, int f) { // b120-132
@@ -195,7 +195,8 @@ abstract class User extends BeaconProtocol {
             int sign = bits.charAt(0) == '1' ? -1 : 1;
             this.lonSeconds = sign * lonSeconds;
         }
-        return Optional.of(new HexAttribute(AttributeType.LONGITUDE, s, f, this.lonSeconds / 3600.0 + "", e));
+        return Optional.of(
+                new HexAttribute(AttributeType.LONGITUDE, s, f, this.lonSeconds / 3600.0 + "", e));
     }
 
     // For bit 107-112. See C/S T.001 Figure A4

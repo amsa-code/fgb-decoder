@@ -9,7 +9,7 @@ abstract class BeaconProtocol {
 
     private boolean isUS = false;
 
-    protected List<String> beaconTypeCode;
+    private List<String> beaconTypeCodes;
     protected String protocolName;
     // String messageTypeDesc;
     // String countryCode;
@@ -21,7 +21,7 @@ abstract class BeaconProtocol {
     protected String defaultFixedBits;
 
     BeaconProtocol() {
-        this.beaconTypeCode = new ArrayList<>(2);
+        this.beaconTypeCodes = new ArrayList<>(2);
         this.actualLatLong = false;
         this.latSeconds = 0;
         this.lonSeconds = 0;
@@ -39,6 +39,10 @@ abstract class BeaconProtocol {
 
     boolean isUS() {
         return isUS;
+    }
+    
+    List<String> beaconTypeCodes() {
+        return beaconTypeCodes;
     }
     
     boolean isLongMessage(String binCode) {

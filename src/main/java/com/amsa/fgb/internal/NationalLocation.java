@@ -13,13 +13,13 @@ abstract class NationalLocation extends BeaconProtocol {
     protected String natProtocolCode; // Set in constructors of sub-classes
 
     NationalLocation() {
-        beaconTypeCode.add("00");
-        beaconTypeCode.add("10");
+        beaconTypeCodes().add("00");
+        beaconTypeCodes().add("10");
 
         // 16 May 2005
         // This is for 15-char Hex string where bit25 is unknown since it starts with
         // bit26
-        beaconTypeCode.add("?0");
+        beaconTypeCodes().add("?0");
 
         defaultFixedBits = "110";
     }
@@ -36,7 +36,7 @@ abstract class NationalLocation extends BeaconProtocol {
 
         // System.out.println("Trying National Location " + name);
 
-        if (beaconTypeCode.contains(protocol)) {
+        if (beaconTypeCodes().contains(protocol)) {
             String protocolCode = binCode.substring(37, 41);
             return protocolCode.equals(this.natProtocolCode);
         }
