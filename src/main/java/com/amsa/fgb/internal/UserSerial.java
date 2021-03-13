@@ -119,7 +119,7 @@ abstract class UserSerial extends User {
 
         result.add(u.auxRadioLocating(binCode, 84, 85));
 
-        if (u.isUS) {
+        if (u.isUS()) {
             result.add(u.usManufacturerId(binCode, 44, 51));
             result.add(u.usSeqNo(binCode, 52, 63));
             result.add(u.usModelId(binCode, 64, 67));

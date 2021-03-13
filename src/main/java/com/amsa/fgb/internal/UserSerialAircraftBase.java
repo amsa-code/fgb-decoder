@@ -33,7 +33,7 @@ abstract class UserSerialAircraftBase extends UserSerial {
 
         result.add(this.auxRadioLocating(binCode, 84, 85));
 
-        if (this.isUS) {
+        if (this.isUS()) {
             result.add(this.usManufacturerId(binCode, 44, 51));
             result.add(this.usSeqNo(binCode, 52, 63));
             result.add(this.usModelId(binCode, 64, 67));

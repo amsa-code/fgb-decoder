@@ -7,7 +7,7 @@ abstract class BeaconProtocol {
 
     private static final String GENERATOR_POLYNOMIAL = "1001101101100111100011";
 
-    protected boolean isUS = false;
+    private boolean isUS = false;
 
     protected List<String> beaconTypeCode;
     protected String protocolName;
@@ -37,6 +37,10 @@ abstract class BeaconProtocol {
 
     abstract String getName();
 
+    boolean isUS() {
+        return isUS;
+    }
+    
     boolean isLongMessage(String binCode) {
         String code = binCode.substring(25, 27);
         List<String> longCodes = new ArrayList<>(2);
