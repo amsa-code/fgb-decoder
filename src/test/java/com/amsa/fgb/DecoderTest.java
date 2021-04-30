@@ -98,7 +98,7 @@ public class DecoderTest {
                         System.out.println(legacy);
                         System.out.println();
                     }
-                    
+
                     // this commented out section is to produce comparison from legacy aussar-oracle-java library
 //                    String legacy = Hexdecode.decode(hex, "XML2")//
 //                            .replaceAll("<Position>.*</Position>", "") //
