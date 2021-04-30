@@ -1,0 +1,13 @@
+{"Message Type":"User (Short)",
+"Hex Data":"4D44C9A61A69A68E27B57800000000",
+"Hex Id":"9A89934C34D34D1",
+"Country Code":"212 (Invalid Oracle URL specified)",
+"User Protocol Type":"Maritime",
+"Ships MMSI":"208000 (LAST 6 DIGITS OF MMSI)",
+"Specific Beacon Number":"0",
+"Spare":"00",
+"Aux. radio-locating":"121.5 MHz",
+"Error Correcting Code":"110001001111011010101",
+"Emergency Code":"Present (1)",
+"Activation Type":"Automatic and Manual",
+"Nature of Distress":"Maritime Emergency Codes(Abandoning ship) 1000"}

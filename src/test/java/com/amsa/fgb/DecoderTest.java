@@ -28,6 +28,7 @@ public class DecoderTest {
     // private static final String HEXSTRING_15_CHRS = "ADCC40504000185";
     // private static final String HEXSTRING_15_CHRS_AVIATION = "BEE64BE562F9BD9";
     private static final String HEXSTRING_30_CHRS = "D6E6202820000C29FF51041775302D";
+    private static final boolean COMPARE_WITH_LEGACY = true;
 
     @Test
     public void testDecodeToJsonWith30Chr() {
@@ -85,13 +86,42 @@ public class DecoderTest {
             for (File file : files) {
                 if (file.getName().endsWith(".json")) {
                     String hex = file.getName().substring(0, file.getName().indexOf("."));
-                    String expected = new String(Files.readAllBytes(file.toPath()),
-                            StandardCharsets.UTF_8);
+                    String expected = readString(file);
                     String json = Decoder.decodeFullAsJson(hex);
                     assertJsonEquals(expected, json);
+                    if (COMPARE_WITH_LEGACY) {
+                        File f = new File("src/test/resources/legacy-output", file.getName());
+                        String legacy = readString(f);
+                        System.out.println("================================");
+                        System.out.println(json);
+                        System.out.println("--------------------------------");
+                        System.out.println(legacy);
+                        System.out.println();
+                    }
+                    
+                    // this commented out section is to produce comparison from legacy aussar-oracle-java library
+//                    String legacy = Hexdecode.decode(hex, "XML2")//
+//                            .replaceAll("<Position>.*</Position>", "") //
+//                            .replace("<Name>", "\"") //
+//                            .replace("</Name>", "\"") //
+//                            .replace("<Value>", ":\"") //
+//                            .replace("<Line>", "") //
+//                            .replace("</Line>", "") //
+//                            .replace("</Value>", "\",\n") //
+//                            .replace("\n\n", "").trim();
+//                    legacy = "{" + legacy.substring(0, legacy.length()-1) + "}";
+//                    File f = new File("src/test/resources/legacy-output", file.getName());
+//                    f.delete();
+//                    Files.write(f.toPath(), legacy.getBytes(StandardCharsets.UTF_8),
+//                            StandardOpenOption.WRITE, StandardOpenOption.CREATE);
                 }
             }
         }
+    }
+
+    private static String readString(File file) throws IOException {
+        return new String(Files.readAllBytes(file.toPath()),
+                StandardCharsets.UTF_8);
     }
 
     @SuppressWarnings("unused")

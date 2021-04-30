@@ -1,0 +1,13 @@
+{"Message Type":"Standard Location (Long)",
+"Hex Data":"ADA5B61C8C7FDFFBE89AF7FFFFFFFF",
+"Hex Id":"5B4B6C3918FFBFF",
+"Country Code":"730 (Invalid Oracle URL specified)",
+"Protocol Type":"Aircraft Operator",
+"Aircraft Operator":"FAC",
+"Aircraft Serial Number":"140",
+"Coarse Position":"DEFAULT",
+"Error Correcting Code":"011111010001001101011",
+"Spare":"FIXED VALUE",
+"Encoded Position Source":"INTERNAL",
+"121.5 MHz Homing":"YES",
+"Long Message":"DEFAULT"}

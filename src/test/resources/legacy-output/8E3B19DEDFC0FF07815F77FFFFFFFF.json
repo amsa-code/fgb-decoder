@@ -1,0 +1,13 @@
+{"Message Type":"National Location (Long)",
+"Hex Data":"8E3B19DEDFC0FF07815F77FFFFFFFF",
+"Hex Id":"1C7633BDBF81FE0",
+"Country Code":"227 (Invalid Oracle URL specified)",
+"Protocol Type":"Personal (PLB)",
+"Beacon Serial Number":"26491",
+"Coarse Position":"DEFAULT",
+"Error Correcting Code":"111100000010101111101",
+"Spare":"FIXED VALUE",
+"Additional Data Flag":"POSITION DATA",
+"Encoded Position Source":"INTERNAL",
+"121.5 MHz Homing":"YES",
+"Long Message":"DEFAULT"}

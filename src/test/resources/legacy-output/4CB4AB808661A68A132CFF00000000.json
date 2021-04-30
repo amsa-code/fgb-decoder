@@ -1,0 +1,13 @@
+{"Message Type":"User (Short)",
+"Hex Data":"4CB4AB808661A68A132CFF00000000",
+"Hex Id":"996957010CC34D1",
+"Country Code":"203 (Invalid Oracle URL specified)",
+"User Protocol Type":"Maritime",
+"Ships MMSI":"675980 (LAST 6 DIGITS OF MMSI)",
+"Specific Beacon Number":"0",
+"Spare":"00",
+"Aux. radio-locating":"121.5 MHz",
+"Error Correcting Code":"010000100110010110011",
+"Emergency Code":"Present (1)",
+"Activation Type":"Automatic and Manual",
+"Nature of Distress":"Maritime Emergency Codes(spare) 1111"}

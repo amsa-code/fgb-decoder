@@ -1,0 +1,12 @@
+{"Message Type":"Standard Location (Short)",
+"Hex Data":"020C0200007FDFFF128F7700000000",
+"Hex Id":"0418040000FFBFF",
+"Country Code":"32 (Invalid Oracle URL specified)",
+"Protocol Type":"Ship Security MMSI",
+"Ship Security MMSI":"008192",
+"Fixed bits":"0000",
+"Coarse Position":"DEFAULT",
+"Error Correcting Code":"111000100101000111101",
+"Spare":"FIXED VALUE",
+"Encoded Position Source":"INTERNAL",
+"121.5 MHz Homing":"YES"}

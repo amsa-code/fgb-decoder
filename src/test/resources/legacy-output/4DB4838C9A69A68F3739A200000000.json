@@ -1,0 +1,13 @@
+{"Message Type":"User (Short)",
+"Hex Data":"4DB4838C9A69A68F3739A200000000",
+"Hex Id":"9B69071934D34D1",
+"Country Code":"219 (Invalid Oracle URL specified)",
+"User Protocol Type":"Maritime",
+"Ships MMSI":"372000 (LAST 6 DIGITS OF MMSI)",
+"Specific Beacon Number":"0",
+"Spare":"00",
+"Aux. radio-locating":"121.5 MHz",
+"Error Correcting Code":"111001101110011100110",
+"Emergency Code":"Present (1)",
+"Activation Type":"Manual Activation Only",
+"Nature of Distress":"Maritime Emergency Codes(Flooding) 0010"}
