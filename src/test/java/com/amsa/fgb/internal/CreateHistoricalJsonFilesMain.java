@@ -13,7 +13,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 
-import com.amsa.fgb.Decoder;
 import com.amsa.fgb.TestingUtil;
 
 public final class CreateHistoricalJsonFilesMain {

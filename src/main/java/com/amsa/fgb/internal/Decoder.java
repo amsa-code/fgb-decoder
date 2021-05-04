@@ -1,14 +1,11 @@
-package com.amsa.fgb;
-
-import com.amsa.fgb.internal.Debug;
-import com.amsa.fgb.internal.HexDecoder;
+package com.amsa.fgb.internal;
 
 public final class Decoder {
 
     private Decoder() {
         // prevent instantiation
     }
-
+        
     public static String decodeFullAsJson(String hexStr) {
         Debug.setLastHexStr(hexStr);
         return HexDecoder.decodeFullAsJson(hexStr);

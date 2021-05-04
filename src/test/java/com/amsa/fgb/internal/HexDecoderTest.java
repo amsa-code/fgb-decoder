@@ -9,7 +9,6 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.amsa.fgb.Decoder;
 import com.github.davidmoten.junit.Asserts;
 
 public final class HexDecoderTest {

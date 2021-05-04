@@ -1,4 +1,4 @@
-package com.amsa.fgb;
+package com.amsa.fgb.internal;
 
 import static com.amsa.fgb.TestingUtil.assertJsonEquals;
 import static org.junit.Assert.assertEquals;
@@ -16,6 +16,8 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 import org.junit.Test;
+
+import com.amsa.fgb.TestingUtil;
 
 /**
  * Tests the decoding methods of {@link Decoder}.

@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.amsa.fgb.Decoder;
 import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
 
 public final class Debug {

@@ -6,8 +6,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import com.amsa.fgb.Decoder;
-
 public final class DecodeHistoricalFilesMain {
 
     private DecodeHistoricalFilesMain() {
