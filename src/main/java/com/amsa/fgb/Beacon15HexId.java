@@ -9,7 +9,7 @@ public final class Beacon15HexId {
         // prevent instantiation
     }
     
-    public static String fromHex(String hex) {
+    public static String decodeHexToJson(String hex) {
         Preconditions.checkNotNull(hex);
         Preconditions.checkArgument(hex.length() == 15, "hex must be 15 characters");
         return Decoder.decodeFullAsJson(hex);

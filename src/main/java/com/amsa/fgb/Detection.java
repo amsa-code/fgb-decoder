@@ -9,7 +9,7 @@ public final class Detection {
         // prevent instantiation
     }
     
-    public static String fromHex(String hex) {
+    public static String decodeHexToJson(String hex) {
         Preconditions.checkNotNull(hex);
         Preconditions.checkArgument(hex.length() == 30, "hex must be 30 characters");
         return Decoder.decodeFullAsJson(hex);
