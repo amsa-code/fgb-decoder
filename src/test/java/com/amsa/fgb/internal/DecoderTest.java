@@ -90,6 +90,7 @@ public class DecoderTest {
                     String hex = file.getName().substring(0, file.getName().indexOf("."));
                     String expected = readString(file);
                     String json = Decoder.decodeFullAsJson(hex);
+                    System.out.println(file);
                     assertJsonEquals(expected, json);
                     if (COMPARE_WITH_LEGACY) {
                         File f = new File("src/test/resources/legacy-output", file.getName());

@@ -114,7 +114,7 @@ abstract class User extends BeaconProtocol {
         } else if (code.equals("00")) {
             v = "NONE";
         } else if (code.equals("10")) {
-            v = "Maritimelocating: 9GHz SART";
+            v = "Maritime locating: 9GHz SART";
         } else {
             v = "Other device(s)";
         }
