@@ -7,6 +7,6 @@
 "Specific ELT number":0,
 "Aux. radio-locating":"121.5 MHz",
 "Error Correcting Code 1":"010101100110100010011",
-"Emergency Code":"Default (0)",
+"Emergency Code Present":false,
 "Activation Type":"Automatic and Manual",
 "Nature of Distress":"Default(0000)"}

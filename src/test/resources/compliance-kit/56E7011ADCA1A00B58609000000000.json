@@ -14,6 +14,6 @@
 "US Run No.":13,
 "US National Use":"00000000",
 "Error Correcting Code 1":"011010110000110000010",
-"Emergency Code":"Default (0)",
+"Emergency Code Present":false,
 "Activation Type":"Automatic and Manual",
 "Nature of Distress":"Default(0000)"}

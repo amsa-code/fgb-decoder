@@ -23,7 +23,7 @@ public enum AttributeType {
     CS_TYPE_APPROVAL("C/S Type approval", JsonType.INTEGER), //
     CS_TYPE_APPROVAL_NUMBER("C/S Type approval number", JsonType.INTEGER), //
     DISABLED("Disabled", JsonType.BOOLEAN), //
-    EMERGENCY_CODE("Emergency Code"), //
+    EMERGENCY_CODE_PRESENT("Emergency Code Present", JsonType.BOOLEAN), //
     EMERGENCY_CODE_FLAG("Emergency Code Flag"), //
     ENCODED_POSITION_SOURCE("Encoded Position Source"), //
     ERROR("Error"), //

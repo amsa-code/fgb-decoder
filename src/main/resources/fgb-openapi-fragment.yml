@@ -45,10 +45,10 @@
           type: string
         'Disabled':
           type: boolean
-        'Emergency Code':
-          type: string
         'Emergency Code Flag':
           type: string
+        'Emergency Code Present':
+          type: boolean
         'Encoded Position Source':
           type: string
         'Error':

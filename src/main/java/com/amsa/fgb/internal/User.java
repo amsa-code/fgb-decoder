@@ -125,17 +125,15 @@ abstract class User extends BeaconProtocol {
         String v = "";
         String e = "";
 
-        String str = "(" + binCode.charAt(107) + ")";
-
         if (this.emergencyCodePresent(binCode)) {
-            v = "Present " + str;
+            v = "YES";
         } else {
             // 29/03/2005
             // v = "NOT PRESENT (National Use)";
-            v = "Default " + str;
+            v = "NO";
         }
 
-        return new HexAttribute(AttributeType.EMERGENCY_CODE, s, v, e);
+        return new HexAttribute(AttributeType.EMERGENCY_CODE_PRESENT, s, v, e);
     }
 
     private boolean emergencyCodePresent(String binCode) {

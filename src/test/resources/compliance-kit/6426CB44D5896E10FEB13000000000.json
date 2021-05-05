@@ -11,7 +11,7 @@
 "National Use":"1101110000",
 "Aux. radio-locating":"Maritime locating: 9GHz SART",
 "Error Correcting Code 1":"000111111101011000100",
-"Emergency Code":"Present (1)",
+"Emergency Code Present":true,
 "Activation Type":"Automatic and Manual",
 "Nature of Distress":"0000",
 "Fire Flag":false,

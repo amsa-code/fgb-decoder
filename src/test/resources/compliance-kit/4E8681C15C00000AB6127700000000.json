@@ -9,6 +9,6 @@
 "National Use":"00000000000000000000",
 "Aux. radio-locating":"121.5 MHz",
 "Error Correcting Code 1":"010101101100001001001",
-"Emergency Code":"Present (1)",
+"Emergency Code Present":true,
 "Activation Type":"Automatic and Manual",
 "Nature of Distress":"Maritime Emergency Codes(Disabled and adrift) 0111"}

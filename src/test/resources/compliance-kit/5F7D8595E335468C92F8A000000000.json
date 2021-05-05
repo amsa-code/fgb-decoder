@@ -7,6 +7,6 @@
 "Specific Beacon Number":"0",
 "Aux. radio-locating":"121.5 MHz",
 "Error Correcting Code 1":"100100100101111100010",
-"Emergency Code":"Present (1)",
+"Emergency Code Present":true,
 "Activation Type":"Manual Activation Only",
 "Nature of Distress":"Maritime Emergency Codes(Unspecified distress) 0000"}

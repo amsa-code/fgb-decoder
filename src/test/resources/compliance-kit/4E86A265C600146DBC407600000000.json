@@ -10,6 +10,6 @@
 "C/S Type approval number":163,
 "Aux. radio-locating":"121.5 MHz",
 "Error Correcting Code 1":"101101111000100000001",
-"Emergency Code":"Present (1)",
+"Emergency Code Present":true,
 "Activation Type":"Automatic and Manual",
 "Nature of Distress":"Maritime Emergency Codes(Sinking) 0110"}
