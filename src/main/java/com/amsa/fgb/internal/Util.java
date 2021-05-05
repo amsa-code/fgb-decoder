@@ -28,4 +28,15 @@ final class Util {
                 lonDiffSeconds / 3600.0 + "", ""));
         return list;
     }
+    
+    static HexAttribute mmsiFromBinary(AttributeType type, String binCode, int s, int f) {
+        int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
+        String e = "";
+        String value = v + "";
+        int len = value.length();
+        for (int i = 0; i < (6 - len); i++) {
+            value = "0" + value;
+        }
+        return new HexAttribute(type, s, f, value, e);
+    }
 }

@@ -55,17 +55,6 @@ abstract class StandardLocationBase extends StandardLocation {
         return result;
     }
 
-    protected HexAttribute mmsi(AttributeType type, String binCode, int s, int f) {
-        int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
-        String e = "";
-        String value = v + "";
-        int len = value.length();
-        for (int i = 0; i < (6 - len); i++) {
-            value = "0" + value;
-        }
-        return new HexAttribute(type, s, f, value, e);
-    }
-
     @Override
     HexAttribute specificBeaconNumber(String binCode, int s, int f) {
         int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));

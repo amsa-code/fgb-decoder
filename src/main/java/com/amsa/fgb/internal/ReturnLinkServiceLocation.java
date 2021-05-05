@@ -60,7 +60,7 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         // new code for RLS (differs from NationalLocation)
         result.add(beaconType(binCode, 41, 42));
         if (isRlsWithMmsi(binCode)) {
-            result.add(mmsi(AttributeType.RLS_MMSI_LAST_6_DIGITS, binCode, 47, 66));             
+            result.add(Util.mmsiFromBinary(AttributeType.RLS_MMSI_LAST_6_DIGITS, binCode, 47, 66));             
         } else {
             result.add(this.rlsTacNumber(binCode, 41, 52));
             result.add(this.rlsId(binCode, 53, 66));
@@ -103,17 +103,6 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         return result;
     }
     
-    protected HexAttribute mmsi(AttributeType type, String binCode, int s, int f) {
-        int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
-        String e = "";
-        String value = v + "";
-        int len = value.length();
-        for (int i = 0; i < (6 - len); i++) {
-            value = "0" + value;
-        }
-        return new HexAttribute(type, s, f, value, e);
-    }
-
     private List<HexAttribute> finePositionAttributes(String binCode) {
         Position p = finePosition(binCode);
         if (p == null) {

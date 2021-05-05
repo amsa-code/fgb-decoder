@@ -4,7 +4,7 @@ class StandardLocationShipSecurityAlertSystem extends StandardLocationBase {
 
     StandardLocationShipSecurityAlertSystem() {
         super("1100", "Ship Security MMSI", (s, binCode, result) -> {
-            result.add(s.mmsi(AttributeType.SHIP_SECURITY_MMSI, binCode, 41, 60));
+            result.add(Util.mmsiFromBinary(AttributeType.SHIP_SECURITY_MMSI, binCode, 41, 60));
             result.add(((StandardLocationShipSecurityAlertSystem) s).securityFixedBits(binCode, 61,
                     64));
         });
