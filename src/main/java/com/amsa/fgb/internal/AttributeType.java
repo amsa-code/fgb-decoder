@@ -5,10 +5,9 @@ public enum AttributeType {
     ACTIVATION_TYPE("Activation Type"), //
     ADDITIONAL_DATA_FLAG("Additional Data Flag"), //
     ADDITIONAL_ELT_NUMBERS("Additional ELT numbers", JsonType.INTEGER), //
-    AIRCRAFT_24_BIT_ADDRESS_BINARY("Aircraft 24 bit address Binary"), //
     AIRCRAFT_24_BIT_ADDRESS_HEX("Aircraft 24 bit address (hex)"), //
     AIRCRAFT_24_BIT_ADDRESS_OCTAL("Aircraft 24 bit address (octal)"), //
-    AIRCRAFT_CALL_SIGN("Aircraft Reg. Marking"), //
+    AIRCRAFT_CALL_SIGN("Aircraft Callsign"), //
     AIRCRAFT_OPERATOR("Aircraft Operator"), //
     AIRCRAFT_REG_MARKING("Aircraft Reg. Marking"), //
     AIRCRAFT_SERIAL_NUMBER("Aircraft Serial Number", JsonType.INTEGER), //
@@ -27,7 +26,7 @@ public enum AttributeType {
     EMERGENCY_CODE("Emergency Code"), //
     EMERGENCY_CODE_FLAG("Emergency Code Flag"), //
     ENCODED_POSITION_SOURCE("Encoded Position Source"), //
-    ERROR(""), //
+    ERROR("Error"), //
     ERROR_CORRECTING_CODE_1("Error Correcting Code 1"), //
     ERROR_CORRECTING_CODE_2("Error Correcting Code 2"), //
     FIRE_FLAG("Fire Flag", JsonType.BOOLEAN), //
@@ -90,7 +89,7 @@ public enum AttributeType {
         return name;
     }
 
-    JsonType jsonType() {
+    public JsonType jsonType() {
         return jsonType;
     }
 }
