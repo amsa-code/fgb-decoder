@@ -19,8 +19,9 @@ public class OpenApiFragmentGeneratorTest {
         s.append("      type: object\n");
         s.append("      properties:\n");
         Arrays.stream(AttributeType.values()) //
-        .sorted((a, b) -> a.toString().compareTo(b.toString())) //
-                .map(x -> "        " + QUOTE + x + QUOTE + ":\n" + "          type: " + x.jsonType().name().toLowerCase() + "\n") //
+                .sorted((a, b) -> a.toString().compareTo(b.toString())) //
+                .map(x -> "        " + QUOTE + x + QUOTE + ":\n" + "          type: "
+                        + x.jsonType().name().toLowerCase() + "\n") //
                 .forEach(x -> s.append(x));
         File file = new File("src/main/resources/fgb-openapi-fragment.yml");
         Files.write(file.toPath(), s.toString().getBytes(StandardCharsets.UTF_8));
