@@ -1,0 +1,143 @@
+    Detection:
+      type: object
+      properties:
+        '121.5 MHz Homing':
+          type: boolean
+        'Activation Type':
+          type: string
+        'Additional Data Flag':
+          type: string
+        'Additional ELT numbers':
+          type: integer
+        'Aircraft 24 bit address (hex)':
+          type: string
+        'Aircraft 24 bit address (octal)':
+          type: string
+        'Aircraft Callsign':
+          type: string
+        'Aircraft Operator':
+          type: string
+        'Aircraft Reg. Marking':
+          type: string
+        'Aircraft Serial Number':
+          type: integer
+        'Aux. radio-locating':
+          type: string
+        'BCH-2':
+          type: string
+        'Beacon Serial Number':
+          type: integer
+        'Beacon Type':
+          type: string
+        'C/S Type approval':
+          type: integer
+        'C/S Type approval number':
+          type: integer
+        'C/S cert. no. present':
+          type: boolean
+        'Coarse Position Latitude':
+          type: number
+        'Coarse Position Longitude':
+          type: number
+        'Country Code':
+          type: integer
+        'Country of Registration':
+          type: string
+        'Disabled':
+          type: boolean
+        'Emergency Code':
+          type: string
+        'Emergency Code Flag':
+          type: string
+        'Encoded Position Source':
+          type: string
+        'Error':
+          type: string
+        'Error Correcting Code 1':
+          type: string
+        'Error Correcting Code 2':
+          type: string
+        'Fire Flag':
+          type: boolean
+        'Fixed bits':
+          type: string
+        'Hex Data':
+          type: string
+        'Hex Id':
+          type: string
+        'ID+POSN':
+          type: string
+        'Is Long Message Default':
+          type: boolean
+        'Latitude':
+          type: number
+        'Longitude':
+          type: number
+        'Medical Help Flag':
+          type: boolean
+        'Message Type':
+          type: string
+        'National Use':
+          type: string
+        'Nature of Distress':
+          type: string
+        'Offset Position Latitude Diff':
+          type: number
+        'Offset Position Longitude Diff':
+          type: number
+        'Orbitography 4 bits':
+          type: string
+        'Orbitography Data':
+          type: string
+        'Orbitography ID':
+          type: string
+        'PDF-2':
+          type: string
+        'Protocol Type':
+          type: string
+        'RLM Capability Type':
+          type: string
+        'RLM Capability Type-1 (Auto)':
+          type: boolean
+        'RLM Capability Type-2 (Manual)':
+          type: boolean
+        'RLM Received Type-1 (Auto)':
+          type: boolean
+        'RLM Received Type-2 (Manual)':
+          type: boolean
+        'RLS ID':
+          type: integer
+        'RLS Provider ID':
+          type: string
+        'RLS TAC Number':
+          type: string
+        'Radio Callsign':
+          type: string
+        'Serial Number':
+          type: integer
+        'Ship MMSI':
+          type: integer
+        'Ship MMSI Last 6 Digits':
+          type: string
+        'Ship Security MMSI':
+          type: integer
+        'Spare':
+          type: string
+        'Specific Beacon Number':
+          type: string
+        'Specific ELT number':
+          type: integer
+        'Supplementary Data':
+          type: string
+        'US Manufacturer ID':
+          type: integer
+        'US Model ID':
+          type: integer
+        'US National Use':
+          type: string
+        'US Run No.':
+          type: integer
+        'US Sequence No.':
+          type: integer
+        'User Protocol Type':
+          type: string
