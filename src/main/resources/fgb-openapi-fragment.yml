@@ -107,6 +107,8 @@
           type: boolean
         'RLS ID':
           type: integer
+        'RLS MMSI last 6 digits':
+          type: string
         'RLS Provider ID':
           type: string
         'RLS TAC Number':

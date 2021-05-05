@@ -3,7 +3,7 @@
 "Hex Id":"1E9B978035BFDFF",
 "Country Code":244,
 "Protocol Type":"Return Link Service",
-"Beacon Type":"SPARE",
+"Beacon Type":"Test",
 "RLS TAC Number":"T188",
 "RLS ID":107,
 "Coarse Position Latitude":52.0,
