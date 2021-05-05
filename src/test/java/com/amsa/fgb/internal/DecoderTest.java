@@ -36,7 +36,7 @@ public class DecoderTest {
     public void testDecodeToJsonWith30Chr() {
         assertEquals(load("/detection.json"), Decoder.decodeFullAsJson(HEXSTRING_30_CHRS));
     }
-
+    
     private static String load(String resource) {
         try (InputStream in = DecoderTest.class.getResourceAsStream(resource)) {
             return new String(read(in), StandardCharsets.UTF_8);
@@ -94,12 +94,14 @@ public class DecoderTest {
                     assertJsonEquals(expected, json);
                     if (COMPARE_WITH_LEGACY) {
                         File f = new File("src/test/resources/legacy-output", file.getName());
-                        String legacy = readString(f);
-                        System.out.println("================================");
-                        System.out.println(json);
-                        System.out.println("--------------------------------");
-                        System.out.println(legacy);
-                        System.out.println();
+                        if (f.exists()) {
+                            String legacy = readString(f);
+                            System.out.println("================================");
+                            System.out.println(json);
+                            System.out.println("--------------------------------");
+                            System.out.println(legacy);
+                            System.out.println();
+                        }
                     }
 
                     // this commented out section is to produce comparison from legacy aussar-oracle-java library

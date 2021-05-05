@@ -57,6 +57,7 @@ public enum AttributeType {
     RLS_ID("RLS ID", JsonType.INTEGER), //
     RLS_PROVIDER_ID("RLS Provider ID"), //
     RLS_TAC_NUMBER("RLS TAC Number"), //
+    RLS_MMSI_LAST_6_DIGITS("RLS MMSI last 6 digits"), //
     SERIAL_NUMBER("Serial Number", JsonType.INTEGER), //
     SHIP_MMSI_LAST_6_DIGITS("Ship MMSI Last 6 Digits"), //
     SHIP_MMSI("Ship MMSI", JsonType.INTEGER), //

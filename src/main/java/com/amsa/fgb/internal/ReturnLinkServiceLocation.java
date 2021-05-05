@@ -59,8 +59,12 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
         result.add(this.protocolType(binCode, 37, 40));
         // new code for RLS (differs from NationalLocation)
         result.add(beaconType(binCode, 41, 42));
-        result.add(this.rlsTacNumber(binCode, 41, 52));
-        result.add(this.rlsId(binCode, 53, 66));
+        if (isRlsWithMmsi(binCode)) {
+            result.add(mmsi(AttributeType.RLS_MMSI_LAST_6_DIGITS, binCode, 47, 66));             
+        } else {
+            result.add(this.rlsTacNumber(binCode, 41, 52));
+            result.add(this.rlsId(binCode, 53, 66));
+        }
         result.addAll(this.coarsePositionAttributes(binCode));
 
         if (hexStr.length() > 15) {
@@ -98,6 +102,17 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
 
         return result;
     }
+    
+    protected HexAttribute mmsi(AttributeType type, String binCode, int s, int f) {
+        int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));
+        String e = "";
+        String value = v + "";
+        int len = value.length();
+        for (int i = 0; i < (6 - len); i++) {
+            value = "0" + value;
+        }
+        return new HexAttribute(type, s, f, value, e);
+    }
 
     private List<HexAttribute> finePositionAttributes(String binCode) {
         Position p = finePosition(binCode);
@@ -127,20 +142,33 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
 
     // This method is called by ReturnLinkServiceLocation.java
     private static HexAttribute beaconType(String binCode, int s, int f) {
+        boolean isRlsWithMmsi = isRlsWithMmsi(binCode);
         String v = binCode.substring(s, f + 1);
         String e = "";
 
         if (v.equals("00")) {
-            v = "ELT";
+            if (isRlsWithMmsi) {
+                v = "First EPIRB on Vessel";
+            } else {
+                v = "ELT";
+            }
         } else if (v.equals("01")) {
-            v = "EPIRB";
+            if (isRlsWithMmsi) {
+                v = "Second EPIRB on Vessel";
+            } else {
+                v = "EPIRB";
+            }
         } else if (v.equals("10")) {
             v = "PLB";
         } else {
-            v = "SPARE";
+            v = "Test";
         }
 
         return new HexAttribute(AttributeType.BEACON_TYPE, s, f, v, e);
+    }
+
+    private static boolean isRlsWithMmsi(String binCode) {
+        return binCode.charAt(43) == '1' && binCode.charAt(44) == '1' && binCode.charAt(45) == '1' && binCode.charAt(46) == '1';
     }
 
     private static HexAttribute rlmCapabilityType1(String binCode, int i) {
