@@ -168,7 +168,8 @@ class ReturnLinkServiceLocation extends BeaconProtocol {
     }
 
     private static boolean isRlsWithMmsi(String binCode) {
-        return binCode.charAt(43) == '1' && binCode.charAt(44) == '1' && binCode.charAt(45) == '1' && binCode.charAt(46) == '1';
+        return binCode.charAt(43) == '1' && binCode.charAt(44) == '1' && binCode.charAt(45) == '1'
+                && binCode.charAt(46) == '1';
     }
 
     private static HexAttribute rlmCapabilityType1(String binCode, int i) {
