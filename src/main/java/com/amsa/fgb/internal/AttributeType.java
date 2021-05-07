@@ -1,6 +1,6 @@
 package com.amsa.fgb.internal;
 
-public enum AttributeType {
+enum AttributeType {
     _121_5_MHZ_HOMING("121.5 MHz Homing", JsonType.BOOLEAN), //
     ACTIVATION_TYPE("Activation Type"), //
     ADDITIONAL_DATA_FLAG("Additional Data Flag"), //
@@ -90,7 +90,7 @@ public enum AttributeType {
         return name;
     }
 
-    public JsonType jsonType() {
+    JsonType jsonType() {
         return jsonType;
     }
 }
