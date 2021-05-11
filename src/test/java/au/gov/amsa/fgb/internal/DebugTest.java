@@ -9,8 +9,6 @@ import java.io.UncheckedIOException;
 
 import org.junit.Test;
 
-import au.gov.amsa.fgb.internal.Debug;
-
 public class DebugTest {
 
     @Test

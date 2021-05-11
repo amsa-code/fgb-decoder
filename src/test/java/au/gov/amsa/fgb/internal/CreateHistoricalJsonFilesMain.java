@@ -14,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 
 import au.gov.amsa.fgb.TestingUtil;
-import au.gov.amsa.fgb.internal.Decoder;
 
 public final class CreateHistoricalJsonFilesMain {
 

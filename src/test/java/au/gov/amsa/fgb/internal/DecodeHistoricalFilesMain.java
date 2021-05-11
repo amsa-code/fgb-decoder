@@ -6,8 +6,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import au.gov.amsa.fgb.internal.Decoder;
-
 public final class DecodeHistoricalFilesMain {
 
     private DecodeHistoricalFilesMain() {

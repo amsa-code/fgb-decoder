@@ -8,8 +8,6 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import au.gov.amsa.fgb.internal.AttributeType;
-
 public class OpenApiFragmentGeneratorTest {
 
     private static final String QUOTE = "'";

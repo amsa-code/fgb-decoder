@@ -7,9 +7,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import au.gov.amsa.fgb.internal.HexAttribute;
-import au.gov.amsa.fgb.internal.Unknown;
-
 public class UnknownTest {
 
     @Test

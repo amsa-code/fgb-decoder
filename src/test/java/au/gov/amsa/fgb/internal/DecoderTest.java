@@ -18,7 +18,6 @@ import java.util.stream.Stream;
 import org.junit.Test;
 
 import au.gov.amsa.fgb.TestingUtil;
-import au.gov.amsa.fgb.internal.Decoder;
 
 /**
  * Tests the decoding methods of {@link Decoder}.

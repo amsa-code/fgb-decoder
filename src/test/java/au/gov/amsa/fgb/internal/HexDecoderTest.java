@@ -11,11 +11,6 @@ import org.junit.Test;
 
 import com.github.davidmoten.junit.Asserts;
 
-import au.gov.amsa.fgb.internal.Debug;
-import au.gov.amsa.fgb.internal.Decoder;
-import au.gov.amsa.fgb.internal.HexAttribute;
-import au.gov.amsa.fgb.internal.HexDecoder;
-
 public final class HexDecoderTest {
 
     @Test
