@@ -112,13 +112,13 @@ abstract class User extends BeaconProtocol {
         if (code.equals("01")) {
             v = "121.5 MHz";
         } else if (code.equals("00")) {
-            v = "NONE";
+            v = "None";
         } else if (code.equals("10")) {
-            v = "Maritime locating: 9GHz SART";
+            v = "Maritime 9GHz SART";
         } else {
             v = "Other device(s)";
         }
-        return new HexAttribute(AttributeType.AUX_RADIO_LOCATING, s, f, v, e);
+        return new HexAttribute(AttributeType.AUX_RADIO_LOCATING_DEVICE, s, f, v, e);
     }
 
     private HexAttribute emergencyCode(String binCode, int s) {

@@ -9,7 +9,7 @@
 "aircraft24BitAddressOctal":"26423254",
 "additionalEltNumbers":18,
 "nationalUse":"1101110000",
-"auxiliaryRadioLocatingDevice":"Maritime locating: 9GHz SART",
+"auxiliaryRadioLocatingDevice":"Maritime 9GHz SART",
 "errorCorrectingCode1":"000111111101011000100",
 "emergencyCodePresent":true,
 "activationType":"Automatic and Manual",

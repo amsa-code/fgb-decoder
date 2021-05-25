@@ -11,7 +11,7 @@ enum AttributeType {
     AIRCRAFT_OPERATOR("aircraftOperator"), //
     AIRCRAFT_REG_MARKING("aircraftRegistrationMarking"), //
     AIRCRAFT_SERIAL_NUMBER("aircraftSerialNumber", JsonType.INTEGER), //
-    AUX_RADIO_LOCATING("auxiliaryRadioLocatingDevice"), // TODO set enum in schema
+    AUX_RADIO_LOCATING_DEVICE("auxiliaryRadioLocatingDevice"), // TODO set enum in schema
     BCH_2("bch2"), //
     BEACON_SERIAL_NUMBER("beaconSerialNumber", JsonType.INTEGER), //
     BEACON_TYPE("beaconType"), //

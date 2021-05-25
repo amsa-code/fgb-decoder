@@ -8,7 +8,7 @@
 "serialNumber":56868,
 "nationalUse":"1111111010",
 "cSTypeApprovalNumber":256,
-"auxiliaryRadioLocatingDevice":"Maritime locating: 9GHz SART",
+"auxiliaryRadioLocatingDevice":"Maritime 9GHz SART",
 "errorCorrectingCode1":"110001111110111011101",
 "encodedPositionSource":"INTERNAL",
 "isLongMessageDefault":true}
