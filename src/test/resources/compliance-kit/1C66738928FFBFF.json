@@ -1,7 +1,7 @@
-{"Message Type":"Standard Location (Format - Unknown)",
-"Hex Data":"Unknown",
-"Hex Id":"1C66738928FFBFF",
-"Country Code":227,
-"Protocol Type":"Aircraft Address",
-"Aircraft 24 bit address (hex)":"39C494",
-"Aircraft 24 bit address (octal)":"16342224"}
+{"messageType":"Standard Location (Format - Unknown)",
+"hexData":"Unknown",
+"hexId":"1C66738928FFBFF",
+"countryCode":227,
+"protocolType":"Aircraft Address",
+"aircraft24BitAddressHex":"39C494",
+"aircraft24BitAddressOctal":"16342224"}

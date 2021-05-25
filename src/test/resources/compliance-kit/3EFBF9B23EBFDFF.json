@@ -1,7 +1,7 @@
-{"Message Type":"Return Link Service Location",
-"Hex Data":"Unknown",
-"Hex Id":"3EFBF9B23EBFDFF",
-"Country Code":503,
-"Protocol Type":"Return Link Service",
-"Beacon Type":"Test",
-"RLS MMSI last 6 digits":"222333"}
+{"messageType":"Return Link Service Location",
+"hexData":"Unknown",
+"hexId":"3EFBF9B23EBFDFF",
+"countryCode":503,
+"protocolType":"Return Link Service",
+"beaconType":"Test",
+"rlsMmsiLast6Digits":"222333"}

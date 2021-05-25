@@ -1,7 +1,7 @@
-{"Message Type":"Standard Location (Format - Unknown)",
-"Hex Data":"Unknown",
-"Hex Id":"1D0E4E9142FFBFF",
-"Country Code":232,
-"Protocol Type":"PLB - Serial",
-"C/S Type approval":157,
-"Beacon Serial Number":2209}
+{"messageType":"Standard Location (Format - Unknown)",
+"hexData":"Unknown",
+"hexId":"1D0E4E9142FFBFF",
+"countryCode":232,
+"protocolType":"PLB - Serial",
+"cSTypeApproval":157,
+"beaconSerialNumber":2209}

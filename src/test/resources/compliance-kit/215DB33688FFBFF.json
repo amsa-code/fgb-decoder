@@ -1,6 +1,6 @@
-{"Message Type":"Standard Location (Format - Unknown)",
-"Hex Data":"Unknown",
-"Hex Id":"215DB33688FFBFF",
-"Country Code":266,
-"Protocol Type":"Test",
-"National Use":"110110011001101101000100"}
+{"messageType":"Standard Location (Format - Unknown)",
+"hexData":"Unknown",
+"hexId":"215DB33688FFBFF",
+"countryCode":266,
+"protocolType":"Test",
+"nationalUse":"110110011001101101000100"}

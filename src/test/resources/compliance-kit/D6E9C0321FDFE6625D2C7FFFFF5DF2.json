@@ -1,9 +1,9 @@
-{"Message Type":"User Location (Long)",
-"Hex Data":"D6E9C0321FDFE6625D2C7FFFFF5DF2",
-"Hex Id":"ADD380643FBFCCC",
-"Country Code":366,
-"User Protocol Type":"National User",
-"National Use":"1110000000011001000011111110111111110011001100",
-"Error Correcting Code 1":"010010111010010110001",
-"PDF-2":"11111111111111110101",
-"BCH-2":"110111110010"}
+{"messageType":"User Location (Long)",
+"hexData":"D6E9C0321FDFE6625D2C7FFFFF5DF2",
+"hexId":"ADD380643FBFCCC",
+"countryCode":366,
+"userProtocolType":"National User",
+"nationalUse":"1110000000011001000011111110111111110011001100",
+"errorCorrectingCode1":"010010111010010110001",
+"pdf2":"11111111111111110101",
+"bch2":"110111110010"}

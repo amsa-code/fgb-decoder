@@ -1,145 +1,145 @@
     Detection:
       type: object
       properties:
-        '121.5 MHz Homing':
+        'activationType':
+          type: string
+        'additionalDataFlag':
+          type: string
+        'additionalEltNumbers':
+          type: integer
+        'aircraft24BitAddressHex':
+          type: string
+        'aircraft24BitAddressOctal':
+          type: string
+        'aircraftCallsign':
+          type: string
+        'aircraftOperator':
+          type: string
+        'aircraftRegistrationMarking':
+          type: string
+        'aircraftSerialNumber':
+          type: integer
+        'auxiliaryRadioLocatingDevice':
+          type: string
+        'bch2':
+          type: string
+        'beaconSerialNumber':
+          type: integer
+        'beaconType':
+          type: string
+        'cSCertNumberPresent':
           type: boolean
-        'Activation Type':
-          type: string
-        'Additional Data Flag':
-          type: string
-        'Additional ELT numbers':
+        'cSTypeApproval':
           type: integer
-        'Aircraft 24 bit address (hex)':
-          type: string
-        'Aircraft 24 bit address (octal)':
-          type: string
-        'Aircraft Callsign':
-          type: string
-        'Aircraft Operator':
-          type: string
-        'Aircraft Reg. Marking':
-          type: string
-        'Aircraft Serial Number':
+        'cSTypeApprovalNumber':
           type: integer
-        'Aux. radio-locating':
-          type: string
-        'BCH-2':
-          type: string
-        'Beacon Serial Number':
-          type: integer
-        'Beacon Type':
-          type: string
-        'C/S Type approval':
-          type: integer
-        'C/S Type approval number':
-          type: integer
-        'C/S cert. no. present':
-          type: boolean
-        'Coarse Position Latitude':
+        'coarsePositionLatitude':
           type: number
-        'Coarse Position Longitude':
+        'coarsePositionLongitude':
           type: number
-        'Country Code':
+        'countryCode':
           type: integer
-        'Country of Registration':
+        'countryOfRegistration':
           type: string
-        'Disabled':
+        'disabled':
           type: boolean
-        'Emergency Code Flag':
+        'emergencyCodeFlag':
           type: string
-        'Emergency Code Present':
+        'emergencyCodePresent':
           type: boolean
-        'Encoded Position Source':
+        'encodedPositionSource':
           type: string
-        'Error':
+        'error':
           type: string
-        'Error Correcting Code 1':
+        'errorCorrectingCode1':
           type: string
-        'Error Correcting Code 2':
+        'errorCorrectingCode2':
           type: string
-        'Fire Flag':
+        'fireFlag':
           type: boolean
-        'Fixed bits':
+        'fixedBits':
           type: string
-        'Hex Data':
+        'hexData':
           type: string
-        'Hex Id':
+        'hexId':
           type: string
-        'ID+POSN':
-          type: string
-        'Is Long Message Default':
+        'homing121_5MHz':
           type: boolean
-        'Latitude':
+        'idPosition':
+          type: string
+        'isLongMessageDefault':
+          type: boolean
+        'latitude':
           type: number
-        'Longitude':
+        'longitude':
           type: number
-        'Medical Help Flag':
+        'medicalHelpFlag':
           type: boolean
-        'Message Type':
+        'messageType':
           type: string
-        'National Use':
+        'nationalUse':
           type: string
-        'Nature of Distress':
+        'natureOfDistress':
           type: string
-        'Offset Position Latitude Diff':
+        'offsetPositionLatitudeDiff':
           type: number
-        'Offset Position Longitude Diff':
+        'offsetPositionLongitudeDiff':
           type: number
-        'Orbitography 4 bits':
+        'orbitography4Bits':
           type: string
-        'Orbitography Data':
+        'orbitographyData':
           type: string
-        'Orbitography ID':
+        'orbitographyId':
           type: string
-        'PDF-2':
+        'pdf2':
           type: string
-        'Protocol Type':
+        'protocolType':
           type: string
-        'RLM Capability Type':
+        'radioCallsign':
           type: string
-        'RLM Capability Type-1 (Auto)':
+        'rlmCapabilityType':
+          type: string
+        'rlmCapabilityType1Auto':
           type: boolean
-        'RLM Capability Type-2 (Manual)':
+        'rlmCapabilityType2Manual':
           type: boolean
-        'RLM Received Type-1 (Auto)':
+        'rlmReceivedType1Auto':
           type: boolean
-        'RLM Received Type-2 (Manual)':
+        'rlmReceivedType2Manual':
           type: boolean
-        'RLS ID':
+        'rlsId':
           type: integer
-        'RLS MMSI last 6 digits':
+        'rlsMmsiLast6Digits':
           type: string
-        'RLS Provider ID':
+        'rlsProviderId':
           type: string
-        'RLS TAC Number':
+        'rlsTacNumber':
           type: string
-        'Radio Callsign':
-          type: string
-        'Serial Number':
+        'serialNumber':
           type: integer
-        'Ship MMSI':
+        'shipMmsi':
           type: integer
-        'Ship MMSI Last 6 Digits':
+        'shipMmsiLast6Digits':
           type: string
-        'Ship Security MMSI':
+        'shipSecurityMmsi':
           type: integer
-        'Spare':
+        'spare':
           type: string
-        'Specific Beacon Number':
+        'specificBeaconNumber':
           type: string
-        'Specific ELT number':
+        'specificEltNumber':
           type: integer
-        'Supplementary Data':
+        'supplementaryData':
           type: string
-        'US Manufacturer ID':
+        'uSManufacturerId':
           type: integer
-        'US Model ID':
+        'uSModelId':
           type: integer
-        'US National Use':
+        'uSNationalUse':
           type: string
-        'US Run No.':
+        'uSRunNumber':
           type: integer
-        'US Sequence No.':
+        'uSSequenceNumber':
           type: integer
-        'User Protocol Type':
+        'userProtocolType':
           type: string

@@ -1,8 +1,8 @@
-{"Message Type":"Standard Location (Format - Unknown)",
-"Hex Data":"Unknown",
-"Hex Id":"3EE6F9D47CFFBFF",
-"Country Code":503,
-"Protocol Type":"Aircraft Address",
-"Aircraft 24 bit address (hex)":"7CEA3E",
-"Aircraft 24 bit address (octal)":"37165076",
-"Aircraft Callsign":"VH-?J0"}
+{"messageType":"Standard Location (Format - Unknown)",
+"hexData":"Unknown",
+"hexId":"3EE6F9D47CFFBFF",
+"countryCode":503,
+"protocolType":"Aircraft Address",
+"aircraft24BitAddressHex":"7CEA3E",
+"aircraft24BitAddressOctal":"37165076",
+"aircraftCallsign":"VH-?J0"}

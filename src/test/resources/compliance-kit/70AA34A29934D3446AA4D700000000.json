@@ -1,8 +1,8 @@
-{"Message Type":"User (Short)",
-"Hex Data":"70AA34A29934D3446AA4D700000000",
-"Hex Id":"E15469453269A68",
-"Country Code":778,
-"User Protocol Type":"Spare",
-"National Use":"0001101001010001010011001001101001101001101000",
-"Error Correcting Code 1":"100011010101010010011",
-"National Use":"010111"}
+{"messageType":"User (Short)",
+"hexData":"70AA34A29934D3446AA4D700000000",
+"hexId":"E15469453269A68",
+"countryCode":778,
+"userProtocolType":"Spare",
+"nationalUse":"0001101001010001010011001001101001101001101000",
+"errorCorrectingCode1":"100011010101010010011",
+"nationalUse":"010111"}

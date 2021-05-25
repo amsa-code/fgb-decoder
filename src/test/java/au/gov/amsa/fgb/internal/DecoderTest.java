@@ -91,6 +91,7 @@ public class DecoderTest {
                     String expected = readString(file);
                     String json = Decoder.decodeFullAsJson(hex);
                     System.out.println(file);
+//                    Files.write(file.toPath(), json.getBytes(StandardCharsets.UTF_8));
                     assertJsonEquals(expected, json);
                     if (COMPARE_WITH_LEGACY) {
                         File f = new File("src/test/resources/legacy-output", file.getName());

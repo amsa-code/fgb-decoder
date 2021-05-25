@@ -1,8 +1,8 @@
-{"Message Type":"User (Format - Unknown)",
-"Hex Data":"Unknown",
-"Hex Id":"BEE8D34D34A34D1",
-"Country Code":503,
-"User Protocol Type":"Maritime",
-"Ship MMSI Last 6 Digits":"000040",
-"Specific Beacon Number":"0",
-"Aux. radio-locating":"121.5 MHz"}
+{"messageType":"User (Format - Unknown)",
+"hexData":"Unknown",
+"hexId":"BEE8D34D34A34D1",
+"countryCode":503,
+"userProtocolType":"Maritime",
+"shipMmsiLast6Digits":"000040",
+"specificBeaconNumber":"0",
+"auxiliaryRadioLocatingDevice":"121.5 MHz"}
