@@ -77,7 +77,9 @@ public class DecoderTest {
     public void testDecoderWrongLength() {
         Decoder.decodeFullAsJson("abc");
     }
-
+    
+    private static final boolean REWRITE_COMPLIANCE_KIT = Boolean.parseBoolean(System.getProperty("rewrite", "false"));
+    
     @Test
     public void testComplianceKit() throws IOException {
         // createComplianceKitTests();
@@ -91,8 +93,11 @@ public class DecoderTest {
                     String expected = readString(file);
                     String json = Decoder.decodeFullAsJson(hex);
                     System.out.println(file);
-//                    Files.write(file.toPath(), json.getBytes(StandardCharsets.UTF_8));
-                    assertJsonEquals(expected, json);
+                    if (REWRITE_COMPLIANCE_KIT) {
+                        Files.write(file.toPath(), json.getBytes(StandardCharsets.UTF_8));
+                    } else {
+                        assertJsonEquals(expected, json);
+                    }
                     if (COMPARE_WITH_LEGACY) {
                         File f = new File("src/test/resources/legacy-output", file.getName());
                         if (f.exists()) {
