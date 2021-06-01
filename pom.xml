@@ -29,7 +29,7 @@
         <checkstyle.core.version>8.43</checkstyle.core.version>
         <javadoc.version>3.2.0</javadoc.version>
         <pmd.version>3.14.0</pmd.version>
-        <project.info.version>3.1.1</project.info.version>
+        <project.info.version>3.1.2</project.info.version>
         <jxr.version>3.1.1</jxr.version>
         <taglist.version>2.4</taglist.version>
         <spotbugs.version>4.2.3</spotbugs.version>
@@ -109,7 +109,7 @@
             <artifactId>guava-mini</artifactId>
             <version>0.1.3</version>
         </dependency>
-        
+
         <!-- Test Dependencies -->
         <dependency>
             <groupId>junit</groupId>
@@ -143,6 +143,26 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <executions>
+                    <execution>
+                        <id>enforce-maven</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>3.5.0</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
@@ -181,7 +201,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
