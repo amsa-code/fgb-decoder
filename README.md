@@ -1,5 +1,5 @@
 # fgb-decoder
-<a href="https://travis-ci.com/amsa-code/fgb-decoder"><img src="https://travis-ci.com/amsa-code/fgb-decoder.svg"/></a><br/>
+<a href="https://github.com/amsa-code/fgb-decoder/actions/workflows/ci.yml"><img src="https://github.com/amsa-code/fgb-decoder/actions/workflows/ci.yml/badge.svg"/></a><br/>
 [![codecov](https://codecov.io/gh/amsa-code/fgb-decoder/branch/master/graph/badge.svg)](https://codecov.io/gh/amsa-code/fgb-decoder)<br/>
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/au.gov.amsa/fgb-decoder/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/au.gov.amsa/fgb-decoder)<br/>
 
