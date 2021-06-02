@@ -103,6 +103,6 @@ To build a release:
 * `./release.sh <VERSION>`
 * go to Github project and publish a release (look at previous releases to see what goes in the release description field)
 * in the Github project go to Actions and check to see if the release has made its way to Maven Central successfully
+* `git checkout <VERSION> && ./generate-site.sh` (requires repo *amsa-code.github.io* to be sitting next to fgb-decoder)
 * change the *fgb-decoder* version in *beacon-decoder-aws* and run its release script (which deploys it to AWS)
 * change the *fgb-decoder* version in *parent/beacon-decoder* and redeploy it to Tomcat on sar*.
-
