@@ -15,6 +15,8 @@ There's plenty of legacy ugliness in there still but should be enough for AMSA's
 
 **Status**: In development, will be in use in production in AMSA by July 2021
 
+Maven [reports](https://amsa-code.github.io/fgb-decoder/index.html) including [javadocs](https://amsa-code.github.io/fgb-decoder/apidocs/index.html)
+
 **See also**: [sgb-decoder](https://github.com/amsa-code/sgb-decoder.git) to decode Second Generation Beacon Hex Ids and detection messages.
 
 ## Getting started
