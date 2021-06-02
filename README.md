@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/amsa-code/fgb-decoder/branch/master/graph/badge.svg)](https://codecov.io/gh/amsa-code/fgb-decoder)<br/>
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/au.gov.amsa/fgb-decoder/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/au.gov.amsa/fgb-decoder)<br/>
 
-This is an extraction and large cleanup of AMSA's First Generation Beacon hexId and detection message decode java source code (originally in *aussar-oracle-java* project).
+This is an extraction and large cleanup of AMSA's First Generation Beacon hexId and detection message decode java source code (originally in *aussar-oracle-java* project). The decode is compliant with the C/S T.001 Issue 4 – Revision 7 March 2021.
 
 The cleanup included:
 * use JSON types like int, double, boolean instead of pure text fields (YES = true etc)
