@@ -39,7 +39,56 @@ To decode a 30 character hex beacon detection message:
 ```java
 String json = Detection.decodeHexToJson(hex);
 ```
+## Examples
+The hexId `ADCC40504000185` decodes to:
+```json
+{
+"messageType": "User (Format - Unknown)",
+"hexData": "Unknown",
+"hexId": "ADCC40504000185",
+"countryCode": 366,
+"userProtocolType": "Serial",
+"beaconType": "Aviation",
+"cSCertNumberPresent": true,
+"serialNumber": 5136,
+"nationalUse": "0000000000",
+"cSTypeApprovalNumber": 97,
+"auxiliaryRadioLocatingDevice": "121.5 MHz",
+"uSManufacturerId": 1,
+"uSSequenceNumber": 1040,
+"uSModelId": 0,
+"uSRunNumber": 0,
+"uSNationalUse": "01100001"
+}
+```
 
+The detection message `D6E6202820000C29FF51041775302D` decodes to:
+
+```json
+{
+"messageType": "User Location (Long)",
+"hexData": "D6E6202820000C29FF51041775302D",
+"hexId": "ADCC40504000185",
+"countryCode": 366,
+"userProtocolType": "Serial",
+"beaconType": "Aviation",
+"cSCertNumberPresent": true,
+"serialNumber": 5136,
+"nationalUse": "0000000000",
+"cSTypeApprovalNumber": 97,
+"auxiliaryRadioLocatingDevice": "121.5 MHz",
+"uSManufacturerId": 1,
+"uSSequenceNumber": 1040,
+"uSModelId": 0,
+"uSRunNumber": 0,
+"uSNationalUse": "01100001",
+"errorCorrectingCode1": "001111111110101000100",
+"encodedPositionSource": "EXTERNAL",
+"latitude": 32.733333333333334,
+"longitude": -117.2,
+"errorCorrectingCode2": "000000101101"
+}
+```
 ## How to build
 ```bash
 mvn clean install
