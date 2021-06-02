@@ -9,6 +9,7 @@ The cleanup included:
 * use JSON types like int, double, boolean instead of pure text fields (YES = true etc)
 * search through 100,000 historical FGB messages to increase test coverage to over 90%
 * create enumerated types
+* a large refactoring to deal with a huge amount of copy-and-paste!
 
 There's plenty of legacy ugliness in there still but should be enough for AMSA's use cases.
 
