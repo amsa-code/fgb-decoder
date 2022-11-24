@@ -7,7 +7,7 @@
 
     <groupId>au.gov.amsa</groupId>
     <artifactId>fgb-decoder</artifactId>
-    <version>0.1.2-SNAPSHOT</version>
+    <version>0.1.2</version>
 
     <name>${project.artifactId}</name>
     <description>Decodes second generation Beacon detection messages and Beacon 23 Hex IDs</description>
