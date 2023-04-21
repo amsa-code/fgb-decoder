@@ -23,7 +23,7 @@
 
         <jackson.version>2.14.2</jackson.version>
 
-        <checkstyle.version>3.2.1</checkstyle.version>
+        <checkstyle.version>3.2.2</checkstyle.version>
         <checkstyle.xml>src/main/checkstyle/checkstyle.xml</checkstyle.xml>
         <checkstyle.suppressions.xml>src/main/checkstyle/suppressions.xml</checkstyle.suppressions.xml>
         <checkstyle.core.version>9.3</checkstyle.core.version>
