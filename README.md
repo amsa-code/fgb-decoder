@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/amsa-code/fgb-decoder/branch/master/graph/badge.svg)](https://codecov.io/gh/amsa-code/fgb-decoder)<br/>
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/au.gov.amsa/fgb-decoder/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/au.gov.amsa/fgb-decoder)<br/>
 
-This is an extraction and large cleanup of AMSA's COSPAS-SARSAT First Generation Beacon hexId and detection message decode java source code (originally in *aussar-oracle-java* project). The decode is compliant with the C/S T.001 Issue 4 Revision 9 [specification](https://www.cospas-sarsat.int/images/stories/SystemDocs/Current/T001-MAR-25-2022.pdf).
+This is an extraction and large cleanup of AMSA's COSPAS-SARSAT First Generation Beacon hexId and detection message decode java source code (originally in *aussar-oracle-java* project). The decode is compliant with the C/S T.001 Issue 4 Revision 10 [specification]([https://www.cospas-sarsat.int/images/stories/SystemDocs/Current/T001-MAR-25-2022.pdf](https://cospas-sarsat.int/images/stories/SystemDocs/Current/A002-NOV-29-2022.pdf)) with the exception of the ELT(DT) parts (see https://github.com/amsa-code/fgb-decoder/issues/117).
 
 The cleanup included:
 * use JSON types like int, double, boolean instead of pure text fields (YES = true etc)
@@ -13,7 +13,7 @@ The cleanup included:
 
 There's plenty of legacy ugliness in there still but should be enough for AMSA's use cases.
 
-**Status**: In development, will be in use in production in AMSA by July 2021
+**Status**: production
 
 Maven [reports](https://amsa-code.github.io/fgb-decoder/index.html) including [javadocs](https://amsa-code.github.io/fgb-decoder/apidocs/index.html)
 
