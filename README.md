@@ -99,7 +99,7 @@ mvn clean install
 
 ## Developer instructions
 To build a release:
-* `git fetch --tags && git tag` to choose the next version
+* `git checkout master`
 * `./release.sh <VERSION>`
 * go to Github project and publish a release (look at previous releases to see what goes in the release description field)
 * in the Github project go to Actions and check to see if the release has made its way to Maven Central successfully
