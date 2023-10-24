@@ -99,6 +99,13 @@ public final class HexDecoderTest {
     }
 
     @Test
+    public void testDecodeWithRadioCallsignWithTrailingSpaces() {
+        String hex = "C1AAD9FEF6490D1";
+        Map<String, HexAttribute> m = decodeToMap(hex);
+        assertEquals("PMKQ", m.get("radioCallsign").value());
+    }
+
+    @Test
     public void testDecode() {
         String hex = "D6E67C5F61F89568772240FFFFFFFF";
         Decoder.decodeFullAsJson(hex);

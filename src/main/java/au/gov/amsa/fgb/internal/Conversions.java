@@ -558,7 +558,7 @@ final class Conversions {
                             mbaudotStr = mbaudotStr + "?";
                             e.add(mbaudotSubBits + " = Space - Non-Spec\n");
                         } else {
-                            mbaudotStr = mbaudotStr + "*";
+                            mbaudotStr = mbaudotStr + " ";
                             e.add(mbaudotSubBits + " = Space - Right Justified\n");
                         }
                     } else {
@@ -586,6 +586,8 @@ final class Conversions {
             }
 
         } // end of for loop
+
+        mbaudotStr = mbaudotStr.replaceAll("\\s+$", "");
 
         // Deal with SPACE if the protocol is not User Radio Call Sign, these protocols
         // are: UserAviation, UserMaritime and UserSerialAircraftOperator

@@ -30,7 +30,7 @@ public class DecoderTest {
     // private static final String HEXSTRING_15_CHRS = "ADCC40504000185";
     // private static final String HEXSTRING_15_CHRS_AVIATION = "BEE64BE562F9BD9";
     private static final String HEXSTRING_30_CHRS = "D6E6202820000C29FF51041775302D";
-    private static final boolean COMPARE_WITH_LEGACY = true;
+    private static final boolean COMPARE_WITH_LEGACY = false;
 
     @Test
     public void testDecodeToJsonWith30Chr() {
@@ -92,7 +92,6 @@ public class DecoderTest {
                     String hex = file.getName().substring(0, file.getName().indexOf("."));
                     String expected = readString(file);
                     String json = Decoder.decodeFullAsJson(hex);
-                    System.out.println(file);
                     if (REWRITE_COMPLIANCE_KIT) {
                         Files.write(file.toPath(), json.getBytes(StandardCharsets.UTF_8));
                     } else {
@@ -101,6 +100,7 @@ public class DecoderTest {
                     if (COMPARE_WITH_LEGACY) {
                         File f = new File("src/test/resources/legacy-output", file.getName());
                         if (f.exists()) {
+                            System.out.println(file);
                             String legacy = readString(f);
                             System.out.println("================================");
                             System.out.println(json);
