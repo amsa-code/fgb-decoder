@@ -10,7 +10,11 @@ name: ci
 ## (we don't want to unknowingly merge malicious code or expose 
 ## secrets to a malicious third party).
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
 
 jobs:
   build:
@@ -20,13 +24,18 @@ jobs:
       java: ['8', '11', '17'] 
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Set up JDK ${{ matrix.java }} 
         uses: actions/setup-java@v4
         with:
           java-version: ${{ matrix.java }} 
-          distribution: 'adopt'
+          distribution: 'temurin'
+          cache: 'maven'
+      - name: Set up Maven
+        run: mvn --errors --batch-mode --show-version wrapper:wrapper "-Dmaven=3.9.6"
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots verify
+        run: ./mvn --batch-mode --update-snapshots verify
       - uses: codecov/codecov-action@v3
         with:
           file: ./**/target/site/jacoco/jacoco.xml
