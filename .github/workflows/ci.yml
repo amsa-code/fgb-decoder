@@ -35,7 +35,7 @@ jobs:
       - name: Set up Maven
         run: mvn --errors --batch-mode --show-version wrapper:wrapper "-Dmaven=3.9.6"
       - name: Build with Maven
-        run: ./mvn --batch-mode --update-snapshots verify
+        run: ./mvnw --batch-mode --update-snapshots verify
       - uses: codecov/codecov-action@v3
         with:
           file: ./**/target/site/jacoco/jacoco.xml
