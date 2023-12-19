@@ -23,6 +23,7 @@ enum AttributeType {
     CS_TYPE_APPROVAL("cSTypeApproval", JsonType.INTEGER), //
     CS_TYPE_APPROVAL_NUMBER("cSTypeApprovalNumber", JsonType.INTEGER), //
     DISABLED("disabled", JsonType.BOOLEAN), //
+    ELT_IDENTITY_TYPE("eltIdentityType", JsonType.STRING),
     EMERGENCY_CODE_PRESENT("emergencyCodePresent", JsonType.BOOLEAN), //
     EMERGENCY_CODE_FLAG("emergencyCodeFlag"), //
     ENCODED_POSITION_SOURCE("encodedPositionSource"), //

@@ -539,11 +539,10 @@ abstract class BeaconProtocol {
         list.add(new NationalLocationAviation());
         list.add(new NationalLocationMaritime());
         list.add(new NationalLocationPersonal());
-        list.add(new NationalLocationSpare());
         list.add(new NationalLocationTest());
 
-        // New Return Link Service Protocol
         list.add(new ReturnLinkServiceLocation());
+        list.add(new ELTDTLocation());
 
         // All Standard Protocols
         list.add(new StandardLocationAircraftAddress());

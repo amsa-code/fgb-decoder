@@ -43,6 +43,8 @@
           type: string
         'disabled':
           type: boolean
+        'eltIdentityType':
+          type: string
         'emergencyCodeFlag':
           type: string
         'emergencyCodePresent':
