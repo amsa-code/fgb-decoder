@@ -1,7 +1,5 @@
 package au.gov.amsa.fgb.internal;
 
-import com.github.davidmoten.guavamini.Lists;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -16,7 +14,7 @@ public class ELTDTLocation
     public static final String DEFAULT_COARSE_LONGITUDE = "0111111111";
 
     public ELTDTLocation() {
-        super(Lists.newArrayList("00", "10", "?0"), "ELT - ELT-DT Location Protocol", "110");
+        super(Arrays.asList("00", "10", "?0"), "ELT - ELT-DT Location Protocol", "110");
     }
 
     @Override
