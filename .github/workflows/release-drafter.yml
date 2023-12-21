@@ -5,4 +5,4 @@ on:
       - master
 jobs:
   update_release_draft:
-    uses: amsa-code/.github/.github/workflows/release-drafter.yml
+    uses: amsa-code/.github/.github/workflows/release-drafter.yml@master

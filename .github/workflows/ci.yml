@@ -19,4 +19,4 @@ on:
 jobs:
   build:
     name: Verify
-    uses: amsa-code/.github/.github/workflows/ci.yaml
+    uses: amsa-code/.github/.github/workflows/ci.yaml@master
