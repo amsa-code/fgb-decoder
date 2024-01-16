@@ -1,15 +1,13 @@
 package au.gov.amsa.fgb.internal;
 
-import static org.junit.Assert.assertEquals;
+import com.github.davidmoten.junit.Asserts;
+import org.junit.Test;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Test;
-
-import com.github.davidmoten.junit.Asserts;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public final class HexDecoderTest {
 
@@ -106,6 +104,68 @@ public final class HexDecoderTest {
     }
 
     @Test
+    public void testDecodeEltDtLocationWithAircraft24BitAddress() {
+        final Map<String, HexAttribute> m = decodeToMap("3EF23E3C543FDFF");
+        assertEquals("ELT - ELT-DT Location Protocol", m.get("protocolType").value());
+        assertEquals("503", m.get("countryCode").value());
+        assertEquals("Aircraft 24 bit address", m.get("eltIdentityType").value());
+        assertEquals("7C78A8", m.get("aircraft24BitAddressHex").value());
+        assertEquals("37074250", m.get("aircraft24BitAddressOctal").value());
+        assertEquals("VH-X4A", m.get("aircraftCallsign").value());
+        assertNull(m.get("coarsePositionLatitude"));
+        assertNull(m.get("coarsePositionLongitude"));
+    }
+
+    @Test
+    public void testDecodeEltDtLocationWithOperatorDesignator() {
+        final Map<String, HexAttribute> m = decodeToMap("3EF2BE3C543FDFF");
+        assertEquals("ELT - ELT-DT Location Protocol", m.get("protocolType").value());
+        assertEquals("503", m.get("countryCode").value());
+        assertEquals("Aircraft operator designator and serial number", m.get("eltIdentityType").value());
+        assertEquals("VZU", m.get("aircraftOperator").value());
+        assertEquals("168", m.get("aircraftSerialNumber").value());
+        assertNull(m.get("coarsePositionLatitude"));
+        assertNull(m.get("coarsePositionLongitude"));
+    }
+
+    @Test
+    public void testDecodeEltDtLocationWithTypeApprovalAndSerialNumber() {
+        final Map<String, HexAttribute> m = decodeToMap("3EF30C84573FDFF");
+        assertEquals("ELT - ELT-DT Location Protocol", m.get("protocolType").value());
+        assertEquals("503", m.get("countryCode").value());
+        assertEquals("Type approval certificate and serial number", m.get("eltIdentityType").value());
+        assertEquals("100", m.get("cSTypeApprovalNumber").value());
+        assertEquals("2222", m.get("beaconSerialNumber").value());
+        assertNull(m.get("coarsePositionLatitude"));
+        assertNull(m.get("coarsePositionLongitude"));
+    }
+
+    @Test
+    public void testDecodeEltDtLocationWithForeignRegistration() {
+        final Map<String, HexAttribute> m = decodeToMap("1D1220F03BBFDFF");
+        assertEquals("ELT - ELT-DT Location Protocol", m.get("protocolType").value());
+        assertEquals("232", m.get("countryCode").value());
+        assertEquals("Aircraft 24 bit address", m.get("eltIdentityType").value());
+        assertEquals("41E077", m.get("aircraft24BitAddressHex").value());
+        assertEquals("20360167", m.get("aircraft24BitAddressOctal").value());
+        assertNull(m.get("coarsePositionLatitude"));
+        assertNull(m.get("coarsePositionLongitude"));
+    }
+
+    @Test
+    public void testDecodeEltDtLocationNonDefaultLocation() {
+        final Map<String, HexAttribute> m = decodeToMap("3EF23E3C5451D2A");
+        assertEquals("ELT - ELT-DT Location Protocol", m.get("protocolType").value());
+        assertEquals("503", m.get("countryCode").value());
+        assertEquals("Aircraft 24 bit address", m.get("eltIdentityType").value());
+        assertEquals("7C78A8", m.get("aircraft24BitAddressHex").value());
+        assertEquals("37074250", m.get("aircraft24BitAddressOctal").value());
+        assertEquals("VH-X4A", m.get("aircraftCallsign").value());
+        assertEquals("-35.5", m.get("coarsePositionLatitude").value());
+        assertEquals("149.0", m.get("coarsePositionLongitude").value());
+    }
+
+    @Test
     public void testDecode() {
         String hex = "D6E67C5F61F89568772240FFFFFFFF";
         Decoder.decodeFullAsJson(hex);
@@ -145,17 +205,6 @@ public final class HexDecoderTest {
     public void testDecodeOfUserSerialSpare2LongMessage() {
         String hex = "F207D401EB1F4E80362765FFFFFFFF";
         Decoder.decodeFullAsJson(hex);
-    }
-
-    // @Test
-    public void testDecodeAll() throws FileNotFoundException, IOException {
-        try {
-            Debug.startSearching();
-            DecodeHistoricalFilesMain.decode();
-            Debug.writeFoundToComplianceKit();
-        } finally {
-            Debug.stopSearching();
-        }
     }
 
     private static Map<String, HexAttribute> decodeToMap(String hexStr) {
