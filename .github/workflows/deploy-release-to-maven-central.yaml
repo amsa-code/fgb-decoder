@@ -30,6 +30,8 @@ jobs:
       - name: Set up Maven settings and import GPG keys
         uses: actions/setup-java@v4
         with: # running setup-java again overwrites the settings.xml
+          distribution: 'temurin'
+          cache: 'maven'
           java-version: 11
           server-id: ossrh
           server-username: OSSRH_USERNAME
