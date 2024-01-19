@@ -43,6 +43,13 @@
     <url>https://github.com/amsa-code/fgb-decoder/issues</url>
   </issueManagement>
 
+  <distributionManagement>
+    <site>
+      <id>github</id>
+      <url>scm:git:git@github.com:amsa-code/fgb-decoder.git</url>
+    </site>
+  </distributionManagement>
+
   <properties>
     <branch.coverage>0.80</branch.coverage>
     <changelog.version>2.2</changelog.version>
@@ -55,9 +62,7 @@
 
     <jackson.version>2.16.1</jackson.version>
     <jacoco.version>0.8.11</jacoco.version>
-    <javadoc.version>3.6.3</javadoc.version>
     <jdk.version.minimum>8</jdk.version.minimum>
-    <jxr.version>3.3.2</jxr.version>
 
     <line.coverage>0.95</line.coverage>
     <m3.site.version>3.12.1</m3.site.version>
@@ -65,8 +70,6 @@
     <project.info.version>3.5.0</project.info.version>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <scm.url>scm:git:https://github.com/amsa-code/fgb-decoder.git</scm.url>
-    <spotbugs.version>4.8.3.0</spotbugs.version>
-    <taglist.version>3.0.0</taglist.version>
 
   </properties>
 
@@ -136,11 +139,37 @@
   </repositories>
 
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <compilerArgument>-parameters</compilerArgument>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${maven.javadoc.plugin.version}</version>
+          <configuration>
+            <source>8</source>
+            <additionalJOption>-Xdoclint:none</additionalJOption>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-scm-publish-plugin</artifactId>
+          <configuration>
+            <scmBranch>gh-pages</scmBranch>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
-        <version>${spotbugs.version}</version>
         <configuration>
           <effort>Max</effort>
           <threshold>Low</threshold>
@@ -193,22 +222,7 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <compilerArgument>-parameters</compilerArgument>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
 
-        <configuration>
-          <source>8</source>
-          <additionalJOption>-Xdoclint:none</additionalJOption>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
@@ -294,7 +308,7 @@
       <plugin>
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
-        <version>${spotbugs.version}</version>
+        <version>${maven.spotbugs.plugin.version}</version>
         <configuration>
           <effort>Max</effort>
           <threshold>Low</threshold>
@@ -315,20 +329,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>${javadoc.version}</version>
-        <configuration>
-          <aggregate>true</aggregate>
-        </configuration>
-      </plugin>
-      <!-- this one should go first so that it is available to other 
-                plugins when they run -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jxr-plugin</artifactId>
-        <version>${jxr.version}</version>
-        <configuration>
-          <aggregate>true</aggregate>
-        </configuration>
+        <version>${maven.javadoc.plugin.version}</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -348,35 +349,17 @@
           <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>taglist-maven-plugin</artifactId>
-        <version>${taglist.version}</version>
-      </plugin>
     </plugins>
   </reporting>
 
   <profiles>
     <profile>
       <id>release</id>
-      <distributionManagement>
-        <repository>
-          <id>ossrh</id>
-          <name>Maven Central</name>
-          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
-        <snapshotRepository>
-          <id>ossrh</id>
-          <name>Maven Central</name>
-          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-      </distributionManagement>
       <build>
         <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>3.1.0</version>
             <configuration>
               <gpgArguments>
                 <arg>--pinentry-mode</arg>

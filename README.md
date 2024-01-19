@@ -15,7 +15,7 @@ There's plenty of legacy ugliness in there still but should be enough for AMSA's
 
 **Status**: production
 
-Maven [reports](https://amsa-code.github.io/fgb-decoder/index.html) including [javadocs](https://amsa-code.github.io/fgb-decoder/apidocs/index.html)
+Maven [reports](https://amsa-code.github.io/fgb-decoder/) including [javadocs](https://amsa-code.github.io/fgb-decoder/apidocs/index.html)
 
 **See also**: [sgb-decoder](https://github.com/amsa-code/sgb-decoder.git) to decode Second Generation Beacon Hex Ids and detection messages.
 
