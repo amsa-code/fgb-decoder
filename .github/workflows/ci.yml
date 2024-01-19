@@ -18,44 +18,5 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    strategy: 
-     matrix:
-      java: ['8', '11', '17'] 
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - name: Set up JDK ${{ matrix.java }} 
-        uses: actions/setup-java@v4
-        with:
-          java-version: ${{ matrix.java }} 
-          distribution: 'temurin'
-          cache: 'maven'
-      - name: Set up Maven
-        run: mvn --errors --batch-mode --show-version wrapper:wrapper "-Dmaven=3.9.6"
-      - name: Build with Maven
-        run: ./mvnw --batch-mode --update-snapshots verify
-      - uses: codecov/codecov-action@v3
-        with:
-          file: ./**/target/site/jacoco/jacoco.xml
-          name: codecov
-  dependabot:
-    runs-on: ubuntu-latest
-    needs: build
-    permissions:
-      pull-requests: write
-      contents: write
-    if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' }}
-    steps:
-      - name: Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v1.6.0
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Enable auto-merge for Dependabot PRs
-        if: ${{!contains(steps.metadata.outputs.dependency-names, 'maven-plugin-api') && (steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.metadata.outputs.update-type == 'version-update:semver-patch')}}
-        run: gh pr merge --auto --rebase "$PR_URL"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    name: Verify
+    uses: amsa-code/.github/.github/workflows/ci.yml@master
