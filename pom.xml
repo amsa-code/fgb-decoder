@@ -127,6 +127,14 @@
 
   </dependencies>
 
+  <repositories>
+    <repository>
+      <id>oss.sonatype.org</id>
+      <name>Oss Snapshot Repository</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </repository>
+  </repositories>
+
   <build>
     <plugins>
       <plugin>
