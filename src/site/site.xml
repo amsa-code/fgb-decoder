@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="https://maven.apache.org/DECORATION/1.3.0"
+         xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://maven.apache.org/DECORATION/1.3.0 https://maven.apache.org/xsd/decoration-1.3.0.xsd">
+
+    <publishDate position="bottom" format="yyyy-MM-dd" />
+    <version position="bottom" />
+
+    <body>
+        <menu ref="reports" />
+    </body>
+</project>

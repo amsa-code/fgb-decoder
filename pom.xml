@@ -52,8 +52,6 @@
 
   <properties>
     <branch.coverage>0.80</branch.coverage>
-    <changelog.version>2.2</changelog.version>
-    <changelog.version>2.2</changelog.version>
     <checkstyle.core.version>9.3</checkstyle.core.version>
     <checkstyle.suppressions.xml>src/main/checkstyle/suppressions.xml</checkstyle.suppressions.xml>
 
@@ -66,8 +64,7 @@
 
     <line.coverage>0.95</line.coverage>
     <pmd.version>3.21.2</pmd.version>
-    <project.info.version>3.5.0</project.info.version>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
     <scm.url>https://github.com/amsa-code/fgb-decoder.git</scm.url>
 
   </properties>
@@ -288,56 +285,6 @@
       </plugin>
     </plugins>
   </build>
-  <reporting>
-    <outputDirectory>${project.build.directory}/site</outputDirectory>
-    <excludeDefaults>true</excludeDefaults>
-    <plugins>
-      <plugin>
-        <groupId>com.github.spotbugs</groupId>
-        <artifactId>spotbugs-maven-plugin</artifactId>
-        <version>${maven.spotbugs.plugin.version}</version>
-        <configuration>
-          <effort>Max</effort>
-          <threshold>Low</threshold>
-          <xmlOutput>true</xmlOutput>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>${checkstyle.version}</version>
-        <configuration>
-          <includeTestSourceDirectory>true</includeTestSourceDirectory>
-          <configLocation>${checkstyle.xml}</configLocation>
-          <suppressionsLocation>${checkstyle.suppressions.xml}</suppressionsLocation>
-          <encoding>UTF-8</encoding>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>${maven.javadoc.plugin.version}</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>${pmd.version}</version>
-        <configuration>
-          <targetJdk>${maven.compiler.target}</targetJdk>
-          <aggregate>true</aggregate>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>${project.info.version}</version>
-        <configuration>
-          <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
-          <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-        </configuration>
-      </plugin>
-    </plugins>
-  </reporting>
 
   <profiles>
     <profile>
