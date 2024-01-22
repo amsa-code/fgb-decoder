@@ -16,7 +16,7 @@
   <name>${project.artifactId}</name>
   <description>Decodes second generation Beacon detection messages and Beacon 23 Hex IDs</description>
 
-  <url>http://github.com/amsa-code/fgb-decoder</url>
+  <url>https://amsa-code.github.io/fgb-decoder/</url>
 
   <inceptionYear>2021</inceptionYear>
   <developers>
@@ -33,8 +33,8 @@
   </developers>
 
   <scm>
-    <connection>${scm.url}</connection>
-    <developerConnection>${scm.url}</developerConnection>
+    <connection>scm:git:${scm.url}</connection>
+    <developerConnection>scm:git:${scm.url}</developerConnection>
     <url>${scm.url}</url>
   </scm>
 
@@ -65,11 +65,10 @@
     <jdk.version.minimum>8</jdk.version.minimum>
 
     <line.coverage>0.95</line.coverage>
-    <m3.site.version>3.12.1</m3.site.version>
     <pmd.version>3.21.2</pmd.version>
     <project.info.version>3.5.0</project.info.version>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <scm.url>scm:git:https://github.com/amsa-code/fgb-decoder.git</scm.url>
+    <scm.url>https://github.com/amsa-code/fgb-decoder.git</scm.url>
 
   </properties>
 
@@ -232,18 +231,6 @@
             <goals>
               <goal>check</goal>
               <goal>cpd-check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-site-plugin</artifactId>
-        <version>${m3.site.version}</version>
-        <executions>
-          <execution>
-            <id>attach-descriptor</id>
-            <goals>
-              <goal>attach-descriptor</goal>
             </goals>
           </execution>
         </executions>
