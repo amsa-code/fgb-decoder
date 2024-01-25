@@ -58,12 +58,9 @@
     <checkstyle.xml>src/main/checkstyle/checkstyle.xml</checkstyle.xml>
 
     <jackson.version>2.16.1</jackson.version>
-    <jacoco.version>0.8.11</jacoco.version>
     <jdk.version.minimum>8</jdk.version.minimum>
 
     <line.coverage>0.95</line.coverage>
-    <pmd.version>3.21.2</pmd.version>
-
     <scm.url>https://github.com/amsa-code/fgb-decoder.git</scm.url>
 
   </properties>
@@ -212,7 +209,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>${pmd.version}</version>
         <executions>
           <execution>
             <goals>
@@ -226,7 +222,6 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>${jacoco.version}</version>
         <executions>
           <execution>
             <!-- configure jacoco to fail the build if not 100% 
