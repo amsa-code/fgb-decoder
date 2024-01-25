@@ -52,10 +52,9 @@
 
   <properties>
     <branch.coverage>0.80</branch.coverage>
-    <checkstyle.core.version>9.3</checkstyle.core.version>
+
     <checkstyle.suppressions.xml>src/main/checkstyle/suppressions.xml</checkstyle.suppressions.xml>
 
-    <checkstyle.version>3.3.1</checkstyle.version>
     <checkstyle.xml>src/main/checkstyle/checkstyle.xml</checkstyle.xml>
 
     <jackson.version>2.16.1</jackson.version>
@@ -147,7 +146,6 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>${maven.javadoc.plugin.version}</version>
           <configuration>
             <source>8</source>
             <additionalJOption>-Xdoclint:none</additionalJOption>
@@ -191,7 +189,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>${checkstyle.version}</version>
         <configuration>
           <includeTestSourceDirectory>true</includeTestSourceDirectory>
           <configLocation>${checkstyle.xml}</configLocation>
@@ -201,13 +198,6 @@
           <linkXRef>false</linkXRef>
           <suppressionsLocation>${checkstyle.suppressions.xml}</suppressionsLocation>
         </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>com.puppycrawl.tools</groupId>
-            <artifactId>checkstyle</artifactId>
-            <version>${checkstyle.core.version}</version>
-          </dependency>
-        </dependencies>
         <executions>
           <execution>
             <id>validate</id>
