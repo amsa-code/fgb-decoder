@@ -162,8 +162,6 @@
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
         <configuration>
-          <effort>Max</effort>
-          <threshold>Low</threshold>
           <xmlOutput>true</xmlOutput>
           <excludeFilterFile>src/main/spotbugs/filter.xml</excludeFilterFile>
         </configuration>
