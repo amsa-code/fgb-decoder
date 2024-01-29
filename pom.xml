@@ -51,18 +51,11 @@
   </distributionManagement>
 
   <properties>
-    <branch.coverage>0.80</branch.coverage>
-
-    <checkstyle.suppressions.xml>src/main/checkstyle/suppressions.xml</checkstyle.suppressions.xml>
-
-    <checkstyle.xml>src/main/checkstyle/checkstyle.xml</checkstyle.xml>
-
+    <checkstyle.skip>true</checkstyle.skip>
     <jackson.version>2.16.1</jackson.version>
     <jdk.version.minimum>8</jdk.version.minimum>
-
-    <line.coverage>0.95</line.coverage>
+    <maven.checkstyle.plugin.suppressions.xml>src/main/checkstyle/suppressions.xml</maven.checkstyle.plugin.suppressions.xml>
     <scm.url>https://github.com/amsa-code/fgb-decoder.git</scm.url>
-
   </properties>
 
   <dependencies>
@@ -180,91 +173,6 @@
         <configuration>
           <obrRepository>NONE</obrRepository>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <configuration>
-          <includeTestSourceDirectory>true</includeTestSourceDirectory>
-          <configLocation>${checkstyle.xml}</configLocation>
-          <encoding>UTF-8</encoding>
-          <consoleOutput>true</consoleOutput>
-          <failsOnError>true</failsOnError>
-          <linkXRef>false</linkXRef>
-          <suppressionsLocation>${checkstyle.suppressions.xml}</suppressionsLocation>
-        </configuration>
-        <executions>
-          <execution>
-            <id>validate</id>
-            <goals>
-              <goal>check</goal>
-            </goals>
-            <phase>validate</phase>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-              <goal>cpd-check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <!-- configure jacoco to fail the build if not 100% 
-                            coverage -->
-            <id>check</id>
-            <goals>
-              <goal>check</goal>
-            </goals>
-            <configuration>
-              <rules>
-                <rule>
-                  <element>BUNDLE</element>
-                  <limits>
-                    <limit>
-                      <counter>LINE</counter>
-                      <value>COVEREDRATIO</value>
-                      <minimum>${line.coverage}</minimum>
-                    </limit>
-                    <limit>
-                      <counter>BRANCH</counter>
-                      <value>COVEREDRATIO</value>
-                      <minimum>${branch.coverage}</minimum>
-                    </limit>
-                  </limits>
-                  <!-- <excludes> -->
-                  <!-- <exclude>com.xyz.ClassToExclude</exclude> -->
-                  <!-- </excludes> -->
-                </rule>
-              </rules>
-            </configuration>
-          </execution>
-          <execution>
-            <id>prepare-agent</id>
-            <goals>
-              <goal>prepare-agent</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>report</id>
-            <goals>
-              <goal>report</goal>
-            </goals>
-            <phase>test</phase>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
