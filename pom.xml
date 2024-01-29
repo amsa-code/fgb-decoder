@@ -6,7 +6,7 @@
   <parent>
     <groupId>au.gov.amsa</groupId>
     <artifactId>amsa-parent</artifactId>
-    <version>1-SNAPSHOT</version>
+    <version>1</version>
   </parent>
 
   <artifactId>fgb-decoder</artifactId>
