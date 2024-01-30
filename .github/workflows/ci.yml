@@ -20,3 +20,5 @@ jobs:
   build:
     name: Verify
     uses: amsa-code/.github/.github/workflows/ci.yml@master
+    with:
+      verify-goal: 'verify javadoc:javadoc site'
