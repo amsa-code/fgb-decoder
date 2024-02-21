@@ -106,7 +106,7 @@ public final class HexDecoderTest {
     @Test
     public void testDecodeEltDtLocationWithAircraft24BitAddress() {
         final Map<String, HexAttribute> m = decodeToMap("3EF23E3C543FDFF");
-        assertEquals("ELT - ELT-DT Location Protocol", m.get("protocolType").value());
+        assertEquals("ELT (DT)", m.get("protocolType").value());
         assertEquals("503", m.get("countryCode").value());
         assertEquals("Aircraft 24 bit address", m.get("eltIdentityType").value());
         assertEquals("7C78A8", m.get("aircraft24BitAddressHex").value());
@@ -119,7 +119,7 @@ public final class HexDecoderTest {
     @Test
     public void testDecodeEltDtLocationWithOperatorDesignator() {
         final Map<String, HexAttribute> m = decodeToMap("3EF2BE3C543FDFF");
-        assertEquals("ELT - ELT-DT Location Protocol", m.get("protocolType").value());
+        assertEquals("ELT (DT)", m.get("protocolType").value());
         assertEquals("503", m.get("countryCode").value());
         assertEquals("Aircraft operator designator and serial number", m.get("eltIdentityType").value());
         assertEquals("VZU", m.get("aircraftOperator").value());
@@ -131,7 +131,7 @@ public final class HexDecoderTest {
     @Test
     public void testDecodeEltDtLocationWithTypeApprovalAndSerialNumber() {
         final Map<String, HexAttribute> m = decodeToMap("3EF30C84573FDFF");
-        assertEquals("ELT - ELT-DT Location Protocol", m.get("protocolType").value());
+        assertEquals("ELT (DT)", m.get("protocolType").value());
         assertEquals("503", m.get("countryCode").value());
         assertEquals("Type approval certificate and serial number", m.get("eltIdentityType").value());
         assertEquals("100", m.get("cSTypeApprovalNumber").value());
@@ -143,7 +143,7 @@ public final class HexDecoderTest {
     @Test
     public void testDecodeEltDtLocationWithForeignRegistration() {
         final Map<String, HexAttribute> m = decodeToMap("1D1220F03BBFDFF");
-        assertEquals("ELT - ELT-DT Location Protocol", m.get("protocolType").value());
+        assertEquals("ELT (DT)", m.get("protocolType").value());
         assertEquals("232", m.get("countryCode").value());
         assertEquals("Aircraft 24 bit address", m.get("eltIdentityType").value());
         assertEquals("41E077", m.get("aircraft24BitAddressHex").value());
@@ -155,7 +155,7 @@ public final class HexDecoderTest {
     @Test
     public void testDecodeEltDtLocationNonDefaultLocation() {
         final Map<String, HexAttribute> m = decodeToMap("3EF23E3C5451D2A");
-        assertEquals("ELT - ELT-DT Location Protocol", m.get("protocolType").value());
+        assertEquals("ELT (DT)", m.get("protocolType").value());
         assertEquals("503", m.get("countryCode").value());
         assertEquals("Aircraft 24 bit address", m.get("eltIdentityType").value());
         assertEquals("7C78A8", m.get("aircraft24BitAddressHex").value());

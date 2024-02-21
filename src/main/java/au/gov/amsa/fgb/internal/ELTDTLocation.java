@@ -14,7 +14,7 @@ public class ELTDTLocation
     public static final String DEFAULT_COARSE_LONGITUDE = "0111111111";
 
     public ELTDTLocation() {
-        super(Arrays.asList("00", "10", "?0"), "ELT - ELT-DT Location Protocol", "110");
+        super(Arrays.asList("00", "10", "?0"), "ELT (DT)", "110");
     }
 
     @Override
