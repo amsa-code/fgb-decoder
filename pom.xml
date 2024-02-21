@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>fgb-decoder</artifactId>
-  <version>0.1.7-SNAPSHOT</version>
+  <version>0.1.7</version>
   <packaging>bundle</packaging>
 
   <name>${project.artifactId}</name>
@@ -35,7 +35,7 @@
   <scm>
     <connection>scm:git:${scm.url}</connection>
     <developerConnection>scm:git:${scm.url}</developerConnection>
-    <tag>HEAD</tag>
+    <tag>fgb-decoder-0.1.7</tag>
     <url>${scm.url}</url>
   </scm>
 
