@@ -35,6 +35,7 @@
   <scm>
     <connection>scm:git:${scm.url}</connection>
     <developerConnection>scm:git:${scm.url}</developerConnection>
+    <tag>HEAD</tag>
     <url>${scm.url}</url>
   </scm>
 
