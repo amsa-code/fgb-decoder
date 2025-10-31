@@ -53,7 +53,7 @@
 
   <properties>
     <checkstyle.skip>true</checkstyle.skip>
-    <jackson.version>2.16.1</jackson.version>
+    <jackson.version>2.20.1</jackson.version>
     <jdk.version.minimum>8</jdk.version.minimum>
     <maven.checkstyle.plugin.suppressions.xml>src/main/checkstyle/suppressions.xml</maven.checkstyle.plugin.suppressions.xml>
     <scm.url>https://github.com/amsa-code/fgb-decoder.git</scm.url>
